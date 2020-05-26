@@ -1,0 +1,108 @@
+﻿<Window x:Class="PasswordBoss.Views.ShareCenterMiniTour"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:helpers="clr-namespace:PasswordBoss.Helpers"
+             mc:Ignorable="d"
+             d:DesignHeight="700" d:DesignWidth="900"
+             x:Name="ShareCenterTour" ResizeMode="NoResize"
+             Title="Password Boss" Background="Transparent"
+             AllowsTransparency="True" WindowStyle="None"
+             WindowStartupLocation="CenterOwner" ShowInTaskbar="False"
+             Width="Auto" Height="Auto">
+
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+    </Window.Resources>
+
+    <Grid MinHeight="600" MinWidth="888">
+        <Grid x:Name="ShareTabsGrid" Visibility="{Binding ShareTabsVisibility,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay,Converter={StaticResource BoolToVisibility}}"
+              Background="Transparent">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="183"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="35"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="138"/>
+                <RowDefinition Height="145"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Background="{DynamicResource GrayColor}" Opacity="0.4" />
+
+            <Grid Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" Background="{DynamicResource GrayColor}" Opacity="0.4" />
+
+            <Grid Grid.Row="0" Grid.Column="2" Grid.RowSpan="3" Background="{DynamicResource GrayColor}" Opacity="0.4" />
+
+            <Grid Grid.Row="0" Grid.Column="1" Height="105" VerticalAlignment="Top" Background="{DynamicResource GrayColor}" Opacity="0.4" />
+
+            <Grid Grid.Column="1" VerticalAlignment="Bottom" Height="33">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="360" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0" VerticalAlignment="Bottom" Background="Transparent"/>
+
+                <Grid Grid.Column="1" Background="{DynamicResource GrayColor}" Opacity="0.4" />
+
+            </Grid>
+
+            <StackPanel Canvas.ZIndex="2" Name="FavoriteSitesPopup" Grid.Row="1" Grid.Column="1"  VerticalAlignment="Top"
+                            HorizontalAlignment="Left" Margin="0,0,0,0">
+                <Grid Height="Auto" Width="Auto">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="15" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Path Grid.Row="0" Width="10" Height="15"   Stretch="Fill" Stroke="White" Fill="White" Data="F1 M 287.328,237.333L 319.344,255.818L 319.344,218.849L 287.328,237.333 Z "
+                              VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10,0,0,0">
+                            <Path.RenderTransform>
+                                <RotateTransform Angle="90" />
+                            </Path.RenderTransform>
+                        </Path>
+                        <Grid Grid.Row="1" Background="{DynamicResource WhiteColor}" Margin="0,-6,0,0"  HorizontalAlignment="Left" Height="125">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="10"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="10"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="10"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="10"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="140" />
+                                <ColumnDefinition Width="30"/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="1" Grid.Row="3" Orientation="Vertical">
+                                <TextBlock Text="See a list of all your shared items" FontSize="14" Foreground="{DynamicResource LightGrayTextForegroundColor}" FontWeight="Normal" 
+                                           FontFamily="{DynamicResource ProximaRegular}" LineHeight="24" TextWrapping="Wrap"/>
+                            </StackPanel>
+                            <Grid Grid.Row="5" Grid.Column="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Text="1/3" FontSize="16" Foreground="{DynamicResource BlackColor}" FontWeight="SemiBold" FontFamily="{DynamicResource ProximaRegular}" />
+                                <Button Name="btnFavoriteSitesNext" Grid.Column="1"  Width="90" Content="{DynamicResource Next}"  Height="22" FontSize="11" Foreground="{DynamicResource WhiteColor}" FontWeight="SemiBold" Background="{DynamicResource PasswordBossGreenColor}" 
+                                        FontFamily="{DynamicResource ProximaRegular}" Click="btnFavoriteSitesNext_Click" HorizontalAlignment="Right"
+                                        Style="{DynamicResource MiniTourNextButtonStyle}" VerticalContentAlignment="Center"  HorizontalContentAlignment="Center"/>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </StackPanel>
+        </Grid>
+        
+       
+    </Grid>
+</Window>

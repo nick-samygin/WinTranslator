@@ -1,0 +1,13 @@
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.Firefox\bin\Debug\100002.dll
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.Firefox\bin\Debug\100002.pdb
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.Firefox\bin\Debug\PBKnown.dll
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.Firefox\bin\Debug\System.Data.SQLite.dll
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.Firefox\bin\Debug\VaultReader.dll
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.Firefox\bin\Debug\Newtonsoft.Json.dll
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.Firefox\bin\Debug\Microsoft.Win32.TaskScheduler.dll
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.Firefox\bin\Debug\PBKnown.pdb
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.Firefox\bin\Debug\Microsoft.Win32.TaskScheduler.xml
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.Firefox\obj\Debug\PBDataImporters.Firefox.csproj.CoreCompileInputs.cache
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.Firefox\obj\Debug\PBDataImporters.Firefox.csproj.CopyComplete
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.Firefox\obj\Debug\100002.dll
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.Firefox\obj\Debug\100002.pdb

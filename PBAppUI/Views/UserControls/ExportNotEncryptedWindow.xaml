@@ -1,0 +1,86 @@
+﻿<Window x:Class="PasswordBoss.Views.UserControls.ExportNotEncryptedWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"  
+        xmlns:helpers="clr-namespace:PasswordBoss.Helpers"
+        Title="Password Boss" ResizeMode="NoResize" Background="Transparent"
+        WindowStyle="None" AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen" ShowInTaskbar="False"
+        Width="Auto" Height="Auto">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+        <helpers:BooleanToOpacityConverter x:Key="BoolToOpacity" />
+
+    </Window.Resources>
+    <Grid Height="Auto" Width="Auto" >
+        <Grid.Background>
+            <SolidColorBrush Color="Gray" Opacity="0.3"/>
+        </Grid.Background>
+
+        <!--Overlay Importing Password From Browser Screen3 grid-->
+        <Border BorderThickness="0" Background="{DynamicResource WhiteColor}" Width="550" Height="232" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="26" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="16" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="8" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="8" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="8" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="12" />
+                    <RowDefinition Height="34" />
+                    <RowDefinition Height="26" />
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="1" Text="{DynamicResource ExportSuccessfulWindow}" FontSize="16" FontWeight="SemiBold"
+                           Foreground="{DynamicResource LightGrayTextForegroundColor}" FontFamily="{DynamicResource ProximaSemiBold}" HorizontalAlignment="Center" />
+                <TextBlock Grid.Row="3"  FontSize="14" FontWeight="Normal" Foreground="{DynamicResource LightGrayTextForegroundColor}"
+                               HorizontalAlignment="Center" FontFamily="{DynamicResource ProximaRegular}" />
+                <StackPanel Grid.Row="5" HorizontalAlignment="Center" Orientation="Horizontal">
+                    <TextBlock Text="{Binding NumberOfExportedPasswords}" FontSize="24" FontWeight="Light"
+                                   FontFamily="{DynamicResource ProximaRegular}"
+                                   Foreground="{DynamicResource ImportFromApplicationsGreenButtonColor}"
+                                   HorizontalAlignment="Left" Padding="0,0,11,0" VerticalAlignment="Center" />
+                    <TextBlock Text="{DynamicResource PasswordsExported}"
+                                   FontSize="16" FontWeight="SemiBold" FontFamily="{DynamicResource ProximaSemiBold}"
+                                   Foreground="{DynamicResource LightGrayTextForegroundColor}"
+                                   HorizontalAlignment="Right" VerticalAlignment="Center" />
+                </StackPanel>
+                <StackPanel Grid.Row="7" HorizontalAlignment="Center" Orientation="Horizontal">
+                    <TextBlock Text="( " FontSize="14" FontWeight="Normal"
+                                   FontFamily="{DynamicResource ProximaRegular}"
+                                   Foreground="{DynamicResource LightGrayTextForegroundColor}"
+                                   HorizontalAlignment="Left" Padding="0,0,0,0" />
+                    <TextBlock Text="{Binding TotalNumberOfPasswordsForExporting, UpdateSourceTrigger=PropertyChanged}" FontSize="14" FontWeight="Normal"
+                                   FontFamily="{DynamicResource ProximaRegular}"
+                                   Foreground="{DynamicResource LightGrayTextForegroundColor}"
+                                   HorizontalAlignment="Left" Padding="0,0,0,0" />
+                    <TextBlock Text=" " FontSize="14" FontWeight="Normal"
+                                   FontFamily="{DynamicResource ProximaRegular}"
+                                   Foreground="{DynamicResource LightGrayTextForegroundColor}"
+                                   HorizontalAlignment="Left" Padding="0,0,0,0" />
+                    <TextBlock Grid.Row="7" Margin="0,0,0,0"
+                                   Text="{DynamicResource PasswordsInPasswordVault}"
+                                   FontSize="14" FontWeight="Normal" FontFamily="{DynamicResource ProximaRegular}"
+                                   Foreground="{DynamicResource LightGrayTextForegroundColor}"
+                                   HorizontalAlignment="Center" />
+                    <TextBlock Text=")" FontSize="14" FontWeight="Normal"
+                                   FontFamily="{DynamicResource ProximaRegular}"
+                                   Foreground="{DynamicResource LightGrayTextForegroundColor}"
+                                   HorizontalAlignment="Right" Padding="0,0,0,0" />
+                </StackPanel>
+                
+                <Button Grid.Row="13" Background="{DynamicResource ImportFromApplicationsGreenButtonColor}" BorderThickness="0" Width="119" Height="34"
+                            Content="{DynamicResource Finish}" 
+                            Foreground="{DynamicResource WhiteColor}" FontWeight="SemiBold" FontSize="13"
+                            Style="{DynamicResource roundButtonHeight34}"
+                            VerticalContentAlignment="Center" FontFamily="{DynamicResource ProximaSemiBold}"
+                            VerticalAlignment="Center" Click="Button_Click" />
+            </Grid>
+        </Border>
+    </Grid>
+    </Window>

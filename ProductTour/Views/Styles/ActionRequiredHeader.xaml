@@ -1,0 +1,53 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:ProductTour.Views.Styles" >
+    <Style TargetType="{x:Type local:ActionRequiredHeader}" >
+        <Style.Setters>
+            <Setter Property="Height" Value="125" />
+            <Setter Property="FontFamily" Value="{DynamicResource OBProximaRegular}" />
+            <Setter Property="Background" Value="{DynamicResource PasswordBossBlueHeaderColor}" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type local:ActionRequiredHeader}">
+                        <Border SnapsToDevicePixels="True" 
+                                Background="{TemplateBinding Background}" 
+                                BorderBrush="{DynamicResource PasswordBossBlueHeaderColor}"
+                                BorderThickness="0,0,1,0"
+                                HorizontalAlignment="Stretch" >
+
+                            <Grid 
+                                Margin="{TemplateBinding Padding}">
+                                <Grid.Resources>
+                                    <Style TargetType="TextBlock">
+                                        <Setter Property="TextAlignment" Value="Center" />
+                                        <Setter Property="Foreground" Value="White" />
+                                        <Setter Property="VerticalAlignment" Value="Bottom" />
+                                        <Setter Property="LineStackingStrategy" Value="BlockLineHeight" />
+                                    </Style>
+                                </Grid.Resources>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="54" />
+                                    <RowDefinition Height="28" />
+                                    <RowDefinition Height="24" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Viewbox  Margin="-10,0,0,0" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Height="44" Stretch="Fill" Grid.Row="0" StretchDirection="DownOnly" >
+                                    <TextBlock Height="35" Grid.Row="0"  FontSize="26pt" Text="{DynamicResource Onboardv4Screen3Headline}"/>
+                                </Viewbox>
+                                <Viewbox VerticalAlignment="Bottom" Grid.Row="1" Margin="0,0,0,0" HorizontalAlignment="Stretch" Stretch="Uniform" StretchDirection="DownOnly">
+									<Viewbox Height="17" Margin="0,0,2,2" Stretch="Fill" StretchDirection="Both" VerticalAlignment="Bottom">
+										<TextBlock FontSize="10" Text="{DynamicResource Onboardv4Screen3Subhead1}" VerticalAlignment="Bottom" FontWeight="Light" />
+									</Viewbox>
+								</Viewbox>
+                                <TextBlock VerticalAlignment="Bottom" Grid.Row="2" Margin="0,0,2,5" FontSize="20" Text="{DynamicResource Onboardv4Screen3Subhead2}"  />
+                            </Grid>
+
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style.Setters>
+    </Style>
+</ResourceDictionary>

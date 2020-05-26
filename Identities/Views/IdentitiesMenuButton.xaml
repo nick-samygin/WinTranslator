@@ -1,0 +1,10 @@
+﻿<UserControl x:Class="Identities.Views.IdentitiesMenuButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:controls="clr-namespace:PasswordBoss.UserControls;assembly=theme"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" Cursor="Hand"
+             mc:Ignorable="d" >
+    <controls:MenuButtonControl Header="{DynamicResource NavIdentities}" x:Name="btnIdentities" Click="Button_Click"  ImageSource="{DynamicResource identityGrey}" SelectedImageSource="{DynamicResource identityGreen}"/>
+   
+</UserControl>

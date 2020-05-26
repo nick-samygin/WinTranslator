@@ -1,0 +1,78 @@
+﻿<UserControl x:Class="PasswordBoss.Views.UserControls.CustomMessageBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:PasswordBoss.Views.UserControls"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="400"
+             x:Name="messageBoxUc">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+    </UserControl.Resources>
+
+    <Grid>
+        <!--Delete device grid-->
+        <Grid x:Name="MessageBoxGrid" HorizontalAlignment="Center" VerticalAlignment="Center" Width="300"
+              Background="{DynamicResource WhiteColor}" Canvas.ZIndex="1"
+              Visibility="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:CustomMessageBox}}, Path=MessageBoxVisibility, Converter={StaticResource BoolToVisibility}}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30" />
+                    <RowDefinition />
+                    <RowDefinition Height="10" />
+                    <RowDefinition />
+                    <RowDefinition Height="2" />
+                    <RowDefinition />
+                    <RowDefinition Height="15" />
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" FontSize="18"
+                           Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:CustomMessageBox}}, Path=MessageBoxHeaderText}"
+                           Foreground="{DynamicResource TextForegroundcolor}"
+                           HorizontalAlignment="Center" FontFamily="{DynamicResource ProximaRegular}"
+                           FontWeight="SemiBold" />
+                <TextBlock Grid.Row="3" Grid.Column="1" Margin="20,0,20,0" FontSize="14"
+                           Text="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:CustomMessageBox}}, Path=MessageBoxText}"
+                           HorizontalAlignment="Center" Foreground="{DynamicResource LightGrayTextForegroundColor}" TextAlignment="Center" TextWrapping="Wrap"
+                           FontFamily="{DynamicResource ProximaLight}" />
+            </Grid>
+
+            <Button x:Name="cancelpopup" Grid.Row="1" Grid.Column="0" Background="{DynamicResource LightGrayTextForegroundColor}" Height="55" Width="150"
+                    Foreground="{DynamicResource WhiteColor}"
+                    FontWeight="SemiBold" FontSize="16" BorderThickness="0" HorizontalAlignment="Stretch"
+                    Style="{DynamicResource btnStyleNoHover}"
+                    FontFamily="{DynamicResource ProximaSemiBold}"
+                    Content="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:CustomMessageBox}}, Path=MessageBoxCancelButtonText}"
+                    Visibility="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:CustomMessageBox}}, Path=CancelButtonVisible, Converter={StaticResource BoolToVisibility}}"
+                    Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:CustomMessageBox}}, Path=MessageBoxCancelCommand}" />
+            <Button Grid.Row="1" Grid.Column="1" Background="{DynamicResource PasswordBossGreenColor}" Height="55" Width="150" Foreground="{DynamicResource WhiteColor}"
+                    FontWeight="SemiBold" FontSize="16" BorderThickness="0" HorizontalAlignment="Stretch"
+                    Style="{DynamicResource btnStyleNoHover}"
+                    FontFamily="{DynamicResource ProximaSemiBold}"
+                    Content="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:CustomMessageBox}}, Path=MessageBoxConfirmButtonText}"
+                    Visibility="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:CustomMessageBox}}, Path=ConfirmButtonVisible, Converter={StaticResource BoolToVisibility}}"
+                    Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:CustomMessageBox}}, Path=MessageBoxConfirmCommand}" />
+
+            <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Background="{DynamicResource PasswordBossGreenColor}"
+                    Height="55" Width="300" Foreground="{DynamicResource WhiteColor}"
+                    FontWeight="SemiBold" FontSize="16" BorderThickness="0"
+                    Style="{DynamicResource btnStyleNoHover}"
+                    FontFamily="{DynamicResource ProximaSemiBold}"
+                    Content="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:CustomMessageBox}}, Path=MessageBoxOkButtonText}"
+                    Visibility="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:CustomMessageBox}}, Path=OkButtonVisible, Converter={StaticResource BoolToVisibility}}"
+                    Command="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:CustomMessageBox}}, Path=MessageBoxOkCommand}" />
+        </Grid>
+
+        <Grid x:Name="MessageBoxOpaqueGrid" HorizontalAlignment="Stretch"
+              Visibility="{Binding RelativeSource={RelativeSource AncestorType={x:Type local:CustomMessageBox}}, Path=MessageBoxVisibility, Converter={StaticResource BoolToVisibility}}"
+              VerticalAlignment="Stretch" Background="{DynamicResource BlackColor}" Opacity="0.5" />
+    </Grid>
+</UserControl>

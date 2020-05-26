@@ -1,0 +1,11 @@
+﻿<ResourceDictionary
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+	<ResourceDictionary.MergedDictionaries>
+		<ResourceDictionary Source="/PBAppUI;component/resources/dictionary/styles/passwordbossresource.xaml"/>
+		<ResourceDictionary Source="/PBAppUI;component/resources/dictionary/styles/AddControlStyles.xaml"/>
+		<ResourceDictionary Source="/SecureBrowser;component/resources/dictionary/SecureBrowserResources.xaml"/>
+		<ResourceDictionary Source="/PBAppUI;component/resources/dictionary/styles/primarydashboardresource.xaml"/>
+	</ResourceDictionary.MergedDictionaries>
+	<!-- Resource dictionary entries should be defined here. -->
+</ResourceDictionary>

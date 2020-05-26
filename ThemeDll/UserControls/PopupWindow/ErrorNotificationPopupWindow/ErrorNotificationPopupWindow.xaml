@@ -1,0 +1,118 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:QuickZip.UserControls">
+	<Style TargetType="{x:Type local:ErrorNotificationPopupWindow}">
+		<Setter Property="Template">
+			<Setter.Value>
+				<ControlTemplate TargetType="{x:Type local:ErrorNotificationPopupWindow}">
+					<local:PopupWindow Width="{TemplateBinding Width}" 
+									   Title="{TemplateBinding Title}" 
+									   LogoVisibility="{TemplateBinding LogoVisibility}" 
+									   LogoWithTextVisibility="{TemplateBinding LogoWithTextVisibility}" ContentGridHeightSize="{TemplateBinding ContentGridHeightSize}" ControlHeightSize="{TemplateBinding ControlHeightSize}">
+						<Grid VerticalAlignment="Bottom" 
+                              HorizontalAlignment="Stretch"
+                              Height="{TemplateBinding ContentGridHeightSize}"
+                              Width="{TemplateBinding Width}">
+							<Grid.RowDefinitions>
+								<RowDefinition Height="130" />
+								<RowDefinition Height="60" />
+							</Grid.RowDefinitions>
+							<Grid.Resources>
+								<Style TargetType="TextBlock">
+									<Setter Property="FontFamily" Value="{DynamicResource ProximaRegular}" />
+									<Setter Property="FontSize" Value="{DynamicResource FontSize14}" />
+									<Setter Property="FontWeight" Value="Light" />
+								</Style>
+							</Grid.Resources>
+
+							<ContentPresenter Grid.Row="0" Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+							<Grid Visibility="{TemplateBinding BottomPanelContentVisibility}"   
+								  Grid.Row="1" 
+								  HorizontalAlignment="Stretch" 
+								  VerticalAlignment="Bottom" 
+							      Height="60" 
+								  Background="#F0F0F0">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="269"/>
+									<ColumnDefinition Width="383"/>
+								</Grid.ColumnDefinitions>
+								<StackPanel Visibility="Hidden" Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="1" Grid.Column="0" Margin="43,0,0,0">
+									<TextBlock Text="Error code hardcode:" />
+									<TextBlock Text=" " />
+									<TextBlock Text="{Binding ErrorCode}" />
+								</StackPanel>
+								<StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="18,0,18,0"
+											Grid.Row="1"
+											Grid.Column="1">
+									<StackPanel.Resources>
+										<Style TargetType="Button">
+											<Setter Property="Cursor" Value="Hand" />
+											<Setter Property="Background" Value="#ffffff" />
+											<Setter Property="Height" Value="30" />
+											<Setter Property="Width" Value="165" />
+											<Setter Property="FontFamily" Value="{DynamicResource ProximaRegular}" />
+											<Setter Property="VerticalAlignment" Value="Center" />
+											<Setter Property="FontSize" Value="{DynamicResource FontSize14}" />
+											<Setter Property="FontWeight" Value="Light" />
+											<Setter Property="Margin" Value="4" />
+											<Setter Property="Template">
+												<Setter.Value>
+													<ControlTemplate TargetType="Button">
+														<Border Background="{TemplateBinding Background}" 
+																CornerRadius="2"
+																BorderBrush="#7e7e7e" 
+																BorderThickness="1" 
+																SnapsToDevicePixels="True" >
+															<ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5" />
+														</Border>
+														<ControlTemplate.Triggers>
+															<Trigger Property="IsDefault" Value="True">
+																<Setter Property="Background" Value="#1f4763" />
+																<Setter Property="Foreground" Value="White" />
+															</Trigger>
+
+															<MultiTrigger>
+																<MultiTrigger.Conditions>
+																	<Condition Property="IsDefault" Value="True" />
+																	<Condition Property="IsMouseOver" Value="True" />
+																</MultiTrigger.Conditions>
+																<Setter Property="Background" Value="#27597d" />
+															</MultiTrigger>
+
+															<MultiTrigger>
+																<MultiTrigger.Conditions>
+																	<Condition Property="IsDefault" Value="True" />
+																	<Condition Property="IsPressed" Value="True" />
+																</MultiTrigger.Conditions>
+																<Setter Property="Background" Value="#17354a" />
+															</MultiTrigger>
+
+															<MultiTrigger>
+																<MultiTrigger.Conditions>
+																	<Condition Property="IsDefault" Value="True" />
+																	<Condition Property="IsFocused" Value="True" />
+																</MultiTrigger.Conditions>
+																<Setter Property="Background" Value="#27597d" />
+															</MultiTrigger>
+														</ControlTemplate.Triggers>
+													</ControlTemplate>
+												</Setter.Value>
+											</Setter>
+
+										</Style>
+									</StackPanel.Resources>
+									<Button Content="{DynamicResource Cancel}" Command="{Binding ErrorNotificationPopupCancelCommand}" />
+
+									<Button Content="{DynamicResource TryAgain}" Command="{Binding ErrorNotificationPopupTryAgainCommand}" IsDefault="True"/>
+								</StackPanel>
+							</Grid>
+						</Grid>
+					</local:PopupWindow>
+				</ControlTemplate>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+</ResourceDictionary>

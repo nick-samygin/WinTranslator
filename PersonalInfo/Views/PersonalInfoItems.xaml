@@ -1,0 +1,114 @@
+﻿<UserControl x:Class="PasswordBoss.Views.PersonalInfoItems"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:pbviews="clr-namespace:PasswordBoss.Views"
+             xmlns:view="clr-namespace:PasswordBoss.Views.UserControls"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:ui="clr-namespace:PasswordBoss.Helpers"
+			 xmlns:uc="clr-namespace:QuickZip.UserControls;assembly=theme" 
+             mc:Ignorable="d"
+             d:DesignHeight="600" d:DesignWidth="600">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+        <Style x:Key="SecureItemListViewWrapStyle" TargetType="ListView">
+            <Setter Property="ItemsPanel">
+                <Setter.Value>
+                    <ItemsPanelTemplate>
+                            <uc:VirtualWrapPanel ItemHeight="145" ItemWidth="163" Margin="0,0,0,0"></uc:VirtualWrapPanel>
+                    </ItemsPanelTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="SecureItemListViewGroupedWrapStyle" TargetType="ListView">
+            <Setter Property="ItemsPanel">
+                <Setter.Value>
+                    <ItemsPanelTemplate >
+                        <WrapPanel ItemHeight="145" ItemWidth="163" Margin="0,0,0,0" IsItemsHost="True"
+                                   Width="{Binding (FrameworkElement.ActualWidth), 
+            RelativeSource={RelativeSource AncestorType=ScrollContentPresenter}}" >
+							</WrapPanel>
+                    </ItemsPanelTemplate>
+                </Setter.Value>
+            </Setter>
+			<Setter Property="ScrollViewer.CanContentScroll"
+			  Value="true" />
+			  <Style.Triggers>
+				<Trigger Property="IsGrouping"
+                   Value="true">
+					<Setter Property="ScrollViewer.CanContentScroll"
+							Value="false" />
+				  </Trigger>
+			  </Style.Triggers>
+			</Style>
+			
+        <Style x:Key="SecureItemListViewStackStyle" TargetType="ListView">
+            <Setter Property="ItemsPanel">
+                <Setter.Value>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel Margin="0,0,0,0"></VirtualizingStackPanel>
+                    </ItemsPanelTemplate>
+                </Setter.Value>
+            </Setter>
+			<Setter Property="ScrollViewer.CanContentScroll"
+			  Value="true" />
+			  <Style.Triggers>
+				<Trigger Property="IsGrouping"
+                   Value="true">
+					<Setter Property="ScrollViewer.CanContentScroll"
+							Value="false" />
+				  </Trigger>
+			  </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    <DockPanel>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <TextBlock x:Name="RecommendedHeaderText" Grid.Row="0" Text="{DynamicResource RecommendedItemsHeader}" FontSize="18" Margin="15,15,0,0" Style="{DynamicResource TextBlockCategoryHead}"
+                       Visibility="{Binding AddRecommendedItemHeaderVisibility, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, Converter={StaticResource BoolToVisibility}}" />
+            <ListView x:Name="listView" Grid.Row="1" BorderBrush="Transparent" Visibility="Collapsed" ItemTemplate="{DynamicResource SecureItemIconViewTemplate}" BorderThickness="0" 
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding SecureItemList,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Template="{DynamicResource SecurityScoreListViewTemplate}"
+                  uc:SelectionHelper.EnableSelection="True" Style="{DynamicResource SecureItemListViewWrapStyle}" Background="{DynamicResource TransparentColor}">
+                <!--<ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="{DynamicResource Delete}"
+                  Command="{Binding DeleteSelectedItemsCommand}"
+                  CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ContextMenu}, Path=PlacementTarget.SelectedItem}">
+                        <MenuItem.Icon>
+                            <Image Source="{DynamicResource imgTrash}" Height="16" Width="15"/>
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </ListView.ContextMenu>-->
+                <!--<ListView.GroupStyle>
+                    <GroupStyle>
+                        <GroupStyle.ContainerStyle>
+                            <Style TargetType="{x:Type GroupItem}">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate>
+                                            <StackPanel>
+                                                <TextBlock Text="{Binding Name}" Style="{DynamicResource TextBlockCategoryHead}" Margin="15,10,0,0" />
+                                                <ItemsPresenter />
+                                            </StackPanel>
+
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </GroupStyle.ContainerStyle>
+                    </GroupStyle>
+                </ListView.GroupStyle>-->
+				<ListView.InputBindings>
+					<KeyBinding Command="{Binding Path=DeleteSelectedItemsCommand}" Key="Delete" />
+				</ListView.InputBindings>
+            </ListView>
+        </Grid>
+
+    </DockPanel>
+
+</UserControl>

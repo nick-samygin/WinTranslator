@@ -1,0 +1,344 @@
+﻿<Page x:Class="PasswordBoss.Views.Login.Login"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+	  xmlns:ei="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
+      xmlns:uc="clr-namespace:PasswordBoss.Views.UserControls"
+      xmlns:local="clr-namespace:PasswordBoss.Helpers"
+      xmlns:vm="clr-namespace:PasswordBoss.ViewModel"
+      xmlns:ui="clr-namespace:PasswordBoss.Helpers"
+      xmlns:account="clr-namespace:PasswordBoss.ViewModel.Account"
+      Width="400"
+      Background="Transparent"
+      Title="Login"
+      Loaded="Page_Loaded">
+
+    <Page.Resources>
+        <ui:ParametersConverter x:Key="ParametersConverter" />
+        <BooleanToVisibilityConverter x:Key="BoolToVisiblity" />
+
+        <!-- Email textbox Style with placeholder text-->
+        <Style x:Key="LoginEmailTextBoxStyle"
+               TargetType="{x:Type TextBox}">
+            <Setter Property="Padding" Value="8,0,8,0" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Border Name="Bd" CornerRadius="3"
+                                Background="{TemplateBinding Background}"
+                                BorderThickness="1"
+                                BorderBrush="{DynamicResource TextboxBorderbrush}"
+                                SnapsToDevicePixels="true">
+                            <Grid Background="{DynamicResource TextBoxBackground}">
+                                <ScrollViewer x:Name="PART_ContentHost"
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                <TextBlock Text="{DynamicResource Email}"
+                                           Foreground="{DynamicResource CheckBoxReadAcceptBorderbrush}"
+                                           Visibility="Visible" VerticalAlignment="Center"
+                                           FontWeight="{DynamicResource NormalWeight}"
+                                           FontFamily="{DynamicResource ProximaRegular}"
+                                           Name="txtPrompt" FontSize="{DynamicResource FontSize17}" Padding="10,0,0,0" />
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="TextBlock.Text" Value="" />
+                                    <Condition Property="IsFocused" Value="False"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Visibility" TargetName="txtPrompt" Value="Visible"/>
+                            </MultiTrigger>
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter Property="Visibility" TargetName="txtPrompt" Value="Hidden"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <ControlTemplate x:Key="LoginPasswordContentControlTemplate">
+            <Grid x:Name="PasswordGrid">
+                <PasswordBox x:Name="GlobalPasswordTextBox" Padding="8,0,40,0"
+                             FontFamily="{DynamicResource ProximaRegular}" Height="38"
+                             FontSize="{DynamicResource FontSize17}" MaxLength="30"
+                             VerticalContentAlignment="Center" CaretBrush="{DynamicResource CheckBoxReadAcceptBorderbrush}"
+                             local:PasswordHelper.Attach="True" Style="{DynamicResource PasswordBoxStyle}"
+                             local:PasswordHelper.Password="{Binding Path=UserPassword,Mode=TwoWay}"
+                             Visibility="Visible">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="LostFocus">
+                            <i:InvokeCommandAction Command="{Binding PasswordFieldLostFocusCommand}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </PasswordBox>
+                <TextBox x:Name="ShowTextBox" Padding="8,0,32,0" FontSize="{DynamicResource FontSize17}"
+                         FontFamily="{DynamicResource ProximaRegular}" Height="38"
+                         Style="{DynamicResource TextBoxStyle}" VerticalContentAlignment="Center" Foreground="#2E383F"
+                         MaxLength="30" ContextMenu="{x:Null}" Text="{Binding PlaceHolderText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                         Visibility="Hidden"
+                         CaretBrush="{DynamicResource CheckBoxReadAcceptBorderbrush}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="GotFocus">
+                            <i:InvokeCommandAction Command="{Binding PasswordFieldGotFocusCommand}" CommandParameter="{Binding ElementName=GlobalPasswordTextBox}" />
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="LostFocus">
+                            <i:InvokeCommandAction Command="{Binding PasswordFieldLostFocusCommand}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </TextBox>
+                <ToggleButton x:Name="ShowPasswordCharsCheckBox" HorizontalAlignment="Right" Margin="0,0,12,0"
+                              Background="Transparent" VerticalAlignment="Center" Focusable="False"
+                              Visibility="{Binding EyeImageVisibility, Converter={StaticResource BoolToVisiblity}, UpdateSourceTrigger=PropertyChanged}"
+                              Style="{DynamicResource ShowHideToggleButtonStyle}">
+                    <Image x:Name="ShowHideImage" Source="{DynamicResource imgLoginHideEye}" Width="27" Height="21" />
+                </ToggleButton>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <DataTrigger Binding="{Binding IsPressed, ElementName=ShowPasswordCharsCheckBox}" Value="True">
+                    <Setter Property="Source" TargetName="ShowHideImage" Value="{DynamicResource imgLoginShowEye}" />
+                    <Setter Property="Visibility" TargetName="ShowTextBox" Value="Visible" />
+                    <Setter Property="Visibility" TargetName="GlobalPasswordTextBox" Value="Hidden" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Visibility, ElementName=ShowPasswordCharsCheckBox}" Value="Collapsed">
+                    <Setter Property="Foreground" TargetName="ShowTextBox" Value="{DynamicResource MasterPasswordDialogGrayColor}" />
+                    <Setter Property="Visibility" TargetName="ShowTextBox" Value="Visible" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding IsFocused, ElementName=GlobalPasswordTextBox}" Value="True">
+                    <Setter Property="Visibility" TargetName="ShowTextBox" Value="Hidden" />
+                </DataTrigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Page.Resources>
+
+    <Border VerticalAlignment="Center" BorderThickness="1" BorderBrush="{DynamicResource LoginGrayBorder}">
+        <Grid Background="{DynamicResource PasswordBossBlackBackgroundColor}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="398"/>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Grid x:Name="LoginGrid" Grid.Row="0" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="70" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="3" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="10" />
+                    <RowDefinition Height=".17*" />
+                    <RowDefinition Height="1" />
+                    <RowDefinition Height="1" />
+                    <RowDefinition Height=".2*" />
+                    <RowDefinition Height=".4*" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="1" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="1" />
+                    <RowDefinition Height="8" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid x:Name="DragGrid" Grid.Row="0" Grid.Column="0" Background="{DynamicResource WhiteColor}" Grid.ColumnSpan="3"
+                      VerticalAlignment="Stretch"
+                      MouseLeftButtonDown="DragGrid_OnMouseLeftButtonDown">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".4*"/>
+                        <ColumnDefinition Width=".6*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="{DynamicResource imgLoginLogoGreen}" Width="130" Height="45" Margin="20,0,0,0" />
+                    <Button x:Name="BtnClose" Grid.Column="1" BorderThickness="0,0,0,0" Canvas.ZIndex="1" Height="10"
+                            Width="10" Command="{Binding CloseCommand}" Margin="0,10,10,0"
+                            HorizontalAlignment="Right" VerticalAlignment="Top" Style="{DynamicResource NoHoverEffectButtonStyle}">
+                        <Image Source="{DynamicResource imgCloseAlert}"/>
+                    </Button>
+                </Grid>
+
+                <TextBlock x:Name="PinFailedGrid" Grid.Row="1" Grid.Column="1" MaxWidth="320"
+                           Text="{DynamicResource PinLoginFailedMessage}" Visibility="Collapsed"
+                           Foreground="#0F5553" TextWrapping="Wrap"
+                           FontSize="17" FontFamily="{DynamicResource ProximaRegular}" HorizontalAlignment="Center"
+                           VerticalAlignment="Center" TextAlignment="Center" />
+
+                <!-- Foreground="{DynamicResource TextForegroundcolor}"-->
+                <Border x:Name="EmailBorder" Grid.Row="4" Grid.Column="1" BorderThickness="1" CornerRadius="15">
+                    <TextBox x:Name="EmailTextBox" FontSize="{DynamicResource FontSize17}"
+                             FontFamily="{DynamicResource ProximaRegular}"
+                             VerticalContentAlignment="Center" Text="{Binding UserEmail, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                             KeyDown="Elements_KeyDown" Width="262" CaretBrush="{DynamicResource CheckBoxReadAcceptBorderbrush}"
+                             TextChanged="EmailTextBox_TextChanged">
+                        <TextBox.Style>
+                            <Style TargetType="TextBox" BasedOn="{StaticResource LoginEmailTextBoxStyle}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ElementName=brdCodeVerification, Path=Visibility}" Value="Visible">
+                                        <Setter Property="Focusable" Value="False" />
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                        <TextBox.InputBindings>
+                            <KeyBinding Command="{Binding Path=SubmitCommand}" Key="Enter">
+                            </KeyBinding>
+                        </TextBox.InputBindings>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="TextChanged">
+                                <i:InvokeCommandAction Command="{Binding ElementTextChangedCommand}"
+                                                       CommandParameter="{Binding ElementName=EmailTextBox}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </TextBox>
+                </Border>
+
+                <Border Grid.Row="6" Grid.Column="1" BorderThickness="1" CornerRadius="15">
+                    <ContentControl x:Name="PasswordContentControl" Template="{StaticResource LoginPasswordContentControlTemplate}" Width="262">
+                        <ContentControl.InputBindings>
+                            <KeyBinding Command="{Binding Path=SubmitCommand}" Key="Enter" />
+                        </ContentControl.InputBindings>
+                    </ContentControl>
+                </Border>
+
+                <TextBlock Grid.Row="8" Grid.Column="1" Background="{DynamicResource TransparentColor}" Margin="0,0,10,0"
+                           Name="tbForg" VerticalAlignment="Top" HorizontalAlignment="Right" Focusable="False">
+                    <Hyperlink Name="HyperLinkForgot" Foreground="{DynamicResource WhiteColor}"
+                               Command="{Binding ForgotLinkCommand}" Focusable="False"
+                               FontSize="15" TextDecorations="{x:Null}"
+                               FontFamily="{DynamicResource ProximaRegular}">
+                        <TextBlock Text="{DynamicResource ForgotYourPassword}" />
+                    </Hyperlink>
+                </TextBlock>
+
+                <TextBlock Grid.Row="12" Grid.Column="1" Canvas.ZIndex="1" FontSize="15" VerticalAlignment="Bottom" Foreground="Red" Margin="0,0,0,13" MaxWidth="264"
+                           Text="{Binding ErrorMessage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" TextWrapping="Wrap" HorizontalAlignment="Center"
+                           TextAlignment="Center"/>
+
+                <Button x:Name="SignInButton" Grid.Row="13" Grid.Column="1"
+                        KeyDown="Elements_KeyDown" FontFamily="{DynamicResource ProximaRegular}"
+                        Content="{DynamicResource SignIn}"
+                        FontSize="{DynamicResource FontSize17}" Width="262"
+                        Command="{Binding SubmitCommand}" CommandParameter="{Binding ElementName=PasswordTextBox}"
+                        Height="40" Style="{DynamicResource SignInButtonStyle}">
+                    <Button.InputBindings>
+                        <KeyBinding Command="{Binding Path=SubmitCommand}" Key="Enter" />
+                    </Button.InputBindings>
+                </Button>
+                <StackPanel Grid.Row="15" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
+                               TextAlignment="Center">
+                        <Hyperlink x:Name="hyperlinkSignUp" TextDecorations="{x:Null}" Click="HyperlinkSignUp_Click"
+                                   FontFamily="{DynamicResource ProximaRegular}"
+                                   Foreground="{DynamicResource WhiteColor}" FontSize="18"
+                                   KeyDown="Elements_KeyDown">
+                            <TextBlock Text="{DynamicResource OrCreateAccount}" />
+                        </Hyperlink>
+                    </TextBlock>
+                </StackPanel>
+                <Grid x:Name="OpaqueGrid" Grid.Row="1" Grid.RowSpan="17" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Stretch"
+                      Visibility="{Binding CodeVerificationGridVisibility, Converter={StaticResource BoolToVisiblity}}"
+                      VerticalAlignment="Stretch" Background="{DynamicResource BlackColor}" Opacity="0.5" />
+            </Grid>
+            <Grid KeyboardNavigation.TabNavigation="Cycle" Height="Auto" Grid.Row="1">
+                <Border x:Name="brdCodeVerification" Margin="0,1,0,1" BorderBrush="{DynamicResource LightGrayTextForegroundColor}" Height="200"
+                        BorderThickness="0,0.5,0,0" Visibility="{Binding CodeVerificationGridVisibility, Converter={StaticResource BoolToVisiblity}}">
+                    <i:Interaction.Triggers>
+                        <ei:PropertyChangedTrigger Binding="{Binding Visibility, ElementName=brdCodeVerification}">
+                            <i:InvokeCommandAction Command="{Binding CodeVerificationGotFocusCommand}"
+                                                   CommandParameter="{Binding ElementName=CodeTextBox}" />
+                        </ei:PropertyChangedTrigger>
+                    </i:Interaction.Triggers>
+
+                    <Grid x:Name="CodeVerificationGrid" VerticalAlignment="Center" Margin="0,5,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20" />
+                            <RowDefinition Height="20" />
+                            <RowDefinition Height="45" />
+                            <RowDefinition Height="20" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid x:Name="gridHeaderTwoStep" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                              VerticalAlignment="Stretch">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="{DynamicResource TwoStepVerificationOnLoginScreen}" FontSize="18"
+                                       FontWeight="SemiBold" Foreground="{DynamicResource PasswordBossGreenColor}"
+                                       FontFamily="{DynamicResource ProximaRegular}"
+                                       HorizontalAlignment="Center"/>
+
+                            <Button x:Name="btnCloseTwoStep" Grid.Column="0" BorderThickness="0,0,0,0" Canvas.ZIndex="1" Height="10"
+                                    Width="10" Command="{Binding CancelCommand}" Margin="0,10,10,0" Foreground="{DynamicResource WhiteColor}" Background="Transparent"
+                                    HorizontalAlignment="Right" VerticalAlignment="Top" Style="{DynamicResource NoHoverEffectButtonStyle}">
+                                <Image Source="{DynamicResource imgCloseAlert}"/>
+                            </Button>
+                        </Grid>
+
+                        <Border Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" BorderThickness="1" CornerRadius="15">
+                            <TextBox x:Name="CodeTextBox" Padding="8,0,8,0" FontSize="{DynamicResource FontSize17}"
+                                     FontFamily="{DynamicResource ProximaRegular}" Margin="30,0,180,0"
+                                     Style="{DynamicResource CodeTextBoxStyle}" Text="{Binding VerificationCode,UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                     VerticalContentAlignment="Center"
+                                     CaretBrush="{DynamicResource CheckBoxReadAcceptBorderbrush}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="TextChanged">
+                                        <i:InvokeCommandAction Command="{Binding CodeTextChangedCommand}"
+                                                               CommandParameter="{Binding ElementName=CodeTextBox}" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                                <TextBox.InputBindings>
+                                    <KeyBinding Command="{Binding Path=SubmitCodeVerificationCommand}" Key="Enter">
+                                        <KeyBinding.CommandParameter>
+                                            <Binding ElementName="CodeTextBox" />
+                                        </KeyBinding.CommandParameter>
+                                    </KeyBinding>
+                                </TextBox.InputBindings>
+                            </TextBox>
+                        </Border>
+                        <Button Grid.Row="2" Grid.Column="1" Content="{DynamicResource SubmitCode}" Margin="10,0,10,0"
+                                FontSize="{DynamicResource FontSize17}" Style="{DynamicResource SignInButtonStyle}"
+                                Command="{Binding SubmitCodeVerificationCommand}" HorizontalAlignment="Center" Width="150">
+                            <Button.InputBindings>
+                                <KeyBinding Command="{Binding SubmitCodeVerificationCommand}" Key="Enter"
+                                            CommandParameter="{Binding ElementName=PasswordTextBox}" />
+                            </Button.InputBindings>
+                        </Button>
+                        <StackPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="30,0,0,0">
+                            <StackPanel Orientation="Horizontal">
+                                <CheckBox IsChecked="{Binding Path=IsThisComputerTrusted, UpdateSourceTrigger=PropertyChanged}"
+                                          Margin="0,0,0,0" VerticalAlignment="Center" ></CheckBox>
+                                <TextBlock FontFamily="{DynamicResource ProximaRegular}" Margin="10,0,0,0" VerticalAlignment="Center"
+                                           Text="{DynamicResource TrustThisComputer}" Foreground="{DynamicResource WhiteColor}"/>
+                                <ContentControl Style="{DynamicResource HelpControlTransparent}" Margin="5,0,0,0" VerticalAlignment="Top"
+                                                Tag="{DynamicResource AccountSettingTrustedDeviceTooltipText}"/>
+                            </StackPanel>
+                            <TextBlock Background="{DynamicResource TransparentColor}" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Margin="0,10,0,0"
+                                       VerticalAlignment="Top" Focusable="False">
+                                <Hyperlink Foreground="{DynamicResource PasswordBossGreenColor}"
+                                           Command="{Binding LostPhoneLinkCommand}" Focusable="False"
+                                           TextDecorations="{x:Null}"
+                                           FontFamily="{DynamicResource ProximaRegular}">
+                                    <TextBlock Text="{DynamicResource LostPhone}" />
+                                </Hyperlink>
+                            </TextBlock>
+                            <TextBlock Canvas.ZIndex="1" FontSize="15" VerticalAlignment="Bottom" Foreground="Red" Margin="10,0,10,13"
+                                       Text="{Binding CodeVerificationErrorMessageCode, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" TextWrapping="Wrap"
+                                       HorizontalAlignment="Center" />
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <Grid x:Name="inAppAdvertisingGrid"/>
+            </Grid>
+        </Grid>
+    </Border>
+</Page>

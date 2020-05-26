@@ -1,0 +1,129 @@
+﻿<ToggleButton x:Class="PasswordBoss.UserControls.MenuButtonControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PasswordBoss.UserControls"
+             mc:Ignorable="d"  Height="36"  HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" IsChecked='{Binding RelativeSource={RelativeSource FindAncestor,  AncestorType={x:Type local:MenuButtonControl} },  Path=IsChecked,Mode=TwoWay}'         
+           Style="{DynamicResource ButtonStyleDashBoardMenu}" >
+    <Grid HorizontalAlignment="Stretch"  >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+            </Grid.ColumnDefinitions>
+        <Image Name="imgPasswordVault"           
+                   VerticalAlignment="Center" HorizontalAlignment="Center"  Stretch="None" >
+            <Image.Style>
+                <Style TargetType='{x:Type Image}'>
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition
+                                Binding='{Binding 
+                                RelativeSource={RelativeSource FindAncestor, 
+                                AncestorType={x:Type local:MenuButtonControl} }, 
+                                Path=IsChecked}'
+                                Value='False' />
+                                <Condition Binding="{Binding 
+                                RelativeSource={RelativeSource FindAncestor, 
+                                AncestorType={x:Type local:MenuButtonControl}}, Path=IsMouseOver}" Value="True"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter
+                            Property='Source'
+                            Value='{Binding 
+                            RelativeSource={RelativeSource FindAncestor, 
+                            AncestorType={x:Type local:MenuButtonControl} }, 
+                            Path=SelectedImageSource}' />
+                        </MultiDataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition
+                                Binding='{Binding 
+                                RelativeSource={RelativeSource FindAncestor, 
+                                AncestorType={x:Type local:MenuButtonControl} }, 
+                                Path=IsChecked}'
+                                Value='False' />
+                                <Condition Binding="{Binding 
+                                RelativeSource={RelativeSource FindAncestor, 
+                                AncestorType={x:Type local:MenuButtonControl}}, Path=IsMouseOver}" Value="False"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter
+                            Property='Source'
+                            Value='{Binding 
+                            RelativeSource={RelativeSource FindAncestor, 
+                            AncestorType={x:Type local:MenuButtonControl} }, 
+                            Path=ImageSource}' />
+                        </MultiDataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition
+                                Binding='{Binding 
+                                RelativeSource={RelativeSource FindAncestor, 
+                                AncestorType={x:Type local:MenuButtonControl} }, 
+                                Path=IsChecked}'
+                                Value='True' />
+                                <Condition Binding="{Binding 
+                                RelativeSource={RelativeSource FindAncestor, 
+                                AncestorType={x:Type local:MenuButtonControl}}, Path=IsMouseOver}" Value="False"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter
+                            Property='Source'
+                            Value='{Binding 
+                            RelativeSource={RelativeSource FindAncestor, 
+                            AncestorType={x:Type local:MenuButtonControl} }, 
+                            Path=SelectedImageSource}' />
+                        </MultiDataTrigger>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition
+                                Binding='{Binding 
+                                RelativeSource={RelativeSource FindAncestor, 
+                                AncestorType={x:Type local:MenuButtonControl} }, 
+                                Path=IsChecked}'
+                                Value='True' />
+                                <Condition Binding='{Binding RelativeSource={RelativeSource FindAncestor, 
+                                AncestorType={x:Type local:MenuButtonControl}}, Path=IsMouseOver}' Value="True"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter
+                            Property='Source'
+                            Value='{Binding 
+                            RelativeSource={RelativeSource FindAncestor, 
+                            AncestorType={x:Type local:MenuButtonControl} }, 
+                            Path=SelectedImageSource}' />
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Image.Style>           
+        </Image>
+        <TextBlock Margin="1,0,0,0" FontSize="14" TextWrapping="Wrap" Name="txtName" Grid.Column="1"
+                       FontFamily="{DynamicResource ProximaRegular}"
+                       Text="{Binding  RelativeSource={RelativeSource FindAncestor, 
+                            AncestorType={x:Type local:MenuButtonControl} },
+                            Path=Header}" 
+                       VerticalAlignment="Center" />
+        <!--<Image Source="{DynamicResource menu_expand_white}" Grid.Column="2"  x:Name="checkIcon" Visibility="{Binding RelativeSource={RelativeSource FindAncestor,  AncestorType={x:Type local:MenuButtonControl}},Path=CheckIconVisibility}"  HorizontalAlignment="Right" Width="18" Height="19" Margin="0 0 18 0" VerticalAlignment="Center">
+            <Image.Style>
+                <Style TargetType='{x:Type Image}'>
+                    <Style.Triggers>
+                        <DataTrigger  
+                                Binding='{Binding  RelativeSource={RelativeSource FindAncestor,  AncestorType={x:Type local:MenuButtonControl} },  Path=IsChecked}' Value='True' >
+                            <Setter Property="Opacity"  Value="1" />
+                        </DataTrigger>
+                        <DataTrigger  
+                                Binding='{Binding  RelativeSource={RelativeSource FindAncestor,  AncestorType={x:Type local:MenuButtonControl} },  Path=IsChecked}' Value='False' >
+                            <Setter Property="Opacity"  Value="0" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Image.Style>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseLeftButtonUp">
+                    <i:InvokeCommandAction Command="{Binding ShowHideFolderTreeCommand}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Image>-->
+    </Grid>
+
+</ToggleButton>

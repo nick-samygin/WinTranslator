@@ -1,0 +1,9 @@
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\en-US\bin\x86\Debug\en-US.dll
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\en-US\bin\x86\Debug\en-US.pdb
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\en-US\obj\x86\Debug\resources\en-US.baml
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\en-US\obj\x86\Debug\en-US_MarkupCompile.cache
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\en-US\obj\x86\Debug\en-US.g.resources
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\en-US\obj\x86\Debug\en-US.dll
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\en-US\obj\x86\Debug\en-US.pdb
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\en-US\obj\x86\Debug\en-US.csprojAssemblyReference.cache
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\en-US\obj\x86\Debug\en-US.csproj.CoreCompileInputs.cache

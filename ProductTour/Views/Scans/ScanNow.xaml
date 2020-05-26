@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="ProductTour.Views.Scans.ScanNow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             FontFamily="{DynamicResource OBProximaRegular}"
+             xmlns:gif="clr-namespace:WpfAnimatedGif;assembly=WpfAnimatedGif" Background="White">
+
+    <Grid Margin="0,110,0,0" Background="White">
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Margin="45, 0, 64, 0" >
+            <Grid.RowDefinitions>
+                <!-- Images, gifs -->
+                <RowDefinition Height="227"/>
+                <RowDefinition Height="27" />
+                <!-- Scanning for Security issues -->
+                <RowDefinition Height="141" />
+                <!-- Button -->
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Image Source="{DynamicResource startupScanOwlBehind}" 
+               Width="664" 
+               Grid.Row="0" 
+               Stretch="Uniform"
+               Margin="35,0,17,0" 
+               Grid.RowSpan="3" 
+               VerticalAlignment="Bottom" />
+
+            <TextBlock  Margin="27,0,0,0" 
+                        Grid.Row="2" 
+                        Width="350" 
+                        HorizontalAlignment="Center" 
+                        VerticalAlignment="Top" 
+                        Text="{DynamicResource Onboardv4Screen5Headline}" TextWrapping="Wrap"
+                        FontFamily="{DynamicResource OBProximaLight}"
+                        FontWeight="Light"
+                        LineHeight="42"
+                        LineStackingStrategy="BlockLineHeight"
+                        TextAlignment="Center" 
+                        Foreground="#00c49c" 
+                        FontSize="28.5pt" >
+            </TextBlock>
+            <Button 
+                Click="Button_Click" 
+                Content="{DynamicResource Onboardv4Screen5ButtonText}" 
+                FontSize="25px" 
+                Grid.Row="3"
+                Padding="0,0,10,5"
+                Margin="15,0,0,0"
+                Width="307" 
+                Height="56" 
+                Style="{DynamicResource ProductTourButtonRedStyle}"  />
+        </Grid>
+        <Image Grid.Row="0" 
+               VerticalAlignment="Top"
+               HorizontalAlignment="Center"
+               Width="424"
+               Stretch="Uniform"
+               Source="{DynamicResource startupScan}" />
+    </Grid>
+</UserControl>

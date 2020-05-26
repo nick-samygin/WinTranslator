@@ -1,0 +1,38 @@
+﻿<Window x:Class="PasswordBoss.DeleteBox"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="DeleteBox" Height="130" Width="300" WindowStyle="None"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+        AllowsTransparency="True" Background="Transparent" Topmost="True">
+    <Grid>
+        <Border BorderBrush="{DynamicResource MainWindowHeaderGridColor}" BorderThickness="3" CornerRadius="3">
+            <Grid Background="{DynamicResource DialogGrayColor}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="2*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Margin="0,0,0,0" Grid.ColumnSpan="2" FontSize="16" Foreground="{DynamicResource SecurityAlertDeleteBox}"
+                           FontWeight="SemiBold" TextAlignment="Center"
+                           HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <TextBlock FontSize="14" Grid.Row="1" Grid.ColumnSpan="2" Foreground="{DynamicResource DialogGrayColor}" Margin="0,0,0,0"
+                           TextAlignment="Center" HorizontalAlignment="Center"
+                           VerticalAlignment="Center" />
+                <Button Name="btnDelete" Grid.Row="2" Grid.Column="1" FontWeight="SemiBold" FontSize="14"
+                        Click="btnDelete_Click" Background="{DynamicResource WhiteColor}" Height="25" Width="75" Margin="0,0,0,0"
+                        Foreground="#868687" Content="{DynamicResource Delete}" HorizontalAlignment="Center"
+                        VerticalAlignment="Center" />
+                <Button Name="btnCancel" Grid.Row="2" Grid.Column="0" FontWeight="SemiBold" FontSize="14"
+                        Click="btnCancel_Click" Background="{DynamicResource DialogGrayColor}" Height="25" Width="75" Margin="0,0,0,0"
+                        Foreground="{DynamicResource WhiteColor}" Content="{DynamicResource Cancel}" HorizontalAlignment="Center"
+                        VerticalAlignment="Center" />
+
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

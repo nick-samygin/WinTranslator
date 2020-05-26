@@ -1,0 +1,17 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <FontFamily x:Key="ProximaRegular">Arial</FontFamily>
+    <FontFamily x:Key="ProximaSemiBold">Arial</FontFamily>
+    <FontFamily x:Key="ProximaBold">Arial</FontFamily>
+    <FontFamily x:Key="ProximaExtraBold">Arial</FontFamily>
+    <FontFamily x:Key="ProximaLight">Arial</FontFamily>
+    <FontFamily x:Key="MuseoSlab">/font;component/fonts/#Museo Slab 500</FontFamily>
+
+    <FontFamily x:Key="OBProximaRegular">/font;component/fonts/#Proxima Nova Rg</FontFamily>
+    <FontFamily x:Key="OBProximaSemiBold">/font;component/fonts/#Proxima Nova Lt</FontFamily>
+    <FontFamily x:Key="OBProximaBold">/font;component/fonts/#Proxima Nova Rg</FontFamily>
+    <FontFamily x:Key="OBProximaExtraBold">/font;component/fonts/#Proxima Nova Th</FontFamily>
+    <FontFamily x:Key="OBProximaLight">/font;component/fonts/#Proxima Nova Lt</FontFamily>
+    <FontFamily x:Key="OBFilmotypeBrooklyn">/font;component/fonts/#Filmotype Brooklyn</FontFamily>
+</ResourceDictionary>

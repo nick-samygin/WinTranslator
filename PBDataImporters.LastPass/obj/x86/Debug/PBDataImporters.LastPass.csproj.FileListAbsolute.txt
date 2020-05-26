@@ -1,0 +1,17 @@
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass\bin\Debug\000003.dll
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass\bin\Debug\000003.pdb
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass\bin\Debug\000003.dll.CodeAnalysisLog.xml
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass\bin\Debug\000003.dll.lastcodeanalysissucceeded
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass\bin\Debug\csvhelper.dll
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass\bin\Debug\PBKnown.dll
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass\bin\Debug\System.Data.SQLite.dll
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass\bin\Debug\VaultReader.dll
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass\bin\Debug\Newtonsoft.Json.dll
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass\bin\Debug\Microsoft.Win32.TaskScheduler.dll
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass\bin\Debug\PBKnown.pdb
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass\bin\Debug\Microsoft.Win32.TaskScheduler.xml
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass\obj\x86\Debug\PBDataImporters.LastPass.csprojAssemblyReference.cache
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass\obj\x86\Debug\PBDataImporters.LastPass.csproj.CoreCompileInputs.cache
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass\obj\x86\Debug\PBDataImporters.LastPass.csproj.CopyComplete
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass\obj\x86\Debug\000003.dll
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass\obj\x86\Debug\000003.pdb

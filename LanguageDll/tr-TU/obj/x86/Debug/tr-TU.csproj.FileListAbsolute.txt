@@ -1,0 +1,8 @@
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\tr-TU\bin\x86\Debug\tr-TU.dll
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\tr-TU\bin\x86\Debug\tr-TU.pdb
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\tr-TU\obj\x86\Debug\resources\tr-TU.baml
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\tr-TU\obj\x86\Debug\tr-TU_MarkupCompile.cache
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\tr-TU\obj\x86\Debug\tr-TU.g.resources
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\tr-TU\obj\x86\Debug\tr-TU.dll
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\tr-TU\obj\x86\Debug\tr-TU.pdb
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\tr-TU\obj\x86\Debug\tr-TU.csproj.CoreCompileInputs.cache

@@ -1,0 +1,8 @@
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\ru-RU\bin\x86\Debug\ru-RU.dll
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\ru-RU\bin\x86\Debug\ru-RU.pdb
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\ru-RU\obj\x86\Debug\resources\ru-RU.baml
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\ru-RU\obj\x86\Debug\ru-RU_MarkupCompile.cache
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\ru-RU\obj\x86\Debug\ru-RU.g.resources
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\ru-RU\obj\x86\Debug\ru-RU.dll
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\ru-RU\obj\x86\Debug\ru-RU.pdb
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\ru-RU\obj\x86\Debug\ru-RU.csproj.CoreCompileInputs.cache

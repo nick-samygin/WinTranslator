@@ -1,0 +1,1241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="c:\program files (x86)\microsoft visual studio\2017\enterprise\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
+<FxCopReport Version="15.0">
+ <Targets>
+  <Target Name="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass\bin\Debug\000003.dll">
+   <Modules>
+    <Module Name="000003.dll">
+     <Namespaces>
+      <Namespace Name="PasswordBoss.Helpers">
+       <Types>
+        <Type Name="Common" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#ElementFocusedChanged(System.Object,System.String,System.String)" Kind="Method" Static="False" Accessibility="Assembly" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="Common.cs" Line="246">Параметр "this" ("Me" в Visual Basic) никогда не используется в 'Common.ElementFocusedChanged(object, string, string)'. Пометьте член как static (или Shared в среде Visual Basic) либо используйте "this" или "Me" в теле метода или хотя бы в одном методе доступа к свойству.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ElementTextChanged(System.Object,System.String,System.String)" Kind="Method" Static="False" Accessibility="Assembly" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="DoNotCastUnnecessarily" Category="Microsoft.Performance" CheckId="CA1800" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Name="Parameter" Certainty="95" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="Common.cs" Line="196">Параметр 'element' приведен к типу 'PasswordBox' несколько раз в методе 'Common.ElementTextChanged(object, string, string)'. Сохраните в кэш-памяти результат оператора "as" или оператора прямого приведения, чтобы устранить избыточную команду isint.</Issue>
+             <Issue Name="Parameter" Certainty="95" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="Common.cs" Line="185">Параметр 'element' приведен к типу 'TextBox' несколько раз в методе 'Common.ElementTextChanged(object, string, string)'. Сохраните в кэш-памяти результат оператора "as" или оператора прямого приведения, чтобы устранить избыточную команду isint.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetImageForPath(System.String,System.Boolean)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="Common.cs" Line="139">Параметр "this" ("Me" в Visual Basic) никогда не используется в 'Common.GetImageForPath(string, bool)'. Пометьте член как static (или Shared в среде Visual Basic) либо используйте "this" или "Me" в теле метода или хотя бы в одном методе доступа к свойству.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#imgLock" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'Common.imgLock' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#IsEmailValid(System.String)" Kind="Method" Static="False" Accessibility="Assembly" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="Common.cs" Line="61">Измените 'Common.IsEmailValid(string)' так, чтобы перехватывались более специфические, чем 'Exception', исключения, либо обеспечьте повторное порождение исключения.</Issue>
+            </Message>
+            <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="Common.cs" Line="44">Параметр "this" ("Me" в Visual Basic) никогда не используется в 'Common.IsEmailValid(string)'. Пометьте член как static (или Shared в среде Visual Basic) либо используйте "this" или "Me" в теле метода или хотя бы в одном методе доступа к свойству.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#IsImageForSiteExisting(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="Common.cs" Line="95">Параметр "this" ("Me" в Visual Basic) никогда не используется в 'Common.IsImageForSiteExisting(string)'. Пометьте член как static (или Shared в среде Visual Basic) либо используйте "this" или "Me" в теле метода или хотя бы в одном методе доступа к свойству.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#IsUrlValid(System.String,System.UriKind)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="Common.cs" Line="76">Параметр "this" ("Me" в Visual Basic) никогда не используется в 'Common.IsUrlValid(string, UriKind)'. Пометьте член как static (или Shared в среде Visual Basic) либо используйте "this" или "Me" в теле метода или хотя бы в одном методе доступа к свойству.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ReturnElement(System.Object)" Kind="Method" Static="False" Accessibility="Assembly" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="Common.cs" Line="30">Параметр "this" ("Me" в Visual Basic) никогда не используется в 'Common.ReturnElement(object)'. Пометьте член как static (или Shared в среде Visual Basic) либо используйте "this" или "Me" в теле метода или хотя бы в одном методе доступа к свойству.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ReturnImageIcon(System.String)" Kind="Method" Static="False" Accessibility="Assembly" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="Common.cs" Line="267">Параметр "this" ("Me" в Visual Basic) никогда не используется в 'Common.ReturnImageIcon(string)'. Пометьте член как static (или Shared в среде Visual Basic) либо используйте "this" или "Me" в теле метода или хотя бы в одном методе доступа к свойству.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#TimeDiffFromNow(System.DateTime,System.String&amp;)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="Common.cs" Line="313">Параметр "this" ("Me" в Visual Basic) никогда не используется в 'Common.TimeDiffFromNow(DateTime, out string)'. Пометьте член как static (или Shared в среде Visual Basic) либо используйте "this" или "Me" в теле метода или хотя бы в одном методе доступа к свойству.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#TimeDiffToDate(System.DateTime,System.String&amp;)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="Common.cs" Line="272">Параметр "this" ("Me" в Visual Basic) никогда не используется в 'Common.TimeDiffToDate(DateTime, out string)'. Пометьте член как static (или Shared в среде Visual Basic) либо используйте "this" или "Me" в теле метода или хотя бы в одном методе доступа к свойству.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="DefaultProperties" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#AlertBackgroundcolor()" Kind="Method" Static="True" Accessibility="Assembly" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="DefaultProperties.cs" Line="308">Возможно, у 'DefaultProperties.AlertBackgroundcolor()' нет предшествующих открытых или защищенных вызывающих.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#AlertBorderStrokecolor(System.String)" Kind="Method" Static="True" Accessibility="Assembly" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="DefaultProperties.cs" Line="317">Возможно, у 'DefaultProperties.AlertBorderStrokecolor(string)' нет предшествующих открытых или защищенных вызывающих.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CurrentImageDirectory" Kind="Property" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Accessors>
+            <Accessor Name="#get_CurrentImageDirectory()" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="False">
+             <Messages>
+              <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+               <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="DefaultProperties.cs" Line="178">Возможно, у 'DefaultProperties.CurrentImageDirectory.get()' нет предшествующих открытых или защищенных вызывающих.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+          <Member Name="#DefaultTextForegroundColor()" Kind="Method" Static="True" Accessibility="Assembly" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="DefaultProperties.cs" Line="345">Возможно, у 'DefaultProperties.DefaultTextForegroundColor()' нет предшествующих открытых или защищенных вызывающих.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetPIEventTypeBySecureItemType(System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="DefaultProperties.cs" Line="412">Возможно, у 'DefaultProperties.GetPIEventTypeBySecureItemType(string)' нет предшествующих открытых или защищенных вызывающих.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ReturnEllipsesColor(System.Int32)" Kind="Method" Static="True" Accessibility="Assembly" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="DefaultProperties.cs" Line="326">Возможно, у 'DefaultProperties.ReturnEllipsesColor(int)' нет предшествующих открытых или защищенных вызывающих.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ReturnFontFamily(System.String)" Kind="Method" Static="True" Accessibility="Assembly" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="DefaultProperties.cs" Line="397">Возможно, у 'DefaultProperties.ReturnFontFamily(string)' нет предшествующих открытых или защищенных вызывающих.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ReturnFontWeight(System.String)" Kind="Method" Static="True" Accessibility="Assembly" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="DefaultProperties.cs" Line="407">Возможно, у 'DefaultProperties.ReturnFontWeight(string)' нет предшествующих открытых или защищенных вызывающих.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ReturnImage(System.String)" Kind="Method" Static="True" Accessibility="Assembly" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="DefaultProperties.cs" Line="387">Возможно, у 'DefaultProperties.ReturnImage(string)' нет предшествующих открытых или защищенных вызывающих.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ReturnString(System.String)" Kind="Method" Static="True" Accessibility="Assembly" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="DefaultProperties.cs" Line="378">Возможно, у 'DefaultProperties.ReturnString(string)' нет предшествующих открытых или защищенных вызывающих.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ReturnTextForegroundColor(System.String)" Kind="Method" Static="True" Accessibility="Assembly" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="DefaultProperties.cs" Line="350">Возможно, у 'DefaultProperties.ReturnTextForegroundColor(string)' нет предшествующих открытых или защищенных вызывающих.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#SearchBoxGridBackgroundColor(System.Int32)" Kind="Method" Static="True" Accessibility="Assembly" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="DefaultProperties.cs" Line="359">Возможно, у 'DefaultProperties.SearchBoxGridBackgroundColor(int)' нет предшествующих открытых или защищенных вызывающих.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#TransparentColor()" Kind="Method" Static="True" Accessibility="Assembly" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="DefaultProperties.cs" Line="299">Возможно, у 'DefaultProperties.TransparentColor()' нет предшествующих открытых или защищенных вызывающих.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="FindCommandParameters" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Messages>
+          <Message TypeName="AvoidUninstantiatedInternalClasses" Category="Microsoft.Performance" CheckId="CA1812" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+           <Issue Certainty="75" Level="Warning">'FindCommandParameters' является внутренним классом, экземпляр которого никогда явно не создается. Если это так, удалите код из сборки. Если этот класс должен содержать только статические методы, попробуйте добавить частный конструктор, чтобы компилятор не создавал заданный по умолчанию конструктор.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="PBDataImporters.LastPass">
+       <Types>
+        <Type Name="CsvExportItem" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#extra" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="extra" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass" File="CsvExportItem.cs" Line="15">Исправьте прописные или строчные буквы строки "extra" в имени члена 'CsvExportItem.extra', изменив ее на "Extra".</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#fav" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="fav" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass" File="CsvExportItem.cs" Line="18">Исправьте прописные или строчные буквы строки "fav" в имени члена 'CsvExportItem.fav', изменив ее на "Fav".</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetExtraAsDict(System.Char)" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message Id="System.String.Format(System.String,System.Object)" TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass" File="CsvExportItem.cs" Line="80">В связи с тем, что поведение 'string.Format(string, object)' может изменяться в зависимости от языка и региональных настроек текущего пользователя, следует заменить этот вызов в 'CsvExportItem.GetExtraAsDict(char)' вызовом 'string.Format(IFormatProvider, string, params object[])'. Если результат 'string.Format(IFormatProvider, string, params object[])' базируется на пользовательском вводе, укажите 'CultureInfo.CurrentCulture' в качестве параметра "IformatProvider". В ином случае, если результат будет храниться и использоваться программой, например при сохранении на диск или в базу данных, следует указать 'CultureInfo.InvariantCulture'.</Issue>
+             <Issue Name="IFormatProviderAlternateString" Certainty="95" Level="Error" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass" File="CsvExportItem.cs" Line="86">В связи с тем, что поведение 'string.Format(string, object)' может изменяться в зависимости от языка и региональных настроек текущего пользователя, следует заменить этот вызов в 'CsvExportItem.GetExtraAsDict(char)' вызовом 'string.Format(IFormatProvider, string, params object[])'. Если результат 'string.Format(IFormatProvider, string, params object[])' базируется на пользовательском вводе, укажите 'CultureInfo.CurrentCulture' в качестве параметра "IformatProvider". В ином случае, если результат будет храниться и использоваться программой, например при сохранении на диск или в базу данных, следует указать 'CultureInfo.InvariantCulture'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#grouping" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="grouping" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass" File="CsvExportItem.cs" Line="17">Исправьте прописные или строчные буквы строки "grouping" в имени члена 'CsvExportItem.grouping', изменив ее на "Grouping".</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#name" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="name" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass" File="CsvExportItem.cs" Line="16">Исправьте прописные или строчные буквы строки "name" в имени члена 'CsvExportItem.name', изменив ее на "Name".</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#password" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="password" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass" File="CsvExportItem.cs" Line="14">Исправьте прописные или строчные буквы строки "password" в имени члена 'CsvExportItem.password', изменив ее на "Password".</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#url" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="url" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass" File="CsvExportItem.cs" Line="12">Исправьте прописные или строчные буквы строки "url" в имени члена 'CsvExportItem.url', изменив ее на "Url".</Issue>
+            </Message>
+            <Message TypeName="UriPropertiesShouldNotBeStrings" Category="Microsoft.Design" CheckId="CA1056" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="Breaking">
+             <Issue Certainty="75" Level="Error" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass" File="CsvExportItem.cs" Line="12">Измените тип свойства 'CsvExportItem.url' со string на System.Uri.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#username" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message Id="username" TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="Breaking">
+             <Issue Name="MemberShouldBeCompoundWord" Certainty="80" Level="Error" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass" File="CsvExportItem.cs" Line="13">Отдельный термин "username" в имени члена 'CsvExportItem.username' должен быть выражен как составное слово "userName".</Issue>
+            </Message>
+            <Message Id="username" TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="Breaking">
+             <Issue Name="Member" Certainty="85" Level="Error" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass" File="CsvExportItem.cs" Line="13">Исправьте прописные или строчные буквы строки "username" в имени члена 'CsvExportItem.username', изменив ее на "Username".</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Helpers" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#GetValue(System.Collections.Generic.Dictionary`2&lt;System.String,System.String&gt;,System.String)" Kind="Method" Static="True" Accessibility="Assembly" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass" File="Helpers.cs" Line="8">Возможно, у 'Helpers.GetValue(Dictionary&lt;string, string&gt;, string)' нет предшествующих открытых или защищенных вызывающих.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="LastPassImportStrategy" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#ImportInternal(PasswordBoss.FileImportArgs)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message Id="file" TypeName="RemoveUnusedLocals" Category="Microsoft.Performance" CheckId="CA1804" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass" File="LastPassImportStrategy.cs" Line="30">'LastPassImportStrategy.ImportInternal(FileImportArgs)' объявляет переменную 'file' типа 'string[]', которая никогда не используется или которой только присваивается значение. Используйте эту переменную, или удалите ее.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="PBDataImporters.LastPass.SpecialNotes">
+       <Types>
+        <Type Name="BankAccountSpecialNote" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#GetSecureItemInternal(PBDataImporters.LastPass.CsvExportItem,System.Collections.Generic.Dictionary`2&lt;System.String,System.String&gt;)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message Id="0" TypeName="Проверить аргументы или открытые методы" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass\SpecialNotes" File="BankAccountSpecialNote.cs" Line="28">В видимом извне методе 'BankAccountSpecialNote.GetSecureItemInternal(CsvExportItem, Dictionary&lt;string, string&gt;)' проверьте параметр 'exportItem' перед его использованием.</Issue>
+            </Message>
+            <Message Id="1" TypeName="Проверить аргументы или открытые методы" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass\SpecialNotes" File="BankAccountSpecialNote.cs" Line="29">В видимом извне методе 'BankAccountSpecialNote.GetSecureItemInternal(CsvExportItem, Dictionary&lt;string, string&gt;)' проверьте параметр 'values' перед его использованием.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="BankAccountSpecialNote+DictKeys" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="NestedTypesShouldNotBeVisible" Category="Microsoft.Design" CheckId="CA1034" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="Breaking">
+           <Issue Certainty="90" Level="Error">Не делайте тип 'BankAccountSpecialNote.DictKeys' вложенным. Вместо этого измените режим доступа к нему так, чтобы он не был виден извне.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#AccountNumber" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="NonConstantFieldsShouldNotBeVisible" Category="Microsoft.Usage" CheckId="CA2211" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="Breaking">
+             <Issue Certainty="90" Level="Warning">Попробуйте сделать 'BankAccountSpecialNote.DictKeys.AccountNumber' не открытым или константой.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#BankName" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="NonConstantFieldsShouldNotBeVisible" Category="Microsoft.Usage" CheckId="CA2211" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="Breaking">
+             <Issue Certainty="90" Level="Warning">Попробуйте сделать 'BankAccountSpecialNote.DictKeys.BankName' не открытым или константой.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#IbanNumber" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="NonConstantFieldsShouldNotBeVisible" Category="Microsoft.Usage" CheckId="CA2211" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="Breaking">
+             <Issue Certainty="90" Level="Warning">Попробуйте сделать 'BankAccountSpecialNote.DictKeys.IbanNumber' не открытым или константой.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#RoutingNumber" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="NonConstantFieldsShouldNotBeVisible" Category="Microsoft.Usage" CheckId="CA2211" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="Breaking">
+             <Issue Certainty="90" Level="Warning">Попробуйте сделать 'BankAccountSpecialNote.DictKeys.RoutingNumber' не открытым или константой.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#SwiftCode" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="NonConstantFieldsShouldNotBeVisible" Category="Microsoft.Usage" CheckId="CA2211" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="Breaking">
+             <Issue Certainty="90" Level="Warning">Попробуйте сделать 'BankAccountSpecialNote.DictKeys.SwiftCode' не открытым или константой.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="CreditCardSpecialNote" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#GetSecureItemInternal(PBDataImporters.LastPass.CsvExportItem,System.Collections.Generic.Dictionary`2&lt;System.String,System.String&gt;)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="False">
+           <Messages>
+            <Message Id="0" TypeName="Проверить аргументы или открытые методы" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass\SpecialNotes" File="CreditCardSpecialNote.cs" Line="28">В видимом извне методе 'CreditCardSpecialNote.GetSecureItemInternal(CsvExportItem, Dictionary&lt;string, string&gt;)' проверьте параметр 'exportItem' перед его использованием.</Issue>
+            </Message>
+            <Message Id="1" TypeName="Проверить аргументы или открытые методы" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass\SpecialNotes" File="CreditCardSpecialNote.cs" Line="26">В видимом извне методе 'CreditCardSpecialNote.GetSecureItemInternal(CsvExportItem, Dictionary&lt;string, string&gt;)' проверьте параметр 'values' перед его использованием.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="DatabaseSpecialNote" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#GetSecureItemInternal(PBDataImporters.LastPass.CsvExportItem,System.Collections.Generic.Dictionary`2&lt;System.String,System.String&gt;)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="False">
+           <Messages>
+            <Message Id="0" TypeName="Проверить аргументы или открытые методы" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass\SpecialNotes" File="DatabaseSpecialNote.cs" Line="32">В видимом извне методе 'DatabaseSpecialNote.GetSecureItemInternal(CsvExportItem, Dictionary&lt;string, string&gt;)' проверьте параметр 'exportItem' перед его использованием.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="DatabaseSpecialNote+DictKeys" Kind="Class" Accessibility="Public" ExternallyVisible="False">
+         <Members>
+          <Member Name="#Alias" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'DatabaseSpecialNote.DictKeys.Alias' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Database" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'DatabaseSpecialNote.DictKeys.Database' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Hostname" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'DatabaseSpecialNote.DictKeys.Hostname' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Notes" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'DatabaseSpecialNote.DictKeys.Notes' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Password" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'DatabaseSpecialNote.DictKeys.Password' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Port" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'DatabaseSpecialNote.DictKeys.Port' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#SID" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'DatabaseSpecialNote.DictKeys.SID' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Username" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'DatabaseSpecialNote.DictKeys.Username' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="DriversLicenseSpecialNote" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#GetSecureItemInternal(PBDataImporters.LastPass.CsvExportItem,System.Collections.Generic.Dictionary`2&lt;System.String,System.String&gt;)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="False">
+           <Messages>
+            <Message Id="0" TypeName="Проверить аргументы или открытые методы" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass\SpecialNotes" File="DriversLicenseSpecialNote.cs" Line="29">В видимом извне методе 'DriversLicenseSpecialNote.GetSecureItemInternal(CsvExportItem, Dictionary&lt;string, string&gt;)' проверьте параметр 'exportItem' перед его использованием.</Issue>
+            </Message>
+            <Message Id="1" TypeName="Проверить аргументы или открытые методы" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass\SpecialNotes" File="DriversLicenseSpecialNote.cs" Line="30">В видимом извне методе 'DriversLicenseSpecialNote.GetSecureItemInternal(CsvExportItem, Dictionary&lt;string, string&gt;)' проверьте параметр 'values' перед его использованием.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="HealthInsuranceSpecialNote" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#GetSecureItemInternal(PBDataImporters.LastPass.CsvExportItem,System.Collections.Generic.Dictionary`2&lt;System.String,System.String&gt;)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="False">
+           <Messages>
+            <Message Id="0" TypeName="Проверить аргументы или открытые методы" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass\SpecialNotes" File="HealthInsuranceSpecialNote.cs" Line="35">В видимом извне методе 'HealthInsuranceSpecialNote.GetSecureItemInternal(CsvExportItem, Dictionary&lt;string, string&gt;)' проверьте параметр 'exportItem' перед его использованием.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="HealthInsuranceSpecialNote+DictKeys" Kind="Class" Accessibility="Public" ExternallyVisible="False">
+         <Members>
+          <Member Name="#Company" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'HealthInsuranceSpecialNote.DictKeys.Company' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CompanyPhone" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'HealthInsuranceSpecialNote.DictKeys.CompanyPhone' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CoPay" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'HealthInsuranceSpecialNote.DictKeys.CoPay' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GroupID" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'HealthInsuranceSpecialNote.DictKeys.GroupID' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#MemberID" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'HealthInsuranceSpecialNote.DictKeys.MemberID' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#MemberName" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'HealthInsuranceSpecialNote.DictKeys.MemberName' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Notes" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'HealthInsuranceSpecialNote.DictKeys.Notes' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#PhysicianAddress" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'HealthInsuranceSpecialNote.DictKeys.PhysicianAddress' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#PhysicianName" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'HealthInsuranceSpecialNote.DictKeys.PhysicianName' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#PhysicianPhone" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'HealthInsuranceSpecialNote.DictKeys.PhysicianPhone' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#PolicyNumber" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'HealthInsuranceSpecialNote.DictKeys.PolicyNumber' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#PolicyType" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'HealthInsuranceSpecialNote.DictKeys.PolicyType' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="InstantMessengerSpecialNote" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#GetSecureItemInternal(PBDataImporters.LastPass.CsvExportItem,System.Collections.Generic.Dictionary`2&lt;System.String,System.String&gt;)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="False">
+           <Messages>
+            <Message Id="0" TypeName="Проверить аргументы или открытые методы" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass\SpecialNotes" File="InstantMessengerSpecialNote.cs" Line="26">В видимом извне методе 'InstantMessengerSpecialNote.GetSecureItemInternal(CsvExportItem, Dictionary&lt;string, string&gt;)' проверьте параметр 'exportItem' перед его использованием.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="InstantMessengerSpecialNote+DictKeys" Kind="Class" Accessibility="Public" ExternallyVisible="False">
+         <Members>
+          <Member Name="#Notes" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'InstantMessengerSpecialNote.DictKeys.Notes' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Password" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'InstantMessengerSpecialNote.DictKeys.Password' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Port" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'InstantMessengerSpecialNote.DictKeys.Port' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Server" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'InstantMessengerSpecialNote.DictKeys.Server' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Username" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'InstantMessengerSpecialNote.DictKeys.Username' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="InsuranceSpecialNote" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#GetSecureItemInternal(PBDataImporters.LastPass.CsvExportItem,System.Collections.Generic.Dictionary`2&lt;System.String,System.String&gt;)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="False">
+           <Messages>
+            <Message Id="0" TypeName="Проверить аргументы или открытые методы" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass\SpecialNotes" File="InsuranceSpecialNote.cs" Line="32">В видимом извне методе 'InsuranceSpecialNote.GetSecureItemInternal(CsvExportItem, Dictionary&lt;string, string&gt;)' проверьте параметр 'exportItem' перед его использованием.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="InsuranceSpecialNote+DictKeys" Kind="Class" Accessibility="Public" ExternallyVisible="False">
+         <Members>
+          <Member Name="#AgentName" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'InsuranceSpecialNote.DictKeys.AgentName' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#AgentPhone" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'InsuranceSpecialNote.DictKeys.AgentPhone' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Company" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'InsuranceSpecialNote.DictKeys.Company' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Expiration" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'InsuranceSpecialNote.DictKeys.Expiration' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Notes" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'InsuranceSpecialNote.DictKeys.Notes' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#PolicyNumber" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'InsuranceSpecialNote.DictKeys.PolicyNumber' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#PolicyType" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'InsuranceSpecialNote.DictKeys.PolicyType' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#URL" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'InsuranceSpecialNote.DictKeys.URL' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="MembershipSpecialNote" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#GetSecureItemInternal(PBDataImporters.LastPass.CsvExportItem,System.Collections.Generic.Dictionary`2&lt;System.String,System.String&gt;)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="False">
+           <Messages>
+            <Message Id="1" TypeName="Проверить аргументы или открытые методы" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass\SpecialNotes" File="MembershipSpecialNote.cs" Line="28">В видимом извне методе 'MembershipSpecialNote.GetSecureItemInternal(CsvExportItem, Dictionary&lt;string, string&gt;)' проверьте параметр 'values' перед его использованием.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="PassportSpecialNote" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#GetSecureItemInternal(PBDataImporters.LastPass.CsvExportItem,System.Collections.Generic.Dictionary`2&lt;System.String,System.String&gt;)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="False">
+           <Messages>
+            <Message Id="0" TypeName="Проверить аргументы или открытые методы" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass\SpecialNotes" File="PassportSpecialNote.cs" Line="29">В видимом извне методе 'PassportSpecialNote.GetSecureItemInternal(CsvExportItem, Dictionary&lt;string, string&gt;)' проверьте параметр 'exportItem' перед его использованием.</Issue>
+            </Message>
+            <Message Id="1" TypeName="Проверить аргументы или открытые методы" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass\SpecialNotes" File="PassportSpecialNote.cs" Line="30">В видимом извне методе 'PassportSpecialNote.GetSecureItemInternal(CsvExportItem, Dictionary&lt;string, string&gt;)' проверьте параметр 'values' перед его использованием.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="PlainSpecialNote" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#GetSecureItemInternal(PBDataImporters.LastPass.CsvExportItem,System.Collections.Generic.Dictionary`2&lt;System.String,System.String&gt;)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="True">
+           <Messages>
+            <Message Id="0" TypeName="Проверить аргументы или открытые методы" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass\SpecialNotes" File="PlainSpecialNote.cs" Line="17">В видимом извне методе 'PlainSpecialNote.GetSecureItemInternal(CsvExportItem, Dictionary&lt;string, string&gt;)' проверьте параметр 'exportItem' перед его использованием.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="ServerSpecialNote" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#GetSecureItemInternal(PBDataImporters.LastPass.CsvExportItem,System.Collections.Generic.Dictionary`2&lt;System.String,System.String&gt;)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="False">
+           <Messages>
+            <Message Id="0" TypeName="Проверить аргументы или открытые методы" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass\SpecialNotes" File="ServerSpecialNote.cs" Line="24">В видимом извне методе 'ServerSpecialNote.GetSecureItemInternal(CsvExportItem, Dictionary&lt;string, string&gt;)' проверьте параметр 'exportItem' перед его использованием.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="ServerSpecialNote+DictKeys" Kind="Class" Accessibility="Public" ExternallyVisible="False">
+         <Members>
+          <Member Name="#Hostname" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'ServerSpecialNote.DictKeys.Hostname' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Notes" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'ServerSpecialNote.DictKeys.Notes' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Password" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'ServerSpecialNote.DictKeys.Password' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Username" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'ServerSpecialNote.DictKeys.Username' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="SocialSecuritySpecialNote" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#GetSecureItemInternal(PBDataImporters.LastPass.CsvExportItem,System.Collections.Generic.Dictionary`2&lt;System.String,System.String&gt;)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="False">
+           <Messages>
+            <Message Id="1" TypeName="Проверить аргументы или открытые методы" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass\SpecialNotes" File="SocialSecuritySpecialNote.cs" Line="24">В видимом извне методе 'SocialSecuritySpecialNote.GetSecureItemInternal(CsvExportItem, Dictionary&lt;string, string&gt;)' проверьте параметр 'values' перед его использованием.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="SoftwareLicenseSpecialNote" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#GetSecureItemInternal(PBDataImporters.LastPass.CsvExportItem,System.Collections.Generic.Dictionary`2&lt;System.String,System.String&gt;)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="False">
+           <Messages>
+            <Message Id="0" TypeName="Проверить аргументы или открытые методы" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass\SpecialNotes" File="SoftwareLicenseSpecialNote.cs" Line="33">В видимом извне методе 'SoftwareLicenseSpecialNote.GetSecureItemInternal(CsvExportItem, Dictionary&lt;string, string&gt;)' проверьте параметр 'exportItem' перед его использованием.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="SoftwareLicenseSpecialNote+DictKeys" Kind="Class" Accessibility="Public" ExternallyVisible="False">
+         <Members>
+          <Member Name="#Licensee" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'SoftwareLicenseSpecialNote.DictKeys.Licensee' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#LicenseKey" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'SoftwareLicenseSpecialNote.DictKeys.LicenseKey' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Notes" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'SoftwareLicenseSpecialNote.DictKeys.Notes' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#NumberOfLicenses" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'SoftwareLicenseSpecialNote.DictKeys.NumberOfLicenses' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#OrderNumber" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'SoftwareLicenseSpecialNote.DictKeys.OrderNumber' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#OrderTotal" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'SoftwareLicenseSpecialNote.DictKeys.OrderTotal' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Price" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'SoftwareLicenseSpecialNote.DictKeys.Price' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Publisher" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'SoftwareLicenseSpecialNote.DictKeys.Publisher' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#PurchaseDate" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'SoftwareLicenseSpecialNote.DictKeys.PurchaseDate' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Support" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'SoftwareLicenseSpecialNote.DictKeys.Support' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Version" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'SoftwareLicenseSpecialNote.DictKeys.Version' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Website" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'SoftwareLicenseSpecialNote.DictKeys.Website' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="SpecialNoteBase" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="AbstractTypesShouldNotHaveConstructors" Category="Microsoft.Design" CheckId="CA1012" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+           <Issue Certainty="95" Level="CriticalWarning">Измените режим доступа ко всем открытым конструкторам в 'SpecialNoteBase' на "protected".</Issue>
+          </Message>
+         </Messages>
+        </Type>
+        <Type Name="SpecialNoteBase+DictKeys" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Messages>
+          <Message TypeName="NestedTypesShouldNotBeVisible" Category="Microsoft.Design" CheckId="CA1034" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="Breaking">
+           <Issue Certainty="90" Level="Error">Не делайте тип 'SpecialNoteBase.DictKeys' вложенным. Вместо этого измените режим доступа к нему так, чтобы он не был виден извне.</Issue>
+          </Message>
+         </Messages>
+         <Members>
+          <Member Name="#NoteType" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="True">
+           <Messages>
+            <Message TypeName="NonConstantFieldsShouldNotBeVisible" Category="Microsoft.Usage" CheckId="CA2211" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="Breaking">
+             <Issue Certainty="90" Level="Warning">Попробуйте сделать 'SpecialNoteBase.DictKeys.NoteType' не открытым или константой.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="SshKeySpecialNote" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#GetSecureItemInternal(PBDataImporters.LastPass.CsvExportItem,System.Collections.Generic.Dictionary`2&lt;System.String,System.String&gt;)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="False">
+           <Messages>
+            <Message Id="0" TypeName="Проверить аргументы или открытые методы" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass\SpecialNotes" File="SshKeySpecialNote.cs" Line="32">В видимом извне методе 'SshKeySpecialNote.GetSecureItemInternal(CsvExportItem, Dictionary&lt;string, string&gt;)' проверьте параметр 'exportItem' перед его использованием.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="SshKeySpecialNote+DictKeys" Kind="Class" Accessibility="Public" ExternallyVisible="False">
+         <Members>
+          <Member Name="#BitStrength" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'SshKeySpecialNote.DictKeys.BitStrength' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Date" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'SshKeySpecialNote.DictKeys.Date' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Format" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'SshKeySpecialNote.DictKeys.Format' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Hostname" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'SshKeySpecialNote.DictKeys.Hostname' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Notes" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'SshKeySpecialNote.DictKeys.Notes' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Passphrase" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'SshKeySpecialNote.DictKeys.Passphrase' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#PrivateKey" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'SshKeySpecialNote.DictKeys.PrivateKey' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#PublicKey" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'SshKeySpecialNote.DictKeys.PublicKey' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="WiFiPasswordSpecialNote" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#GetSecureItemInternal(PBDataImporters.LastPass.CsvExportItem,System.Collections.Generic.Dictionary`2&lt;System.String,System.String&gt;)" Kind="Method" Static="False" Accessibility="Family" ExternallyVisible="False">
+           <Messages>
+            <Message Id="0" TypeName="Проверить аргументы или открытые методы" Category="Microsoft.Design" CheckId="CA1062" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.LastPass\SpecialNotes" File="WiFiPasswordSpecialNote.cs" Line="36">В видимом извне методе 'WiFiPasswordSpecialNote.GetSecureItemInternal(CsvExportItem, Dictionary&lt;string, string&gt;)' проверьте параметр 'exportItem' перед его использованием.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="WiFiPasswordSpecialNote+DictKey" Kind="Class" Accessibility="Public" ExternallyVisible="False">
+         <Members>
+          <Member Name="#Authentication" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'WiFiPasswordSpecialNote.DictKey.Authentication' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ConnectionMode" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'WiFiPasswordSpecialNote.DictKey.ConnectionMode' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ConnectionType" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'WiFiPasswordSpecialNote.DictKey.ConnectionType' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Encryption" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'WiFiPasswordSpecialNote.DictKey.Encryption' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#FipsMode" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'WiFiPasswordSpecialNote.DictKey.FipsMode' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#KeyIndex" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'WiFiPasswordSpecialNote.DictKey.KeyIndex' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#KeyType" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'WiFiPasswordSpecialNote.DictKey.KeyType' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Notes" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'WiFiPasswordSpecialNote.DictKey.Notes' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Password" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'WiFiPasswordSpecialNote.DictKey.Password' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Protected" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'WiFiPasswordSpecialNote.DictKey.Protected' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#SSID" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'WiFiPasswordSpecialNote.DictKey.SSID' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#Use802_1X" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:44Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'WiFiPasswordSpecialNote.DictKey.Use802_1X' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+ </Targets>
+ <Rules>
+  <Rule TypeName="AbstractTypesShouldNotHaveConstructors" Category="Microsoft.Design" CheckId="CA1012">
+   <Name>Абстрактные типы не должны иметь конструкторов</Name>
+   <Description>Нет смысла использовать для абстрактных типов открытые конструкторы, поскольку нельзя создавать экземпляры абстрактных типов.</Description>
+   <Resolution Name="Default">Измените режим доступа ко всем открытым конструкторам в {0} на "protected".</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182126.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">CriticalWarning</MessageLevel>
+   <File Name="designrules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811">
+   <Name>Избегайте невызываемого частного кода</Name>
+   <Description>Имеется невызываемый код, не видимый извне и не являющийся известной точкой входа во время выполнения. Если это нарушение выведено ошибочно, отправьте отчет об ошибке в группу анализа кода Visual Studio.</Description>
+   <Resolution Name="Default">Возможно, у {0} нет предшествующих открытых или защищенных вызывающих.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182264.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="performancerules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="AvoidUninstantiatedInternalClasses" Category="Microsoft.Performance" CheckId="CA1812">
+   <Name>Избегайте неиспользуемых внутренних классов</Name>
+   <Description>Обнаружен внутренний класс, экземпляр которого, вероятно, никогда не создавался. Это правило пытается определить создание с помощью позднего связывания и создает ложное срабатывание, если экземпляры типа создаются только таким образом (например, посредством Activator.CreateInstance или путем передачи типа в качестве аргумента в конструктор TypeConverter).</Description>
+   <Resolution Name="Default">{0} является внутренним классом, экземпляр которого никогда явно не создается. Если это так, удалите код из сборки. Если этот класс должен содержать только статические методы, попробуйте добавить частный конструктор, чтобы компилятор не создавал заданный по умолчанию конструктор.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182265.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="performancerules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823">
+   <Name>Избегайте неиспользуемых частных полей</Name>
+   <Description>В сборке обнаружены частные поля, к которым не осуществляется доступ. Если это сообщение об этом нарушении выводится по ошибке, отправьте отчет о нем в группу анализа кода Visual Studio.</Description>
+   <Resolution Name="Default">Вероятно, поле {0} нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms245042.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="performancerules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="CompoundWordsShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1702">
+   <Name>Правильно используйте прописные и строчные буквы в составных словах</Name>
+   <Description>Не допускайте создания составных слов из терминов, которые существуют в словаре как отдельные термины. Не создавайте такие составные слова как "StopWatch" или "PopUp". Эти термины включены в словарь и должны писаться с учетом регистра как "Stopwatch" и "Popup".</Description>
+   <Resolution Name="MemberShouldBeCompoundWord">Отдельный термин "{0}" в имени члена {1} должен быть выражен как составное слово "{2}".</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/bb264474.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="80">Error</MessageLevel>
+   <File Name="namingrules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="DoNotCastUnnecessarily" Category="Microsoft.Performance" CheckId="CA1800">
+   <Name>Не делайте лишних приведений</Name>
+   <Description>Не допускайте двойных приведений, где только возможно, так как это приводит к издержкам.</Description>
+   <Resolution Name="Parameter">Параметр {0} приведен к типу {1} несколько раз в методе {2}. Сохраните в кэш-памяти результат оператора "as" или оператора прямого приведения, чтобы устранить избыточную команду {3}.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182271.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Warning</MessageLevel>
+   <File Name="performancerules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031">
+   <Name>Не перехватывайте типы общих исключений</Name>
+   <Description>Не следует перехватывать исключения типа Exception или SystemException. Перехватывание исключений общего назначения может скрыть от пользователя библиотеки ошибки времени выполнения и осложнить процесс отладки. Перехватывать следует только те исключения, которые вы можете правильно обработать.</Description>
+   <Resolution Name="Default">Измените {0} так, чтобы перехватывались более специфические, чем {1}, исключения, либо обеспечьте повторное порождение исключения.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182137.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">CriticalError</MessageLevel>
+   <File Name="designrules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="IdentifiersShouldBeCasedCorrectly" Category="Microsoft.Naming" CheckId="CA1709">
+   <Name>Идентификаторы должны иметь правильное сочетание прописных и строчных букв</Name>
+   <Description>Идентификаторы типа, пространства имен и членов следуют стилю имен Pascal, а идентификаторы параметров используют "верблюжий" (camel) стиль имен. Двухсимвольный акроним в этих идентификаторах должен записываться прописными буквами, например, System.IO вместо System.Io. Трех- или более символьные акронимы должны следовать стилю Pascal, например, System.Xml вместо System.XML. По соглашению о стиле имен Pascal в составных словах прописной буквой выделяется первая буква каждого слова, например BackColor. По соглашению о "верблюжьем" стиле имен первая буква первого слова будет строчной, а первые буквы всех последующих слов будут прописными, например backgroundColor. Хотя на практике некоторые двухбуквенные акронимы часто не содержат две прописные буквы, правило остается в силе. Например, часто пишут "DbConnection", но это неправильно; пишите "DBConnection". Нарушение этого правила могло бы потребоваться для совместимости с существующими неуправляемыми схемами символов. В общем случае эти символы не должны быть видимы вне использующей их сборки.</Description>
+   <Resolution Name="Member">Исправьте прописные или строчные буквы строки "{0}" в имени члена {1}, изменив ее на "{2}".</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182240.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="85">Error</MessageLevel>
+   <File Name="namingrules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822">
+   <Name>Пометьте члены как статические</Name>
+   <Description>Методы, которые не обращаются к данным экземпляров и не вызывают методы экземпляров, могут быть определены как статические (Shared в Visual Basic). После этого компилятор создаст невиртуальные места для вызова этих членов, что предотвратит во время выполнения проверку для каждого вызова, что текущий указатель на объект не имеет значения NULL. Это может привести к ощутимому росту производительности для требовательных к производительности кодов. В некоторых случаях ошибка доступа к текущему экземпляру объекта указывает на проблемы с правильностью кода.</Description>
+   <Resolution Name="Default">Параметр "this" ("Me" в Visual Basic) никогда не используется в {0}. Пометьте член как static (или Shared в среде Visual Basic) либо используйте "this" или "Me" в теле метода или хотя бы в одном методе доступа к свойству.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms245046.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Warning</MessageLevel>
+   <File Name="performancerules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="NestedTypesShouldNotBeVisible" Category="Microsoft.Design" CheckId="CA1034">
+   <Name>Вложенные типы не должны быть видимыми</Name>
+   <Description>Не используйте вложенные типы с модификаторами доступа public, protected или protected internal (Protected Friend) как способ для группирования типов. Для этой цели используйте пространства имен. Существует очень ограниченное число ситуаций, когда вложенные типы можно считать оптимальным вариантом проектирования. Кроме того, режим доступа к члену вложенного типа не очевиден для всех пользователей. Исключение из этого правила - перечислители.</Description>
+   <Resolution Name="Default">Не делайте тип {0} вложенным. Вместо этого измените режим доступа к нему так, чтобы он не был виден извне.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182162.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="90">Error</MessageLevel>
+   <File Name="designrules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="NonConstantFieldsShouldNotBeVisible" Category="Microsoft.Usage" CheckId="CA2211">
+   <Name>Поля, не являющиеся константами, не должны быть видимыми</Name>
+   <Description>Статические поля должны быть константами, если только вы не управляете тщательно доступом к полям с помощью блокировок. Использование статических переменных, если не сделать их потокобезопасными, может представлять угрозу состоянию выполнения. Это правило применяется к библиотекам управляемого кода. Если анализируемая сборка является приложением, обычно безопасно исключить нарушения этого правила.</Description>
+   <Resolution Name="Default">Попробуйте сделать {0} не открытым или константой.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182353.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="90">Warning</MessageLevel>
+   <File Name="usagerules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="RemoveUnusedLocals" Category="Microsoft.Performance" CheckId="CA1804">
+   <Name>Удалите неиспользуемые локальные переменные</Name>
+   <Description>Удалите локальные переменные, которые не используются или которым только присваиваются значения в реализациях методов.</Description>
+   <Resolution Name="Default">{0} объявляет переменную {1} типа {2}, которая никогда не используется или которой только присваивается значение. Используйте эту переменную, или удалите ее.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182278.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Warning</MessageLevel>
+   <File Name="performancerules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="SpecifyIFormatProvider" Category="Microsoft.Globalization" CheckId="CA1305">
+   <Name>Указывайте IFormatProvider</Name>
+   <Description>Если существует перегрузка, которая принимает аргумент IFormatProvider, следует всегда вызывать ее, а не другую перегрузку, не принимающую этот аргумент. Некоторые методы во время выполнения преобразовывают значение в представление строки или из него. Они принимают строковый параметр, который содержит один или несколько знаков, которые называются спецификаторами формата и указывают, как следует преобразовывать значение. Если смысл спецификатора формата зависит от языка и региональных настроек, форматируемый объект предоставляет действительные символы, которые используются в представлении строки. В сценариях, в которых поведение при сортировке и сравнении не зависит от языка и региональных настроек, следует указать CultureInfo.InvariantCulture, в ином случае следует указывать CultureInfo.CurrentCulture.</Description>
+   <Resolution Name="IFormatProviderAlternateString">В связи с тем, что поведение {0} может изменяться в зависимости от языка и региональных настроек текущего пользователя, следует заменить этот вызов в {1} вызовом {2}. Если результат {2} базируется на пользовательском вводе, укажите {3} в качестве параметра "IformatProvider". В ином случае, если результат будет храниться и использоваться программой, например при сохранении на диск или в базу данных, следует указать {4}.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182190.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="globalizationrules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="UriPropertiesShouldNotBeStrings" Category="Microsoft.Design" CheckId="CA1056">
+   <Name>Свойства URI не должны быть строками</Name>
+   <Description>Если имя свойства содержит комбинацию символов "uri", "url" или "urn", и оно имеет строковый тип, необходимо изменить его тип на System.Uri.</Description>
+   <Resolution Name="Default">Измените тип свойства {0} со string на System.Uri.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182175.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Error</MessageLevel>
+   <File Name="designrules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="Проверить аргументы или открытые методы" Category="Microsoft.Design" CheckId="CA1062">
+   <Name>Проверить аргументы или открытые методы</Name>
+   <Description>Все аргументы ссылок, передаваемые внешним видимым методам должны проверяться на NULL (Nothing в VB). При необходимости вызывает исключение System.ArgumentNullException, если аргумент равен "null".</Description>
+   <Resolution Name="Default">В видимом извне методе {0} проверьте параметр '{1}' перед его использованием.</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/ms182182.aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="15.0.0.0" />
+  </Rule>
+ </Rules>
+ <Localized>
+  <String Key="Category">Категория</String>
+  <String Key="Certainty">Достоверность</String>
+  <String Key="CollapseAll">Свернуть все</String>
+  <String Key="CheckId">ИД проверки</String>
+  <String Key="Error">Ошибка</String>
+  <String Key="Errors">ошибки</String>
+  <String Key="ExpandAll">Развернуть все</String>
+  <String Key="Help">Справка</String>
+  <String Key="Line">Строка</String>
+  <String Key="Messages">сообщения</String>
+  <String Key="LocationNotStoredInPdb">[расположение не сохранено в PDB]</String>
+  <String Key="Project">Проект</String>
+  <String Key="Resolution">Разрешение</String>
+  <String Key="Rule">Правило</String>
+  <String Key="RuleFile">Файл правил</String>
+  <String Key="RuleDescription">Описание правила</String>
+  <String Key="Source">Источник</String>
+  <String Key="Status">Состояние</String>
+  <String Key="Target">Цель</String>
+  <String Key="Warning">Предупреждение</String>
+  <String Key="Warnings">предупреждения</String>
+  <String Key="ReportTitle">Отчет по анализу кода</String>
+ </Localized>
+</FxCopReport>

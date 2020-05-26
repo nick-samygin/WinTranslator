@@ -1,0 +1,20 @@
+﻿PersonalInfo
+
+
+library
+C#
+.cs
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PersonalInfo\obj\x86\Debug\
+PasswordBoss
+none
+false
+DEBUG;TRACE
+
+10-1879144941
+
+22261196338
+271748480058
+..\CommonComponents\UserControls\CategoryBox.xaml;..\CommonComponents\UserControls\CustomLoadingSpinner.xaml;..\CommonComponents\UserControls\CustomMessageBoxDialog.xaml;..\CommonComponents\UserControls\CustomMessageBoxUserControl.xaml;..\CommonComponents\UserControls\LoadingWindow.xaml;resources\dictionary\PersonalInfoResources.xaml;Views\NewPersonalInfoContentPanel.xaml;Views\PersonalInfoMenuButton.xaml;Views\PersonalInfoMiniTour.xaml;Views\UserControls\ToggleSwitch2.xaml;
+
+True
+

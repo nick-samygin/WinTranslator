@@ -1,0 +1,20 @@
+﻿PBAppUI
+
+
+library
+C#
+.cs
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBAppUI\obj\x86\Debug\
+PasswordBoss
+none
+false
+CODE_ANALYSIS;DEBUG;TRACE
+
+70-1057081703
+
+148948568091
+29-1854158914
+..\CommonComponents\UserControls\CategoryBox.xaml;..\CommonComponents\UserControls\CustomMessageBoxDialog.xaml;..\CommonComponents\UserControls\CustomMessageBoxUserControl.xaml;..\CommonComponents\UserControls\UpdatePasswordsInfoDialog.xaml;resources\dictionary\styles\AddControlStyles.xaml;resources\dictionary\styles\passwordbossresource.xaml;resources\dictionary\styles\primarydashboardresource.xaml;Views\AccountSettings\AccountSettings.xaml;Views\AccountSettings\AccountSettingsPopup.xaml;Views\AddFolder.xaml;Views\ApplicationSync\PerformSyncDialog.xaml;Views\ApplicationSync\SyncFailedDialog.xaml;Views\ApplicationUpdates\CheckForUpdatesWindow.xaml;Views\ApplicationUpdates\NoUpdateAvailable.xaml;Views\ApplicationUpdates\UpdateAvailable.xaml;Views\Dialogs\AccountCreation\AccountCreationDialog.xaml;Views\Dialogs\AccountCreation\AccountExistingDialog.xaml;Views\UserControls\AddItemChildWindow.xaml;Views\Dialogs\License\ActivationSuccessfullDialog.xaml;Views\Dialogs\License\LicenseActivationDialog.xaml;Views\FeatureNotEnabled\FeatureNotEnabledPopUp.xaml;Views\Login\BrowserExtentionSetup.xaml;Views\Login\EnterLicenseKey.xaml;Views\Login\PersonalInfoSetup.xaml;Views\Login\SetupCompleteView.xaml;Views\Login\ForgotMasterPassword.xaml;Views\Login\ConfirmPasswordPopup.xaml;Views\Login\MasterPasswordPopup.xaml;Views\UserControls\AboutControlDialog.xaml;Views\UserControls\CloseBrowserInformationDialog.xaml;Views\UserControls\CustomInformationMessageBoxWindow.xaml;Views\UserControls\EnterPromoCodeControlDialog.xaml;Views\UserControls\ExportNotEncryptedWindow.xaml;Views\UserControls\ImportFromSecureExportControl.xaml;Views\UserControls\CustomLoadingSpinner.xaml;Views\UserControls\MainSearchResultPanel.xaml;Views\UserControls\MasterPasswordDialog.xaml;Views\UserControls\PasswordTextBox.xaml;Views\UserControls\PinUserControl.xaml;Views\UserControls\ProgressBarPopup.xaml;Views\UserControls\SelectFolderControl.xaml;Views\UserControls\SetupProgressUserControl.xaml;Views\UserControls\TextBoxWithLabel.xaml;Views\UserControls\TwoStepVerificationUserControl.xaml;Views\InAppAdvertising\LoginWindowAdvertising.xaml;Views\InAppAdvertising\MainWindowAdvertising.xaml;Views\InAppAdvertising\PremiumExpiring.xaml;Views\LoginWindow.xaml;Views\Login\ConfirmMasterPassword.xaml;Views\Login\CreateAccount.xaml;Views\Login\Login.xaml;Views\Login\LoginLanguage.xaml;Views\Login\SetPINScreen.xaml;Views\Login\SetupComplete.xaml;Views\Login\UpdateData.xaml;Views\Login\VerificationRequired.xaml;Views\MainWindow.xaml;Views\UnlockProfile.xaml;Views\UserControls\AlertButtonUserControl.xaml;Views\UserControls\ImportFromBrowserControl.xaml;Views\UserControls\FirefoxMasterPasswordConfirm.xaml;Views\UserControls\MainSearchBox.xaml;Views\UserControls\LoadingSpinner.xaml;Views\UserControls\LoadingWindow.xaml;Views\UserControls\ImportFromApplicationControl.xaml;Views\UserControls\MenuUserControl.xaml;Views\UserControls\MenuUserControlPopup.xaml;Views\UserControls\CustomMessageBox.xaml;Views\UserControls\ProgressBarPopupWindow.xaml;Views\UserControls\SecurityNotificationUserControl.xaml;
+
+True
+

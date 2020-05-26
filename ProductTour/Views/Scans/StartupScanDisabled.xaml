@@ -1,0 +1,190 @@
+﻿<Window x:Class="ProductTour.Views.Scans.StartupScanDisabled"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:cc="clr-namespace:QuickZip.UserControls;assembly=theme"
+        Title="Password Boss"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        Background="Transparent"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen"
+        FontFamily="{DynamicResource OBProximaRegular}"
+		Margin="0,0,30,30"
+        Width="780" Height="580">
+	<!-- real size of window Width="750" Height="550">-->
+	<Window.Effect>
+		<DropShadowEffect Direction="300" BlurRadius="15" ShadowDepth="10" Opacity="0.5" RenderingBias="Quality" />
+	</Window.Effect>
+	<Window.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="../Styles/ViewBoxStyle.xaml" />
+			</ResourceDictionary.MergedDictionaries>
+		</ResourceDictionary>
+	</Window.Resources>
+	
+	<Window.Triggers>
+		<EventTrigger RoutedEvent="Loaded">
+			<BeginStoryboard>
+				<Storyboard Storyboard.TargetProperty="Opacity">
+					<DoubleAnimation From="0" To="1" Duration="00:00:1" />
+				</Storyboard>
+			</BeginStoryboard>
+		</EventTrigger>
+	</Window.Triggers>
+
+	<Grid Width="750" Height="550" Background="White" >
+
+		<Grid.RowDefinitions>
+			<RowDefinition Height="53" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+
+		<Border BorderThickness="0,0,0,1" Grid.Row="0" BorderBrush="#4d6375">
+			<Grid x:Name="TitleGrid" Background="#203c52">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="*" />
+				</Grid.RowDefinitions>
+
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
+
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="123"/>
+						<ColumnDefinition />
+					</Grid.ColumnDefinitions>
+
+					<Image Source="{DynamicResource obLogoGray}" HorizontalAlignment="Left" Margin="9,0,0,0" />
+					<Viewbox Grid.Column="0" Grid.ColumnSpan="2"  Margin="150,12,150,0" VerticalAlignment="Center" >
+						<TextBlock Grid.Column="1" LineHeight="0.1" Text="{DynamicResource Onboardv3ScreenTitle}" FontSize="17.5pt" Foreground="White" FontFamily="{DynamicResource MuseoSlab}" />
+					</Viewbox>
+				</Grid>
+			</Grid>
+		</Border>
+		<Grid Grid.Row="1">
+			<Grid.RowDefinitions>
+				<!-- fastes way block -->
+				<RowDefinition Height="20" />
+				<RowDefinition Height="130" />
+				<RowDefinition Height="18" />
+
+				<!-- icons block -->
+				<RowDefinition Height="1" />
+				<RowDefinition Height="130" />
+				<RowDefinition Height="9" />
+
+				<!-- Lower block -->
+				<RowDefinition Height="33" />
+				<RowDefinition Height="130" />
+				<RowDefinition Height="Auto" />
+			</Grid.RowDefinitions>
+			<Viewbox Grid.Row="1" Height="130">
+				<TextBlock Grid.Row="1" Width="580"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-8,0,0"
+                       Text="{DynamicResource ProductTourMessageOne}" TextWrapping="Wrap"
+                       TextAlignment="Center" Foreground="#00AD92" FontFamily="{DynamicResource OBProximaRegular}" FontSize="40" />
+			</Viewbox>
+			<Grid Grid.Row="3" Background="#E3E3E0" />
+
+			<Grid Grid.Row="4">
+				<Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+					<Grid.Resources>
+						<Style TargetType="TextBlock">
+							<Setter Property="HorizontalAlignment" Value="Center" />
+							<Setter Property="VerticalAlignment" Value="Top" />
+							<Setter Property="TextWrapping" Value="Wrap" />
+							<Setter Property="TextAlignment" Value="Center"/>
+							<Setter Property="Foreground" Value="#4D6375" />
+							<Setter Property="FontFamily" Value="{DynamicResource OBProximaRegular}" />
+							<Setter Property="FontSize" Value="10pt" />
+							<Setter Property="FontWeight" Value="Light"/>
+							<Setter Property="LineHeight" Value="5px" />
+							<Setter Property="Width" Value="80" />
+						</Style>
+						<Style TargetType="Image">
+							<Setter Property="Width" Value="40" />
+							<Setter Property="Height" Value="40" />
+							<Setter Property="HorizontalAlignment" Value="Center" />
+							<Setter Property="VerticalAlignment" Value="Center" />
+						</Style>
+					</Grid.Resources>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="80" />
+						<ColumnDefinition Width="70" />
+						<ColumnDefinition Width="80" />
+						<ColumnDefinition Width="70" />
+						<ColumnDefinition Width="80" />
+					</Grid.ColumnDefinitions>
+
+					<Grid.RowDefinitions>
+						<RowDefinition Height="37" />
+						<RowDefinition Height="40" />
+						<RowDefinition Height="5" />
+						<RowDefinition Height="48" />
+					</Grid.RowDefinitions>
+
+					<Image Grid.Column="0" Grid.Row="1" Source="{DynamicResource lockBlue}" />
+					<TextBlock  Grid.Column="0" Grid.Row="3" Text="{DynamicResource Onboardv4Screen1Bullet1}" Width="75"/>
+
+					<Image Grid.Column="2" Grid.Row="1" Source="{DynamicResource freeSupportBlue}" />
+					<TextBlock Grid.Column="2" Grid.Row="3" Text="{DynamicResource Onboardv4Screen1Bullet2}" Width="75"/>
+
+					<Image Grid.Column="4" Grid.Row="1" Source="{DynamicResource freeUpdatesBlue}" />
+					<TextBlock Grid.Column="4" Grid.Row="3" Text="{DynamicResource Onboardv4Screen1Bullet3}" Width="75"/>
+
+				</Grid>
+			</Grid>
+
+			<Border BorderBrush="#E3E3E0" BorderThickness="0,0,0,1" Grid.Row="5" />
+
+			<Grid Grid.Row="7">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="32" />
+					<RowDefinition Height="5" />
+					<RowDefinition Height="55" />
+				</Grid.RowDefinitions>
+
+				<Viewbox>
+					<StackPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+						<StackPanel.Resources>
+							<Style TargetType="TextBlock">
+								<Setter Property="HorizontalAlignment" Value="Center"/>
+								<Setter Property="VerticalAlignment" Value="Center" />
+								<Setter Property="TextWrapping" Value="Wrap"/>
+								<Setter Property="TextAlignment" Value="Center" />
+								<Setter Property="Foreground" Value="#7E8A90" />
+								<Setter Property="FontFamily" Value="{DynamicResource OBProximaRegular}" />
+								<Setter Property="FontSize" Value="12.75pt" />
+								<Setter Property="Text" Value=" "/>
+							</Style>
+						</StackPanel.Resources>
+						<TextBlock Text="{DynamicResource Onboardv4Screen1Subhead1}" />
+						<TextBlock />
+						<TextBlock Text="{DynamicResource Onboardv4Screen1Subhead2}" Foreground="#48B900" FontWeight="Bold"/>
+					</StackPanel>
+				</Viewbox>
+				<Button Grid.Row="2" Width="330" Height="55" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Light"
+                        FontSize="18.5pt"
+                        Style="{DynamicResource ProductTourButtonGreenStyle}" Command="{Binding CloseWizardCommand}" CommandParameter="AccountCreation" >
+					<Viewbox>
+						<TextBlock Text="{DynamicResource Onboardv4Screen1ButtonHeadline}"></TextBlock>
+					</Viewbox>
+				</Button>
+			</Grid>
+
+			<Grid Grid.Row="8" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+				<Viewbox>
+					<TextBlock Margin="0,4,17,10" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Hyperlink Foreground="#19262E" FontFamily="{DynamicResource OBProximaRegular}"
+                               FontSize="9.75pt" Command="{Binding CloseWizardCommand}" CommandParameter="SignIn">
+                        <TextBlock Text="{DynamicResource Onboardv3Screen1ExistingAccount}" />
+                    </Hyperlink>
+                </TextBlock>
+				</Viewbox>
+			</Grid>
+		</Grid>
+	</Grid>
+</Window>

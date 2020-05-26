@@ -1,0 +1,489 @@
+﻿<UserControl x:Class="PasswordBoss.Views.SecureBrowserContentPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:pbviews="clr-namespace:PasswordBoss.Views"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+			 xmlns:ei="clr-namespace:Microsoft.Expression.Interactivity.Core;assembly=Microsoft.Expression.Interactions"
+             xmlns:view="clr-namespace:PasswordBoss.Views.UserControls"
+             xmlns:viewmodel="clr-namespace:PasswordBoss.ViewModel"
+             xmlns:ui="clr-namespace:PasswordBoss.Helpers"
+             xmlns:wf="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+             mc:Ignorable="d"
+             d:DesignHeight="600" d:DesignWidth="600"
+             x:Name="ucSecureBrowser" UseLayoutRounding="True">
+
+    <UserControl.Resources>
+		
+        <ui:ParametersConverter x:Key="ParametersConverter" />
+        <ui:TextLengthConverter x:Key="CustomTextLengthConverter" />
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+
+        <Style TargetType="TabItem">
+
+            <Setter Property="Height" Value="22"/>
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Template" Value="{DynamicResource SecureBrowserSelectedTabTemplate}" />
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding CloseButtonVisibility}" Value="Visible">
+                    <Setter Property="Width" Value="200"/>
+                    <Setter Property="Template" Value="{DynamicResource SecureBrowserSelectedTabTemplate}" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding CloseButtonVisibility}"
+                             Value="Collapsed">
+                    <Setter Property="Width" Value="50"/>
+                    <Setter Property="Template" Value="{DynamicResource SecureBrowserAddNewTabTemplate}" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+        <DataTemplate x:Key="SecureBrowserFavoritesItemTemplate">
+            <Border BorderThickness="0,0,0,0.5" BorderBrush="DarkGray">
+                <Grid Height="30" Width="{Binding Path=ActualWidth, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListView}, Converter={StaticResource CustomTextLengthConverter}}" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30" />
+                        <ColumnDefinition Width="140" />
+                        <ColumnDefinition Width="*"  />
+                        <ColumnDefinition Width="30" />
+                        <ColumnDefinition Width="40" />
+                    </Grid.ColumnDefinitions>
+
+                    <Image Grid.Row="0" Grid.Column="0" Source="{Binding SiteImage}"
+                       HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,2,2,0">
+						<Image.InputBindings>
+                            <MouseBinding MouseAction="LeftClick" Command="{Binding ElementName=ucSecureBrowser, Path=DataContext.OpenInCurrentTabCommand}"
+                                      CommandParameter="{Binding Favorite.Url}" />
+                        </Image.InputBindings>
+					</Image>
+                    <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Favorite.Name}"
+                           VerticalAlignment="Center" Foreground="{DynamicResource BlackColor}" TextTrimming="CharacterEllipsis"
+                           FontSize="10" FontWeight="Normal" Margin="20,0,0,0"
+                           FontFamily="{DynamicResource ProximaRegular}">
+						<TextBlock.InputBindings>
+							
+						<MouseBinding MouseAction="LeftClick" Command="{Binding ElementName=ucSecureBrowser, Path=DataContext.OpenInCurrentTabCommand}"
+                                      CommandParameter="{Binding Favorite.Url}" />
+						</TextBlock.InputBindings>
+					</TextBlock>
+                    <TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding Favorite.Url}" 
+                           Margin="20,0,0,0"
+                           VerticalAlignment="Center" TextTrimming="CharacterEllipsis"
+                           Foreground="#8E9DA2" FontSize="10" FontWeight="Normal"
+                           FontFamily="{DynamicResource ProximaRegular}" Padding="0,0,0,0">
+						<TextBlock.InputBindings>
+							
+						<MouseBinding MouseAction="LeftClick" Command="{Binding ElementName=ucSecureBrowser, Path=DataContext.OpenInCurrentTabCommand}"
+                                      CommandParameter="{Binding Favorite.Url}" />
+						</TextBlock.InputBindings>
+					</TextBlock>
+
+                    <Image Grid.Row="0" Grid.Column="3" Source="{DynamicResource imgPencilSmall}"
+                       VerticalAlignment="Center"
+                   HorizontalAlignment="Right" Height="16" Width="16" Margin="10,0,0,0" RenderOptions.BitmapScalingMode="HighQuality"  >
+                        <Image.InputBindings>
+                            <MouseBinding MouseAction="LeftClick" Command="{Binding ElementName=ucSecureBrowser, Path=DataContext.SelectedTabItem.SelectedFavoriteEditCommand}"
+                                      CommandParameter="{Binding Favorite.Url}" />
+                        </Image.InputBindings>
+						<Image.ToolTip>
+                            <TextBlock Text="{DynamicResource Edit}" FontFamily="{DynamicResource ProximaRegular}"/>
+                        </Image.ToolTip>
+                    </Image>
+
+                    <Image Grid.Row="0" Grid.Column="4" Source="{DynamicResource imgTrashSmall}"
+                       VerticalAlignment="Center"
+                   HorizontalAlignment="Right" Height="16" Width="16" Margin="3,0,0,0" RenderOptions.BitmapScalingMode="HighQuality"  >
+                        <Image.InputBindings>
+                            <MouseBinding MouseAction="LeftClick" Command="{Binding ElementName=ucSecureBrowser, Path=DataContext.RemoveFromFavoriteListCommand}"
+                                      CommandParameter="{Binding Favorite.Url}" />
+                        </Image.InputBindings>
+						<Image.ToolTip>
+                            <TextBlock Text="{DynamicResource Delete}" FontFamily="{DynamicResource ProximaRegular}"/>
+                        </Image.ToolTip>
+                    </Image>
+                </Grid>
+            </Border>
+        </DataTemplate>
+
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid x:Name="SecureBrowser">
+		<Grid.InputBindings>
+			<KeyBinding Command="{Binding Path=AddPressedCommand}" Key="Add"> <!--TOOD implement this later... -->
+                           
+                        </KeyBinding>
+		</Grid.InputBindings>
+            <Border Background="#294153" />
+
+            <Grid HorizontalAlignment="Left" Width="140" Height="40" Background="Transparent" VerticalAlignment="Top" Margin="5,5,0,0" UseLayoutRounding="True">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Source="{DynamicResource imgLock}" Height="14" Width="14" Grid.Column="0" 
+                       HorizontalAlignment="Center" VerticalAlignment="Top" RenderOptions.BitmapScalingMode="HighQuality" />
+                <TextBlock Grid.Column="1" HorizontalAlignment="Left" Text="{DynamicResource SecureBrowser}" FontSize="14" 
+                           Foreground="{DynamicResource WhiteColor}" FontFamily="{DynamicResource ProximaRegular}"/>
+            </Grid>
+            <TabControl ui:TabContent.IsCached="True" x:Name="SecureBrowserTab" Background="Transparent"
+                        BorderThickness="0" Margin="0,5,0,0" TabStripPlacement="Top"
+                        Padding="0,0,0,0" Style="{DynamicResource SecureBrowserControlTemplate}" FontSize="12" FontWeight="Normal"
+                        FontFamily="{DynamicResource ProximaRegular}"
+                        ItemsSource="{Binding TabItemCollection}"
+                        SelectedItem="{Binding SelectedTabItem}"
+                        SelectedIndex="{Binding SelectedIndex}">
+                <TabControl.ItemTemplate>
+                    <DataTemplate>
+                        <HeaderedContentControl Focusable="False" Header="{Binding SearchBar.Title}" Margin="0,0,0,0" VerticalAlignment="Center">
+							<HeaderedContentControl.InputBindings>
+								 <KeyBinding Command="{Binding Path=AddPressedCommand}" Key="Add" />
+								 <KeyBinding Command="{Binding Path=SubtractPressedCommand}" Key="Subtract" />
+							</HeaderedContentControl.InputBindings>
+                        </HeaderedContentControl>
+                    </DataTemplate>
+                </TabControl.ItemTemplate>
+                <ui:TabContent.Template>
+                    <DataTemplate>
+                        <Grid Name="SecureBrowserWindow" Margin="0,0,0,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="35" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Background="#294153" />
+
+                            <Grid Grid.Row="0" Background="{DynamicResource SecureBrowserLightGrayBackgroundColor}" UseLayoutRounding="True">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="30" />
+                                    <ColumnDefinition Width="30" />
+                                    <ColumnDefinition Width="30" />
+                                    <ColumnDefinition Width="30" />
+                                    <ColumnDefinition Width="30" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="40" />
+                                </Grid.ColumnDefinitions>
+                                <Button Grid.Column="0" Style="{DynamicResource SecureBrowserChromeEffectButtonStyle}" x:Name="btnGoBack" Margin="5,0,0,0"
+                                        Click="btnGoBack_Click" IsEnabled="{Binding CanGoBack}" VerticalAlignment="Center" Background="Transparent" ToolTip="{DynamicResource Back}"
+                                        Height="25" Width="25">
+
+                                    <Image Height="13" Width="9" RenderOptions.BitmapScalingMode="HighQuality" >
+										<Image.Style>
+											<Style TargetType="Image">
+												<Setter Property="Source" Value="{DynamicResource imgPreviewBlack}"></Setter>
+												<Style.Triggers>
+													<DataTrigger Binding="{Binding CanGoBack}" Value="False">
+                                                        <Setter Property="Source" Value="{DynamicResource imgPreview}"/>
+                                                    </DataTrigger>
+												</Style.Triggers>
+											</Style>
+										</Image.Style>
+										        
+									</Image>
+                                </Button>
+                                <Button Grid.Column="1" Style="{DynamicResource SecureBrowserChromeEffectButtonStyle}" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                        Height="25" Width="25"
+                                        x:Name="btnGoForward" IsEnabled="{Binding CanGoForward}" Click="btnGoForward_Click" Margin="2,0,2,0" Background="Transparent" ToolTip="{DynamicResource GoForwardToolTip}">
+
+                                    <Image RenderOptions.BitmapScalingMode="HighQuality"
+                                           Height="13" Width="9">
+										<Image.Style>
+											<Style TargetType="Image">
+												<Setter Property="Source" Value="{DynamicResource imgForward}"></Setter>
+												<Style.Triggers>
+													<DataTrigger Binding="{Binding CanGoForward}" Value="False">
+                                                        <Setter Property="Source" Value="{DynamicResource imgNext}"/>
+                                                    </DataTrigger>
+												</Style.Triggers>
+											</Style>
+										</Image.Style>
+									</Image>
+                                </Button>
+                                <Button Grid.Column="2" Style="{DynamicResource SecureBrowserChromeEffectButtonStyle}" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                        ToolTip="{DynamicResource HomeToolTip}"
+                                        x:Name="btnHome" Command="{Binding ShowOrHideHomepageCommand}" Height="25" Width="25" Margin="2,0,2,0">
+                                    <Image Source="{DynamicResource imgHome}" RenderOptions.BitmapScalingMode="HighQuality" Height="12" Width="12" />
+                                </Button>
+                                <Button Grid.Column="3" Style="{DynamicResource SecureBrowserChromeEffectButtonStyle}" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                        x:Name="btnFavorites" Command="{Binding ShowOrHideFavoriteListCommand}" Margin="2,0,2,0"
+                                        ToolTip="{DynamicResource Favorites}" Height="25" Width="25">
+
+                                    <Image Source="{DynamicResource imgBrowserStar}" RenderOptions.BitmapScalingMode="HighQuality"
+                                           Height="12" Width="13" />
+                                </Button>
+
+                                <Button Grid.Column="4" Style="{DynamicResource SecureBrowserChromeEffectButtonStyle}" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                        x:Name="btnRefresh"  Command="{Binding RefreshBrowserCommand}" Margin="2,0,2,0"
+                                        ToolTip="{DynamicResource RefreshToolTip}" Height="25" Width="25">
+
+                                    <Image Source="{DynamicResource imgRefresh}" Height="13" Width="11" RenderOptions.BitmapScalingMode="HighQuality" />
+                                </Button>
+
+                                <view:SecureBrowserSearchBox Visibility="{Binding CloseButtonVisibility}"
+                                                             Grid.Column="5" Margin="2,0,2,0" VerticalAlignment="Center"
+                                                             DataContext="{Binding SearchBar, Mode=TwoWay}"
+                                                             x:Name="secureBrowserSearchBox" />
+                                <Button Grid.Column="6" Style="{DynamicResource SecureBrowserChromeEffectButtonStyle}" VerticalAlignment="Center"
+                                        x:Name="btnPrint" Command="{Binding PrintCommand}" HorizontalAlignment="Center" Margin="0,0,0,0"
+                                        ToolTip="{DynamicResource Print}" Height="25" Width="25">
+
+                                    <Image Source="{DynamicResource imgPrint}" RenderOptions.BitmapScalingMode="HighQuality"
+                                           Height="16" Width="18" />
+                                </Button>
+                            </Grid>
+                            <Grid x:Name="gWebBrowserContainer" Loaded="gWebBrowserContainer_Loaded" Grid.Row="1"
+                                  Visibility="{Binding IsWebBrowserContainerVisible}" VerticalAlignment="Stretch">
+                                
+
+                            </Grid>
+                            <Grid x:Name="gHomepageContainer" Grid.Row="1" Background="#F3F4F6"
+                                  Visibility="{Binding IsHomepageContainerVisible}">
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="85" />
+                                    <RowDefinition Height="40" />
+                                    <RowDefinition Height="280" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="20" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="20" />
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Grid.Row="1" Grid.Column="1" MaxWidth="570" Width="570" VerticalAlignment="Center">
+                                    <view:SearchBoxWithMagnifier DataContext="{Binding SearchBar}" />
+                                </Grid>
+
+                                <Grid Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" UseLayoutRounding="True">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="250" />
+                                            <RowDefinition Height="30" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" MinWidth="75" />
+                                            <ColumnDefinition Width="570" MaxWidth="570" />
+                                            <ColumnDefinition Width="*" MinWidth="75"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Button Name="ButtonPrevious" Background="Transparent"
+                                        Visibility="{Binding Model.HomepageModel.IsPreviousButtonVisible, Converter={StaticResource BoolToVisibility}, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                        Grid.Row="0" Grid.Column="0"
+                                            HorizontalAlignment="Right" Command="{Binding Model.HomepageModel.PreviousCommand}"
+                                            VerticalAlignment="Center" Margin="0,0,40,0"
+                                            Style="{DynamicResource btnStyleNoHover}">
+                                            <StackPanel Orientation="Horizontal">
+                                                <Image Source="{DynamicResource imgPreview}"
+                                                Height="30" Width="30" />
+                                            </StackPanel>
+                                        </Button>
+
+                                        <Button Name="ButtonNext" Background="Transparent" Margin="40,0,0,0"
+                                        Visibility="{Binding Model.HomepageModel.IsNextButtonVisible, Converter={StaticResource BoolToVisibility}, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                            Grid.Row="0" Grid.Column="2"
+                                            HorizontalAlignment="Left" Command="{Binding Model.HomepageModel.NextCommand}"
+                                            VerticalAlignment="Center"
+                                            Style="{DynamicResource btnStyleNoHover}">
+                                            <StackPanel Orientation="Horizontal">
+                                                <Image Source="{DynamicResource imgNext}"
+                                                Height="30" Width="30"  />
+                                            </StackPanel>
+                                        </Button>
+
+                                        <Grid Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+
+                                            <ItemsControl Background="Transparent"
+                                                  ItemsSource="{Binding Model.HomepageModel.ViewList.View}"
+                                                  ItemTemplate="{DynamicResource SecureBrowserItemTemplate}" BorderThickness="0">
+                                                <ItemsControl.ItemsPanel>
+                                                    <ItemsPanelTemplate>
+                                                        <WrapPanel Orientation="Horizontal"
+                                                                   ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                                                   ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                                                                   Height="{Binding (FrameworkElement.ActualHeight), RelativeSource={RelativeSource AncestorType=ScrollContentPresenter}}"
+                                                                   Width="{Binding (FrameworkElement.ActualWidth), RelativeSource={RelativeSource AncestorType=ScrollContentPresenter}}" />
+
+                                                    </ItemsPanelTemplate>
+                                                </ItemsControl.ItemsPanel>
+                                            </ItemsControl>
+                                        </Grid>
+
+                                        <view:Paging Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Top" 
+                                                     HorizontalContentAlignment="Center" x:Name="pgFavorite" 
+                                                     DataContext="{Binding Model.HomepageModel, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                                     Margin="0,-10,0,0"/>
+                                    </Grid>
+                                </Grid>
+
+                                <ListView Grid.Row="3" Grid.Column="1"
+                                          HorizontalAlignment="Center" HorizontalContentAlignment="Center"
+                                          VerticalAlignment="Bottom" Margin="0,0,0,20" BorderThickness="0" Background="Transparent"
+                                          ItemsSource="{Binding Model.HomepageItemList}"
+                                          SelectedItem="{Binding Model.SelectedHomepageItem}"
+                                          ItemContainerStyle="{DynamicResource HomepageContainerStyle}">
+                                    <ListView.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch"></StackPanel>
+                                        </ItemsPanelTemplate>
+                                    </ListView.ItemsPanel>
+                                </ListView>
+                            </Grid>
+
+                            <Grid x:Name="gFavoriteListContainer" Grid.Row="1" HorizontalAlignment="Stretch"
+                                  Visibility="{Binding IsFavoriteListContainerVisible}" VerticalAlignment="Stretch">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+								<Border Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" Background="Transparent" BorderThickness="0,0,0,0.5" BorderBrush="{DynamicResource SecureBrowserLightGrayBackgroundColor}" VerticalAlignment="Stretch">
+									<Border.Style>
+										<Style TargetType="Border">
+											<Style.Triggers>
+												<DataTrigger Binding="{Binding Model.IsFavoriteListEmpty}" Value="False">
+													<Setter Property="Visibility" Value="Visible" />
+												</DataTrigger>
+												<DataTrigger Binding="{Binding Model.IsFavoriteListEmpty}" Value="True">
+													<Setter Property="Visibility" Value="Hidden" />
+												</DataTrigger>
+											</Style.Triggers>
+										</Style>
+									</Border.Style>
+									<ListView Grid.Row="0" Grid.Column="0" Name="SecureBrowserfavoriteListBox"
+											  Background="{DynamicResource SecureBrowserLightGrayBackgroundColor}" VerticalAlignment="Top" BorderThickness="0"
+											  HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"
+											  ItemsSource="{Binding Model.FavoriteList}"
+											  ItemTemplate="{DynamicResource SecureBrowserFavoritesItemTemplate}">
+
+										<ListView.ItemContainerStyle>
+											<Style TargetType="ListViewItem">
+												<Setter Property="HorizontalContentAlignment" Value="Stretch" />
+												<Style.Triggers>
+													<DataTrigger Binding="{Binding Model.IsFavoriteListEmpty}" Value="False">
+														<Setter Property="Visibility" Value="Visible" />
+													</DataTrigger>
+													<DataTrigger Binding="{Binding Model.IsFavoriteListEmpty}" Value="True">
+														<Setter Property="Visibility" Value="Hidden" />
+													</DataTrigger>
+												</Style.Triggers>
+											</Style>
+										</ListView.ItemContainerStyle>
+									</ListView>
+									<i:Interaction.Triggers>
+									 <i:EventTrigger EventName="MouseLeftButtonDown">
+										<i:InvokeCommandAction Command="{Binding ElementName=ucSecureBrowser, Path=DataContext.OpenInCurrentTabCommand}"/>
+									</i:EventTrigger>
+									</i:Interaction.Triggers>
+								</Border>
+								
+
+								<Border Grid.Row="0" Grid.Column="0" HorizontalAlignment="Stretch" Background="Transparent" BorderThickness="0,0,0,0.5" BorderBrush="{DynamicResource SecureBrowserLightGrayBackgroundColor}" VerticalAlignment="Stretch">
+									<Border.Style>
+										<Style TargetType="Border">
+											<Style.Triggers>
+												<DataTrigger Binding="{Binding Model.IsFavoriteListEmpty}" Value="True">
+													<Setter Property="Visibility" Value="Visible" />
+												</DataTrigger>
+												<DataTrigger Binding="{Binding Model.IsFavoriteListEmpty}" Value="False">
+													<Setter Property="Visibility" Value="Collapsed" />
+												</DataTrigger>
+											</Style.Triggers>
+										</Style>
+									</Border.Style>
+									<Grid Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Top" Background="{DynamicResource SecureBrowserLightGrayBackgroundColor}" Grid.Column="0"  Height="30" Width="{Binding Path=ActualWidth, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=ListView}, Converter={StaticResource CustomTextLengthConverter}}" >
+										<Grid.ColumnDefinitions>
+											<ColumnDefinition Width="30" />
+											<ColumnDefinition Width="140" />
+											<ColumnDefinition Width="*"  />
+											<ColumnDefinition Width="30" />
+											<ColumnDefinition Width="40" />
+										</Grid.ColumnDefinitions>
+
+										<TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="4" Text="Favorite list is empty"
+												VerticalAlignment="Center" Foreground="{DynamicResource BlackColor}" TextTrimming="CharacterEllipsis"
+												FontSize="10" FontWeight="Normal" Margin="20,0,0,0"
+												FontFamily="{DynamicResource ProximaRegular}">
+											<TextBlock.InputBindings>
+												<MouseBinding MouseAction="LeftClick" Command="{Binding ElementName=ucSecureBrowser, Path=DataContext.OpenInCurrentTabCommand}" />
+											</TextBlock.InputBindings>
+										</TextBlock>
+									</Grid>
+									<i:Interaction.Triggers>
+									 <i:EventTrigger EventName="MouseLeftButtonDown">
+										<i:InvokeCommandAction Command="{Binding ElementName=ucSecureBrowser, Path=DataContext.OpenInCurrentTabCommand}"/>
+									</i:EventTrigger>
+									</i:Interaction.Triggers>
+								</Border>
+
+                                
+								
+
+							   <Grid Width="363" Height="193" Visibility="{Binding SelectedFavoriteEditVisibility}"  HorizontalAlignment="Center" VerticalAlignment="Center" Background="{DynamicResource WhiteColor}">
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition Width="31*"/>
+										<ColumnDefinition Width="61*"/>
+										<ColumnDefinition Width="90*"/>
+										<ColumnDefinition Width="152*"/>
+										<ColumnDefinition Width="29*"/>
+									</Grid.ColumnDefinitions>
+									<Grid.RowDefinitions>
+										<RowDefinition Height="20*"/>
+										<RowDefinition Height="38*"/>
+										<RowDefinition Height="4*"/>
+										<RowDefinition Height="39*"/>
+										<RowDefinition Height="34*"/>
+										<RowDefinition Height="33"/>
+										<RowDefinition Height="28*"/>
+									</Grid.RowDefinitions>
+									<Button Grid.Column="4" Margin="0,4,0,0" Grid.Row="0" Grid.RowSpan="2" HorizontalAlignment="Center" 
+									VerticalAlignment="Top" BorderBrush="Transparent" Background="Transparent" Height="21.5" Width="21"
+									Command="{Binding SelectedFavoriteHideEditDialogCommand}" >
+										<Path x:Name="close" Data="F1M12.993,2.811C12.993,2.811 11.187,1.004 11.187,1.004 11.187,1.004 7.496,4.695 7.496,4.695 7.496,4.695 3.805,1.004 3.805,1.004 3.805,1.004 1.999,2.811 1.999,2.811 1.999,2.811 5.689,6.501 5.689,6.501 5.689,6.501 1.999,10.192 1.999,10.192 1.999,10.192 3.805,11.999 3.805,11.999 3.805,11.999 7.496,8.308 7.496,8.308 7.496,8.308 11.187,11.999 11.187,11.999 11.187,11.999 12.993,10.192 12.993,10.192 12.993,10.192 9.303,6.501 9.303,6.501 9.303,6.501 12.993,2.811 12.993,2.811z" 
+											Fill="{DynamicResource PasswordBossBlackBackgroundColor}" Height="13" Width="14" HorizontalAlignment="Center" VerticalAlignment="Center">
+										</Path>
+									</Button>
+									<TextBlock x:Name="Name1" Grid.Row="1" Grid.Column="1" Foreground="#FF758287" FontSize="13" FontFamily="{DynamicResource ProximaLight}"
+										IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight" 
+										LineHeight="13" TextAlignment="Left" HorizontalAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap" Text="Name" />
+									<TextBox x:Name="txtEditFavoriteName" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" FontSize="{DynamicResource FontSize17}"
+										 FontFamily="{DynamicResource ProximaRegular}"
+										 Style="{DynamicResource TextBoxStyle}" Text="{Binding SelectedFavoriteName, Mode=TwoWay}" VerticalContentAlignment="Center"
+										  Width="241" Height="34" CaretBrush="{DynamicResource CheckBoxReadAcceptBorderbrush}" />
+
+									<TextBlock x:Name="Location1" Grid.Row="3" Grid.Column="1" Foreground="#FF758287" FontSize="13" FontFamily="{DynamicResource ProximaLight}"
+										 IsHyphenationEnabled="True" LineStackingStrategy="BlockLineHeight"  LineHeight="13"
+										 TextAlignment="Left" TextWrapping="Wrap" Text="Location" HorizontalAlignment="Left" VerticalAlignment="Center" />
+									<TextBox x:Name="txtEditFavoriteUrl" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" FontSize="{DynamicResource FontSize17}"
+										 FontFamily="{DynamicResource ProximaRegular}" HorizontalAlignment="Left" VerticalAlignment="Center"
+										 Style="{DynamicResource TextBoxStyle}" VerticalContentAlignment="Center"
+										  Width="241" Height="34" CaretBrush="{DynamicResource CheckBoxReadAcceptBorderbrush}" Text="{Binding SelectedFavoriteUrl, Mode=TwoWay}" />
+
+									<Button x:Name="btnDeleteFavorite" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Content="{DynamicResource Delete}" Width="80"
+                                            Height="25" HorizontalAlignment="Center" HorizontalContentAlignment="Center" FontWeight="SemiBold" FontSize="12"
+                                            Background="Transparent" Foreground="{DynamicResource PasswordBossGreenColor}" 
+                                            Style="{DynamicResource CancelButton_style}"
+                                            Command="{Binding SelectedFavoriteDeleteCommand}">
+									</Button>
+									<Button Content="{DynamicResource Save}" Height="30" Width="150" Grid.Row="5" Grid.Column="3"
+                                            FontWeight="SemiBold" FontSize="12" 
+                                            Style="{DynamicResource SubmitButtonStyle}" Background="{DynamicResource PasswordBossGreenColor}"
+                                            Foreground="{DynamicResource WhiteColor}" Command="{Binding SelectedFavoriteSaveCommand}">
+									</Button>
+								</Grid>
+
+                            </Grid>
+                        </Grid>
+                    </DataTemplate>
+                </ui:TabContent.Template>
+            </TabControl>
+
+        </Grid>
+
+    </Grid>
+
+</UserControl>

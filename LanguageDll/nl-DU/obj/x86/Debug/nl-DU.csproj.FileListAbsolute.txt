@@ -1,0 +1,8 @@
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\nl-DU\bin\x86\Debug\nl-DU.dll
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\nl-DU\bin\x86\Debug\nl-DU.pdb
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\nl-DU\obj\x86\Debug\resources\nl-DU.baml
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\nl-DU\obj\x86\Debug\nl-DU_MarkupCompile.cache
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\nl-DU\obj\x86\Debug\nl-DU.g.resources
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\nl-DU\obj\x86\Debug\nl-DU.dll
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\nl-DU\obj\x86\Debug\nl-DU.pdb
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\nl-DU\obj\x86\Debug\nl-DU.csproj.CoreCompileInputs.cache

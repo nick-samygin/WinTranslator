@@ -1,0 +1,173 @@
+﻿<Page x:Class="PasswordBoss.Views.Login.VerificationRequired"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d"
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+      xmlns:account="clr-namespace:PasswordBoss.ViewModel.Account"
+      d:DesignHeight="400" d:DesignWidth="400" MaxHeight="400" Height="400" Width="400"
+      Title="VerificationRequired">
+
+    <Page.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+    </Page.Resources>
+
+    <Border BorderThickness="1" BorderBrush="{DynamicResource LoginGrayBorder}">
+        <Grid x:Name="VerificationMasterGrid" Background="{DynamicResource PasswordBossBlackBackgroundColor}">
+
+            <Grid x:Name="VerificationGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="70" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="37" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="16" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="6" />
+                    <RowDefinition Height="Auto" MaxHeight="100" />
+                    <RowDefinition Height="6" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="1" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="1" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="16" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid x:Name="DragGrid" Grid.Row="0" Grid.Column="0" Background="{DynamicResource WhiteColor}" Grid.ColumnSpan="3"
+                  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                  MouseLeftButtonDown="DragGrid_OnMouseLeftButtonDown">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".4*" />
+                        <ColumnDefinition Width=".6*" />
+                    </Grid.ColumnDefinitions>
+                    <Image Source="{DynamicResource imgLoginLogoGreen}" Width="130" Height="45" Margin="20,0,0,0" />
+                    <Button x:Name="BtnClose" Grid.Column="1" BorderThickness="0,0,0,0" Canvas.ZIndex="1" Height="10"
+                            Width="10" Command="{Binding CloseCommand}" Margin="0,10,10,0"
+                            HorizontalAlignment="Right" VerticalAlignment="Top"
+                            Style="{DynamicResource NoHoverEffectButtonStyle}">
+                        <Image Source="{DynamicResource imgCloseAlert}" />
+                    </Button>
+                </Grid>
+
+                <!-- Text="{DynamicResource VerificationRequired}" -->
+                <TextBlock Grid.Row="3" Grid.Column="1" 
+                       HorizontalAlignment="Center" Text="{DynamicResource VerificationRequired}"
+                       VerticalAlignment="Center" FontSize="20" FontFamily="{DynamicResource ProximaRegular}"
+                       Foreground="{DynamicResource PasswordBossGreenColor}" />
+                <Border Grid.Row="5" Grid.Column="1" BorderThickness="1" CornerRadius="5" BorderBrush="Transparent"
+                    Height="40">
+                    <TextBox x:Name="VerificationTextBox" HorizontalContentAlignment="Center" HorizontalAlignment="Stretch"
+                         VerticalContentAlignment="Center" VerticalAlignment="Stretch" BorderThickness="0"
+                         TextAlignment="Left" Width="268" MaxWidth="268" MaxLength="10"
+                         FontSize="17" CaretBrush="{DynamicResource CheckBoxReadAcceptBorderbrush}" Text="{Binding VerificationText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                         FontFamily="{DynamicResource ProximaRegular}"
+                         Style="{DynamicResource VerificationTextBoxStyle}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="TextChanged">
+                                <i:InvokeCommandAction Command="{Binding ElementTextChangedCommand}"
+                                                   CommandParameter="{Binding ElementName=VerificationTextBox}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </TextBox>
+                </Border>
+                <!--<TextBlock Grid.Row="7" Grid.Column="1" HorizontalAlignment="Center" TextWrapping="Wrap" FontSize="17"
+                       Width="300" FontWeight="Normal"
+                       TextAlignment="Center" Foreground="#105350" FontFamily="{DynamicResource ProximaRegular}"
+                       VerticalAlignment="Center"
+                       Text="{DynamicResource VerificationDesc}"
+                       LineStackingStrategy="BlockLineHeight" LineHeight="23" />-->
+
+                <!-- Text="{DynamicResource VerificationDesc}" -->
+                <Viewbox Grid.Row="7" Grid.Column="1" StretchDirection="DownOnly" Stretch="Fill" MaxWidth="270" MaxHeight="100">
+                    <TextBlock TextWrapping="Wrap" FontSize="16" Width="270" MinWidth="270"
+                       Foreground="{DynamicResource WhiteColor}" FontFamily="{DynamicResource ProximaRegular}"
+                       VerticalAlignment="Center" TextAlignment="Center"
+                       Text="{DynamicResource VerificationDesc}"
+                       LineStackingStrategy="BlockLineHeight" LineHeight="22" />
+                </Viewbox>
+                <Button x:Name="VerificationSubmitButton" Grid.Row="15" Grid.Column="1" IsDefault="True"
+                    Foreground="{DynamicResource WhiteColor}" FontWeight="Normal"
+                    FontFamily="{DynamicResource ProximaRegular}" Content="{DynamicResource Submit}"
+                    FontSize="{DynamicResource FontSize17}" Height="40"
+                    Style="{DynamicResource SignInButtonStyle}"
+                    Command="{Binding SubmitButtonCommand}" Width="268"
+                    CommandParameter="{Binding ElementName=VerificationTextBox}" />
+
+                <StackPanel Grid.Row="16" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center">
+                        <Hyperlink Name="HypTbloginto_pbox" 
+                                   FontFamily="{DynamicResource ProximaRegular}"
+                                   Foreground="{DynamicResource WhiteColor}"
+                                   FontSize="18"
+                                   TextDecorations="{x:Null}"
+                                   Command="{Binding CancelButtonCommand}" CommandParameter="{Binding ElementName=VerificationTextBox}">
+                                    <TextBlock Text="{DynamicResource Cancel}" />
+                        </Hyperlink>
+                    </TextBlock>
+                </StackPanel>
+            </Grid>
+
+            <Grid x:Name="VerificationApiErrorOpaqueGrid" HorizontalAlignment="Stretch"
+			Visibility="{Binding VerificationApiErrorVisibility, Converter={StaticResource BoolToVisiblity}}"
+			VerticalAlignment="Stretch" Background="{DynamicResource BlackColor}" Opacity="0.7" />
+
+            <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+	            Background="Transparent"
+	            Visibility="{Binding VerificationApiErrorVisibility, Converter={StaticResource BoolToVisiblity}}"
+	            Canvas.ZIndex="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="250" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="345" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Row="1" Grid.Column="1" Background="{DynamicResource WhiteColor}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="53" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Text="{DynamicResource CodeVerificationError}" FontSize="20"
+			            FontWeight="SemiBold"
+			            FontFamily="{DynamicResource ProximaRegular}" Margin="0,20,0,0"
+			            Foreground="{DynamicResource TextForegroundcolor}" VerticalAlignment="Top"
+			            TextAlignment="Center" />
+
+                    <TextBlock Grid.Row="1" Grid.ColumnSpan="2" Margin="0,15,0,0" VerticalAlignment="Top" FontSize="16" LineHeight="22"
+			            Width="325" Foreground="{DynamicResource TextMessageForegroundcolor}"
+			            FontFamily="{DynamicResource ProximaRegular}" TextWrapping="Wrap"
+			            Text="{DynamicResource IncorrectVerificationCodeDescription}"
+			            TextAlignment="Justify" />
+
+                    <Button Grid.Row="2" Grid.Column="0" Content="{DynamicResource TryAgain}" FontSize="16" FontWeight="SemiBold"
+			            Foreground="{DynamicResource WhiteColor}" Style="{DynamicResource btnStyleNoHover}"
+			            Background="{DynamicResource LightGrayTextForegroundColor}" FontFamily="{DynamicResource ProximaRegular}" HorizontalContentAlignment="Center"
+			            Command="{Binding TryAgainButtonCommand}" CommandParameter="{Binding ElementName=VerificationTextBox}"/>
+
+                    <Button Grid.Row="2" Grid.Column="1" Content="{DynamicResource Resend}" FontSize="16" FontWeight="SemiBold"
+			            Foreground="{DynamicResource WhiteColor}" Style="{DynamicResource btnStyleNoHover}"
+			            Background="{DynamicResource PasswordBossGreenColor}" FontFamily="{DynamicResource ProximaRegular}" HorizontalContentAlignment="Center"
+			            Command="{Binding ResendButtonCommand}" CommandParameter="{Binding ElementName=VerificationTextBox}"/>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Border>
+</Page>

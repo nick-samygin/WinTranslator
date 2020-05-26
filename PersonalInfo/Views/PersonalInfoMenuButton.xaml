@@ -1,0 +1,10 @@
+﻿<UserControl x:Class="PasswordBoss.Views.PersonalInfoMenuButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:controls="clr-namespace:PasswordBoss.UserControls;assembly=theme"
+             mc:Ignorable="d"
+             Cursor="Hand">
+    <controls:MenuButtonControl Header="{DynamicResource PersonalInfo}" x:Name="btnPersonalInfo" Click="Button_Click"  ImageSource="{DynamicResource person_grey}" SelectedImageSource="{DynamicResource person_green}"/>
+</UserControl>

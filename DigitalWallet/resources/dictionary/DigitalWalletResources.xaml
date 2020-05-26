@@ -1,0 +1,194 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+                    xmlns:localPass ="clr-namespace:PasswordBoss.Helpers"
+                    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+                    xmlns:localhelpers="clr-namespace:PasswordBoss.Helpers.TemplateSelectors"
+                    xmlns:uc="clr-namespace:PasswordBoss.UserControls;assembly=theme"
+                    xmlns:h ="clr-namespace:PasswordBoss.Helpers">
+    
+    <localPass:IsNullConverter x:Key="IsNullConverter" />
+    
+    <DataTemplate x:Key="BankAccountDataTemplate" >
+        <StackPanel Orientation="Vertical">
+
+           <uc:RequiredTextBlock Text="{DynamicResource Name}" />
+           <uc:RequiredTextBox Text="{Binding Name,Mode=TwoWay}" IsValid="{Binding IsValidName,Mode=TwoWay}"/>
+
+            <TextBlock Text="{DynamicResource ItemFolder}" Style="{DynamicResource AddItemTextBlock}"/>
+            <telerik:RadDropDownButton Style="{DynamicResource FolderDropDownButtonStyle}" />
+
+            <TextBlock Text="{DynamicResource ItemFieldBankName}" Style="{DynamicResource AddItemTextBlock}"/>
+            <TextBox Text="{Binding BankName,Mode=TwoWay}" Style="{DynamicResource AddItemTextBox}" />
+
+            <TextBlock Text="{DynamicResource NameOnAccount}" Style="{DynamicResource AddItemTextBlock}"/>
+            <TextBox Text="{Binding AccountName,Mode=TwoWay}" Style="{DynamicResource AddItemTextBox}" />
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="16"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="{DynamicResource AccountNumber}" Style="{DynamicResource AddItemTextBlock}"/>
+                <TextBox Grid.Row="1" Text="{Binding AccountNumber,Mode=TwoWay}" Style="{DynamicResource AddItemTextBox}" Width="214" HorizontalAlignment="Stretch"/>
+
+                <TextBlock Text="{DynamicResource RoutingNumber}" Grid.Column="2" Style="{DynamicResource AddItemTextBlock}"/>
+                <TextBox Grid.Row="1" Grid.Column="2" Text="{Binding RoutingNumber,Mode=TwoWay}" Style="{DynamicResource AddItemTextBox}" Width="214" />
+
+                <TextBlock Text="BIC / Swift" Grid.Row="2" Style="{DynamicResource AddItemTextBlock}"/>
+                <TextBox Grid.Row="3" Text="{Binding BIC,Mode=TwoWay}" Style="{DynamicResource AddItemTextBox}" Width="214" HorizontalAlignment="Stretch"/>
+
+                <TextBlock Text="IBAN" Grid.Row="2" Grid.Column="2" Style="{DynamicResource AddItemTextBlock}"/>
+                <TextBox Grid.Row="3" Grid.Column="2" Text="{Binding IBAN,Mode=TwoWay}" Style="{DynamicResource AddItemTextBox}" Width="214" />
+
+                <TextBlock Text="Pin" Grid.Row="4" Style="{DynamicResource AddItemTextBlock}"/>
+                <TextBox Grid.Row="5" Text="{Binding Pin,Mode=TwoWay}" Style="{DynamicResource AddItemTextBox}" Width="214" HorizontalAlignment="Stretch"/>
+
+                <TextBlock Text="{DynamicResource ItemFieldBankPhone}" Grid.Row="4" Grid.Column="2" Style="{DynamicResource AddItemTextBlock}"/>
+                <TextBox Grid.Row="5" Grid.Column="2" Text="{Binding BankPhone,Mode=TwoWay}" Style="{DynamicResource AddItemTextBox}" Width="214" />
+            </Grid>
+        </StackPanel>
+    </DataTemplate>
+
+    <DataTemplate x:Key="CreditCardDataTemplate" >
+        <StackPanel Orientation="Vertical">
+
+            <uc:RequiredTextBlock Text="{DynamicResource Name}" />
+              <uc:RequiredTextBox Text="{Binding Name,Mode=TwoWay}" IsValid="{Binding IsValidName,Mode=TwoWay}"/>
+
+            <TextBlock Text="{DynamicResource ItemFolder}" Style="{DynamicResource AddItemTextBlock}"/>
+            <telerik:RadDropDownButton Style="{DynamicResource FolderDropDownButtonStyle}" />                                    
+
+            <TextBlock Text="{DynamicResource NameOnCard}" Style="{DynamicResource AddItemTextBlock}"/>
+            <TextBox Text="{Binding NameOnCard,Mode=TwoWay}" Style="{DynamicResource AddItemTextBox}" />
+
+            <TextBlock Text="{DynamicResource CardNumber}" Style="{DynamicResource AddItemTextBlock}"/>
+            <TextBox Text="{Binding CardNumber,Mode=TwoWay}" Style="{DynamicResource AddItemTextBox}" />
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="16"/>
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="{DynamicResource CardType}" Style="{DynamicResource AddItemTextBlock}"/>
+               
+                <ComboBox Name="CardTypeCombobox" Grid.Row="1"  HorizontalAlignment="Stretch" 
+                                                       ItemsSource="{Binding CreditCards}"
+                                                       Style="{DynamicResource AddSecureItemComboStyle}" 
+                                                       SelectedItem="{Binding SelectedCreditCard, UpdateSourceTrigger=PropertyChanged}" 
+                                                       TextSearch.TextPath="Value" IsTextSearchEnabled="True"
+                                                      IsEnabled="{Binding Enabled}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Type}" Margin="0,4,0,0" HorizontalAlignment="Left" TextAlignment="Left" Foreground="{DynamicResource AddItemTextForegroundColor}" FontFamily="{DynamicResource ProximaRegular}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+
+                <TextBlock Text="{DynamicResource Expires}" Grid.Column="2" Style="{DynamicResource AddItemTextBlock}"/>
+                <Grid Grid.Row="1" Grid.Column="2" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="16"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <ComboBox HorizontalAlignment="Left" Width="100" ItemsSource="{Binding ExpiresMonths}" x:Name="MonthCombobox"
+                                      Style="{DynamicResource AddSecureItemComboStyle}"  
+                                      BorderThickness="1"  IsTextSearchEnabled="True" SelectedItem="{Binding ExpiresMonth,Mode=TwoWay}">                        
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding .}" Margin="0,4,0,0" HorizontalAlignment="Left" TextAlignment="Left" Foreground="{DynamicResource AddItemTextForegroundColor}" FontFamily="{DynamicResource ProximaRegular}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
+                    <TextBlock Text="{DynamicResource CreditCardMonth}" IsHitTestVisible="False" >
+                            <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}" >
+                                    <Setter Property="Visibility" Value="Hidden" />
+                                    <Setter Property="FontSize" Value="12"/>
+                                    <Setter Property="VerticalAlignment" Value="Bottom" />
+                                    <Setter Property="Foreground" Value="{DynamicResource AddItemTextForegroundColor}"/>
+                                    <Setter Property="Margin" Value="5 0 5 7" />
+                                    <Setter Property="FontWeight" Value="Normal"/>
+                                    <Setter Property="FontFamily" Value="{DynamicResource ProximaRegular}" />
+                                <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ElementName=MonthCombobox, Path=SelectedItem, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, Converter={StaticResource IsNullConverter}}" Value="True">
+                                                <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    
+                    <ComboBox Grid.Column="2" HorizontalAlignment="Left" Width="100" x:Name="YearCombobox" ItemsSource="{Binding ExpiresYears}" 
+                                      Style="{DynamicResource AddSecureItemComboStyle}"  
+                                      IsTextSearchEnabled="True" SelectedItem="{Binding ExpiresYear,Mode=TwoWay}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding .}" Margin="0,4,0,0" HorizontalAlignment="Left" TextAlignment="Left" Foreground="{DynamicResource AddItemTextForegroundColor}" FontFamily="{DynamicResource ProximaRegular}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                  
+                    </ComboBox>
+                    <TextBlock Grid.Column="2" Text="{DynamicResource CreditCardYear}" IsHitTestVisible="False" >
+                            <TextBlock.Style>
+                                <Style TargetType="{x:Type TextBlock}" >
+                                    <Setter Property="Visibility" Value="Hidden" />
+                                    <Setter Property="VerticalAlignment" Value="Bottom" />
+                                    <Setter Property="FontSize" Value="12"/>
+                                    <Setter Property="FontWeight" Value="Normal"/>
+                                    <Setter Property="Foreground" Value="{DynamicResource AddItemTextForegroundColor}"/>
+                                    <Setter Property="Margin" Value="5 0 5 7" />
+                                    <Setter Property="FontFamily" Value="{DynamicResource ProximaRegular}" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ElementName=YearCombobox, Path=SelectedItem, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, Converter={StaticResource IsNullConverter}}" Value="True">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+
+                </Grid>
+
+                <TextBlock Text="{DynamicResource IssueBank}" Grid.Row="2" Style="{DynamicResource AddItemTextBlock}"/>
+                <TextBox Grid.Row="3" Text="{Binding IssuingBank,Mode=TwoWay}" Style="{DynamicResource AddItemTextBox}" Width="214" HorizontalAlignment="Stretch"/>
+
+                <TextBlock Text="{DynamicResource ItemFieldSecurityCode}" Grid.Row="2" Grid.Column="2" Style="{DynamicResource AddItemTextBlock}"/>
+                <TextBox Grid.Row="3" Grid.Column="2" Text="{Binding SecurityCode,Mode=TwoWay}" Style="{DynamicResource AddItemTextBox}" Width="214" />
+
+                <TextBlock Text="{DynamicResource IssueDate}" Grid.Row="4" Style="{DynamicResource AddItemTextBlock}"/>
+                <TextBox Grid.Row="5" Text="{Binding IssueDate,Mode=TwoWay}" Style="{DynamicResource AddItemTextBox}" Width="214" HorizontalAlignment="Stretch"/>
+
+                <TextBlock Text="{DynamicResource PIN}" Grid.Row="4" Grid.Column="2" Style="{DynamicResource AddItemTextBlock}"/>
+                <TextBox Grid.Row="5" Grid.Column="2" Text="{Binding PIN,Mode=TwoWay}" Style="{DynamicResource AddItemTextBox}" Width="214" />
+            </Grid>
+        </StackPanel>
+    </DataTemplate>
+    
+    <localhelpers:DWSecureItemTemplateSelector x:Key="DWSecureItemTemplateSelector" 
+                                               BankAccountTemplate="{StaticResource BankAccountDataTemplate}"
+                                               CreditCardTemplate="{StaticResource CreditCardDataTemplate}"/>
+</ResourceDictionary>

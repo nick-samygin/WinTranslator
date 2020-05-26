@@ -1,0 +1,109 @@
+﻿<UserControl x:Class="PasswordBoss.Views.DigitalWalletItems"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:pbviews="clr-namespace:PasswordBoss.Views"
+             xmlns:view="clr-namespace:PasswordBoss.Views.UserControls"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:ui="clr-namespace:PasswordBoss.Helpers"
+			 xmlns:uc="clr-namespace:QuickZip.UserControls;assembly=theme" 
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:helpers="clr-namespace:PasswordBoss.Helpers;assembly=theme"
+               xmlns:behaviors="clr-namespace:PasswordBoss.Behaviors;assembly=theme"
+             xmlns:secureItemsHelpers="clr-namespace:SecureItemsCommon.Helpers;assembly=SecureItemsCommon"
+             mc:Ignorable="d"
+             d:DesignHeight="600" d:DesignWidth="600">
+    <UserControl.Resources>
+
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+
+        <DataTemplate x:Key="ListOfSecureItems">
+            <StackPanel Orientation="Vertical" telerik:DragDropManager.AllowCapturedDrag="False"  Margin="{Binding RelativeSource={RelativeSource AncestorType={x:Type telerik:RadTreeViewItem}},Converter={StaticResource NodeLevelToMargine}}">
+                <Rectangle Fill="{DynamicResource LightGrayTextForegroundColor}" Height="1" Margin="0 0 0 5" HorizontalAlignment="Stretch" />
+
+                <ListBox x:Name="secureItemsList" ItemsSource="{Binding SecureList}"
+                         Style="{DynamicResource SecureItemsListBoxStyle}"                        
+                         behaviors:ListBoxDragDropBehavior.IsEnabled="True"                 
+                         helpers:ListBoxHelper.SelectedItems="{Binding SelectedItems,Mode=TwoWay}"
+                        Tag="{Binding DataContext.Actions, RelativeSource={RelativeSource AncestorType={x:Type telerik:RadTreeView}}}">
+                    <telerik:RadContextMenu.ContextMenu>
+                        <telerik:RadContextMenu x:Name="radContextMenu"                             
+                                        ItemsSource="{Binding  Path=PlacementTarget.Tag, RelativeSource={RelativeSource Self}}" 
+                                        Style="{DynamicResource RadContextMenuStyle}"
+                                        ItemContainerStyle="{DynamicResource RadMenuItemStyle}" />
+                    </telerik:RadContextMenu.ContextMenu>
+                    <ListBox.Resources>
+                        <DataTemplate x:Key="DraggedItemTemplate">
+                            <StackPanel Background="Transparent">
+                                <Border BorderBrush="#3F008769" BorderThickness="1" Background="#3F00A785"  HorizontalAlignment="Left" Padding="10">
+                                    <Grid HorizontalAlignment="Left">
+                                        <Grid  HorizontalAlignment="Left" Visibility="{Binding HasOne,Converter={StaticResource BoolToVisibility}}">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto"/>
+                                                <RowDefinition Height="auto"/>
+                                            </Grid.RowDefinitions>
+                                            <Grid  Opacity="0.75" Width="60" Height="30" Background="{Binding CurrentDraggedItem[0].Background}"   >
+                                                <Image x:Name="dataImg"  Visibility="{Binding CurrentDraggedItem[0].IsDefaultImage,Converter={StaticResource InvertedBooleanToVisibility}}"
+                                    Source="{Binding CurrentDraggedItem[0].Image}" Stretch="Fill" >
+                                                </Image>
+                                                <Image   MaxHeight="25" VerticalAlignment="Center" Visibility="{Binding CurrentDraggedItem[0].IsDefaultImage,Converter={StaticResource BoolToVisibility}}"
+                                    Source="{Binding CurrentDraggedItem[0].Image}" Stretch="Uniform" >
+                                                </Image>
+                                            </Grid>
+                                        </Grid>
+                                        <Grid HorizontalAlignment="Left" Opacity="0.75" Width="60" Height="30"  Background="{DynamicResource SettingsGreenColor}" Visibility="{Binding HasOne,Converter={StaticResource InvertedBooleanToVisibility}}">
+                                            <TextBlock Text="{Binding CurrentDraggedItem.Count}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{DynamicResource PasswordBossBlackBackgroundColor}"
+                                         FontSize="15" FontWeight="Bold"   
+                                        FontFamily="{DynamicResource ProximaRegular}" />
+                                        </Grid>
+                                    </Grid>
+                                </Border>
+
+                                <Border BorderBrush="{DynamicResource SettingsLightGrayBorderColor}" BorderThickness="1" Margin="0 2 0 0" CornerRadius="1" Background="White"  Visibility="{Binding IsValidDrop,Converter={StaticResource BoolToVisibility}}">
+                                    <StackPanel Orientation="Horizontal" >
+                                        <TextBlock Text="Move To "   Foreground="{DynamicResource PasswordBossBlackBackgroundColor}"
+                             FontSize="11" FontWeight="Normal"  Margin="5 5 0 5"
+                            FontFamily="{DynamicResource ProximaRegular}"/>
+                                        <TextBlock Text="{Binding CurrentDraggedOverItem.FolderName}"  Foreground="{DynamicResource SettingsLightGrayBorderColor}"
+                             FontSize="11" FontWeight="Normal"   TextWrapping="Wrap" Margin="0 5 5 5"
+                            FontFamily="{DynamicResource ProximaRegular}" />
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.Resources>
+                </ListBox>
+            </StackPanel>
+
+        </DataTemplate>
+
+        <HierarchicalDataTemplate x:Key="HierarchicalTemplate" 
+		                          ItemsSource="{Binding ChildList}"  >
+            <StackPanel Orientation="Horizontal">
+                <TextBlock FontSize="12" FontWeight="Bold"  Text="{Binding FolderName,Converter={StaticResource StringToUppercase}}" />
+                <TextBlock FontSize="12" FontWeight="Bold"  Text=" (" />
+                <TextBlock FontSize="12" FontWeight="Bold"  Text="{Binding Count}" />
+                <TextBlock FontSize="12" FontWeight="Bold"  Text=")" />
+            </StackPanel>
+
+        </HierarchicalDataTemplate>
+
+        <secureItemsHelpers:TreeDataTemplateSelector x:Key="FolderTemplateSelector" FolderTemplate="{StaticResource HierarchicalTemplate}" SecureItemsListTemplate="{StaticResource ListOfSecureItems}"  />
+
+    </UserControl.Resources>
+    <Grid HorizontalAlignment="Stretch">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="RecommendedHeaderText" Grid.Row="0" Text="{DynamicResource RecommendedItemsHeader}" FontSize="18" Margin="15,15,0,0"
+            Visibility="{Binding AddRecommendedItemHeaderVisibility, Converter={StaticResource BoolToVisibility}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+        <ScrollViewer CanContentScroll="True" Grid.Row="1">
+            <telerik:RadTreeView x:Name="treeView" ItemsSource="{Binding HierarchyFolderList}" ItemContainerStyle="{DynamicResource CategoryItemStyle}"
+		                     ItemTemplateSelector="{StaticResource FolderTemplateSelector}"  AllowDrop="True" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+		                      Margin="5" IsDropPreviewLineEnabled="False" />
+        </ScrollViewer>
+    </Grid>
+
+</UserControl>

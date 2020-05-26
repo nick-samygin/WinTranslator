@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="PasswordBoss.Views.DigitalWalletContentPanel"
+             Name="ContentPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:pbviews="clr-namespace:PasswordBoss.Views"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:view="clr-namespace:PasswordBoss.Views.UserControls"
+             xmlns:ui="clr-namespace:PasswordBoss.Helpers"
+             mc:Ignorable="d"
+             d:DesignHeight="600" d:DesignWidth="600">
+
+    <UserControl.Resources>
+        <ui:ParametersConverter x:Key="ParametersConverter" />
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+
+        <Storyboard x:Key="sbOpenEditNewItem">
+            <DoubleAnimation Storyboard.TargetName="DigitalWalletAddEditControl"
+                             Storyboard.TargetProperty="(Grid.Width)"
+                             From="0" To="326" Duration="0:0:0.5" AutoReverse="False" />
+        </Storyboard>
+
+    </UserControl.Resources>
+
+    <Grid x:Name="ContainerGrid">
+              <!--Dynamic Content Grid-->
+        <Grid  Name="ItemsGrid"
+              HorizontalAlignment="Stretch" Margin="0,0,0,0">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="GotFocus">
+                    <i:InvokeCommandAction Command="{Binding ItemsGridGotFocusCommand}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Border Grid.Row="0" Grid.RowSpan="2" Background="{DynamicResource MainWindowGrayBackgroundColor}" />
+            <pbviews:DigitalWalletItems x:Name="DigitalWalletItemsContainer"></pbviews:DigitalWalletItems>
+           
+        </Grid>
+        <view:CustomMessageBoxUserControl 
+            MessageBoxDialogVisibility="{Binding DeleteSelectedItemsMessageBoxVisibility}" 
+            CustomMessageBoxType="Confirmation" 
+            MessageBoxDialogCancelButtonText="{DynamicResource Cancel}" 
+            MessageBoxDialogConfirmButtonText="{DynamicResource Delete}" 
+            MessageBoxDialogHeaderText="{DynamicResource DeleteSecureItemHeader}"
+            MessageBoxDialogText="{Binding DeleteSelectedItemsMessageText, UpdateSourceTrigger=PropertyChanged}"
+            MessageBoxDialogConfirmCommand="{Binding ConfirmedDeleteSelectedItemsCommand}"
+            MessageBoxDialogCancelCommand="{Binding CanceledDeleteSelectedItemsCommand}"
+            />
+    </Grid>
+
+</UserControl>

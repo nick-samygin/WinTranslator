@@ -1,0 +1,79 @@
+﻿<Window x:Class="PasswordBoss.Views.Login.AccountExistingDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        Title="Account Existing"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        ShowInTaskbar="False"
+        Background="Transparent"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterOwner"
+        Width="525" Height="250">
+
+    <Grid x:Name="TitleGrid" Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="15" />
+            <RowDefinition Height="75" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="1" HorizontalAlignment="Center" Text="{DynamicResource CreateAccountv3ExistingAccountHeadline}" TextWrapping="Wrap"
+                   Foreground="#203C52" FontFamily="{DynamicResource OBProximaRegular}" FontWeight="Bold" FontSize="21" />
+
+        <TextBlock Grid.Row="3" Width="350" HorizontalAlignment="Center" Text="{DynamicResource CreateAccountAccounExistsMessage}" TextWrapping="Wrap"
+                   Foreground="{DynamicResource GrayColor}" FontFamily="{DynamicResource OBProximaRegular}" FontSize="16" />
+
+        <Grid Grid.Row="4" HorizontalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="220" />
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="220" />
+                <ColumnDefinition Width="20" />
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Column="1" Style="{DynamicResource ACGreenButtonStyle}" Background="{DynamicResource LightGrayTextForegroundColor}"
+                    Command="{Binding CreateNewButtonCommand}">
+                <Grid>
+                    <ItemsControl HorizontalAlignment="Center" VerticalAlignment="Center" ItemsSource="{DynamicResource CreateAccountCreateNew}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Margin="0,0,2,0" Text="{Binding}" Foreground="White"
+                                           FontFamily="{DynamicResource OBProximaRegular}" FontSize="18" />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Grid>
+            </Button>
+
+            <Button Grid.Column="3" Style="{DynamicResource ACGreenButtonStyle}" Background="{DynamicResource PasswordBossGreenColor}"
+                    Command="{Binding LoginExistingButtonCommand}" CommandParameter="{Binding UserEmailId}">
+                <Grid>
+                    <ItemsControl HorizontalAlignment="Center" VerticalAlignment="Center" ItemsSource="{DynamicResource CreateAccountUseExisting}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Margin="0,0,2,0" Text="{Binding}" Foreground="White"
+                                           FontFamily="{DynamicResource OBProximaRegular}" FontSize="18" />
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Grid>
+            </Button>
+        </Grid>
+    </Grid>
+</Window>

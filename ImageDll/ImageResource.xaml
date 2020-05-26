@@ -1,0 +1,521 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <!--<BitmapImage x:Key="LoginBackground" UriSource="/images/login_bg.png"/>-->
+    <!--<system:String x:Key="TrayIcon">/image;component/images/favicon.ico</system:String>-->
+    <system:String x:Key="TrayIcon">pack://application:,,,/image;component/images/favicon.ico</system:String>
+
+    <BitmapImage x:Key="imgShieldYellowLarge" UriSource="/image;component/images/shield-yellow-44x50.png"/>
+    <BitmapImage x:Key="imgShieldYellow" UriSource="/image;component/images/shield-yellow-16x18.png"/>
+    <BitmapImage x:Key="imgShieldRedLarge" UriSource="/image;component/images/shield-red-44x50.png"/>
+    <BitmapImage x:Key="imgShieldRed" UriSource="/image;component/images/shield-red-16x18.png"/>
+    <BitmapImage x:Key="imgShieldOrangeLarge" UriSource="/image;component/images/shield-orange-44x50.png"/>
+    <BitmapImage x:Key="imgShieldOrange" UriSource="/image;component/images/shield-orange-16x18.png"/>
+    <BitmapImage x:Key="imgWarningRedLarge" UriSource="/image;component/images/warning-red-41x44.png"/>
+    <BitmapImage x:Key="imgLogoSmall" UriSource="/image;component/images/LogoSmall.png"/>
+    <BitmapImage x:Key="imgPBossHeaderSmall" UriSource="/image;component/images/PBossHeaderSmall.png"/>
+    <BitmapImage x:Key="imgPBossHeader" UriSource="/image;component/images/PBossHeader.png"/>
+    <BitmapImage x:Key="imgLoginBackground" UriSource="/image;component/images/login_bg.png"/>
+    <BitmapImage x:Key="imgLoginLogo" UriSource="/image;component/images/LoginLogoWhite.png"/>
+    <BitmapImage x:Key="imgLoginLogoGreen" UriSource="/image;component/images/LoginLogoGreen.png"/>
+    <BitmapImage x:Key="imgDownArow" UriSource="/image;component/images/down-arrow.png"/>
+    <BitmapImage x:Key="imgDownArrow1" UriSource="/image;component/images/downarrow.png"/>
+    <BitmapImage x:Key="imgGreenArrowDown" UriSource="/image;component/images/LanguageDownArrow.png"/>
+    <BitmapImage x:Key="imgDarkBlueArrowDown" UriSource="/image;component/images/down_darkblue.png"/>
+    <BitmapImage x:Key="imgDarkBlueArrowUp" UriSource="/image;component/images/up_darkblue.png"/>
+    <BitmapImage x:Key="imgGreenArrowUp" UriSource="/image;component/images/LanguageUpArrow.png"/>
+    <BitmapImage x:Key="imgUpArrow" UriSource="/image;component/images/up.png"/>
+    <BitmapImage x:Key="imgRadioButtonUntick" UriSource="/image;component/images/loginuntick.png"/>
+    <BitmapImage x:Key="imgAccountSettingsTick" UriSource="/image;component/images/tick.png"/>
+    <BitmapImage x:Key="imgRadioButtonTick" UriSource="/image;component/images/logintick.png"/>
+    <BitmapImage x:Key="imgClosed" UriSource="/image;component/images/Closed.png"/>
+    <BitmapImage x:Key="imgClosedHover" UriSource="/image;component/images/Closed_hover.png"/>
+    <BitmapImage x:Key="imgMaximise" UriSource="/image;component/images/maximise.png"/>
+    <BitmapImage x:Key="imgMaximiseHover" UriSource="/image;component/images/maximise_hover.png"/>
+    <BitmapImage x:Key="imgMinimise" UriSource="/image;component/images/minimise.png"/>
+    <BitmapImage x:Key="imgMinimiseHover" UriSource="/image;component/images/minimise_hover.png"/>
+    <BitmapImage x:Key="imgExclamation" UriSource="/image;component/images/exclamation.png" />
+
+    <BitmapImage x:Key="imgPasswordBossWhiteLogo" UriSource="/image;component/images/passwordboss_logo.png"/>
+    <BitmapImage x:Key="imgAccountSettingIcon" UriSource="/image;component/images/accountsetting.png" />
+    <BitmapImage x:Key="imgAccountSettingHover" UriSource="/image;component/images/accountsettinggreen.png" />
+    <BitmapImage x:Key="imgViewList" UriSource="/image;component/images/view_list.png" />
+    <BitmapImage x:Key="imgViewListHover" UriSource="/image;component/images/view_list_HOVER.png" />
+    <BitmapImage x:Key="imgViewGrid" UriSource="/image;component/images/view_grid.png" />
+    <BitmapImage x:Key="imgViewGridHover" UriSource="/image;component/images/view_grid_HOVER.png" />
+    <BitmapImage x:Key="imgNotification" UriSource="/image;component/images/Notification.png"/>
+    <BitmapImage x:Key="imgSecurityNotification" UriSource="/image;component/images/securityalert_g.png"/>
+    <BitmapImage x:Key="imgSecurityAlertIcon" UriSource="/image;component/images/securityalert_r.png"/>
+    <BitmapImage x:Key="imgAlertIcon" UriSource="/image;component/images/alert_icon.png"/>
+    <BitmapImage x:Key="imgWarningIcon" UriSource="/image;component/images/warning_icon.png"/>
+    <BitmapImage x:Key="imgWarningIconRed" UriSource="/image;component/images/warning_icon_red.png"/>
+    <BitmapImage x:Key="imgStopIcon" UriSource="/image;component/images/stop_icon.png"/>
+    <BitmapImage x:Key="imgInfoLgIcon" UriSource="/image;component/images/info_lg_icon.png"/>
+
+    <BitmapImage x:Key="imgCloseAlert" UriSource="/image;component/images/close_alert.png"/>
+    <BitmapImage x:Key="imgCloseAlertBig" UriSource="/image;component/images/close_02.png"/>
+    <BitmapImage x:Key="imgRightArrow" UriSource="/image;component/images/arrow_right.png"/>
+    <BitmapImage x:Key="imgSyncTick" UriSource="/image;component/images/synctick.png"/>
+    <BitmapImage x:Key="imgCloseEye" UriSource="/image;component/images/eye_03_closed.png"/>
+    <BitmapImage x:Key="imgClosedPop" UriSource="/image;component/images/closed_pop.png"/>
+    <BitmapImage x:Key="imgInfo" UriSource="/image;component/images/info.png"/>
+
+    <BitmapImage x:Key="imgEyeHoverClose" UriSource="/image;component/images/eye_03_closed.png"/>
+    <BitmapImage x:Key="imgEyeClose" UriSource="/image;component/images/eye_03.png"/>
+
+    <BitmapImage x:Key="imgBackupNow" UriSource="/image;component/images/backupnow.png"/>
+    <BitmapImage x:Key="imgBackupNowGreen" UriSource="/image;component/images/backupnow_green.png"/>
+    <BitmapImage x:Key="imgCompletedHover" UriSource="/image;component/images/completed_hover.png"/>
+
+    <BitmapImage x:Key="imgShare" UriSource="/image;component/images/share.png"/>
+    <BitmapImage x:Key="imgCheckBoxSqr" UriSource="/image;component/images/check_box_sqr.png"/>
+
+    <BitmapImage x:Key="imgQuestionMark" UriSource="/image;component/images/qmark.png"/>
+    <BitmapImage x:Key="imgRedArrow" UriSource="/image;component/images/red_arrow.png"/>
+    <BitmapImage x:Key="imgHelpHover" UriSource="/image;component/images/help_HOVER.png"/>
+    <BitmapImage x:Key="imgHelpGray" UriSource="/image;component/images/help.png"/>
+    <BitmapImage x:Key="imgHelpLogin" UriSource="/image;component/images/help_login.png"/>
+
+    <BitmapImage x:Key="imgSettingIcon" UriSource="/image;component/images/setting_02.png"/>
+    <BitmapImage x:Key="imgPencilIcon" UriSource="/image;component/images/pencil-icon.png"/>
+    <BitmapImage x:Key="imgPencilSmall" UriSource="/image;component/images/pencilSmall.png"/>
+    <BitmapImage x:Key="imgTabSettingHover" UriSource="/image;component/images/setting_hover.png"/>
+    <BitmapImage x:Key="imgTabSetting" UriSource="/image;component/images/tabsetting.png"/>
+    <BitmapImage x:Key="imgArrow" UriSource="/image;component/images/arrow.png"/>
+    <BitmapImage x:Key="imgArrowHover" UriSource="/image;component/images/arrow_hover.png"/>
+    <BitmapImage x:Key="imgFileHover" UriSource="/image;component/images/file_hover.png"/>
+    <BitmapImage x:Key="imgFile" UriSource="/image;component/images/file.png"/>
+    <BitmapImage x:Key="imgIcon" UriSource="/image;component/images/icon.png"/>
+
+    <BitmapImage x:Key="imgEditNormal" UriSource="/image;component/images/edit_normal.png"/>
+
+    <BitmapImage x:Key="imgTrash" UriSource="/image;component/images/trash.png"/>
+    <BitmapImage x:Key="imgTrashMedium" UriSource="/image;component/images/trash-20x20.png"/>
+    <BitmapImage x:Key="imgTrashSmall" UriSource="/image;component/images/trashSmall.png"/>
+    <BitmapImage x:Key="imgShare2Hover" UriSource="/image;component/images/share2_hover.png"/>
+    <BitmapImage x:Key="imgSearch" UriSource="/image;component/images/search.png"/>
+    <BitmapImage x:Key="imgSearch2" UriSource="/image;component/images/search2.png"/>
+    <BitmapImage x:Key="imgGear" UriSource="/image;component/images/gear.png"/>
+    <BitmapImage x:Key="imgShare2" UriSource="/image;component/images/share2.png"/>
+    <BitmapImage x:Key="imgSharePeople" UriSource="/image;component/images/people-grey-24x20.png"/>
+    <BitmapImage x:Key="imgSharePeopleHover" UriSource="/image;component/images/people-green-24x20.png"/>
+    <BitmapImage x:Key="imgAddHover" UriSource="/image;component/images/add_HOVER.png"/>
+    <BitmapImage x:Key="imgHome" UriSource="/image;component/images/home.png"/>
+    <BitmapImage x:Key="imgPreview" UriSource="/image;component/images/pre.png"/>
+    <BitmapImage x:Key="imgPreviewBlack" UriSource="/image;component/images/pre_black.png"/>
+    <BitmapImage x:Key="imgNext" UriSource="/image;component/images/next.png"/>
+    <BitmapImage x:Key="imgForward" UriSource="/image;component/images/forward.png"/>
+    <BitmapImage x:Key="imgRefresh" UriSource="/image;component/images/refresh.png"/>
+    <BitmapImage x:Key="imgAdd" UriSource="/image;component/images/Add.png"/>
+    <BitmapImage x:Key="imgXClose" UriSource="/image;component/images/x_close.png"/>
+    <BitmapImage x:Key="imgLock" UriSource="/image;component/images/lock-green.png"/>
+    <BitmapImage x:Key="imgLockGray" UriSource="/image;component/images/lock-grey.png"/>
+    <BitmapImage x:Key="imgBrowserStar" UriSource="/image;component/images/browser_star.png"/>
+    <BitmapImage x:Key="imgPrint" UriSource="/image;component/images/print.png"/>
+    <BitmapImage x:Key="imgPlus" UriSource="/image;component/images/plus.png"/>
+    <BitmapImage x:Key="imgYellowStar" UriSource="/image;component/images/star_y.png"/>
+    <BitmapImage x:Key="imgNotes" UriSource="/image;component/images/note-green-17x20.png"/>
+
+    <BitmapImage x:Key="imgTabDelete" UriSource="/image;component/images/delete.png"/>
+    <BitmapImage x:Key="imgCollapseMenu" UriSource="/image;component/images/Collaps-icon.png"/>
+    <BitmapImage x:Key="imgArrow1" UriSource="/image;component/images/arrow_01.png"/>
+    <BitmapImage x:Key="imgArrow2" UriSource="/image;component/images/arrow_02.png"/>
+
+    <BitmapImage x:Key="imgArrowGreen" UriSource="/image;component/images/arrow_green.png" />
+
+    <BitmapImage x:Key="imgLoginShowEye" UriSource="/image;component/images/login_show_eye.png"/>
+    <BitmapImage x:Key="imgLoginHideEye" UriSource="/image;component/images/login_hide_eye.png"/>
+
+    <BitmapImage x:Key="imgCreditCardGreen" UriSource="/image;component/images/credit_card_ic.png"/>
+    <BitmapImage x:Key="imgCreditCardGreenHover" UriSource="/image;component/images/credit_card_ic_hover.png"/>
+
+    <BitmapImage x:Key="imgBankAccountGreen" UriSource="/image;component/images/banking_account_popup_ic.png"/>
+    <BitmapImage x:Key="imgBankAccountGreenHover" UriSource="/image;component/images/banking_account_popup_ic_hover.png"/>
+
+    <BitmapImage x:Key="imgPasswordBossLogoWhiteIcon" UriSource="/image;component/images/passwordboss_logo_white_icon.png"/>
+    <BitmapImage x:Key="imgPasswordBossLogoGreenIcon" UriSource="/image;component/images/passwordboss_logo_green_icon.png"/>
+
+    <BitmapImage x:Key="imgPersonalInfoNames" UriSource="/image;component/images/name_ic.png"/>
+    <BitmapImage x:Key="imgPersonalInfoNamesHover" UriSource="/image;component/images/name_ic_hover.png"/>
+    <BitmapImage x:Key="imgPersonalInfoAddress" UriSource="/image;component/images/address_ic.png"/>
+    <BitmapImage x:Key="imgPersonalInfoAddressHover" UriSource="/image;component/images/address_ic_hover.png"/>
+    <BitmapImage x:Key="imgPersonalInfoPhone" UriSource="/image;component/images/phone_ic.png"/>
+    <BitmapImage x:Key="imgPersonalInfoPhoneHover" UriSource="/image;component/images/phone_ic_hover.png"/>
+    <BitmapImage x:Key="imgPersonalInfoCompany" UriSource="/image;component/images/company_ic.png"/>
+    <BitmapImage x:Key="imgPersonalInfoCompanyHover" UriSource="/image;component/images/company_ic_hover.png"/>
+    <BitmapImage x:Key="imgPersonalInfoEmail" UriSource="/image;component/images/email_ic.png"/>
+    <BitmapImage x:Key="imgPersonalInfoEmailHover" UriSource="/image;component/images/email_ic_hover.png"/>
+    <BitmapImage x:Key="imgPersonalInfoLicence" UriSource="/image;component/images/Drivers_license_ic.png"/>
+    <BitmapImage x:Key="imgPersonalInfoLicenceHover" UriSource="/image;component/images/Drivers_license_ic_hover.png"/>
+    <BitmapImage x:Key="imgPersonalInfoPassport" UriSource="/image;component/images/Passport_ic.png"/>
+    <BitmapImage x:Key="imgPersonalInfoPassportHover" UriSource="/image;component/images/Passport_ic_hover.png"/>
+    <BitmapImage x:Key="imgPersonalInfoMember" UriSource="/image;component/images/member_id_ic.png"/>
+    <BitmapImage x:Key="imgPersonalInfoMemberHover" UriSource="/image;component/images/member_id_ic_hover.png"/>
+    <BitmapImage x:Key="imgPersonalInfoSecurity" UriSource="/image;component/images/social_ic.png"/>
+    <BitmapImage x:Key="imgPersonalInfoSecurityHover" UriSource="/image;component/images/social_ic_hover.png"/>
+    <BitmapImage x:Key="imgPersonalInfoNotes" UriSource="/image;component/images/secure_notes_ic.png"/>
+
+    <BitmapImage x:Key="imgPbOwlGrey" UriSource="/image;component/images/135x65_Icons_owl_g.png"/>
+    <BitmapImage x:Key="imgPbKey" UriSource="/image;component/images/135x65_Icons_key_c.png"/>
+    <BitmapImage x:Key="1" UriSource="/image;component/images/130x65_Icons_names_c.png"/>
+    <BitmapImage x:Key="2" UriSource="/image;component/images/130x65_Icons_address_c.png"/>
+    <BitmapImage x:Key="3" UriSource="/image;component/images/130x65_Icons_phone_c.png"/>
+    <BitmapImage x:Key="4" UriSource="/image;component/images/130x65_Icons_company_c.png"/>
+    <BitmapImage x:Key="5" UriSource="/image;component/images/130x65_Icons_email_c.png"/>
+    <BitmapImage x:Key="6" UriSource="/image;component/images/130x65_Icons_driverslicense_c.png"/>
+    <BitmapImage x:Key="7" UriSource="/image;component/images/130x65_Icons_passport_c.png"/>
+    <BitmapImage x:Key="8" UriSource="/image;component/images/130x65_Icons_member_c.png"/>
+    <BitmapImage x:Key="9" UriSource="/image;component/images/130x65_Icons_socialsecurity_c.png"/>
+    <BitmapImage x:Key="10" UriSource="/image;component/images/130x65_Icons_securenotes_c.png"/>
+    <!--<BitmapImage x:Key="11" UriSource="/image;component/images/amazon.png"/>
+    <BitmapImage x:Key="12" UriSource="/image;component/images/google.png"/>
+    <BitmapImage x:Key="13" UriSource="/image;component/images/dropbox.png"/>
+    <BitmapImage x:Key="14" UriSource="/image;component/images/spotify.png"/>
+    <BitmapImage x:Key="15" UriSource="/image;component/images/chase.png"/>
+    <BitmapImage x:Key="16" UriSource="/image;component/images/hulu.png"/>
+    <BitmapImage x:Key="17" UriSource="/image;component/images/FB.png"/>
+    <BitmapImage x:Key="18" UriSource="/image;component/images/pandora.png"/>
+    <BitmapImage x:Key="19" UriSource="/image;component/images/HBO.png"/>
+    <BitmapImage x:Key="20" UriSource="/image;component/images/linkedin.png"/>-->
+    <BitmapImage x:Key="21" UriSource="/image;component/images/130x65_Icons_credit_card_c.png"/>
+    <BitmapImage x:Key="22" UriSource="/image;component/images/130x65_Icons_bank_c.png"/>
+    <BitmapImage x:Key="23" UriSource="/image;component/images/130x65_Icons_paypal_c.png"/>
+    <!--<BitmapImage x:Key="24" UriSource="/image;component/images/google_ic.png"/>
+    <BitmapImage x:Key="25" UriSource="/image;component/images/facebook_logo.png"/>
+    <BitmapImage x:Key="26" UriSource="/image;component/images/linked_in_logo.png"/>
+    <BitmapImage x:Key="27" UriSource="/image;component/images/amazon_ic.png"/>
+    <BitmapImage x:Key="28" UriSource="/image;component/images/dropbox_logo.png"/>
+    <BitmapImage x:Key="29" UriSource="/image;component/images/hulu_logo.png"/>-->
+
+    <BitmapImage x:Key="imgProductTour1" UriSource="/image;component/images/illustration-simple.png"/>
+    <BitmapImage x:Key="imgProductTour2" UriSource="/image;component/images/illustration-forget.png"/>
+    <BitmapImage x:Key="imgProductTour3" UriSource="/image;component/images/illustration-safe.png"/>
+    <BitmapImage x:Key="imgProductTour4" UriSource="/image;component/images/illustration-data.png"/>
+    <BitmapImage x:Key="imgProductTour5" UriSource="/image;component/images/illustration-share.png"/>
+    <BitmapImage x:Key="imgProductTourCompleted" UriSource="/image;component/images/illustration-premium.png"/>
+    <BitmapImage x:Key="imgProductTourPcMag" UriSource="/image;component/images/pc_mag.png"/>
+
+    <BitmapImage x:Key="imgFirefoxLogo_42x42" UriSource="/image;component/images/BrowserExtensions/firefox-42x42.png" />
+    <BitmapImage x:Key="imgInternetExplorerLogo_42x42" UriSource="/image;component/images/BrowserExtensions/ie-42x42.png" />
+    <BitmapImage x:Key="imgChromeLogo_42x42" UriSource="/image;component/images/BrowserExtensions/chrome-42x42.png" />
+
+    <BitmapImage x:Key="imgBrowserButtonChromeExample" UriSource="/image;component/images/BrowserExtensions/browser-button-chrome-example.png" />
+    <BitmapImage x:Key="imgBrowserButtonFirefoxExample" UriSource="/image;component/images/BrowserExtensions/browser-button-firefox-example.png" />
+    <BitmapImage x:Key="imgBrowserButtonInternetExplorerExample" UriSource="/image;component/images/BrowserExtensions/browser-button-ie-example.png" />
+
+    <BitmapImage x:Key="imgLogoutGrey" UriSource="/image;component/images/BrowserExtensions/logout-grey-16x18.png"/>
+    <BitmapImage x:Key="imgLogoutGreen" UriSource="/image;component/images/BrowserExtensions/logout-green-18x20.png"/>
+
+    <BitmapImage x:Key="imgPasswordGeneratorGrey" UriSource="/image;component/images/BrowserExtensions/password-generator-grey-33x20.png"/>
+    <BitmapImage x:Key="imgPasswordGeneratorGreen" UriSource="/image;component/images/BrowserExtensions/password-generator-green-33x20.png"/>
+
+    <BitmapImage x:Key="imgDisableGreen" UriSource="/image;component/images/BrowserExtensions/disable-green-20x20.png"/>
+    <BitmapImage x:Key="imgDisableGrey" UriSource="/image;component/images/BrowserExtensions/disable-grey-20x20.png"/>
+    
+    
+    <BitmapImage x:Key="imgHelpGreen" UriSource="/image;component/images/BrowserExtensions/help-green-20x20.png"/>
+    <BitmapImage x:Key="imgMakeNewPasswordWhite" UriSource="/image;component/images/BrowserExtensions/make-new-password-white-16x16.png"/>
+
+    <BitmapImage x:Key="imgAddressGreen" UriSource="/image;component/images/BrowserExtensions/address-green-25x35.png"/>
+    <BitmapImage x:Key="imgCompanyGreen" UriSource="/image;component/images/BrowserExtensions/company-green-41x35.png"/>
+    <BitmapImage x:Key="imgEmailGreen" UriSource="/image;component/images/BrowserExtensions/email-green-47x35.png"/>
+    <BitmapImage x:Key="imgPersonGreen" UriSource="/image;component/images/BrowserExtensions/person-green-28x35.png"/>
+    <BitmapImage x:Key="imgTelephoneGreen" UriSource="/image;component/images/BrowserExtensions/telephone-green-35x35.png"/>
+
+    <BitmapImage x:Key="imgInIcon" UriSource="/image;component/images/in.png"/>
+    <BitmapImage x:Key="imgRadioUntick" UriSource="/image;component/images/untick.png"/>
+    <BitmapImage x:Key="imgBrowserButton" UriSource="/image;component/images/new_tab_ic.png"/>
+
+
+    <BitmapImage x:Key="NewUserOnBoardingProc_3a_slide1" UriSource="/image;component/images/NewUserOnBoardingProc_3a_slide1.png"/>
+    <BitmapImage x:Key="NewUserOnBoardingProc_3a_slide2" UriSource="/image;component/images/NewUserOnBoardingProc_3a_slide2.png"/>
+    <BitmapImage x:Key="NewUserOnBoardingProc_3a_slide3" UriSource="/image;component/images/NewUserOnBoardingProc_3a_slide3.png"/>
+    <BitmapImage x:Key="NewUserOnBoardingProc_3a_slide4" UriSource="/image;component/images/NewUserOnBoardingProc_3a_slide4.png"/>
+    <BitmapImage x:Key="NewUserOnBoardingProc_3a_slide5" UriSource="/image;component/images/NewUserOnBoardingProc_3a_slide5.png"/>
+
+    <!--<BitmapImage x:Key="imgAmazon" UriSource="/image;component/images/amazon.png"/>
+    <BitmapImage x:Key="imgChase" UriSource="/image;component/images/chase.png"/>
+    <BitmapImage x:Key="imgDropbox" UriSource="/image;component/images/dropbox.png"/>
+    <BitmapImage x:Key="imgFacebook" UriSource="/image;component/images/FB.png"/>
+    <BitmapImage x:Key="imgGoogle" UriSource="/image;component/images/google.png"/>
+    <BitmapImage x:Key="imgHBO" UriSource="/image;component/images/HBO.png"/>
+    <BitmapImage x:Key="imgHulu" UriSource="/image;component/images/hulu.png"/>
+    <BitmapImage x:Key="imgLinkedin" UriSource="/image;component/images/linkedin.png"/>
+    <BitmapImage x:Key="imgPandora" UriSource="/image;component/images/pandora.png"/>
+    <BitmapImage x:Key="imgSpotify" UriSource="/image;component/images/spotify.png"/>-->
+    <BitmapImage x:Key="imgImportLogo" UriSource="/image;component/images/Import_logo.png"/>
+    <BitmapImage x:Key="imgCromeIcon" UriSource="/image;component/images/crome_ic.png"/>
+    <BitmapImage x:Key="imgMozilaIcon" UriSource="/image;component/images/mozilla_ic.png"/>
+    <BitmapImage x:Key="imgExplorerIcon" UriSource="/image;component/images/Explore_ic.png"/>
+    <BitmapImage x:Key="imgAddPasswordIcon" UriSource="/image;component/images/add_password_ic.png"/>
+    <BitmapImage x:Key="imgCrome" UriSource="/image;component/images/crome_ic_small.png"/>
+    <BitmapImage x:Key="imgMozila" UriSource="/image;component/images/mozilla_ic_small.png"/>
+    <BitmapImage x:Key="imgExplorer" UriSource="/image;component/images/Explore_ic_small.png"/>
+    <BitmapImage x:Key="imgTik" UriSource="/image;component/images/tik.png"/>
+    <BitmapImage x:Key="imgTik_g" UriSource="/image;component/images/tik_g.png"/>
+
+    <BitmapImage x:Key="imgStarHover" UriSource="/image;component/images/star_HOVER.png"/>
+    <BitmapImage x:Key="imgStar" UriSource="/image;component/images/star.png"/>
+    <BitmapImage x:Key="imgFavoritesHover" UriSource="/image;component/images/star_HOVER.png"/>
+
+    <BitmapImage x:Key="imgStarHoverList" UriSource="/image;component/images/star_HOVER.png"/>
+    <BitmapImage x:Key="imgStarList" UriSource="/image;component/images/star.png"/>
+
+    <BitmapImage x:Key="imgStar2" UriSource="/image;component/images/star2.png"/>
+    <BitmapImage x:Key="imgIconSetting" UriSource="/image;component/images/Icon-Setting.png"/>
+
+    <BitmapImage x:Key="imgGearHover" UriSource="/image;component/images/gear_hover.png"/>
+    <BitmapImage x:Key="imgTwoStepVerificationInitialScreen" UriSource="/image;component/images/TwoStepVerificationInitialScreen.png"/>
+
+    <!-- images for setup wizard -->
+    <BitmapImage x:Key="imgWizardLogo" UriSource="/image;component/images/WizardLogo.png"/>
+    <BitmapImage x:Key="imgBrowserExtensionBackgroundlogo" UriSource="/image;component/images/BrowserExtensionBakground.png"/>
+    <BitmapImage x:Key="imgExplorerLogo" UriSource="/image;component/images/explorer_logo.png"/>
+    <BitmapImage x:Key="imgChromeLogo" UriSource="/image;component/images/chrome_logo.png"/>
+    <BitmapImage x:Key="imgMozillaLogo" UriSource="/image;component/images/mozilla_logo.png"/>
+    <BitmapImage x:Key="imgAlertLogo" UriSource="/image;component/images/Alert_.png"/>
+    <BitmapImage x:Key="imgPopup" UriSource="/image;component/images/popup_bg.png"/>
+    <BitmapImage x:Key="imgPersonalInfoBackground" UriSource="/image;component/images/PersonalInfoBackground.png"/>
+    <BitmapImage x:Key="imgAmazon_Logo" UriSource="/image;component/images/amazon_ic.png"/>
+    <BitmapImage x:Key="imgDropBoxLogo" UriSource="/image;component/images/dropbox_logo.png"/>
+    <BitmapImage x:Key="imgFacebookLogo" UriSource="/image;component/images/facebook_logo.png"/>
+    <BitmapImage x:Key="imgGoogleLogo" UriSource="/image;component/images/google_ic.png"/>
+    <BitmapImage x:Key="imgHuluLogo" UriSource="/image;component/images/hulu_logo.png"/>
+    <BitmapImage x:Key="imgLinkedInLogo" UriSource="/image;component/images/linked_in_logo.png"/>
+    <BitmapImage x:Key="imgFacebookIcon" UriSource="/image;component/images/facebook_icon.png"/>
+    <BitmapImage x:Key="imgTwitterIcon" UriSource="/image;component/images/twitter_icon.png"/>
+    <BitmapImage x:Key="imgMessageIcon" UriSource="/image;component/images/Message_icon.png"/>
+    <BitmapImage x:Key="imgInstalledMark" UriSource="/image;component/images/tick2.png"/>
+    <BitmapImage x:Key="imgPremiumTick" UriSource="/image;component/images/PremiumTick.png"/>
+    <BitmapImage x:Key="imgPremiumPhoto" UriSource="/image;component/images/Premiumphoto.png"/>
+    <BitmapImage x:Key="imgWizardCloseLogo" UriSource="/image;component/images/WizardClose.png"/>
+
+    <BitmapImage x:Key="imgPopKeyIcon" UriSource="/image;component/images/key_icon.png"/>
+    <BitmapImage x:Key="imgPopWalletIcon" UriSource="/image;component/images/walleticon.png"/>
+    <BitmapImage x:Key="imgPopMSyncIcon" UriSource="/image;component/images/msync.png"/>
+    <BitmapImage x:Key="imgBackupYourAccount" UriSource="/image;component/images/iconBackupYourAccount.png"/>
+    <BitmapImage x:Key="imgSecureSharing" UriSource="/image;component/images/iconSecureSharing.png"/>
+    <BitmapImage x:Key="imgSyncAcrossDevices" UriSource="/image;component/images/iconSyncAcrossDevices.png"/>
+    <BitmapImage x:Key="imgTechSupport" UriSource="/image;component/images/iconTechSupport.png"/>
+    <BitmapImage x:Key="imgTheftProtection" UriSource="/image;component/images/iconTheftProtection.png"/>
+    <BitmapImage x:Key="imgTwoStepAuthentication" UriSource="/image;component/images/iconTwoStepAuthentication.png"/>
+    <BitmapImage x:Key="imgPBossLogoBig" UriSource="/image;component/images/pBossLogoBig.png"/>
+
+
+    <BitmapImage x:Key="imgInstallExtOwl" UriSource="/image;component/images/InstallExtension/OWL.png"/>
+    <BitmapImage x:Key="imgInstallExtChrome" UriSource="/image;component/images/InstallExtension/CH.png"/>
+    <BitmapImage x:Key="imgInstallExtFirefox" UriSource="/image;component/images/InstallExtension/FF.png"/>
+    <BitmapImage x:Key="imgInstallExtPlus" UriSource="/image;component/images/InstallExtension/plus.png"/>
+    <BitmapImage x:Key="imgInstallExtIe" UriSource="/image;component/images/InstallExtension/IE.png"/>
+    <BitmapImage x:Key="ImgBeClose" UriSource="/image;component/images/BrowserExtensions/x.png"/>
+    <BitmapImage x:Key="ImgBePersonalInfo" UriSource="/image;component/images/BrowserExtensions/Person_green2.png"/>
+    <BitmapImage x:Key="ImgBePersonalInfoHover" UriSource="/image;component/images/BrowserExtensions/Person_white2.png"/>
+    <BitmapImage x:Key="ImgBeSettings" UriSource="/image;component/images/setting1.png"/>
+    <BitmapImage x:Key="ImgBeGoMobile" UriSource="/image;component/images/go_mobile.png"/>
+
+    <BitmapImage x:Key="imgMenuLock" UriSource="/image;component/images/Lock.png"/>
+    <BitmapImage x:Key="imgMenuExit" UriSource="/image;component/images/Exit.png"/>
+    <BitmapImage x:Key="imgMenuCut" UriSource="/image;component/images/Cut.png"/>
+    <BitmapImage x:Key="imgMenuCopy" UriSource="/image;component/images/Copy.png"/>
+    <BitmapImage x:Key="imgMenuPaste" UriSource="/image;component/images/Paste.png"/>
+    <BitmapImage x:Key="imgMenuWizard" UriSource="/image;component/images/Wizard.png"/>
+    <BitmapImage x:Key="imgMenuAbout" UriSource="/image;component/images/About.png"/>
+    <BitmapImage x:Key="imgMenuHelp" UriSource="/image;component/images/Help-3.png"/>
+
+    <BitmapImage x:Key="imgAddCategory" UriSource="/image;component/images/addCategoryIcon.png"/>
+    <BitmapImage x:Key="imgAddCategoryHover" UriSource="/image;component/images/addCategoryIconHover.png"/>
+    <BitmapImage x:Key="imgNewItemPasswordGenerator" UriSource="/image;component/images/Icon-PasswordGenerator2.png"/>
+    <BitmapImage x:Key="imgNewItemPasswordGeneratorHover" UriSource="/image;component/images/Icon-PasswordGenerator2Hover.png"/>
+
+    <BitmapImage x:Key="imgGreenCalendar" UriSource="/image;component/images/calendar.jpg"/>
+
+    <!--Login Spinner image -->
+    <BitmapImage x:Key="imgLoginSpinner" UriSource="/image;component/images/login_spinner.GIF"/>
+
+    <BitmapImage x:Key="imgClearDate" UriSource="/image;component/images/clear_date.png"/>
+    <BitmapImage x:Key="imgClearDateHover" UriSource="/image;component/images/clear_date_hover.png"/>
+
+    <BitmapImage x:Key="imgPasswordVaultButtonIcon" UriSource="/image;component/images/Icon-PasswordVault.png"/>
+    <BitmapImage x:Key="imgPasswordVaultButtonIconHover" UriSource="/image;component/images/Icon-PasswordVault_HOVER.png" />
+    <BitmapImage x:Key="imgDigitalWalletIcon" UriSource="/image;component/images/Icon-DigitalWallet.png" />
+    <BitmapImage x:Key="imgDigitalWalletIconHover" UriSource="/image;component/images/Icon-DigitalWallet_HOVER.png" />
+    <BitmapImage x:Key="imgPersonalInfoIcon" UriSource="/image;component/images/Icon-PersonalInfo.png" />
+    <BitmapImage x:Key="imgPersonalInfoIconHover" UriSource="/image;component/images/Icon-PersonalInfo_HOVER.png" />
+    <BitmapImage x:Key="imgSecureBrowserIcon" UriSource="/image;component/images/Icon-SecureBrowser.png" />
+    <BitmapImage x:Key="imgSecureBrowserIconHover" UriSource="/image;component/images/Icon-SecureBrowser_HOVER.png" />
+    <BitmapImage x:Key="imgPasswordGeneratorIcon" UriSource="/image;component/images/Icon-PasswordGenerator.png" />
+    <BitmapImage x:Key="imgPasswordGeneratorIconHover" UriSource="/image;component/images/Icon-PasswordGenerator_HOVER.png" />
+    <BitmapImage x:Key="imgShareCenterIcon" UriSource="/image;component/images/Icon-ShareCenter.png" />
+    <BitmapImage x:Key="imgShareCenterIconHover" UriSource="/image;component/images/Icon-ShareCenter_HOVER.png" />
+
+    <BitmapImage x:Key="imgInformationIcon" UriSource="/image;component/images/information_icon.png" />
+
+    <BitmapImage x:Key="imgOrangestars" UriSource="/image;component/images/orangestars.png"/>
+    <BitmapImage x:Key="arrowP2" UriSource="/image;component/images/arrowP2.png"/>
+    <BitmapImage x:Key="greencheck" UriSource="/image;component/images/greencheck.png"/>
+    <BitmapImage x:Key="redx" UriSource="/image;component/images/redx.png"/>
+
+    <!--PasswordList images -->
+    <BitmapImage x:Key="menu_grey" UriSource="/image;component/images/menu_grey.png"/>
+    <BitmapImage x:Key="menu_green" UriSource="/image;component/images/menu_green.png"/>
+    <BitmapImage x:Key="menu_white" UriSource="/image;component/images/menu_white.png"/>
+    <BitmapImage x:Key="star_green_21x20" UriSource="/image;component/images/star_green_21x20.png"/>
+
+
+    <BitmapImage x:Key="tile_view_green" UriSource="/image;component/images/tile_view_green16x16.png"/>
+    <BitmapImage x:Key="tile_view_grey" UriSource="/image;component/images/tile_view_grey16x16.png"/>
+    <BitmapImage x:Key="list_view_grey" UriSource="/image;component/images/list_view_grey20x16.png"/>
+    <BitmapImage x:Key="list_view_green" UriSource="/image;component/images/list_view_green20x16.png"/>
+    <BitmapImage x:Key="open_site_green" UriSource="/image;component/images/open-site-green-41x41.png"/>
+    <BitmapImage x:Key="open_site_white" UriSource="/image;component/images/open-site-white-41x41.png"/>
+    
+    <!--MainWindowHeader images-->
+    <BitmapImage x:Key="alert_grey" UriSource="/image;component/images/alert_grey_22x20.png"/>
+    <BitmapImage x:Key="bell_grey" UriSource="/image;component/images/bell_grey_22x20.png"/>
+    <BitmapImage x:Key="collapse_all_grey" UriSource="/image;component/images/collapse_all_grey14x16.png"/>
+    <BitmapImage x:Key="expand_all_grey" UriSource="/image;component/images/expand_all_grey14x16.png"/>
+    <BitmapImage x:Key="plus_thin_white" UriSource="/image;component/images/plus_thin_white14x14.png"/>
+    <BitmapImage x:Key="plus_thin_blue" UriSource="/image;component/images/plus_thin_blue14x14.png"/>
+    
+    <BitmapImage x:Key="menu_expand_white" UriSource="/image;component/images/menu_expand_white18x19.png"/>
+    <BitmapImage x:Key="search_grey" UriSource="/image;component/images/search_grey16x16.png"/>
+    <BitmapImage x:Key="delete_grey" UriSource="/image;component/images/delete_grey18x18.png"/>
+    <BitmapImage x:Key="collapse_menu_grey" UriSource="/image;component/images/collapse_menu_grey_25x20.png"/>
+    <BitmapImage x:Key="question_mark_grey" UriSource="/image;component/images/question-mark-grey-20x20.png"/>
+
+    <BitmapImage x:Key="person_green" UriSource="/image;component/images/person_green_16x20.png"/>
+    <BitmapImage x:Key="person_grey" UriSource="/image;component/images/person_grey_16x20.png"/>
+
+    <BitmapImage x:Key="imgPBIconLarge" UriSource="/image;component/images/PB-Icon-64x64.png"/>
+    <BitmapImage x:Key="imgCloseAlertBigHover" UriSource="/image;component/images/close_02_hover.png"/>
+    <BitmapImage x:Key="imgCheckmarkWhite" UriSource="/image;component/images/checkmark-white.png"/>
+    <BitmapImage x:Key="imgCheckmarkGreen" UriSource="/image;component/images/checkmark-green.png"/>
+
+    <BitmapImage x:Key="freeSupportBlue" UriSource="/image;component/images/free-support-blue-50x50.png"/>
+    <BitmapImage x:Key="freeUpdatesBlue" UriSource="/image;component/images/free-updates-blue-49x50.png"/>
+    <BitmapImage x:Key="lockBlue" UriSource="/image;component/images/lock-blue-43x50.png"/>
+    <BitmapImage x:Key="startupScan" UriSource="/image;component/images/startup-scan.gif"/>
+    <BitmapImage x:Key="startupScanOwlBehind" UriSource="/image;component/images/startup-scan-owl-behind.png"/>
+    <BitmapImage x:Key="startupScanProgressBar" UriSource="/image;component/images/startup-scan-progress-bar.gif"/>
+    <BitmapImage x:Key="warningOrange" UriSource="/image;component/images/warning-orange-22x22.png"/>
+    <BitmapImage x:Key="warningRedSmall" UriSource="/image;component/images/warning-red-22x23.png"/>
+    <BitmapImage x:Key="digitalWalletGrey" UriSource="/image;component/images/digital-wallet-grey-20x20.png"/>
+    <BitmapImage x:Key="digitalWalletGreen" UriSource="/image;component/images/digital-wallet-green-20x20.png"/>
+    <BitmapImage x:Key="emergencyGrey" UriSource="/image;component/images/emergency-grey-20x20.png"/>
+    <BitmapImage x:Key="emergencyGreen" UriSource="/image;component/images/emergency-green-20x20.png"/>
+    <BitmapImage x:Key="gearGrey" UriSource="/image;component/images/gear-grey-20x20.png"/>
+    <BitmapImage x:Key="gearGreen" UriSource="/image;component/images/gear-green-20x20.png"/>
+    <BitmapImage x:Key="identityGrey" UriSource="/image;component/images/identity-grey-24x20.png"/>
+    <BitmapImage x:Key="identityGreen" UriSource="/image;component/images/identity-green-24x20.png"/>
+    <BitmapImage x:Key="lockGrey" UriSource="/image;component/images/lock-grey-17x20.png"/>
+    <BitmapImage x:Key="lockGreen" UriSource="/image;component/images/lock-green-17x20.png"/>
+    <BitmapImage x:Key="peopleGrey" UriSource="/image;component/images/people-grey-24x20.png"/>
+    <BitmapImage x:Key="peopleGreen" UriSource="/image;component/images/people-green-24x20.png"/>
+    <BitmapImage x:Key="secureBrowserGrey" UriSource="/image;component/images/secure-browser-grey-22x20.png"/>
+    <BitmapImage x:Key="secureBrowserGreen" UriSource="/image;component/images/secure-browser-green-22x20.png"/>
+    <BitmapImage x:Key="secureNoteGrey" UriSource="/image;component/images/secure-note-grey-17x20.png"/>
+    <BitmapImage x:Key="secureNoteGreen" UriSource="/image;component/images/secure-note-green-17x20.png"/>
+    <BitmapImage x:Key="personBlue" UriSource="/image;component/images/person-blue-48x50.png"/>
+    <BitmapImage x:Key="obLogoGray" UriSource="/image;component/images/pb-logo-grey-114x32.png"/>
+	<BitmapImage x:Key="obArrowWhite" UriSource="/image;component/images/arrow-white-18x18.png"/>
+    <BitmapImage x:Key="plusThinRed" UriSource="/image;component/images/plus_thin_red20x20.png"/>
+   
+    <BitmapImage x:Key="backupDisabled" UriSource="/image;component/images/backup-disabled-93x70.png"/>
+    <BitmapImage x:Key="backupEnabled" UriSource="/image;component/images/backup-enabled-93x70.png"/>
+
+    <BitmapImage x:Key="androidBlue" UriSource="/image;component/images/android-blue-25x30.png"/>
+    <BitmapImage x:Key="appleBlue" UriSource="/image;component/images/apple-blue-30x30.png"/>
+    <BitmapImage x:Key="windowsBlue" UriSource="/image;component/images/windows-blue-30x30.png"/>
+    
+    <BitmapImage x:Key="folderGrey" UriSource="/image;component/images/folder-grey.png"/>
+    <!--AddItemIcons-->
+    <BitmapImage x:Key="addPassword" UriSource="/image;component/images/AddItemIcons/lock-green-50x50.png"/>
+    <BitmapImage x:Key="addDigitalWallet" UriSource="/image;component/images/AddItemIcons/digital-wallet-green-50x50.png"/>
+    <BitmapImage x:Key="addPersonalInfo" UriSource="/image;component/images/AddItemIcons/personal-info-green-50x50.png"/>
+    <BitmapImage x:Key="addSecureNote" UriSource="/image;component/images/AddItemIcons/secure-note-green-43x50.png"/>
+    <BitmapImage x:Key="addIdentity" UriSource="/image;component/images/AddItemIcons/identity-green-50x50.png"/>
+    <BitmapImage x:Key="addSharedItem" UriSource="/image;component/images/AddItemIcons/share-green-50x50.png"/>
+    <BitmapImage x:Key="addEmergencyContact" UriSource="/image;component/images/AddItemIcons/emergency-green-50x50.png"/>
+    <BitmapImage x:Key="addFolder" UriSource="/image;component/images/AddItemIcons/folder-green.png"/>
+    
+    
+
+    
+    <!--AddPasswordIcons-->
+    <BitmapImage x:Key="addWebsite" UriSource="/image;component/images/AddItemIcons/website-white.png"/>
+    <BitmapImage x:Key="addApp" UriSource="/image;component/images/AddItemIcons/app-white.png"/>
+    <BitmapImage x:Key="addDatabase" UriSource="/image;component/images/AddItemIcons/database-white.png"/>
+    <BitmapImage x:Key="addEmailAccount" UriSource="/image;component/images/AddItemIcons/email-account-white.png"/>
+    <BitmapImage x:Key="addInstantMessenger" UriSource="/image;component/images/AddItemIcons/instant-messenger-white.png"/>
+    <BitmapImage x:Key="addServer" UriSource="/image;component/images/AddItemIcons/server-white.png"/>
+    <BitmapImage x:Key="addSSHKey" UriSource="/image;component/images/AddItemIcons/ssh-white.png"/>
+    <BitmapImage x:Key="addWifi" UriSource="/image;component/images/AddItemIcons/wifi-white.png"/>
+    
+    <!--AddDigitalWalletIcons-->
+    <BitmapImage x:Key="addBankAccount" UriSource="/image;component/images/AddItemIcons/bank-white.png"/>
+    <BitmapImage x:Key="addCreditCard" UriSource="/image;component/images/AddItemIcons/credit-card-white.png"/>
+
+    <!--AddPresonalInfoIcons-->
+    <BitmapImage x:Key="addAddress" UriSource="/image;component/images/AddItemIcons/address-white.png"/>
+    <BitmapImage x:Key="addCompany" UriSource="/image;component/images/AddItemIcons/company-white.png"/>
+    <BitmapImage x:Key="addEmail" UriSource="/image;component/images/AddItemIcons/email-white.png"/>
+    <BitmapImage x:Key="addName" UriSource="/image;component/images/AddItemIcons/person-white.png"/>
+    <BitmapImage x:Key="addPhone" UriSource="/image;component/images/AddItemIcons/telephone-white.png"/>
+
+    <!--AddSecureNotesIcons-->
+    <BitmapImage x:Key="addAlarmCode" UriSource="/image;component/images/AddItemIcons/alarm-white.png"/>
+    <BitmapImage x:Key="addDriversLicense" UriSource="/image;component/images/AddItemIcons/drivers-license-white.png"/>
+    <BitmapImage x:Key="addEstatePlan" UriSource="/image;component/images/AddItemIcons/estate-white.png"/>
+    <BitmapImage x:Key="addFrequentFlyer" UriSource="/image;component/images/AddItemIcons/frequent-flyer-white.png"/>
+    <BitmapImage x:Key="addNote" UriSource="/image;component/images/AddItemIcons/note-white.png"/>
+    <BitmapImage x:Key="addHealthInsurance" UriSource="/image;component/images/AddItemIcons/health-insurance-white.png"/>
+    <BitmapImage x:Key="addHotelRewards" UriSource="/image;component/images/AddItemIcons/hotel-white.png"/>
+    <BitmapImage x:Key="addInsurance" UriSource="/image;component/images/AddItemIcons/insurance-white.png"/>
+    <BitmapImage x:Key="addMemberID" UriSource="/image;component/images/AddItemIcons/member-id-white.png"/>
+    <BitmapImage x:Key="addPassport" UriSource="/image;component/images/AddItemIcons/passport-white.png"/>
+    <BitmapImage x:Key="addPrescription" UriSource="/image;component/images/AddItemIcons/prescription-white.png"/>
+    <BitmapImage x:Key="addSocialSecurity" UriSource="/image;component/images/AddItemIcons/social-security-white.png"/>
+    <BitmapImage x:Key="addSoftwareLicense" UriSource="/image;component/images/AddItemIcons/software-white.png"/>
+
+
+    <BitmapImage x:Key="noteGrey" UriSource="/image;component/images/note-grey-15x18.png"/>
+    <BitmapImage x:Key="copyGrey" UriSource="/image;component/images/copy-grey-13x16.png"/>
+    <BitmapImage x:Key="historyGrey" UriSource="/image;component/images/history-grey-19x16.png"/>
+    <BitmapImage x:Key="colorPicker" UriSource="/image;component/images/color-picker-16x16.png"/>
+
+    <!--SecureItemMenuIcons-->
+    <BitmapImage x:Key="menuGearGreen" UriSource="/image;component/images/MenuIcons/gear-green-16x16.png"/>
+    <BitmapImage x:Key="menuGearGrey" UriSource="/image;component/images/MenuIcons/gear-grey-16x16.png"/>
+    <BitmapImage x:Key="menuOpenSiteGreen" UriSource="/image;component/images/MenuIcons/open-site-green-16x16.png"/>
+    <BitmapImage x:Key="menuOpenSiteGrey" UriSource="/image;component/images/MenuIcons/open-site-grey-16x16.png"/>
+    <BitmapImage x:Key="menuPasswordGreen" UriSource="/image;component/images/MenuIcons/password-star-green-26x16.png"/>
+    <BitmapImage x:Key="menuPasswordGrey" UriSource="/image;component/images/MenuIcons/password-star-grey-26x16.png"/>
+    <BitmapImage x:Key="menuPencilGreen" UriSource="/image;component/images/MenuIcons/pencil-green-16x16.png"/>
+    <BitmapImage x:Key="menuPencilGrey" UriSource="/image;component/images/MenuIcons/pencil-grey-16x16.png"/>
+    <BitmapImage x:Key="menuPeopleGreen" UriSource="/image;component/images/MenuIcons/people-green-20x16.png"/>
+    <BitmapImage x:Key="menuPeopleGrey" UriSource="/image;component/images/MenuIcons/people-grey-19x16.png"/>
+    <BitmapImage x:Key="menuPersonGreen" UriSource="/image;component/images/MenuIcons/person-green-12x16.png"/>
+    <BitmapImage x:Key="menuPersonGrey" UriSource="/image;component/images/MenuIcons/person-grey-12x16.png"/>
+    <BitmapImage x:Key="menuTrashGreen" UriSource="/image;component/images/MenuIcons/trash-green-13x16.png"/>
+    <BitmapImage x:Key="menuTrashGrey" UriSource="/image;component/images/MenuIcons/trash-grey-13x16.png"/>
+
+    <!--CreditCard-->
+    <BitmapImage x:Key="creditCardAmex" UriSource="/image;component/images/CreditCards/amex-white-130x65.png"/>
+    <BitmapImage x:Key="creditCardOther" UriSource="/image;component/images/CreditCards/creditcard-other-white-130x65.png"/>
+    <BitmapImage x:Key="creditCarddDiscover" UriSource="/image;component/images/CreditCards/discover-white-130x65.png"/>
+    <BitmapImage x:Key="creditCardJcb" UriSource="/image;component/images/CreditCards/jcb-white-130x65.png"/>
+    <BitmapImage x:Key="creditCardMaster" UriSource="/image;component/images/CreditCards/mastercard-white-130x65.png"/>
+    <BitmapImage x:Key="creditCardVisa" UriSource="/image;component/images/CreditCards/visa-white-130x65.png"/>
+
+    <BitmapImage x:Key="digitalWallet" UriSource="/image;component/images/digital-wallet.png"/>
+    <BitmapImage x:Key="personalInfo" UriSource="/image;component/images/personal-info.png"/>
+    <BitmapImage x:Key="secureNotes" UriSource="/image;component/images/secure-notes.png"/>
+    <BitmapImage x:Key="sharedByMeSplash" UriSource="/image;component/images/shared-by-me250x250.png"/>
+    <BitmapImage x:Key="sharedWithMeSplash" UriSource="/image;component/images/shared-with-me-250x250.png"/>
+    <BitmapImage x:Key="sharedHeaderIcon" UriSource="/image;component/images/shared-icon-30x30.png"/>
+
+    <BitmapImage x:Key="myEmergencyContactsSplash" UriSource="/image;component/images/Icon_GrantERaccess.png"/>
+    <BitmapImage x:Key="trustedEmergencyContactsSplash" UriSource="/image;component/images/Icon_GetERaccess.png"/>
+    <BitmapImage x:Key="resendOrange" UriSource="/image;component/images/resend-orange-16x16.png"/>
+</ResourceDictionary>

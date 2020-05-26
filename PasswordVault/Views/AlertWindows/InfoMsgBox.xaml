@@ -1,0 +1,29 @@
+﻿<Window x:Class="PasswordBoss.InfoMsgBox"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="InfoMsgBox" Height="130" Width="300" WindowStyle="None"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+        AllowsTransparency="True" Background="Transparent" Topmost="True">
+    <Grid>
+        <Border BorderBrush="{DynamicResource MainWindowHeaderGridColor}" BorderThickness="3" CornerRadius="3">
+            <Grid Background="{DynamicResource DialogGrayColor}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="2*" />
+                </Grid.RowDefinitions>
+
+
+                <TextBlock Margin="0,0,0,0" Grid.ColumnSpan="2" FontSize="16" Foreground="{DynamicResource SecurityAlertDeleteBox}"
+                           FontWeight="SemiBold" TextAlignment="Center"
+                           HorizontalAlignment="Center" VerticalAlignment="Center" />
+                <TextBlock FontSize="14" Grid.Row="1" Grid.ColumnSpan="2" Foreground="{DynamicResource DialogGrayColor}" Margin="0,0,0,0"
+                           TextAlignment="Center" HorizontalAlignment="Center"
+                           VerticalAlignment="Center" />
+                <Button Name="btnOk" Grid.Row="2" FontWeight="SemiBold" FontSize="14" Click="btnOk_Click"
+                        Background="{DynamicResource WhiteColor}" Height="25" Width="55" Margin="0,0,0,0" Foreground="#868687"
+                        Content="{DynamicResource OK}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

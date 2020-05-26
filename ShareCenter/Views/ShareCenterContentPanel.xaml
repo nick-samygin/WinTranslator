@@ -1,0 +1,534 @@
+﻿<UserControl x:Class="PasswordBoss.Views.ShareCenterContentPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:pbviews="clr-namespace:PasswordBoss.Views"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:ui="clr-namespace:PasswordBoss.Helpers"
+             xmlns:uc="clr-namespace:PasswordBoss.Views.UserControls"
+             mc:Ignorable="d" d:DesignWidth="600" 
+             Height="Auto" Width="Auto">
+    <UserControl.Resources>
+        <ui:ParametersConverter x:Key="ParametersConverter"/>
+        <ui:ActionToVisibiltyConverter x:Key="ActionToVisibilty"/>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility"/>
+    </UserControl.Resources>
+    
+        <Grid x:Name="sharecenter_grid" Background="#e4e9e8" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="44"/>
+                <RowDefinition Height="40"/>
+                
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+             
+                <ColumnDefinition Width="*"/>
+               
+            </Grid.ColumnDefinitions>
+            <Border Grid.Row="0" Grid.Column="0"  Background="{DynamicResource WhiteColor}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <TextBlock  Text="{DynamicResource ShareCenter}" Foreground="{DynamicResource HeaderForegroundColorColor}" VerticalAlignment="Center" Margin="22,0,0,0"
+                                   FontFamily="{DynamicResource ProximaSemiBold}" FontSize="14" FontWeight="Bold"/>
+            </Border>
+
+        <TabControl Grid.Row="1"  BorderThickness="2,0,0,0" BorderBrush="Transparent" Margin="0,-1,0,0" Background="{DynamicResource WhiteColor}" VerticalAlignment="Stretch"
+                                SelectedIndex="{Binding SelectedIndexTabControl,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"  >
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding ShareCenterSelectionChangedCommand,Mode=OneWay}"
+                                                       CommandParameter="{Binding ElementName=SharecenterCombobox}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            <TabControl.Resources>
+                <Style TargetType="{x:Type TabItem}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type TabItem}">
+                                <Grid x:Name="grid">
+                                    <Border Name="Border" Background="{DynamicResource TextboxBorderbrush}" BorderThickness="0 2 0 0">
+                                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" 
+                                                    VerticalAlignment="Center">
+                                            <ContentPresenter ContentSource="Header" VerticalAlignment="Center" 
+                                                              HorizontalAlignment="Stretch" />
+                                        </StackPanel>
+                                    </Border>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter TargetName="Border" Property="Background" Value="{DynamicResource WhiteColor}" />
+                                        <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource PasswordBossGreenColor}" />
+                                        <Setter TargetName="Border" Property="BorderThickness" Value="0,2,0,0" />
+                                        <Setter Property="Foreground" Value="{DynamicResource BlackColor}" />
+                                    </Trigger>
+                                    <Trigger Property="IsSelected" Value="False">
+                                        <Setter TargetName="Border" Property="Background" Value="{DynamicResource TextBoxBackground}" />
+                                        <Setter TargetName="Border" Property="BorderThickness" Value="0,0,1,0" />
+                                        <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource TextboxBorderbrush}" />
+                                        <Setter Property="Foreground" Value="{DynamicResource LightGrayTextForegroundColor}" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TabControl.Resources>
+
+            <!--Passwords tab item grid-->
+                <TabItem Width="120" Height="30">
+                    <TabItem.Header>
+                    <TextBlock Text="{DynamicResource Passwords}"  FontSize="12" FontWeight="SemiBold"
+                                           FontFamily="{DynamicResource ProximaRegular}"
+                                           />
+                    </TabItem.Header>
+
+                </TabItem>
+                <!--Digital wallet tab item grid-->
+                <TabItem Width="120" Height="30" >
+                    <TabItem.Header>
+                    <TextBlock Text="{DynamicResource DigitalWallet}"  FontSize="12" FontWeight="SemiBold"
+                                           FontFamily="{DynamicResource ProximaRegular}"
+                                           />
+                    </TabItem.Header>
+                   
+                </TabItem>
+                <!--Personal Info tab item grid-->
+                <TabItem Width="120" Height="30">
+                    <TabItem.Header>
+                    <TextBlock Text="{DynamicResource PersonalInfo}"  FontSize="12" FontWeight="SemiBold"
+                                           FontFamily="{DynamicResource ProximaRegular}"
+                                           />
+                    </TabItem.Header>
+                   
+                </TabItem>
+            </TabControl>
+
+            <Grid Grid.Row="2"   Background="#ffff" >
+                <Grid.RowDefinitions>
+
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.02*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="0.02*"/>
+                </Grid.ColumnDefinitions>
+
+
+
+                <!--content grids-->
+            <TextBlock Grid.Row="0" Grid.Column="1" Text="{DynamicResource SharedByMe}"  FontSize="12.8"
+                                               FontFamily="{DynamicResource ProximaLight}" FontWeight="SemiBold" />
+                <Grid x:Name="SharedByMeGrid" Grid.Row="2" Grid.Column="1"  Height="Auto">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="2" />
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1.5*"/>
+                        <!--<ColumnDefinition Width="*"/>-->
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal"
+                                                    VerticalAlignment="Stretch">
+                        <TextBlock  Text="{DynamicResource Recipient}" FontSize="12.8"
+                                                        FontFamily="{DynamicResource ProximaRegular}" Foreground="{DynamicResource LightGrayTextForegroundColor}"/>
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Right" 
+                                                        VerticalAlignment="Center" Margin="12,-5,0,0">
+
+
+
+
+
+                        <Image Width="8" Height="5" RenderOptions.BitmapScalingMode="HighQuality" Visibility="{Binding SortSharedByMeAscendingVisibility, Converter={StaticResource BoolToVisibility}}"
+                                           Source="{DynamicResource imgUpArrow}">
+                            <Image.InputBindings>
+                                <MouseBinding MouseAction="LeftClick" Command="{Binding SortSharedByMeAscendingCommand}"/>
+                            </Image.InputBindings>
+                        </Image>
+                        <Image Width="8" Height="5" Margin="0,2,0,0" Visibility="{Binding SortSharedByMeDescendingVisibility, Converter={StaticResource BoolToVisibility}}"
+                                           Source="{DynamicResource imgDownArrow1}"
+                                           RenderOptions.BitmapScalingMode="HighQuality">
+                            <Image.InputBindings>
+                                <MouseBinding MouseAction="LeftClick" Command="{Binding SortSharedByMeDescendingCommand}"/>
+                            </Image.InputBindings>
+                        </Image>
+
+
+
+
+
+
+                    </StackPanel>
+                    </StackPanel>
+                    <TextBlock Grid.Row="0" Grid.Column="1" Text="{DynamicResource Nickname}" FontSize="12.8"
+                                                   FontFamily="{DynamicResource ProximaRegular}" Foreground="{DynamicResource LightGrayTextForegroundColor}" HorizontalAlignment="Left" />
+                    <TextBlock Grid.Row="0" Grid.Column="2" Text="{DynamicResource Sent}" FontSize="12.8"
+                                                   FontFamily="{DynamicResource ProximaRegular}" Foreground="{DynamicResource LightGrayTextForegroundColor}" HorizontalAlignment="Left"/>
+                    <!--<TextBlock Grid.Row="0" Grid.Column="2" Text="{DynamicResource Expires}" FontSize="12.8"
+                                                   FontFamily="{DynamicResource ProximaRegular}" Foreground="{DynamicResource LightGrayTextForegroundColor}" HorizontalAlignment="Left"/>-->
+                    <TextBlock Grid.Row="0" Grid.Column="3" Text="{DynamicResource Status}" FontSize="12.8"
+                                                   FontFamily="{DynamicResource ProximaRegular}" Foreground="{DynamicResource LightGrayTextForegroundColor}" HorizontalAlignment="Left"/>
+                    <TextBlock Grid.Row="0" Grid.Column="4" Text="{DynamicResource Action}" FontSize="12.8"
+                                                   FontFamily="{DynamicResource ProximaRegular}" Foreground="{DynamicResource LightGrayTextForegroundColor}" HorizontalAlignment="Left"/>
+                    
+                    
+                    <Rectangle Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5"
+                                                   HorizontalAlignment="Stretch" VerticalAlignment="Top" Fill="{DynamicResource TextBoxBackground}"
+                                                   Height="2" Margin="0,0,0,0"/>
+                <!--<ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="6"  Template="{DynamicResource CustomScrollViewerTemplate}" PanningMode="Both">-->
+                <ListView Name="ShareCenterPasswordsList" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="6"  
+                                  BorderThickness="0" Background="Transparent"
+                                              HorizontalAlignment="Stretch"  ItemContainerStyle="{DynamicResource SecureShareListViewStyle}"
+                                              VerticalAlignment="Top" HorizontalContentAlignment="Stretch"
+                                              Template="{DynamicResource SecurityScoreListViewTemplate}"
+                                              ItemsSource="{Binding Path=ShareCenterSentData,UpdateSourceTrigger=PropertyChanged}" >
+                            <ListBox.ItemTemplate >
+                                <DataTemplate >
+                                    <Grid HorizontalAlignment="Stretch" Margin="0 0 0 0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="30"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1.5*"/>
+                                            <!--<ColumnDefinition Width="*"/>-->
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="0.5*" />
+                                            <ColumnDefinition Width="0.5*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock  Grid.Column="0" Text="{Binding recipient}" FontSize="12" HorizontalAlignment="Left"
+                                                    Foreground="{DynamicResource TextForegroundcolor}" FontFamily="{DynamicResource ProximaRegular}" 
+                                                    VerticalAlignment="Center"/>
+                                        <TextBlock Grid.Column="1" Text="{Binding nickname}" FontSize="12" Margin="0,0,0,0"
+                                                    Foreground="{DynamicResource TextForegroundcolor}" FontFamily="{DynamicResource ProximaRegular}" HorizontalAlignment="Left" 
+                                                    VerticalAlignment="Center"/>
+                                        <TextBlock  Grid.Column="2"  FontSize="12" Text="{Binding sent}" Margin="0,0,0,0"
+                                                            Foreground="{DynamicResource TextForegroundcolor}" FontFamily="{DynamicResource ProximaRegular}" HorizontalAlignment="Left"
+                                                            VerticalAlignment="Center">
+                                                                <!--<Run Text=" ago"/>-->
+                                        </TextBlock>
+                                        <!--<TextBlock  Grid.Column="2" Text="{Binding expires}" FontSize="12" Margin="0,0,0,0"
+                                                            Foreground="{DynamicResource TextForegroundcolor}" FontFamily="{DynamicResource ProximaRegular}" HorizontalAlignment="Left"
+                                                            VerticalAlignment="Center"/>-->
+                                        <TextBlock  Grid.Column="3" Text="{Binding localizedStatus}" FontSize="12" Margin="0,0,0,0"
+                                                            Foreground="{DynamicResource TextForegroundcolor}" FontFamily="{DynamicResource ProximaRegular}" HorizontalAlignment="Left"
+                                                            VerticalAlignment="Center"/>
+                                        
+                                        
+
+
+                                    <Button Grid.Column="4" Margin="0,0,0,0" HorizontalAlignment="Left"
+                                            VerticalContentAlignment="Center" VerticalAlignment="Center" Height="22" Width="60"
+                                            Command="{Binding ElementName=SharedWithMePasswords,Path=DataContext.CancelShareCommand}"  CommandParameter="{Binding uuid}"
+                                            Style="{DynamicResource roundShareCentarButton}" 
+                                             Visibility="{Binding sharedStatus, Converter={StaticResource ActionToVisibilty}, ConverterParameter='cancel'}">
+                                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                                
+                                                <TextBlock FontSize="12" Padding="0,0,0,0" VerticalAlignment="Center"
+                                                   FontFamily="{DynamicResource ProximaRegular}"
+                                                   Text="{DynamicResource Cancel}" />
+                                            </StackPanel>
+                                    </Button>
+                                    <Button Grid.Column="4" Margin="0,0,0,0" HorizontalAlignment="Left"
+                                            VerticalContentAlignment="Center" VerticalAlignment="Center" Height="22" Width="60"
+                                            Command="{Binding ElementName=SharedWithMePasswords,Path=DataContext.RevokeShareCommand}"  CommandParameter="{Binding uuid}"
+                                            Style="{DynamicResource roundShareCentarButton}" 
+                                            Visibility="{Binding sharedStatus, Converter={StaticResource ActionToVisibilty}, ConverterParameter='revoke'}">
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+
+                                            <TextBlock FontSize="12" Padding="0,0,0,0" VerticalAlignment="Center"
+                                                   FontFamily="{DynamicResource ProximaRegular}"
+                                                   Text="{DynamicResource Revoke}" />
+                                        </StackPanel>
+                                    </Button>
+
+
+                                    <Button Grid.Column="4" Margin="0,0,0,0" HorizontalAlignment="Left"
+                                            VerticalContentAlignment="Center" VerticalAlignment="Center" Height="22" Width="60"
+                                            Command="{Binding ElementName=SharedWithMePasswords,Path=DataContext.SendDataShareCommand}"  CommandParameter="{Binding uuid}"
+                                            Style="{DynamicResource roundShareCentarButton}" 
+                                            Visibility="{Binding sharedStatus, Converter={StaticResource ActionToVisibilty}, ConverterParameter='shareData'}">
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+
+                                            <TextBlock FontSize="12" Padding="0,0,0,0" VerticalAlignment="Center"
+                                                   FontFamily="{DynamicResource ProximaRegular}"
+                                                   Text="{DynamicResource ShareData}" />
+                                        </StackPanel>
+                                    </Button>
+
+                                    <!--<Button Grid.Column="3" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                                                        FontFamily="{DynamicResource ProximaSemiBold}"  FontSize="12" FontWeight="SemiBold" Content="{DynamicResource ShareData}" Background="Transparent"
+                                                        Foreground="{DynamicResource PasswordBossGreenColor}" Command="{Binding ElementName=SharedWithMePasswords,Path=DataContext.SendDataShareCommand}"  CommandParameter="{Binding uuid}"
+                                                        Style="{DynamicResource CancelButton_style}" 
+                                                        Visibility="{Binding sharedStatus, Converter={StaticResource ActionToVisibilty}, ConverterParameter='shareData'}">
+                                    </Button>-->
+                                    <!--<Button Grid.Column="3" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                                                    FontFamily="{DynamicResource ProximaSemiBold}"  FontSize="12" FontWeight="SemiBold" Content="{DynamicResource Cancel}" Background="Transparent"
+                                                    Foreground="{DynamicResource PasswordBossGreenColor}" Command="{Binding ElementName=SharedWithMePasswords,Path=DataContext.CancelShareCommand}"  CommandParameter="{Binding uuid}"
+                                                    Style="{DynamicResource roundAddButton}" 
+                                                    Visibility="{Binding sharedStatus, Converter={StaticResource ActionToVisibilty}, ConverterParameter='cancel'}">
+                                        </Button>-->
+                                        <!--<Button Grid.Column="3" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                                                        FontFamily="{DynamicResource ProximaSemiBold}"  FontSize="12" FontWeight="SemiBold" Content="{DynamicResource Revoke}" Background="Transparent"
+                                                        Foreground="{DynamicResource PasswordBossGreenColor}" Command="{Binding ElementName=SharedWithMePasswords,Path=DataContext.RevokeShareCommand}"  CommandParameter="{Binding uuid}"
+                                                        Style="{DynamicResource CancelButton_style}" 
+                                                        Visibility="{Binding sharedStatus, Converter={StaticResource ActionToVisibilty}, ConverterParameter='revoke'}">
+                                        </Button>-->
+
+                                    <Button Grid.Column="5" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" 
+                                                        FontFamily="{DynamicResource ProximaSemiBold}"  FontSize="12" FontWeight="SemiBold" Content="{DynamicResource Resend}" Background="Transparent"
+                                                        Foreground="{DynamicResource PasswordBossGreenColor}" Command="{Binding ElementName=SharedWithMePasswords,Path=DataContext.ResendShareCommand}"  CommandParameter="{Binding uuid}"
+                                                        Style="{DynamicResource CancelButton_style}" 
+                                                        Visibility="{Binding sharedStatus, Converter={StaticResource ActionToVisibilty}, ConverterParameter='resend'}">
+                                        </Button>
+
+                                <Button Grid.Column="5" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" 
+                                                        FontFamily="{DynamicResource ProximaSemiBold}"  FontSize="12" FontWeight="SemiBold" Content="{DynamicResource Remove}" Background="Transparent"
+                                                        Foreground="{DynamicResource PasswordBossGreenColor}" Command="{Binding ElementName=SharedWithMePasswords,Path=DataContext.RemoveShareCommand}"  CommandParameter="{Binding uuid}"
+                                                        Style="{DynamicResource CancelButton_style}" 
+                                                        Visibility="{Binding sharedStatus, Converter={StaticResource ActionToVisibilty}, ConverterParameter='remove'}">
+                                </Button>
+                            </Grid>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListView>
+                    <!--</ScrollViewer>-->
+                </Grid>
+
+                <TextBlock Grid.Row="4" Grid.Column="1" Text="{DynamicResource SharedWithMe}" FontSize="12.8"
+                                               FontFamily="{DynamicResource ProximaLight}" FontWeight="SemiBold"/>
+            <Grid x:Name="SharedWithMeGrid" Grid.Row="6" Grid.Column="1" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="*"/>
+                        <!--<ColumnDefinition Width="*"/>-->
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="20"/>
+                    <RowDefinition Height="2" />
+                    <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
+                        <TextBlock  Text="{DynamicResource Sender}" FontSize="12.8"
+                                                        FontFamily="{DynamicResource ProximaRegular}" Foreground="{DynamicResource LightGrayTextForegroundColor}"/>
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Right" 
+                                                        VerticalAlignment="Center" Margin="12,-5,0,0">
+                        <Image Width="8" Height="5" RenderOptions.BitmapScalingMode="HighQuality" Visibility="{Binding SortSharedWithMeAscendingVisibility, Converter={StaticResource BoolToVisibility}}"
+                                           Source="{DynamicResource imgUpArrow}">
+                            <Image.InputBindings>
+                                <MouseBinding MouseAction="LeftClick" Command="{Binding SortSharedWithMeAscendingCommand}"/>
+                            </Image.InputBindings>
+                        </Image>
+                        <Image Width="8" Height="5" Margin="0,2,0,0" Visibility="{Binding SortSharedWithMeDescendingVisibility, Converter={StaticResource BoolToVisibility}}"
+                                           Source="{DynamicResource imgDownArrow1}"
+                                           RenderOptions.BitmapScalingMode="HighQuality">
+                            <Image.InputBindings>
+                                <MouseBinding MouseAction="LeftClick" Command="{Binding SortSharedWithMeDescendingCommand}"/>
+                            </Image.InputBindings>
+                        </Image>
+                       
+                        </StackPanel>
+                    </StackPanel>
+                    <TextBlock Grid.Row="0" Grid.Column="1" Text="{DynamicResource Nickname}" FontSize="12.8"
+                                                   FontFamily="{DynamicResource ProximaRegular}" Foreground="{DynamicResource LightGrayTextForegroundColor}" HorizontalAlignment="Left" />
+                    <TextBlock Grid.Row="0" Grid.Column="2" Text="{DynamicResource Received}" FontSize="12.8"
+                                                   FontFamily="{DynamicResource ProximaRegular}" Foreground="{DynamicResource LightGrayTextForegroundColor}" HorizontalAlignment="Left"/>
+                    <TextBlock Grid.Row="0" Grid.Column="3" Text="{DynamicResource Expires}" FontSize="12.8"
+                                                   FontFamily="{DynamicResource ProximaRegular}" Foreground="{DynamicResource LightGrayTextForegroundColor}" HorizontalAlignment="Left"/>
+                    <TextBlock Grid.Row="0" Grid.Column="4" Text="{DynamicResource Action}" FontSize="12.8" 
+                                                   FontFamily="{DynamicResource ProximaRegular}" Foreground="{DynamicResource LightGrayTextForegroundColor}" HorizontalAlignment="Left"/>
+                    <!--<TextBlock Grid.Row="0" Grid.Column="4" Text="{DynamicResource Status}" FontSize="12.8"
+                                                   FontFamily="{DynamicResource ProximaRegular}" Foreground="{DynamicResource LightGrayTextForegroundColor}" HorizontalAlignment="Left"/>-->
+                <Rectangle Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="6"
+                                                   HorizontalAlignment="Stretch" VerticalAlignment="Top" Fill="{DynamicResource TextBoxBackground}"
+                                                   Height="2" Margin="0,0,0,0"/>
+                <!--<ScrollViewer  Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="6" VerticalScrollBarVisibility="Auto"  Template="{DynamicResource CustomScrollViewerTemplate}" PanningMode="Both">-->
+                        <ListView x:Name="SharedWithMePasswords" BorderThickness="0" VerticalAlignment="Top" 
+                                  Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="6"  HorizontalContentAlignment="Stretch"
+                                                       HorizontalAlignment="Stretch" ItemsSource="{Binding Path=ShareCenterReceivedData}" 
+                                                      ItemContainerStyle="{DynamicResource SecureShareListViewStyle}" Margin="0,0,0,0"
+                                  Template="{DynamicResource SecurityScoreListViewTemplate}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate >
+                                <Grid HorizontalAlignment="Stretch" Margin="0 0 0 0">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1.5*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <!--<ColumnDefinition Width="*"/>-->
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="0.5*" />
+                                            <ColumnDefinition Width="0.5*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="30"/>
+                                        </Grid.RowDefinitions>
+                                        <TextBlock  Grid.Column="0" Text="{Binding sender}" FontSize="12"
+                                                   Foreground="{DynamicResource foregroundsharecolor}" FontFamily="{DynamicResource ProximaRegular}" Margin="0,0,0,0"
+                                                   VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                        <TextBlock Grid.Column="1" Text="{Binding nickname}" FontSize="12" 
+                                                   Foreground="{DynamicResource foregroundsharecolor}" FontFamily="{DynamicResource ProximaRegular}"
+                                                   VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                                        <TextBlock  Grid.Column="2"  FontSize="12" Text="{Binding sent}"
+                                                   Foreground="{DynamicResource foregroundsharecolor}" FontFamily="{DynamicResource ProximaRegular}"
+                                                   VerticalAlignment="Center" HorizontalAlignment="Left">
+                                                                 <!--<Run Text=" ago"/>-->
+                                        </TextBlock>
+                                        <TextBlock  Grid.Column="3" FontSize="12" Text="{Binding expires}" 
+                                                   Foreground="{DynamicResource foregroundsharecolor}" FontFamily="{DynamicResource ProximaRegular}" 
+                                                   VerticalAlignment="Center" HorizontalAlignment="Left"></TextBlock>
+                                        <!--<TextBlock  Grid.Column="4" FontSize="12" Text="{Binding localizedStatus}" 
+                                                   Foreground="{DynamicResource foregroundsharecolor}" FontFamily="{DynamicResource ProximaRegular}" 
+                                                   VerticalAlignment="Center" HorizontalAlignment="Left"></TextBlock>-->
+
+
+
+
+
+                                    <Button Grid.Column="4" Margin="0,0,0,0" HorizontalAlignment="Left"
+                                            VerticalContentAlignment="Center" VerticalAlignment="Center" Height="22" Width="60"
+                                           Command="{Binding ElementName=SharedWithMePasswords,Path=DataContext.AcceptShareCommand}"  CommandParameter="{Binding uuid}"
+                                            Style="{DynamicResource roundShareCentarButton}" 
+                                           Visibility="{Binding sharedStatus, Converter={StaticResource ActionToVisibilty}, ConverterParameter='accept'}">
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+
+                                            <TextBlock FontSize="12" Padding="0,0,0,0" VerticalAlignment="Center"
+                                                   FontFamily="{DynamicResource ProximaRegular}"
+                                                   Text="{DynamicResource Accept}" />
+                                        </StackPanel>
+                                    </Button>
+
+                                    <Button Grid.Column="4" Margin="0,0,0,0" HorizontalAlignment="Left"
+                                            VerticalContentAlignment="Center" VerticalAlignment="Center" Height="22" Width="60"
+                                           Command="{Binding ElementName=SharedWithMePasswords,Path=DataContext.AcceptShareRequestCommand}"  CommandParameter="{Binding uuid}"
+                                            Style="{DynamicResource roundShareCentarButton}" 
+                                          Visibility="{Binding sharedStatus, Converter={StaticResource ActionToVisibilty}, ConverterParameter='acceptRequest'}">
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+
+                                            <TextBlock FontSize="12" Padding="0,0,0,0" VerticalAlignment="Center"
+                                                   FontFamily="{DynamicResource ProximaRegular}"
+                                                   Text="{DynamicResource Accept}" />
+                                        </StackPanel>
+                                    </Button>
+
+                                    <Button Grid.Column="5" Margin="0,0,0,0" HorizontalAlignment="Left"
+                                            VerticalContentAlignment="Center" VerticalAlignment="Center" Height="22" Width="60"
+                                           Command="{Binding ElementName=SharedWithMePasswords,Path=DataContext.RejectShareCommand}"  CommandParameter="{Binding uuid}"
+                                            Style="{DynamicResource roundShareCentarButton}" 
+                                          Visibility="{Binding sharedStatus, Converter={StaticResource ActionToVisibilty}, ConverterParameter='reject'}">
+                                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+
+                                            <TextBlock FontSize="12" Padding="0,0,0,0" VerticalAlignment="Center"
+                                                   FontFamily="{DynamicResource ProximaRegular}"
+                                                   Text="{DynamicResource Reject}" />
+                                        </StackPanel>
+                                    </Button>
+
+
+                                    <!--<Button Grid.Column="3" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                                                        FontFamily="{DynamicResource ProximaSemiBold}"  FontSize="12" FontWeight="SemiBold" Content="{DynamicResource Accept}" Background="Transparent"
+                                                        Foreground="{DynamicResource PasswordBossGreenColor}" Command="{Binding ElementName=SharedWithMePasswords,Path=DataContext.AcceptShareCommand}"  CommandParameter="{Binding uuid}"
+                                                        Style="{DynamicResource CancelButton_style}" 
+                                                        Visibility="{Binding sharedStatus, Converter={StaticResource ActionToVisibilty}, ConverterParameter='accept'}">
+                                        </Button>-->
+
+                                        <!--<Button Grid.Column="3" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                                                        FontFamily="{DynamicResource ProximaSemiBold}"  FontSize="12" FontWeight="SemiBold" Content="{DynamicResource Accept}" Background="Transparent"
+                                                        Foreground="{DynamicResource PasswordBossGreenColor}" Command="{Binding ElementName=SharedWithMePasswords,Path=DataContext.AcceptShareRequestCommand}"  CommandParameter="{Binding uuid}"
+                                                        Style="{DynamicResource CancelButton_style}" 
+                                                        Visibility="{Binding sharedStatus, Converter={StaticResource ActionToVisibilty}, ConverterParameter='acceptRequest'}">
+                                        </Button>-->
+                                        <!--<Button Grid.Column="4" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                                                        FontFamily="{DynamicResource ProximaSemiBold}"  FontSize="12" FontWeight="SemiBold" Content="{DynamicResource Reject}" Background="Transparent"
+                                                        Foreground="{DynamicResource PasswordBossGreenColor}" Command="{Binding ElementName=SharedWithMePasswords,Path=DataContext.RejectShareCommand}"  CommandParameter="{Binding uuid}"
+                                                        Style="{DynamicResource CancelButton_style}"
+                                                        Visibility="{Binding sharedStatus, Converter={StaticResource ActionToVisibilty}, ConverterParameter='reject'}">
+                                        </Button>-->
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    <!--</ScrollViewer>-->
+
+                </Grid>
+
+            </Grid>
+
+
+        <uc:CustomMessageBoxUserControl 
+            MessageBoxDialogVisibility="{Binding AcceptMessageBoxVisibility}" 
+            CustomMessageBoxType="Confirmation" 
+            MessageBoxDialogCancelButtonText="{DynamicResource Cancel}" 
+            MessageBoxDialogConfirmButtonText="{DynamicResource Continue}" 
+            MessageBoxDialogHeaderText="{DynamicResource SharingConfirmationHeader}"
+            MessageBoxDialogText="{DynamicResource ShareAccept }"
+            MessageBoxDialogConfirmCommand="{Binding AcceptShareCommand}"
+            MessageBoxDialogCancelCommand="{Binding CancelCommand}" />
+
+        <uc:CustomMessageBoxUserControl 
+            MessageBoxDialogVisibility="{Binding RejectMessageBoxVisibility}" 
+            CustomMessageBoxType="Confirmation" 
+            MessageBoxDialogCancelButtonText="{DynamicResource Cancel}" 
+            MessageBoxDialogConfirmButtonText="{DynamicResource Continue}" 
+            MessageBoxDialogHeaderText="{DynamicResource SharingConfirmationHeader}"
+            MessageBoxDialogText="{DynamicResource ShareItemReject }"
+            MessageBoxDialogConfirmCommand="{Binding RejectShareCommand}"
+            MessageBoxDialogCancelCommand="{Binding CancelCommand}" />
+
+        <uc:CustomMessageBoxUserControl 
+            MessageBoxDialogVisibility="{Binding CancelMessageBoxVisibility}" 
+            CustomMessageBoxType="Confirmation" 
+            MessageBoxDialogCancelButtonText="{DynamicResource Cancel}" 
+            MessageBoxDialogConfirmButtonText="{DynamicResource Continue}" 
+            MessageBoxDialogHeaderText="{DynamicResource SharingConfirmationHeader}"
+            MessageBoxDialogText="{DynamicResource ShareItemCancel }"
+            MessageBoxDialogConfirmCommand="{Binding CancelShareCommand}"
+            MessageBoxDialogCancelCommand="{Binding CancelCommand}" />
+
+        <uc:CustomMessageBoxUserControl 
+            MessageBoxDialogVisibility="{Binding RemoveMessageBoxVisibility}" 
+            CustomMessageBoxType="Confirmation" 
+            MessageBoxDialogCancelButtonText="{DynamicResource Cancel}" 
+            MessageBoxDialogConfirmButtonText="{DynamicResource Continue}" 
+            MessageBoxDialogHeaderText="{DynamicResource SharingConfirmationHeader}"
+            MessageBoxDialogText="{DynamicResource ShareItemRemove }"
+            MessageBoxDialogConfirmCommand="{Binding RemoveShareCommand}"
+            MessageBoxDialogCancelCommand="{Binding CancelCommand}" />
+
+        <uc:CustomMessageBoxUserControl 
+            MessageBoxDialogVisibility="{Binding ResendMessageBoxVisibility}" 
+            CustomMessageBoxType="Confirmation" 
+            MessageBoxDialogCancelButtonText="{DynamicResource Cancel}" 
+            MessageBoxDialogConfirmButtonText="{DynamicResource Continue}" 
+            MessageBoxDialogHeaderText="{DynamicResource SharingConfirmationHeader}"
+            MessageBoxDialogText="{DynamicResource ShareResend }"
+            MessageBoxDialogConfirmCommand="{Binding ResendShareCommand}"
+            MessageBoxDialogCancelCommand="{Binding CancelCommand}" />
+
+        <uc:CustomMessageBoxUserControl 
+            MessageBoxDialogVisibility="{Binding UnshareMessageBoxVisibility}" 
+            CustomMessageBoxType="Confirmation" 
+            MessageBoxDialogCancelButtonText="{DynamicResource Cancel}" 
+            MessageBoxDialogConfirmButtonText="{DynamicResource Continue}" 
+            MessageBoxDialogHeaderText="{DynamicResource SharingConfirmationHeader}"
+            MessageBoxDialogText="{DynamicResource ShareRevoke }"
+            MessageBoxDialogConfirmCommand="{Binding RevokeShareCommand}"
+            MessageBoxDialogCancelCommand="{Binding CancelCommand}" />
+    </Grid>
+   
+</UserControl>

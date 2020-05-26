@@ -1,0 +1,15 @@
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.KeePass\bin\Debug\000002.dll
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.KeePass\bin\Debug\000002.pdb
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.KeePass\bin\Debug\000002.dll.CodeAnalysisLog.xml
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.KeePass\bin\Debug\000002.dll.lastcodeanalysissucceeded
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.KeePass\bin\Debug\PBKnown.dll
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.KeePass\bin\Debug\System.Data.SQLite.dll
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.KeePass\bin\Debug\VaultReader.dll
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.KeePass\bin\Debug\Newtonsoft.Json.dll
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.KeePass\bin\Debug\Microsoft.Win32.TaskScheduler.dll
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.KeePass\bin\Debug\PBKnown.pdb
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.KeePass\bin\Debug\Microsoft.Win32.TaskScheduler.xml
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.KeePass\obj\x86\Debug\PBDataImporters.KeePass.csproj.CoreCompileInputs.cache
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.KeePass\obj\x86\Debug\PBDataImporters.KeePass.csproj.CopyComplete
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.KeePass\obj\x86\Debug\000002.dll
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.KeePass\obj\x86\Debug\000002.pdb

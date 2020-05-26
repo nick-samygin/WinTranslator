@@ -1,0 +1,412 @@
+﻿<UserControl x:Class="PasswordBoss.Views.PersonalInfoContentPanel"
+             Name="ContentPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:pbviews="clr-namespace:PasswordBoss.Views"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:view="clr-namespace:PasswordBoss.Views.UserControls"
+             xmlns:ui="clr-namespace:PasswordBoss.Helpers"
+             mc:Ignorable="d" UseLayoutRounding="True"
+             d:DesignHeight="600" d:DesignWidth="600">
+
+    <UserControl.Resources>
+        <ui:ParametersConverter x:Key="ParametersConverter" />
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+
+        <Storyboard x:Key="sbOpenNewItem">
+            <DoubleAnimation Storyboard.TargetName="PersonalInfoAddControl"
+                             Storyboard.TargetProperty="(Grid.Width)"
+                             From="0" To="326" Duration="0:0:0.5" AutoReverse="False" />
+        </Storyboard>
+
+    </UserControl.Resources>
+
+    <Grid x:Name="ContainerGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="45" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=".65*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <!--Container header Grid-->
+   
+        <!--Dynamic Content Grid-->
+        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Name="ItemsGrid"
+              Visibility="{Binding Path=ItemsGridVisibility, Converter={StaticResource  BoolToVisibility}}"
+              HorizontalAlignment="Stretch" Margin="0,0,0,0">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="GotFocus">
+                    <i:InvokeCommandAction Command="{Binding ItemsGridGotFocusCommand}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Border Grid.Row="0" Grid.RowSpan="2" Background="{DynamicResource MainWindowGrayBackgroundColor}" />
+            <pbviews:PersonalInfoItems x:Name="PersonalInfoItemsContainer"></pbviews:PersonalInfoItems>
+            <!--Dynamic listview grid view style-->
+            <ScrollViewer Canvas.ZIndex="2" VerticalScrollBarVisibility="Visible"
+                          HorizontalScrollBarVisibility="Disabled" Margin="0,0,0,0"
+                          Template="{DynamicResource CustomScrollViewerTemplate}" Visibility="Collapsed">
+
+                <StackPanel Name="container_sp" Orientation="Vertical" Margin="15,20,5,50"
+                            VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Background="Transparent">
+                    <WrapPanel Name="GridViewTileWrapPanel" Orientation="Vertical" HorizontalAlignment="Stretch"
+                               VerticalAlignment="Stretch"
+                               Visibility="Collapsed" />
+                    <StackPanel Name="ListViewStackPanel" Orientation="Vertical" HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch"
+                                Visibility="Collapsed" />
+                    <!--<WrapPanel Name="Recommendedsite_Wpanel" Orientation="Vertical" HorizontalAlignment="Stretch"
+                               Visibility="Visible" VerticalAlignment="Stretch" />-->
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+
+        <Grid Grid.Row="1" Canvas.ZIndex="2" Grid.Column="1"
+              HorizontalAlignment="Right"
+              Visibility="{Binding AddNewItemGridVisibility, Converter={StaticResource BoolToVisibility}}">
+            <!--PersonalInfo AddNewItem Grid-->
+            <Grid x:Name="PersonalInfoAddNewItemGrid" Grid.Row="1" Canvas.ZIndex="2" Grid.Column="0"
+                  Grid.ColumnSpan="2" HorizontalAlignment="Right"
+                  Visibility="{Binding PersonalInfoAddNewItemVisibility, Converter={StaticResource BoolToVisiblity}}">
+                <Border BorderBrush="{DynamicResource MainWindowBackgroundColor}" BorderThickness="1 0 1 1" Background="{DynamicResource WhiteColor}" Width="308"
+                        VerticalAlignment="Top" Margin="0,0,19,0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="13" />
+                            <ColumnDefinition Width="85" />
+                            <ColumnDefinition Width="13" />
+                            <ColumnDefinition Width="85" />
+                            <ColumnDefinition Width="13" />
+                            <ColumnDefinition Width="85" />
+                            <ColumnDefinition Width="13" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="71" />
+                            <RowDefinition Height="12" />
+                            <RowDefinition Height="71" />
+                            <RowDefinition Height="12" />
+                            <RowDefinition Height="71" />
+                            <RowDefinition Height="12" />
+                            <RowDefinition Height="71" />
+                            <RowDefinition Height="12" />
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" FontWeight="SemiBold"
+                                   FontFamily="{DynamicResource ProximaRegular}" VerticalAlignment="Center"
+                                   Text="{DynamicResource SelectAnItemToAdd}" Foreground="#354047"
+                                   TextAlignment="Center" />
+                        <Button Name="BtnAddNames" Grid.Column="1" Grid.Row="1"
+                                Style="{DynamicResource DigitalWalletCategoryButtonStyle}"
+                                Command="{Binding PersonalInfoAddItemCommand}" CommandParameter="1">
+                            <Button.Triggers>
+                                <EventTrigger RoutedEvent="Button.Click">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="PersonalInfoAddControl"
+                                                             Storyboard.TargetProperty="(Grid.Width)"
+                                                             From="0" To="326" Duration="0:0:0.5" AutoReverse="False" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Button.Triggers>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="8" />
+                                    <RowDefinition Height="35" />
+                                    <RowDefinition Height="2" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Image Grid.Row="1" Source="{DynamicResource imgPersonalInfoNames}"
+                                       Style="{DynamicResource PersonalInfoItemsIconsStyle}" />
+                                <TextBlock Grid.Row="3" Margin="0,0,0,0" Text="{DynamicResource Names}" FontSize="11"
+                                           Style="{DynamicResource TextBlockDigitalWalletAddControl}"
+                                           HorizontalAlignment="Center" />
+                            </Grid>
+                        </Button>
+                        <Button Grid.Column="3" Grid.Row="1" Style="{DynamicResource DigitalWalletCategoryButtonStyle}"
+                                Command="{Binding PersonalInfoAddItemCommand}" CommandParameter="2">
+                            <Button.Triggers>
+                                <EventTrigger RoutedEvent="Button.Click">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="PersonalInfoAddControl"
+                                                             Storyboard.TargetProperty="(Grid.Width)"
+                                                             From="0" To="326" Duration="0:0:0.5" AutoReverse="False" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Button.Triggers>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="8" />
+                                    <RowDefinition Height="35" />
+                                    <RowDefinition Height="2" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Image Grid.Row="1" Source="{DynamicResource imgPersonalInfoAddress}"
+                                       Style="{DynamicResource PersonalInfoItemsIconsStyle}" />
+                                <TextBlock Grid.Row="3" Margin="0,0,0,0" Text="{DynamicResource Address}" FontSize="11"
+                                           Style="{DynamicResource TextBlockDigitalWalletAddControl}"
+                                           HorizontalAlignment="Center" />
+                            </Grid>
+                        </Button>
+                        <Button Grid.Column="5" Grid.Row="1" Style="{DynamicResource DigitalWalletCategoryButtonStyle}"
+                                Command="{Binding PersonalInfoAddItemCommand}" CommandParameter="3">
+                            <Button.Triggers>
+                                <EventTrigger RoutedEvent="Button.Click">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="PersonalInfoAddControl"
+                                                             Storyboard.TargetProperty="(Grid.Width)"
+                                                             From="0" To="326" Duration="0:0:0.5" AutoReverse="False" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Button.Triggers>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="8" />
+                                    <RowDefinition Height="35" />
+                                    <RowDefinition Height="2" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Image Grid.Row="1" Source="{DynamicResource imgPersonalInfoPhone}"
+                                       Style="{DynamicResource PersonalInfoItemsIconsStyle}" />
+                                <TextBlock Grid.Row="3" Margin="0,0,0,0" Text="{DynamicResource PhoneNumbers}"
+                                           FontSize="11" Style="{DynamicResource TextBlockDigitalWalletAddControl}"
+                                           HorizontalAlignment="Center" />
+                            </Grid>
+                        </Button>
+                        <Button Grid.Column="1" Grid.Row="3" Style="{DynamicResource DigitalWalletCategoryButtonStyle}"
+                                Command="{Binding PersonalInfoAddItemCommand}" CommandParameter="5">
+                            <Button.Triggers>
+                                <EventTrigger RoutedEvent="Button.Click">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="PersonalInfoAddControl"
+                                                             Storyboard.TargetProperty="(Grid.Width)"
+                                                             From="0" To="326" Duration="0:0:0.5" AutoReverse="False" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Button.Triggers>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="8" />
+                                    <RowDefinition Height="35" />
+                                    <RowDefinition Height="2" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Image Grid.Row="1" Source="{DynamicResource imgPersonalInfoEmail}"
+                                       Style="{DynamicResource PersonalInfoItemsIconsStyle}" />
+                                <TextBlock Grid.Row="3" Margin="0,0,0,0" Text="{DynamicResource Email}" FontSize="11"
+                                           Style="{DynamicResource TextBlockDigitalWalletAddControl}"
+                                           HorizontalAlignment="Center" />
+                            </Grid>
+                        </Button>
+                        <Button Grid.Column="3" Grid.Row="3" Style="{DynamicResource DigitalWalletCategoryButtonStyle}"
+                                Command="{Binding PersonalInfoAddItemCommand}" CommandParameter="6">
+                            <Button.Triggers>
+                                <EventTrigger RoutedEvent="Button.Click">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="PersonalInfoAddControl"
+                                                             Storyboard.TargetProperty="(Grid.Width)"
+                                                             From="0" To="326" Duration="0:0:0.5" AutoReverse="False" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Button.Triggers>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="8" />
+                                    <RowDefinition Height="35" />
+                                    <RowDefinition Height="2" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Image Grid.Row="1" Source="{DynamicResource imgPersonalInfoLicence}"
+                                       Style="{DynamicResource PersonalInfoItemsIconsStyle}" />
+                                <TextBlock Grid.Row="3" Margin="0,0,0,0" Text="{DynamicResource DriverLicense}"
+                                           FontSize="11" Style="{DynamicResource TextBlockDigitalWalletAddControl}"
+                                           HorizontalAlignment="Center" />
+                            </Grid>
+                        </Button>
+                        <Button Grid.Column="5" Grid.Row="3" Style="{DynamicResource DigitalWalletCategoryButtonStyle}"
+                                Command="{Binding PersonalInfoAddItemCommand}" CommandParameter="8">
+                            <Button.Triggers>
+                                <EventTrigger RoutedEvent="Button.Click">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="PersonalInfoAddControl"
+                                                             Storyboard.TargetProperty="(Grid.Width)"
+                                                             From="0" To="326" Duration="0:0:0.5" AutoReverse="False" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Button.Triggers>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="8" />
+                                    <RowDefinition Height="35" />
+                                    <RowDefinition Height="2" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Image Grid.Row="1" Source="{DynamicResource imgPersonalInfoMember}"
+                                       Style="{DynamicResource PersonalInfoItemsIconsStyle}" />
+                                <TextBlock Grid.Row="3" Margin="0,0,0,0" Text="{DynamicResource MemberIDs}"
+                                           FontSize="11" Style="{DynamicResource TextBlockDigitalWalletAddControl}"
+                                           HorizontalAlignment="Center" />
+                            </Grid>
+                        </Button>
+                        <Button Grid.Column="1" Grid.Row="5" Style="{DynamicResource DigitalWalletCategoryButtonStyle}"
+                                Command="{Binding PersonalInfoAddItemCommand}" CommandParameter="9">
+                            <Button.Triggers>
+                                <EventTrigger RoutedEvent="Button.Click">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="PersonalInfoAddControl"
+                                                             Storyboard.TargetProperty="(Grid.Width)"
+                                                             From="0" To="326" Duration="0:0:0.5" AutoReverse="False" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Button.Triggers>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="8" />
+                                    <RowDefinition Height="35" />
+                                    <RowDefinition Height="2" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Image Grid.Row="1" Source="{DynamicResource imgPersonalInfoSecurity}"
+                                       Style="{DynamicResource PersonalInfoItemsIconsStyle}" />
+                                <TextBlock Grid.Row="3" Margin="0,0,0,0" Text="{DynamicResource SocialSecurity}"
+                                           FontSize="11" Style="{DynamicResource TextBlockDigitalWalletAddControl}"
+                                           HorizontalAlignment="Center" />
+                            </Grid>
+                        </Button>
+                        <Button Grid.Column="3" Grid.Row="5" Style="{DynamicResource DigitalWalletCategoryButtonStyle}"
+                                Command="{Binding PersonalInfoAddItemCommand}" CommandParameter="7">
+                            <Button.Triggers>
+                                <EventTrigger RoutedEvent="Button.Click">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="PersonalInfoAddControl"
+                                                             Storyboard.TargetProperty="(Grid.Width)"
+                                                             From="0" To="326" Duration="0:0:0.5" AutoReverse="False" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Button.Triggers>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="8" />
+                                    <RowDefinition Height="35" />
+                                    <RowDefinition Height="2" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Image Grid.Row="1" Source="{DynamicResource imgPersonalInfoPassport}"
+                                       Style="{DynamicResource PersonalInfoItemsIconsStyle}" />
+                                <TextBlock Grid.Row="3" Margin="0,0,0,0" Text="{DynamicResource Passport}"
+                                           FontSize="11"
+                                           Style="{DynamicResource TextBlockDigitalWalletAddControl}"
+                                           HorizontalAlignment="Center" />
+                            </Grid>
+                        </Button>
+                        <Button Grid.Column="5" Grid.Row="5" Style="{DynamicResource DigitalWalletCategoryButtonStyle}"
+                                Command="{Binding PersonalInfoAddItemCommand}" CommandParameter="4">
+                            <Button.Triggers>
+                                <EventTrigger RoutedEvent="Button.Click">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="PersonalInfoAddControl"
+                                                             Storyboard.TargetProperty="(Grid.Width)"
+                                                             From="0" To="326" Duration="0:0:0.5" AutoReverse="False" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Button.Triggers>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="8" />
+                                    <RowDefinition Height="35" />
+                                    <RowDefinition Height="2" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Image Grid.Row="1" Source="{DynamicResource imgPersonalInfoCompany}"
+                                       Style="{DynamicResource PersonalInfoItemsIconsStyle}" />
+                                <TextBlock Grid.Row="3" Margin="0,0,0,0" Text="{DynamicResource Company}" FontSize="11"
+                                           Style="{DynamicResource TextBlockDigitalWalletAddControl}"
+                                           HorizontalAlignment="Center" />
+                            </Grid>
+                        </Button>
+                        <Button Grid.Column="3" Grid.Row="7" Style="{DynamicResource DigitalWalletCategoryButtonStyle}"
+                                Command="{Binding PersonalInfoAddItemCommand}" CommandParameter="10">
+                            <Button.Triggers>
+                                <EventTrigger RoutedEvent="Button.Click">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetName="PersonalInfoAddControl"
+                                                             Storyboard.TargetProperty="(Grid.Width)"
+                                                             From="0" To="326" Duration="0:0:0.5" AutoReverse="False" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Button.Triggers>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="8" />
+                                    <RowDefinition Height="35" />
+                                    <RowDefinition Height="2" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Image Grid.Row="1" Source="{DynamicResource imgPersonalInfoNotes}"
+                                       Style="{DynamicResource PersonalInfoItemsIconsStyle}" />
+                                <TextBlock Grid.Row="3" Margin="0,0,0,0" Text="{DynamicResource SecureNotes}"
+                                           FontSize="11" Style="{DynamicResource TextBlockDigitalWalletAddControl}"
+                                           HorizontalAlignment="Center" />
+                            </Grid>
+                        </Button>
+                    </Grid>
+                </Border>
+            </Grid>
+
+            <!--PersonalInfo Addcontrol popup-->
+            <Grid Name="PersonalInfoAddControlGrid" Grid.Row="1" Canvas.ZIndex="2"
+                  Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Right"
+                  Visibility="{Binding PersonalInfoAddControlVisibility, Converter={StaticResource BoolToVisiblity}}">
+                <view:PersonalInfoAddNewItem x:Name="PersonalInfoAddControl" Grid.Row="0" Grid.RowSpan="2"
+                                             HorizontalAlignment="Right"
+                                             DataContext="{Binding PersonalInfoAddNewItemViewModel}"
+                                             VerticalAlignment="Stretch" />
+            </Grid>
+
+        </Grid>
+        <view:CustomMessageBoxUserControl 
+            MessageBoxDialogVisibility="{Binding DeleteSelectedItemsMessageBoxVisibility}" 
+            CustomMessageBoxType="Confirmation" 
+            MessageBoxDialogCancelButtonText="{DynamicResource Cancel}" 
+            MessageBoxDialogConfirmButtonText="{DynamicResource Delete}" 
+            MessageBoxDialogHeaderText="{DynamicResource DeleteSecureItemHeader}"
+            MessageBoxDialogText="{Binding DeleteSelectedItemsMessageText, UpdateSourceTrigger=PropertyChanged}"
+            MessageBoxDialogConfirmCommand="{Binding ConfirmedDeleteSelectedItemsCommand}"
+            MessageBoxDialogCancelCommand="{Binding CanceledDeleteSelectedItemsCommand}"
+            />
+    </Grid>
+</UserControl>

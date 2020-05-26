@@ -1,0 +1,8 @@
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\es-SP\bin\x86\Debug\es-SP.dll
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\es-SP\bin\x86\Debug\es-SP.pdb
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\es-SP\obj\x86\Debug\resources\es-SP.baml
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\es-SP\obj\x86\Debug\es-SP_MarkupCompile.cache
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\es-SP\obj\x86\Debug\es-SP.g.resources
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\es-SP\obj\x86\Debug\es-SP.dll
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\es-SP\obj\x86\Debug\es-SP.pdb
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\es-SP\obj\x86\Debug\es-SP.csproj.CoreCompileInputs.cache

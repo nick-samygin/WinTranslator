@@ -1,0 +1,20 @@
+﻿ShareCenter
+
+
+library
+C#
+.cs
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\ShareCenter\obj\x86\Debug\
+PasswordBoss
+none
+false
+DEBUG;TRACE
+
+15166719847
+
+67-1768239206
+26-761672527
+..\CommonComponents\UserControls\CustomMessageBoxDialog.xaml;..\CommonComponents\UserControls\CustomMessageBoxUserControl.xaml;resources\dictionary\ShareCenterResources.xaml;resources\dictionary\SharedByMeResourceDictionary.xaml;resources\dictionary\SharedWithMeResourceDictionary.xaml;resources\dictionary\ShareExpanderTheme.xaml;Views\NewShareCenterContentPanel.xaml;Views\NewShareView.xaml;Views\ShareCenterContentPanel.xaml;Views\ShareCenterMenuButton.xaml;Views\ShareCenterMiniTour.xaml;Views\UserControls\AddShareWindow.xaml;Views\UserControls\NotificationWindow.xaml;Views\UserControls\SearchBox.xaml;Views\UserControls\ShareNotificationView.xaml;
+
+False
+

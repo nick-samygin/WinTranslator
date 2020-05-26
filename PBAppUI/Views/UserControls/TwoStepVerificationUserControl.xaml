@@ -1,0 +1,277 @@
+﻿<Window x:Class="PasswordBoss.Views.UserControls.TwoStepVerificationUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:cc="clr-namespace:QuickZip.UserControls;assembly=theme" 
+             xmlns:uc="clr-namespace:PasswordBoss.Views.UserControls"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             mc:Ignorable="d" Background="Transparent"
+             AllowsTransparency="True" WindowStyle="None"
+             WindowStartupLocation="CenterScreen" ShowInTaskbar="False"
+             Width="Auto" Height="Auto"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+    </Window.Resources>
+    <Grid>
+        
+        <cc:ConfirmationPopupWindow 
+            x:Name="TwoStepInitialScreen" 
+            Visibility="{Binding TwoStepVerificationModel.TwoStepInitialScreenVisibility, Converter={StaticResource BoolToVisibility}, Mode=TwoWay}"
+            Title="{DynamicResource TwoStepAuthentication}"
+            ConfirmAction="{DynamicResource GetStarted}"
+            Command="{Binding TwoStepVerificationModel.ShowTwoStepMasterPasswordScreenCommand}"
+            AdditionalAction="{DynamicResource LearnMore}"
+            AdditionalActionVisibility="Visible"
+            AdditionalCommand="{Binding TwoStepVerificationModel.TwoStepOpenLearnMoreLinkCommand}" >
+
+            <Grid Margin="0,0,0,0">                    
+                <StackPanel Grid.Row="0" Grid.Column="0">
+                    <TextBlock Grid.Column="0" Grid.Row="0" TextWrapping="Wrap" TextAlignment="Left" HorizontalAlignment="Left" VerticalAlignment="Top"
+                        FontSize="16" FontFamily="{DynamicResource ProximaRegular}" LineHeight="24" Text="{DynamicResource TwoStepInitialScreenMessageDesktop}"/>
+                </StackPanel>
+            </Grid>
+        </cc:ConfirmationPopupWindow>
+
+        <cc:ConfirmationPopupWindow 
+            x:Name="TwoStepEnterMasterPasswordScreen" 
+            Visibility="{Binding TwoStepVerificationModel.TwoStepMasterPasswordScreenVisibility, Converter={StaticResource BoolToVisibility}, Mode=TwoWay}"
+            Title="{DynamicResource TwoStepAuthentication}"
+            ConfirmAction="{DynamicResource Next}"
+            Command="{Binding TwoStepVerificationModel.ShowTwoStepSecreetKeyScreenCommand}" 
+            CommandParameter="{Binding ElementName=pbMasterPasswordValue}" >
+
+            <Grid Margin="0,0,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="64" />
+                    <RowDefinition Height="20" />
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,0,0">
+                    <TextBlock  TextWrapping="Wrap" TextAlignment="Left" FontSize="16" FontFamily="{DynamicResource ProximaRegular}"
+                             FontWeight="Medium" LineHeight="24" Text="{DynamicResource TwoStepMasterPasswordScreenMessage}">
+                    </TextBlock>
+                    <PasswordBox x:Name="pbMasterPasswordValue" Padding="8,0,40,0"
+                             FontFamily="{DynamicResource ProximaRegular}" FontSize="{DynamicResource FontSize17}" MaxLength="30"
+                             VerticalContentAlignment="Center" Height="30" Style="{DynamicResource PasswordBoxTemplate}" >
+                        <PasswordBox.InputBindings>
+                            <KeyBinding Command="{Binding TwoStepVerificationModel.ShowTwoStepSecreetKeyScreenCommand}"
+								CommandParameter="{Binding ElementName=pbMasterPasswordValue}" Key="Enter">
+                            </KeyBinding>
+                        </PasswordBox.InputBindings>
+                    </PasswordBox>                    
+                </StackPanel>
+                <TextBlock HorizontalAlignment="Left" Grid.Row="1" FontSize="14"
+                           TextAlignment="Left" Text="{DynamicResource IncorrectMasterPassword}" Foreground="#ae2b3f" FontFamily="{DynamicResource ProximaRegular}"
+                           Visibility="{Binding TwoStepVerificationModel.IncorrectMasterPasswordVisibility, Converter={StaticResource BoolToVisibility}, Mode=TwoWay}">
+                </TextBlock>
+            </Grid>
+        </cc:ConfirmationPopupWindow>
+
+        <cc:ConfirmationPopupWindow 
+            x:Name="TwoStepSecreetKeyScreen" 
+            Visibility="{Binding TwoStepVerificationModel.TwoStepSecretKeyScreenVisibility, Converter={StaticResource BoolToVisibility}, Mode=TwoWay}"
+            Title="{DynamicResource TwoStepAuthentication}"
+            ConfirmAction="{DynamicResource Next}"
+            Command="{Binding TwoStepVerificationModel.ShowTwoStepConfirmationScreenCommand}" 
+            AdditionalAction="{DynamicResource Back}"
+            AdditionalActionVisibility="Visible"
+            AdditionalCommand="{Binding TwoStepVerificationModel.ShowTwoStepMasterPasswordScreenCommand}"
+            ControlHeightSize="600.0"
+            ContentGridHeightSize="540.0"
+            ContentHeightSize="480.0">
+
+            <Grid Margin="0,0,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="350"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Margin="0,0,0,0" VerticalAlignment="Top">
+                    <TextBlock TextWrapping="Wrap" TextAlignment="Left" HorizontalAlignment="Left"  Margin="0,0,0,0" 
+                        FontSize="16" FontFamily="{DynamicResource ProximaRegular}" FontWeight="Medium" LineHeight="18">                        
+                        <Run Text="{DynamicResource TwoStepSecretKeyScreenFirstMessage}"></Run>
+						<Hyperlink x:Name="hyperlinkSupportedApps" TextDecorations="{x:Null}" FontFamily="{DynamicResource ProximaRegular}"
+                            Foreground="{DynamicResource PasswordBossBlackBackgroundColor}" FontSize="16" Command="{Binding TwoStepVerificationModel.TwoStepOpenSupportedAppListCommand}" >
+                            <TextBlock Text="{DynamicResource TwoStepSecretKeyScreenFirstMessageAppList}" />
+                        </Hyperlink>
+                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap" TextAlignment="Left" HorizontalAlignment="Left" Margin="0,20,0,0" 
+                        FontSize="16" FontFamily="{DynamicResource ProximaRegular}" FontWeight="Medium" LineHeight="18">                        
+                        <Run FontWeight="Bold" Text="{DynamicResource TwoStepSecretKeyScreenSecondMessage}"></Run>
+                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap" TextAlignment="Left" HorizontalAlignment="Left" Margin="0,5,0,0" 
+                        FontSize="16" FontFamily="{DynamicResource ProximaRegular}" FontWeight="Medium" LineHeight="18" >                        
+                        <Run Text="{DynamicResource TwoStepSecretKeyScreenThirdMessagePart1}"></Run>
+                        <Bold>
+                            <Run Text="{DynamicResource TwoStepSecretKeyScreenThirdMessagePart2}"></Run>
+                        </Bold>
+                        <Run Text="{DynamicResource TwoStepSecretKeyScreenThirdMessagePart3}"></Run>
+                    </TextBlock>
+                    <Image HorizontalAlignment="Center" Margin="0,20,0,0" 
+                        Source="{Binding TwoStepVerificationModel.BarcodeSource, Mode=TwoWay}" Height="180" Width="180">
+                    </Image>
+                    <TextBlock TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" Margin="0,40,0,0" FontSize="16"
+                        FontFamily="{DynamicResource ProximaRegular}" FontWeight="Medium" LineHeight="24" Text="{DynamicResource TwoStepSecretKeyScreenForthMessage}">
+                    </TextBlock>
+                    <TextBlock TextWrapping="Wrap" TextAlignment="Center" HorizontalAlignment="Center" FontSize="16" FontWeight="Bold" 
+                        FontFamily="{DynamicResource ProximaRegular}" LineHeight="24" Text="{Binding TwoStepVerificationModel.SecretKey}">
+                    </TextBlock>
+                </StackPanel>
+            </Grid>
+        </cc:ConfirmationPopupWindow>
+
+        <cc:ConfirmationPopupWindow 
+            x:Name="TwoStepEnterConfirmationCodeScreen" 
+            Visibility="{Binding TwoStepVerificationModel.TwoStepConfirmationScreenVisibility, Converter={StaticResource BoolToVisibility}, Mode=TwoWay}"
+            Title="{DynamicResource TwoStepAuthentication}"
+            ConfirmAction="{DynamicResource Next}"
+            Command="{Binding TwoStepVerificationModel.ShowTwoStepMobilePhoneNumberScreenCommand}" 
+            CommandParameter="{Binding ElementName=pConfirmationValue}"
+            AdditionalAction="{DynamicResource Back}"
+            AdditionalActionVisibility="Visible"
+            AdditionalCommand="{Binding TwoStepVerificationModel.ShowTwoStepSecreetKeyScreenCommand}">
+
+            <Grid Margin="0,0,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="64" />
+                    <RowDefinition Height="20" />
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Column="0" Grid.Row="0" Margin="0,0,0,0" Orientation="Vertical"  HorizontalAlignment="Left">
+                    <TextBlock TextWrapping="Wrap" TextAlignment="Left" FontSize="16" FontFamily="{DynamicResource ProximaRegular}"
+                        FontWeight="Medium" LineHeight="24" Text="{DynamicResource TwoStepSecretConfirmationCodeScreenMessage}">
+                    </TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox x:Name="pConfirmationValueWatermark" Margin="0,0,0,0" FontFamily="{DynamicResource ProximaRegular}"
+                            Width="135" Visibility="Visible" FontSize="{DynamicResource FontSize16}" MaxLength="6" Foreground="#b8bcbf" VerticalContentAlignment="Center"
+                            HorizontalAlignment="Left" CaretBrush="{DynamicResource CheckBoxReadAcceptBorderbrush}" Height="30" Text="{DynamicResource TwoStepVerificationDigitsWatermark}"
+                            GotFocus="pConfirmationValueWatermark_GotFocus" Style="{StaticResource TextBoxTemplate}">
+                        </TextBox>
+                        <TextBox x:Name="pConfirmationValue" Margin="0,0,0,0" Padding="8,0,40,0" FontFamily="{DynamicResource ProximaRegular}" Width="135"
+                            FontSize="{DynamicResource FontSize16}" MaxLength="6" Visibility="Collapsed" VerticalContentAlignment="Center" HorizontalAlignment="Left"
+                            CaretBrush="{DynamicResource CheckBoxReadAcceptBorderbrush}" Height="30" 
+                            Text="{Binding TwoStepVerificationModel.ConfirmationCode, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay }"
+                            LostFocus="pConfirmationValue_LostFocus" Style="{StaticResource TextBoxTemplate}">
+							<TextBox.InputBindings>
+								<KeyBinding Command="{Binding TwoStepVerificationModel.ShowTwoStepMobilePhoneNumberScreenCommand}" 
+										CommandParameter="{Binding ElementName=pbMasterPasswordValue}" Key="Enter">
+								</KeyBinding>
+							</TextBox.InputBindings>
+                        </TextBox>                        
+                    </StackPanel>                    
+                </StackPanel>
+                <TextBlock HorizontalAlignment="Left" Grid.Row="1" FontSize="14"
+                           TextAlignment="Left" Text="{DynamicResource IncorrectConfirmationCode}" Foreground="#ae2b3f" FontFamily="{DynamicResource ProximaRegular}"
+                           Visibility="{Binding TwoStepVerificationModel.IncorrectConfirmationCodeVisibility, Converter={StaticResource BoolToVisibility}, Mode=TwoWay}">
+                </TextBlock>
+            </Grid>
+        </cc:ConfirmationPopupWindow>
+
+        <cc:ConfirmationPopupWindow 
+            x:Name="TwoStepMobilePhoneNumberScreen" 
+            Visibility="{Binding TwoStepVerificationModel.TwoStepMobilePhoneNumberScreenVisibility, Converter={StaticResource BoolToVisibility}, Mode=TwoWay}"
+            Title="{DynamicResource TwoStepAuthentication}"
+            ConfirmAction="{DynamicResource Next}"
+            Command="{Binding TwoStepVerificationModel.ShowTwoStepBackupSecurityCodeScreenCommand}" 
+            CommandParameter="{Binding ElementName=pbMasterPasswordValue}" >
+
+            <Grid Margin="0,0,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="350"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Margin="0,0,0,0" Orientation="Vertical"  HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <TextBlock  TextWrapping="Wrap" TextAlignment="Left" FontSize="16" FontFamily="{DynamicResource ProximaRegular}" FontWeight="Medium" LineHeight="24" >
+                        <Bold>
+                            <Run Text="{DynamicResource TwoStepMobilePhoneNumberScreenFirstMessage}"></Run>
+                        </Bold>
+                        <Run Text="{DynamicResource TwoStepMobilePhoneNumberScreenFirstMessageOptional}"></Run>
+                    </TextBlock>
+                    <TextBlock  TextWrapping="Wrap" TextAlignment="Left" Margin="0,5,0,0" FontSize="16" FontFamily="{DynamicResource ProximaRegular}" FontWeight="Medium" LineHeight="18" >
+                        <Run Text="{DynamicResource TwoStepMobilePhoneNumberScreenSecondMessage}"></Run> 
+                    </TextBlock>
+                    <TextBlock  TextWrapping="Wrap" TextAlignment="Left" Margin="0,10,0,0" FontSize="16" FontFamily="{DynamicResource ProximaRegular}" FontWeight="Medium" LineHeight="24" >
+                        <Run Text="{DynamicResource TwoStepMobilePhoneNumberScreenThirdMessage}"></Run>
+                    </TextBlock>
+                </StackPanel>
+                <uc:PhoneNumberBox x:Name="txtMobilePhone" Margin="0,0,0,0" Padding="8,0,40,0" Grid.Row="1" Grid.Column="0" Style="{StaticResource TextBoxTemplate}"
+                             FontFamily="{DynamicResource ProximaRegular}" Width="300" FontSize="{DynamicResource FontSize16}" MaxLength="30"
+                             VerticalContentAlignment="Center" HorizontalAlignment="Left" CaretBrush="{DynamicResource CheckBoxReadAcceptBorderbrush}"
+                             Height="30" Text="{Binding TwoStepVerificationModel.MobilePhone}" >
+                </uc:PhoneNumberBox>
+            </Grid>
+        </cc:ConfirmationPopupWindow>
+
+        <cc:ConfirmationPopupWindow 
+            x:Name="TwoStepBackupSecurityCodeScreen" 
+            Visibility="{Binding TwoStepVerificationModel.TwoStepBackupSecurityCodeScreenVisibility, Converter={StaticResource BoolToVisibility}, Mode=TwoWay}"
+            Title="{DynamicResource TwoStepAuthentication}"
+            ConfirmAction="{DynamicResource Next}"
+            Command="{Binding TwoStepVerificationModel.ShowTwoStepCompletedScreenCommand}" 
+            CommandParameter="{Binding ElementName=pbMasterPasswordValue}"
+            ControlHeightSize="345.0"
+            ContentGridHeightSize="285.0"
+            ContentHeightSize="225.0" >
+
+            <Grid Margin="0,0,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="620"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Grid.Row="0" Margin="0,0,0,0" Orientation="Vertical"  HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Border BorderThickness="2" BorderBrush="#ae2b3f"  Background="#f8cbd3">
+                        <StackPanel Margin="15,10,15,0" HorizontalAlignment="Center">
+                            <TextBlock  TextWrapping="Wrap" TextAlignment="Left" FontSize="16" FontFamily="{DynamicResource ProximaRegular}"
+                                        Foreground="#7e3c46" FontWeight="Medium" LineHeight="24" >
+                                <Bold>
+                                    <Run Text="{DynamicResource TwoStepBackupSecurityCodeScreenFirstMessage}"></Run>
+                                </Bold>
+                            </TextBlock>
+                            <TextBlock Margin="0,10,0,0" TextWrapping="Wrap" TextAlignment="Left" FontSize="16" FontFamily="{DynamicResource ProximaRegular}"
+                                    Foreground="#ae2b3f" FontWeight="Medium" LineHeight="24" >
+                                <Run Text="{DynamicResource TwoStepBackupSecurityCodeScreenSecondMessage}"></Run>
+                            </TextBlock>
+                            <TextBlock Width="260" HorizontalAlignment="Left"  TextWrapping="Wrap" TextAlignment="Left"
+                                FontSize="20" FontFamily="{DynamicResource ProximaRegular}" Foreground="#ae2b3f" FontWeight="Medium" LineHeight="24" >
+								<LineBreak></LineBreak>                              
+                                <Bold>
+                                    <Run Foreground="{DynamicResource BlackColor}" Text="{Binding TwoStepVerificationModel.TwoStepBackupSecurityCodeFormatted}"></Run>
+                                </Bold>
+                                <LineBreak></LineBreak>
+                            </TextBlock>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>                
+            </Grid>
+        </cc:ConfirmationPopupWindow>
+
+        <cc:ConfirmationPopupWindow 
+            x:Name="TwoStepCompletedScreen" 
+            Visibility="{Binding TwoStepVerificationModel.TwoStepCompletedScreenVisibility, Converter={StaticResource BoolToVisibility}, Mode=TwoWay}"
+            Title="{DynamicResource TwoStepAuthentication}"
+            ConfirmAction="{DynamicResource Done}"
+            Command="{Binding TwoStepVerificationModel.CloseTwoStepVerificationDialogCommand}" 
+            CommandParameter="{Binding ElementName=pbMasterPasswordValue}" >
+
+            <Grid Margin="0,0,0,0">
+                <StackPanel Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Margin="0,0,0,0" Orientation="Vertical"  HorizontalAlignment="Left" VerticalAlignment="Top" >
+                    <TextBlock  TextWrapping="Wrap" TextAlignment="Left" FontSize="16" FontFamily="{DynamicResource ProximaRegular}" FontWeight="Medium" LineHeight="24" >
+                        <Bold>
+                            <Run Text="{DynamicResource TwoStepCompletedScreenFirstMessage}"></Run>
+                        </Bold>
+                    </TextBlock>
+                    <TextBlock  TextWrapping="Wrap" Margin="0,10,0,0" TextAlignment="Left" FontSize="16" FontFamily="{DynamicResource ProximaRegular}" FontWeight="Medium" LineHeight="24" >
+                        <Run Text="{DynamicResource TwoStepCompletedScreenSecondMessage}"></Run>
+                    </TextBlock>
+                </StackPanel>
+            </Grid>
+        </cc:ConfirmationPopupWindow>
+
+    </Grid>
+</Window>

@@ -1,0 +1,1174 @@
+﻿<UserControl x:Class="Emergency.Views.EmergencyView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:converters="clr-namespace:Emergency.Converters"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:emergency="clr-namespace:Emergency">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+        <converters:PendingContactsConverter x:Key="PendingContactsConverter" />
+        <converters:CurrentAccessContactsConverter x:Key="CurrentAccessContactsConverter" />
+        <converters:EmergencyContactsConverter x:Key="EmergencyContactsConverter" />
+        <converters:AccessPeriodTypeToVisibility TypeForVisibility="WaitingPeriod" x:Key="WaitingPeriodVisibility" />
+        <converters:AccessPeriodTypeToVisibility TypeForVisibility="FullAccess" x:Key="FullAccessVisibility" />
+        <converters:AccessPeriodTypeToVisibility TypeForVisibility="AccessWillBeGranted" x:Key="AccessWillBeGrantedVisibility" />
+        <converters:AccessTypeToVisibilityConverter AccessTypeForVisibility="ToSomeItems" x:Key="SomeItemsAccessConverter" />
+        <converters:AccessTypeToVisibilityConverter AccessTypeForVisibility="Declined" x:Key="DeclinedAccessConverter" />
+        <converters:AccessTypeToVisibilityConverter AccessTypeForVisibility="AllItems" x:Key="AllItemsAccessConverter" />
+        <converters:AccessTypeToVisibilityConverter AccessTypeForVisibility="AccessRequested" x:Key="AccessRequestedConverter" />
+        <converters:InvertBoolToVisibilityConverter x:Key="InvertBoolToVisibilityConverter" />
+        <converters:NotPendingEmergencyContactConverter x:Key="NotPendingEmergencyContactConverter" />
+        <converters:MyContactsSplashVisibilityConverter x:Key="SplashVisibilityConverter" />
+        <converters:TrustedContactSplashVisibility x:Key="TrustedContactSplashVisibility" />
+
+        <DataTemplate  x:Key="ItemStyle">
+            <Border x:Name="mainBorder" Margin="3,0,3,0" Padding="0 0 14 0" Height="40"
+                    CornerRadius="2" Background="{DynamicResource WhiteColor}" HorizontalAlignment="Stretch">
+                <Border.Style>
+                    <Style>
+                        <Setter Property="Border.BorderThickness" Value="1"/>
+                        <Setter Property="Border.BorderBrush" Value="{DynamicResource GrayColor}"/>
+                        <Style.Triggers>
+                            <Trigger Property="Border.IsMouseOver" Value="True">
+                                <Setter Property="Border.BorderBrush" Value="{DynamicResource AddShareSelectedBorderColor}" />
+                                <Setter Property="Border.BorderThickness" Value="1" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Border.Style>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    
+                    <Grid Grid.Column="0" ContextMenu="{x:Null}"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="{DynamicResource WhiteColor}" UseLayoutRounding="True">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Background="{Binding Background}" Grid.Column="0"  Margin="0 0 12 0" HorizontalAlignment="Center" Width="70" Height="35"  VerticalAlignment="Center">
+                            <Image x:Name="dataImg"  Visibility="{Binding IsDefaultImage, Converter={StaticResource InvertedBooleanToVisibility}}"
+                                Source="{Binding Image}" Stretch="Fill" >
+                            </Image>
+                        </Grid>
+
+                        <StackPanel x:Name="LeftPartOfItemGrid" Grid.Column="1" Background="Transparent" VerticalAlignment="Center" Margin="20 0 0 0" >
+                            <TextBlock x:Name="dataTb" HorizontalAlignment="Left" Width="260" 
+                                Foreground="{DynamicResource PasswordBossBlackBackgroundColor}" TextWrapping="Wrap" TextAlignment="Left"
+                                Padding="0,0,0,0" VerticalAlignment="Bottom" FontSize="11pt" FontWeight="Bold" 
+                                FontFamily="{DynamicResource ProximaRegular}" Text="{Binding Name}" />
+                            <TextBlock x:Name="UsernameTextBlock" HorizontalAlignment="Left" TextAlignment="Left" Margin="3 2 0 0"
+                                Foreground="{DynamicResource LightGrayTextForegroundColor}"
+                                Padding="0,0,0,0" VerticalAlignment="Top" FontSize="10pt" FontWeight="Normal"   TextWrapping="Wrap"
+                                FontFamily="{DynamicResource ProximaRegular}" Text="{Binding ListViewSecondName}" />
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+
+                <Border.InputBindings>
+                    <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding DoubleClickCommand}" />
+                </Border.InputBindings>
+            </Border>
+            <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem}, Mode=FindAncestor}}" Value="True">
+                    <Setter TargetName="mainBorder" Property="BorderBrush" Value="{DynamicResource AddShareSelectedBorderColor}"/>
+                    <Setter TargetName="mainBorder" Property="BorderThickness" Value="1"/>
+                </DataTrigger>
+            </DataTemplate.Triggers>
+        </DataTemplate>
+
+        <Style x:Key="BlueSettingsToggleButton" TargetType="{x:Type ToggleButton}">
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FocusVisualStyle">
+                <Setter.Value>
+                    <Style>
+                        <Setter Property="Control.Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <Rectangle Margin="2" SnapsToDevicePixels="True"
+                                           Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"
+                                           StrokeThickness="1" StrokeDashArray="1 2" />
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Width" Value="115"/>
+            <Setter Property="Height" Value="27"/>
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="FontFamily" Value="{DynamicResource ProximaSemiBold}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource LightGrayTextForegroundColor}" />
+            <Setter Property="Background" Value="{DynamicResource PasswordBossBlueHeaderColor}"/>
+            <Setter Property="Foreground" Value="{DynamicResource WhiteColor}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+                        <Border x:Name="border" CornerRadius="0"  BorderBrush="{DynamicResource AddShareSelectedBorderColor}"
+                                BorderThickness="0"
+                                Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+
+                            <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}"
+                                        Content="{TemplateBinding Content}"
+                                        ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False"
+                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                        Margin="{TemplateBinding Padding}" RecognizesAccessKey="True"
+                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <DataTemplate x:Key="PeopleITrustItemTemplate">
+            <Border BorderThickness="1" BorderBrush="{DynamicResource LightGrayTextForegroundColor}" Height="52">
+                <Grid Margin="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="300" />
+                        <ColumnDefinition Width=".2*" />
+                        <ColumnDefinition Width=".3*" />
+                        <ColumnDefinition Width=".05*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Image Grid.Column="0" Width="30" Height="30" Source="{DynamicResource imgPersonGreen}" />
+
+                    <StackPanel Grid.Column="1" Margin="10,0,0,0" Orientation="Vertical">
+                        <TextBlock Text="{Binding Path=Email}"
+                               FontSize="14"
+                               Margin="0,5,0,5"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource BlackColor}"
+                               FontFamily="{DynamicResource ProximaRegular}" />
+
+                        <StackPanel Orientation="Horizontal" Visibility="{Binding Path=AccessPeriodType, Converter={StaticResource WaitingPeriodVisibility}}">
+                            <TextBlock Text="{DynamicResource WaitingPeriod}"
+                                       FontSize="11"
+                                       Foreground="{DynamicResource LightGrayTextForegroundColor}"
+                                       FontFamily="{DynamicResource ProximaRegular}"/>
+                            <TextBlock Text=" "
+                                       FontSize="11"
+                                       Foreground="{DynamicResource LightGrayTextForegroundColor}"
+                                       FontFamily="{DynamicResource ProximaRegular}"/>
+                            <TextBlock Text="{Binding Path=PeriodTime}"
+                                       FontSize="11"
+                                       Foreground="{DynamicResource LightGrayTextForegroundColor}"
+                                       FontFamily="{DynamicResource ProximaRegular}"/>
+                            <TextBlock Text=" "
+                                       FontSize="11"
+                                       Foreground="{DynamicResource LightGrayTextForegroundColor}"
+                                       FontFamily="{DynamicResource ProximaRegular}"/>
+                            <TextBlock Text="{DynamicResource SpaceHours}"
+                                       FontSize="11"
+                                       Foreground="{DynamicResource LightGrayTextForegroundColor}"
+                                       FontFamily="{DynamicResource ProximaRegular}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Visibility="{Binding Path=AccessPeriodType, Converter={StaticResource FullAccessVisibility}}">
+                            <TextBlock Text="{DynamicResource AcceesIsActive}"
+                                       FontSize="11"
+                                       Foreground="{DynamicResource LightGrayTextForegroundColor}"
+                                       FontFamily="{DynamicResource ProximaRegular}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Visibility="{Binding Path=AccessPeriodType, Converter={StaticResource AccessWillBeGrantedVisibility}}">
+                            <TextBlock Text="{DynamicResource AccessWilBeGranted}"
+                                       FontSize="11"
+                                       Foreground="{DynamicResource LightGrayTextForegroundColor}"
+                                       FontFamily="{DynamicResource ProximaRegular}"/>
+                            <TextBlock Text="{Binding Path=PeriodTime}"
+                                       FontSize="11"
+                                       Foreground="{DynamicResource LightGrayTextForegroundColor}"
+                                       FontFamily="{DynamicResource ProximaRegular}"/>
+                            <TextBlock Text=" "
+                                       FontSize="11"
+                                       Foreground="{DynamicResource LightGrayTextForegroundColor}"
+                                       FontFamily="{DynamicResource ProximaRegular}"/>
+                            <TextBlock Text="{DynamicResource SpaceHours}"
+                                       FontSize="11"
+                                       Foreground="{DynamicResource LightGrayTextForegroundColor}"
+                                       FontFamily="{DynamicResource ProximaRegular}"/>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="2" Margin="50,5,0,5">
+                        <StackPanel Orientation="Horizontal" Visibility="{Binding Path=AccessType, Converter={StaticResource SomeItemsAccessConverter}}">
+                            <TextBlock Text="Access: "
+                                       FontWeight="SemiBold"
+                                       FontSize="11"
+                                       FontFamily="{DynamicResource ProximaRegular}"/>
+                            <TextBlock Text="{Binding Path=Count}"
+                                       FontSize="11"
+                                       FontWeight="SemiBold"
+                                       FontFamily="{DynamicResource ProximaRegular}"/>
+                            <TextBlock Text="{DynamicResource SpaceItems}"
+                                       FontSize="11"
+                                       FontWeight="SemiBold"
+                                       FontFamily="{DynamicResource ProximaRegular}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Visibility="{Binding Path=AccessType, Converter={StaticResource DeclinedAccessConverter}}">
+                            <TextBlock Text="{DynamicResource State_rejected}"
+                                       FontSize="11"
+                                       FontWeight="SemiBold"
+                                       Foreground="Red"
+                                       FontFamily="{DynamicResource ProximaRegular}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Visibility="{Binding Path=AccessType, Converter={StaticResource AllItemsAccessConverter}}">
+                            <TextBlock Text="{DynamicResource AccessAllItems}"
+                                       FontSize="11"
+                                       FontWeight="SemiBold"
+                                       FontFamily="{DynamicResource ProximaRegular}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Visibility="{Binding Path=AccessType, Converter={StaticResource AccessRequestedConverter}}">
+                            <TextBlock Text="{DynamicResource AccessRequested}"
+                                       FontSize="11"
+                                       Margin="0,7,0,0"
+                                       FontWeight="SemiBold"
+                                       Foreground="Red"
+                                       FontFamily="{DynamicResource ProximaRegular}"/>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="3" Margin="30,5,0,5">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Visibility="{Binding Path=AccessType, Converter={StaticResource SomeItemsAccessConverter}}">
+                            <TextBlock Text="Resend"
+                                       FontSize="11" 
+                                       Margin="0,2,0,0"
+                                       Foreground="#FDF16D4F"
+                                       FontWeight="SemiBold"
+                                       FontFamily="{DynamicResource ProximaRegular}"/>
+
+                            <Border HorizontalAlignment="Left" VerticalAlignment="Top" Background="Transparent" Cursor="Hand" Margin="5,0,0,0">
+                                <Border Height="26" Width="26" BorderBrush="{DynamicResource LightGrayTextForegroundColor}" >
+                                    <!--<i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseLeftButtonUp">
+                                            <i:InvokeCommandAction Command="{Binding Path=DataContext.CancelSharingCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type telerik:RadTreeView}}}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>-->
+                                    <Image HorizontalAlignment="Center" VerticalAlignment="Top" Height="15" Width="15" Source="{DynamicResource resendOrange}" RenderOptions.BitmapScalingMode="HighQuality" />
+                                </Border>
+                            </Border>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Visibility="{Binding Path=AccessType, Converter={StaticResource AccessRequestedConverter}}">
+                            <Button Style="{DynamicResource BlueSettingsButton}"
+                                    Width="180"
+                                    Height="30"
+                                    Content="Approve / Deny" />
+                        </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="4" Orientation="Horizontal" HorizontalAlignment="Right" Margin="30,0,20,0" VerticalAlignment="Center">
+                        <Border HorizontalAlignment="Left" VerticalAlignment="Top" Background="Transparent" Cursor="Hand">
+                            <Border Height="22" Width="22" BorderBrush="{DynamicResource LightGrayTextForegroundColor}" >
+                                <!--<i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseLeftButtonUp">
+                                            <i:InvokeCommandAction Command="{Binding Path=DataContext.CancelSharingCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type telerik:RadTreeView}}}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>-->
+                                <Image HorizontalAlignment="Center" VerticalAlignment="Top" Height="22" Width="22" Source="{DynamicResource gearGrey}" RenderOptions.BitmapScalingMode="HighQuality" />
+                            </Border>
+                        </Border>
+
+                        <Border HorizontalAlignment="Left" VerticalAlignment="Top" Background="Transparent" Cursor="Hand" Margin="20,0,0,0">
+                            <Border Height="22" Width="22" BorderBrush="{DynamicResource LightGrayTextForegroundColor}" >
+                                <!--<i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseLeftButtonUp">
+                                            <i:InvokeCommandAction Command="{Binding Path=DataContext.CancelSharingCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type telerik:RadTreeView}}}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>-->
+                                <Image HorizontalAlignment="Center" VerticalAlignment="Top" Height="22" Width="22" Source="{DynamicResource imgTrashMedium}" RenderOptions.BitmapScalingMode="HighQuality" />
+                            </Border>
+                        </Border>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </DataTemplate>
+
+        <Style x:Key="EmergencyListBoxItemStyle" TargetType="{x:Type ListBoxItem}">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Border
+                            BorderThickness="{TemplateBinding Border.BorderThickness}"
+                            Padding="{TemplateBinding Control.Padding}"
+                            BorderBrush="{TemplateBinding Border.BorderBrush}"
+                            Background="{TemplateBinding Panel.Background}"
+                            SnapsToDevicePixels="True">
+                            <ContentPresenter
+                            Content="{TemplateBinding ContentControl.Content}"
+                            ContentTemplate="{TemplateBinding ContentControl.ContentTemplate}"
+                            HorizontalAlignment="{TemplateBinding Control.HorizontalContentAlignment}"
+                            VerticalAlignment="{TemplateBinding Control.VerticalContentAlignment}"
+                            SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="HeaderItemContainerStyle" TargetType="{x:Type telerik:RadTreeViewItem}">
+            <Setter Property="FocusVisualStyle">
+                <Setter.Value>
+                    <Style>
+                        <Setter Property="Control.Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <Rectangle Margin="0" Stroke="Transparent" StrokeThickness="0"/>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="telerik:DragDropManager.AllowCapturedDrag" Value="False" />
+            <Setter Property="telerik:DragDropManager.AllowDrag" Value="False" />
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Margin" Value="0,4,0,4" />
+            <Setter Property="BorderBrush" Value="{DynamicResource LightGrayTextForegroundColor}" />
+            <Setter Property="Padding" Value="1,4,5,4"/>
+            <Setter Property="IsDropAllowed" Value="True"/>
+            <Setter Property="IsEnabled" Value="True"/>
+            <Setter Property="IsTabStop" Value="False"/>
+            <Setter Property="KeyboardNavigation.TabNavigation" Value="Local"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type telerik:RadTreeViewItem}">
+                        <Grid x:Name="RootElement" UseLayoutRounding="True" Background="{DynamicResource WhiteColor}" Margin="0,0,0,1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="EditStates">
+                                    <VisualState x:Name="Display"/>
+                                    <VisualState x:Name="Edit">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetProperty="Visibility" Storyboard.TargetName="EditHeaderElement">
+                                                <DiscreteObjectKeyFrame KeyTime="0">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <Visibility>Visible</Visibility>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetProperty="Visibility" Storyboard.TargetName="Header">
+                                                <DiscreteObjectKeyFrame KeyTime="0">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <Visibility>Collapsed</Visibility>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="Disabled">
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0" To="0.35" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="Header"/>
+                                            <DoubleAnimation Duration="0" To="0.35" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="Image"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="MouseOver">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames BeginTime="0" Duration="0:0:0.001" Storyboard.TargetProperty="Foreground" Storyboard.TargetName="Header">
+                                                <DiscreteObjectKeyFrame KeyTime="0">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <SolidColorBrush Color="#23B194"/>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames BeginTime="0" Duration="0:0:0.001" Storyboard.TargetProperty="Foreground" Storyboard.TargetName="Expander">
+                                                <DiscreteObjectKeyFrame KeyTime="0">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <SolidColorBrush Color="#23B194"/>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="SelectionStates">
+                                    <VisualState x:Name="Unselected"/>
+                                    <VisualState x:Name="Selected"/>
+                                    <VisualState x:Name="SelectedUnfocused"/>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="LoadingOnDemandStates">
+                                    <VisualState x:Name="LoadingOnDemand">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetProperty="Visibility" Storyboard.TargetName="LoadingVisual">
+                                                <DiscreteObjectKeyFrame KeyTime="0">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <Visibility>Visible</Visibility>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetProperty="Visibility" Storyboard.TargetName="Expander">
+                                                <DiscreteObjectKeyFrame KeyTime="0">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <Visibility>Collapsed</Visibility>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <DoubleAnimation Duration="0:0:1" From="0" RepeatBehavior="Forever" To="359" Storyboard.TargetProperty="Angle" Storyboard.TargetName="LoadingVisualAngleTransform"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="LoadingOnDemandReverse"/>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="FocusStates">
+                                    <VisualState x:Name="Focused"/>
+                                    <VisualState x:Name="Unfocused"/>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="ExpandStates">
+                                    <VisualState x:Name="Expanded">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetProperty="Visibility" Storyboard.TargetName="ItemsHostBorder">
+                                                <DiscreteObjectKeyFrame KeyTime="0">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <Visibility>Visible</Visibility>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Collapsed"/>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Border Grid.Row="0" Grid.RowSpan="2" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" />
+                            <Grid x:Name="HeaderRow" MinHeight="{TemplateBinding MinHeight}" SnapsToDevicePixels="True">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <!--<Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Grid.ColumnSpan="6" Grid.Column="2" CornerRadius="2"/>-->
+                                <Border x:Name="MouseOverVisual" BorderBrush="#FFFFC92B" BorderThickness="1" Grid.ColumnSpan="6" Grid.Column="2" CornerRadius="1" Opacity="0">
+                                    <Border.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FFFFFBA3" Offset="1"/>
+                                            <GradientStop Color="#FFFFFBDA" Offset="0"/>
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                    <Border BorderBrush="White" BorderThickness="1" Background="{x:Null}" CornerRadius="0"/>
+                                </Border>
+                                <Border x:Name="SelectionUnfocusedVisual" BorderBrush="#FFDBDBDB" BorderThickness="1" Grid.ColumnSpan="6" Grid.Column="2" CornerRadius="1" Visibility="Collapsed">
+                                    <Border.Background>
+                                        <LinearGradientBrush EndPoint="0,1">
+                                            <GradientStop Color="#FFF8F6F9" Offset="0"/>
+                                            <GradientStop Color="#FFF0F0F0" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                    <Border BorderBrush="Transparent" BorderThickness="1" Background="{x:Null}" CornerRadius="0"/>
+                                </Border>
+                                <Border x:Name="SelectionVisual" BorderBrush="#FFFFC92B" BorderThickness="1" Grid.ColumnSpan="6" Grid.Column="2" CornerRadius="1" Visibility="Collapsed">
+                                    <Border.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FFFCE79F" Offset="1"/>
+                                            <GradientStop Color="#FFFDD3A8"/>
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                    <Border BorderBrush="White" BorderThickness="1" Background="{x:Null}" CornerRadius="0"/>
+                                </Border>
+                                <StackPanel x:Name="IndentContainer" Orientation="Horizontal">
+                                    <Rectangle x:Name="IndentFirstVerticalLine" Stroke="#FFCCCCCC" Visibility="Collapsed" VerticalAlignment="Top"/>
+                                </StackPanel>
+                                
+                                <Image x:Name="Image" Grid.Column="3" HorizontalAlignment="Center" MaxWidth="16" MaxHeight="16" Margin="2" VerticalAlignment="Center"/>
+                                <Rectangle x:Name="FocusVisual" Grid.ColumnSpan="6" Grid.Column="2" IsHitTestVisible="False" RadiusY="3" RadiusX="3" Stroke="{DynamicResource BlackColor}" StrokeThickness="1" StrokeDashArray="1 2" Visibility="Collapsed"/>
+
+                                <Grid x:Name="HeaderContentPanel" Background="Transparent" Grid.ColumnSpan="2" Grid.Column="4">
+                                    <ContentControl x:Name="Header"  ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}" ContentTemplate="{TemplateBinding HeaderTemplate}" Content="{TemplateBinding Header}" Foreground="{Binding Foreground, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" IsTabStop="False" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                    <ContentPresenter x:Name="EditHeaderElement" ContentTemplate="{TemplateBinding HeaderEditTemplate}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" Visibility="Collapsed" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                </Grid>
+                                <CheckBox x:Name="CheckBoxElement" Grid.Column="2" IsTabStop="False" Margin="5,0,0,0" Visibility="Collapsed" VerticalAlignment="Center">
+                                    <telerik:StyleManager.Theme>
+                                        <telerik:Office_BlackTheme/>
+                                    </telerik:StyleManager.Theme>
+                                </CheckBox>
+                                <RadioButton x:Name="RadioButtonElement" Grid.Column="2" IsTabStop="False" Margin="5,0,0,0" Visibility="Collapsed" VerticalAlignment="Center">
+                                    <telerik:StyleManager.Theme>
+                                        <telerik:Office_BlackTheme/>
+                                    </telerik:StyleManager.Theme>
+                                </RadioButton>
+                            </Grid>
+                            <Border x:Name="ItemsHostBorder" Margin="5,0,5,0"  BorderThickness="0" Grid.Row="1" Visibility="Collapsed" HorizontalAlignment="Stretch">
+                                <Grid>
+                                    <ItemsPresenter x:Name="ItemsHost" />
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <HierarchicalDataTemplate x:Key="HeadeTemplate" ItemsSource="{Binding Path=Items}">
+            <Grid Margin="5" Height="40">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Image Grid.Column="0" Width="28" Height="28" Source="{DynamicResource imgPersonGreen}" />
+
+                <StackPanel Grid.Column="1" Margin="15,0,0,0" Orientation="Vertical">
+                    <TextBlock Text="{Binding Path=Email}"
+                               FontSize="14"
+                               Margin="0,2,0,2"
+                               FontWeight="SemiBold"
+                               Foreground="{DynamicResource BlackColor}"
+                               FontFamily="{DynamicResource ProximaRegular}" />
+
+                    <StackPanel Visibility="{Binding Path=IsPending, Converter={StaticResource InvertBoolToVisibilityConverter}}">
+                        <StackPanel Orientation="Horizontal" Visibility="{Binding Path=AccessPeriodType, Converter={StaticResource WaitingPeriodVisibility}}">
+                            <TextBlock Text="{DynamicResource WaitingPeriod}"
+                                           FontSize="11"
+                                           Foreground="{DynamicResource LightGrayTextForegroundColor}"
+                                           FontFamily="{DynamicResource ProximaRegular}"/>
+                            <TextBlock Text=" "
+                                       FontSize="11"
+                                       Foreground="{DynamicResource LightGrayTextForegroundColor}"
+                                       FontFamily="{DynamicResource ProximaRegular}"/>
+                            <TextBlock Text="{Binding Path=PeriodTime}"
+                                           FontSize="11"
+                                           Foreground="{DynamicResource LightGrayTextForegroundColor}"
+                                           FontFamily="{DynamicResource ProximaRegular}"/>
+                            <TextBlock Text=" "
+                                       FontSize="11"
+                                       Foreground="{DynamicResource LightGrayTextForegroundColor}"
+                                       FontFamily="{DynamicResource ProximaRegular}"/>
+                            <TextBlock Text="{DynamicResource SpaceHours}"
+                                           FontSize="11"
+                                           Foreground="{DynamicResource LightGrayTextForegroundColor}"
+                                           FontFamily="{DynamicResource ProximaRegular}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Visibility="{Binding Path=AccessPeriodType, Converter={StaticResource FullAccessVisibility}}">
+                            <TextBlock Text="{DynamicResource AcceesIsActive}"
+                                           FontSize="11"
+                                           Foreground="{DynamicResource LightGrayTextForegroundColor}"
+                                           FontFamily="{DynamicResource ProximaRegular}"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Visibility="{Binding Path=AccessPeriodType, Converter={StaticResource AccessWillBeGrantedVisibility}}">
+                            <TextBlock Text="{DynamicResource AccessWilBeGranted}"
+                                       FontSize="11"
+                                       Foreground="{DynamicResource LightGrayTextForegroundColor}"
+                                       FontFamily="{DynamicResource ProximaRegular}"/>
+                            <TextBlock Text=" "
+                                       FontSize="11"
+                                       Foreground="{DynamicResource LightGrayTextForegroundColor}"
+                                       FontFamily="{DynamicResource ProximaRegular}"/>
+                            <TextBlock Text="{Binding Path=PeriodTime}"
+                                       FontSize="11"
+                                       Foreground="{DynamicResource LightGrayTextForegroundColor}"
+                                       FontFamily="{DynamicResource ProximaRegular}"/>
+                            <TextBlock Text=" "
+                                       FontSize="11"
+                                       Foreground="{DynamicResource LightGrayTextForegroundColor}"
+                                       FontFamily="{DynamicResource ProximaRegular}"/>
+                            <TextBlock Text="{DynamicResource SpaceHours}"
+                                       FontSize="11"
+                                       Foreground="{DynamicResource LightGrayTextForegroundColor}"
+                                       FontFamily="{DynamicResource ProximaRegular}"/>
+                    </StackPanel>
+                    </StackPanel>
+                    
+                    <StackPanel Visibility="{Binding Path=IsPending, Converter={StaticResource BoolToVisibility}}">
+                        <TextBlock Text="{DynamicResource EmergencyContactQuestion}"
+                                           FontSize="11"
+                                           Foreground="{DynamicResource LightGrayTextForegroundColor}"
+                                           FontFamily="{DynamicResource ProximaRegular}"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="30,5,20,5"
+                            Visibility="{Binding Path=IsPending, Converter={StaticResource InvertBoolToVisibilityConverter}}">
+                    <ToggleButton Width="180"
+                                  Visibility="{Binding Path=AccessPeriodType, Converter={StaticResource FullAccessVisibility}}"
+                                  Height="30"
+                                  Margin="0,0,10,0"
+                                  Content="View items"
+                                  IsChecked="{Binding Path=IsExpanded, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type telerik:RadTreeViewItem}}}"
+                                  Panel.ZIndex="10">
+                        <ToggleButton.Style>
+                            <Style TargetType="{x:Type ToggleButton}" BasedOn="{StaticResource BlueSettingsToggleButton}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsChecked" Value="True">
+                                        <Setter Property="ContentTemplate">
+                                            <Setter.Value>
+                                                <DataTemplate>
+                                                    <TextBlock Text="Hide Items" />
+                                                </DataTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ToggleButton.Style>
+                    </ToggleButton>
+
+                    <Button Style="{DynamicResource WhiteSettingsButton}"
+                            Visibility="{Binding Path=AccessPeriodType, Converter={StaticResource WaitingPeriodVisibility}}"
+                            Width="180" Height="30" Content="{DynamicResource RequestAccess}" Margin="0,0,10,0" />
+
+                    <TextBlock Text="{DynamicResource AccessRequested}"
+                               FontSize="14"
+                               Width="180"
+                               Margin="0,0,10,0"
+                               TextAlignment="Center"
+                               Foreground="Red"
+                               VerticalAlignment="Center"
+                               Visibility="{Binding Path=AccessPeriodType, Converter={StaticResource AccessWillBeGrantedVisibility}}"
+                               FontFamily="{DynamicResource ProximaRegular}"/>
+
+                    <Border HorizontalAlignment="Left" VerticalAlignment="Top" Background="Transparent" Cursor="Hand" Margin="0,4,0,0">
+                        <Border Height="22" Width="22" BorderBrush="{DynamicResource LightGrayTextForegroundColor}" >
+                            <!--<i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseLeftButtonUp">
+                                            <i:InvokeCommandAction Command="{Binding Path=DataContext.CancelSharingCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type telerik:RadTreeView}}}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>-->
+                            <Image HorizontalAlignment="Center" VerticalAlignment="Top" Height="22" Width="22" Source="{DynamicResource imgTrashMedium}" RenderOptions.BitmapScalingMode="HighQuality" />
+                        </Border>
+                    </Border>
+                </StackPanel>
+
+                <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="30,5,52,5"
+                            Visibility="{Binding Path=IsPending, Converter={StaticResource BoolToVisibility}}">
+                    <Button Style="{DynamicResource WhiteSettingsButton}" Width="85" Height="30" Content="{DynamicResource Decline}" Margin="0,0,10,0" />
+                    <Button Style="{DynamicResource BlueSettingsButton}" Width="85" Height="30" Content="{DynamicResource Accept}" Margin="0,0,0,0" />
+                </StackPanel>
+            </Grid>
+        </HierarchicalDataTemplate>
+
+        <HierarchicalDataTemplate x:Key="GroupDataTemplate" ItemsSource="{Binding Path=Items}">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Path=Name}"
+                                           FontSize="14"
+                                           FontWeight="SemiBold"
+                                           FontFamily="{DynamicResource ProximaRegular}" />
+                <TextBlock Text="{Binding Path=Count, StringFormat='{} ({0})'}"
+                                           FontSize="14"
+                                           FontWeight="SemiBold"
+                                           FontFamily="{DynamicResource ProximaRegular}" />
+            </StackPanel>
+        </HierarchicalDataTemplate>
+
+        <emergency:TreeDataTemplateSelector x:Key="DataTemplateSelector"
+            GroupTemplate="{StaticResource GroupDataTemplate}"
+            HeaderTemplate="{StaticResource HeadeTemplate}"
+            ItemStyle="{StaticResource ItemStyle}" />
+
+        <Style x:Key="EmergencyGroupStyle" TargetType="{x:Type telerik:RadTreeViewItem}">
+            <Setter Property="FocusVisualStyle">
+                <Setter.Value>
+                    <Style>
+                        <Setter Property="Control.Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <Rectangle Margin="0" Stroke="Transparent" StrokeThickness="0"/>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="telerik:DragDropManager.AllowCapturedDrag" Value="False" />
+            <Setter Property="telerik:DragDropManager.AllowDrag" Value="False" />
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource GrayColor}" />
+            <Setter Property="Padding" Value="1,0,5,4"/>
+            <Setter Property="IsDropAllowed" Value="True"/>
+            <Setter Property="IsEnabled" Value="True"/>
+            <Setter Property="IsExpanded" Value="{Binding Path=IsExpanded, Mode=TwoWay}"/>
+            <Setter Property="IsTabStop" Value="False"/>
+            <Setter Property="KeyboardNavigation.TabNavigation" Value="Local"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type telerik:RadTreeViewItem}">
+                        <Grid x:Name="RootElement" UseLayoutRounding="True" Background="{DynamicResource WhiteColor}" Margin="35,0,5,1">
+
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="EditStates">
+                                    <VisualState x:Name="Display"/>
+                                    <VisualState x:Name="Edit">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetProperty="Visibility" Storyboard.TargetName="EditHeaderElement">
+                                                <DiscreteObjectKeyFrame KeyTime="0">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <Visibility>Visible</Visibility>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetProperty="Visibility" Storyboard.TargetName="Header">
+                                                <DiscreteObjectKeyFrame KeyTime="0">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <Visibility>Collapsed</Visibility>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal"/>
+                                    <VisualState x:Name="Disabled">
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0" To="0.35" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="Header"/>
+                                            <DoubleAnimation Duration="0" To="0.35" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="Image"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="MouseOver">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames BeginTime="0" Duration="0:0:0.001" Storyboard.TargetProperty="Foreground" Storyboard.TargetName="Header">
+                                                <DiscreteObjectKeyFrame KeyTime="0">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <SolidColorBrush Color="#23B194"/>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames BeginTime="0" Duration="0:0:0.001" Storyboard.TargetProperty="Foreground" Storyboard.TargetName="Expander">
+                                                <DiscreteObjectKeyFrame KeyTime="0">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <SolidColorBrush Color="#23B194"/>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="SelectionStates">
+                                    <VisualState x:Name="Unselected"/>
+                                    <VisualState x:Name="Selected"/>
+                                    <VisualState x:Name="SelectedUnfocused"/>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="LoadingOnDemandStates">
+                                    <VisualState x:Name="LoadingOnDemand">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetProperty="Visibility" Storyboard.TargetName="LoadingVisual">
+                                                <DiscreteObjectKeyFrame KeyTime="0">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <Visibility>Visible</Visibility>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetProperty="Visibility" Storyboard.TargetName="Expander">
+                                                <DiscreteObjectKeyFrame KeyTime="0">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <Visibility>Collapsed</Visibility>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <DoubleAnimation Duration="0:0:1" From="0" RepeatBehavior="Forever" To="359" Storyboard.TargetProperty="Angle" Storyboard.TargetName="LoadingVisualAngleTransform"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="LoadingOnDemandReverse"/>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="FocusStates">
+                                    <VisualState x:Name="Focused"/>
+                                    <VisualState x:Name="Unfocused"/>
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="ExpandStates">
+                                    <VisualState x:Name="Expanded">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Duration="0" Storyboard.TargetProperty="Visibility" Storyboard.TargetName="ItemsHostBorder">
+                                                <DiscreteObjectKeyFrame KeyTime="0">
+                                                    <DiscreteObjectKeyFrame.Value>
+                                                        <Visibility>Visible</Visibility>
+                                                    </DiscreteObjectKeyFrame.Value>
+                                                </DiscreteObjectKeyFrame>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Collapsed"/>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Grid x:Name="HeaderRow" MinHeight="{TemplateBinding MinHeight}" SnapsToDevicePixels="True">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Border Grid.Row="0" Grid.RowSpan="2" Panel.ZIndex="2" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Grid.ColumnSpan="5" Grid.Column="1" CornerRadius="2"/>
+                                <Border x:Name="MouseOverVisual" BorderBrush="#FFFFC92B" BorderThickness="1" Grid.ColumnSpan="6" Grid.Column="2" CornerRadius="1" Opacity="0">
+                                    <Border.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FFFFFBA3" Offset="1"/>
+                                            <GradientStop Color="#FFFFFBDA" Offset="0"/>
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                    <Border BorderBrush="White" BorderThickness="1" Background="{x:Null}" CornerRadius="0"/>
+                                </Border>
+                                <Border x:Name="SelectionUnfocusedVisual" BorderBrush="#FFDBDBDB" BorderThickness="1" Grid.ColumnSpan="6" Grid.Column="2" CornerRadius="1" Visibility="Collapsed">
+                                    <Border.Background>
+                                        <LinearGradientBrush EndPoint="0,1">
+                                            <GradientStop Color="#FFF8F6F9" Offset="0"/>
+                                            <GradientStop Color="#FFF0F0F0" Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                    <Border BorderBrush="Transparent" BorderThickness="1" Background="{x:Null}" CornerRadius="0"/>
+                                </Border>
+                                <Border x:Name="SelectionVisual" BorderBrush="#FFFFC92B" BorderThickness="1" Grid.ColumnSpan="6" Grid.Column="2" CornerRadius="1" Visibility="Collapsed">
+                                    <Border.Background>
+                                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                            <GradientStop Color="#FFFCE79F" Offset="1"/>
+                                            <GradientStop Color="#FFFDD3A8"/>
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                    <Border BorderBrush="White" BorderThickness="1" Background="{x:Null}" CornerRadius="0"/>
+                                </Border>
+                                <StackPanel x:Name="IndentContainer" Orientation="Horizontal">
+                                    <Rectangle x:Name="IndentFirstVerticalLine" Stroke="#FFCCCCCC" Visibility="Collapsed" VerticalAlignment="Top"/>
+                                </StackPanel>
+                                <Grid x:Name="ListRootContainer" Grid.Column="1" HorizontalAlignment="Center" MinWidth="21" VerticalAlignment="Top" Margin="0,-5,0,0">
+                                    <Rectangle x:Name="HorizontalLine" HorizontalAlignment="Right" Height="1" Stroke="#FFCCCCCC" VerticalAlignment="Center"/>
+                                    <Rectangle x:Name="VerticalLine" HorizontalAlignment="Center" Stroke="#FFCCCCCC" VerticalAlignment="Top" Width="1"/>
+                                    <ToggleButton x:Name="Expander" VerticalAlignment="Top" Margin="10,9,0,0" Template="{DynamicResource SimpleExpanderToggleButtonControlTemplate}" Background="{TemplateBinding Background}" IsTabStop="False"/>
+                                    <Grid x:Name="LoadingVisual" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed" VerticalAlignment="Center">
+                                        <Grid.RenderTransform>
+                                            <TransformGroup>
+                                                <RotateTransform Angle="0" CenterY="0.5" CenterX="0.5"/>
+                                            </TransformGroup>
+                                        </Grid.RenderTransform>
+                                        <Path Data="M1,0A1,1,90,1,1,0,-1" Height="10" StrokeStartLineCap="Round" Stretch="Fill" Stroke="{TemplateBinding Foreground}" StrokeThickness="1" Width="10"/>
+                                        <Path Data="M0,-1.1L0.1,-1 0,-0.9" Fill="{TemplateBinding Foreground}" HorizontalAlignment="Left" Height="4" Margin="5,-1.5,0,0" Stretch="Fill" StrokeThickness="1" VerticalAlignment="Top" Width="4"/>
+                                    </Grid>
+                                </Grid>
+                                <Image x:Name="Image" Grid.Column="3" HorizontalAlignment="Center" MaxWidth="16" MaxHeight="16" Margin="2" VerticalAlignment="Center"/>
+                                <Rectangle x:Name="FocusVisual" Grid.ColumnSpan="6" Grid.Column="2" IsHitTestVisible="False" RadiusY="3" RadiusX="3" Stroke="{DynamicResource BlackColor}" StrokeThickness="1" StrokeDashArray="1 2" Visibility="Collapsed"/>
+
+                                <Grid x:Name="HeaderContentPanel" Background="Transparent" Grid.ColumnSpan="2" Grid.Column="4">
+                                    <ContentControl x:Name="Header"  ContentTemplateSelector="{TemplateBinding HeaderTemplateSelector}" ContentTemplate="{TemplateBinding HeaderTemplate}" Content="{TemplateBinding Header}" Foreground="{Binding Foreground, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" IsTabStop="False" Margin="{TemplateBinding Padding}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                    <ContentPresenter x:Name="EditHeaderElement" ContentTemplate="{TemplateBinding HeaderEditTemplate}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" Visibility="Collapsed" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                </Grid>
+                                <CheckBox x:Name="CheckBoxElement" Grid.Column="2" IsTabStop="False" Margin="5,0,0,0" Visibility="Collapsed" VerticalAlignment="Center">
+                                    <telerik:StyleManager.Theme>
+                                        <telerik:Office_BlackTheme/>
+                                    </telerik:StyleManager.Theme>
+                                </CheckBox>
+                                <RadioButton x:Name="RadioButtonElement" Grid.Column="2" IsTabStop="False" Margin="5,0,0,0" Visibility="Collapsed" VerticalAlignment="Center">
+                                    <telerik:StyleManager.Theme>
+                                        <telerik:Office_BlackTheme/>
+                                    </telerik:StyleManager.Theme>
+                                </RadioButton>
+
+                                <Border x:Name="ItemsHostBorder" Margin="5,0,5,3" Grid.Column="0" Grid.ColumnSpan="6"  BorderThickness="0" Grid.Row="1" Visibility="Collapsed" HorizontalAlignment="Stretch">
+                                    <Grid>
+                                        <ItemsPresenter x:Name="ItemsHost" />
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <emergency:RadTreeViewItemStyleSelector x:Key="RadTreeViewItemStyleSelector"
+            BaseStyle="{StaticResource HeaderItemContainerStyle}"
+            GroupStyle="{StaticResource EmergencyGroupStyle}"/>
+    </UserControl.Resources>
+    
+    <Grid Background="{DynamicResource MainWindowBackgroundColor}">
+        <TabControl BorderThickness="2,0,0,0"
+                    BorderBrush="Transparent"
+                    Margin="0,-1,0,0"
+                    Background="{DynamicResource WhiteColor}"
+                    VerticalAlignment="Stretch"
+                    SelectedIndex="{Binding SelectedIndexTabControl, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+            <TabControl.Resources>
+                <Style TargetType="{x:Type TabItem}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type TabItem}">
+                                <Grid x:Name="grid">
+                                    <Border Name="Border" Background="{DynamicResource TextboxBorderbrush}" BorderThickness="0 2 0 0">
+                                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <ContentPresenter ContentSource="Header" VerticalAlignment="Center" HorizontalAlignment="Stretch" />
+                                        </StackPanel>
+                                    </Border>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter TargetName="Border" Property="Background" Value="{DynamicResource WhiteColor}" />
+                                        <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource PasswordBossGreenColor}" />
+                                        <Setter TargetName="Border" Property="BorderThickness" Value="0,2,0,0" />
+                                        <Setter Property="Foreground" Value="{DynamicResource BlackColor}" />
+                                    </Trigger>
+                                    <Trigger Property="IsSelected" Value="False">
+                                        <Setter TargetName="Border" Property="Background" Value="{DynamicResource MainWindowBackgroundColor}" />
+                                        <Setter TargetName="Border" Property="BorderThickness" Value="0,0,1,0" />
+                                        <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource WhiteColor}" />
+                                        <Setter Property="Foreground" Value="{DynamicResource LightGrayTextForegroundColor}" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </TabControl.Resources>
+
+            <!--People I trust-->
+            <TabItem Width="120" Height="30">
+                <TabItem.Header>
+                    <TextBlock Text="{DynamicResource PeopleITrust}"
+                               FontSize="14"
+                               FontWeight="SemiBold"
+                               FontFamily="{DynamicResource ProximaRegular}" />
+                </TabItem.Header>
+                <TabItem.Content>
+                    <ScrollViewer CanContentScroll="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Hidden">
+                        <Grid>
+                            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <Image VerticalAlignment="Center" Height="250" Width="250" HorizontalAlignment="Center" Stretch="Fill" Source="{DynamicResource myEmergencyContactsSplash}" />
+                                <TextBlock VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"
+                                           Foreground="{DynamicResource SettingsTextLableForeground}"
+                                           FontSize="18"
+                                           Margin="0,0,0,8"
+                                           FontFamily="Arial"
+                                           Text="{DynamicResource EmergencyAccess}"/>
+                                <TextBlock VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"
+                                           FontSize="17"
+                                           Foreground="{DynamicResource SettingsSecurityForeground}"
+                                           FontFamily="Arial"
+                                           Text="{DynamicResource GiveYourFamily}"/>
+                                <TextBlock VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"
+                                           Foreground="{DynamicResource SettingsSecurityForeground}"
+                                           FontSize="17"
+                                           FontFamily="Arial"
+                                           Text="{DynamicResource CaseOfEmegency}"/>
+                                <Button Margin="0,24,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="34" Width="180" Content="{DynamicResource SetupEmergencyAccess}" Style="{DynamicResource BlueSettingsButton}" />
+                            </StackPanel>
+                            <Grid Background="{DynamicResource WhiteColor}">
+                                <Grid.Visibility>
+                                    <MultiBinding Converter="{StaticResource SplashVisibilityConverter}">
+                                        <Binding Path="IsAnyMyPendingContacts" />
+                                        <Binding Path="IsAnyMyCurrentAccessContacts" />
+                                        <Binding Path="IsAnyMyEmergencyContacts" />
+                                    </MultiBinding>
+                                </Grid.Visibility>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0" Margin="10,10,10,0" Visibility="{Binding Path=IsAnyMyPendingContacts, Converter={StaticResource BoolToVisibility}}">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="{DynamicResource PendingEmergencyHeader}"
+                                                   Grid.Row="0"
+                                                   FontSize="18"
+                                                   FontWeight="SemiBold"
+                                                   Foreground="{DynamicResource LightGrayTextForegroundColor}"
+                                                   FontFamily="{DynamicResource ProximaRegular}"/>
+
+                                    <Rectangle Grid.Row="1"
+                                                   Visibility="{Binding Path=IsExpanded, Converter={StaticResource BoolToVisibility}}"
+                                                   Fill="{DynamicResource LightGrayTextForegroundColor}"
+                                                   Height="1"
+                                                   Margin="0,0,0,4"
+                                                   HorizontalAlignment="Stretch" />
+
+                                    <ListBox Grid.Row="2"
+                                                 BorderThickness="0"
+                                                 ItemsSource="{Binding Path=MyContacts, Converter={StaticResource PendingContactsConverter}}"
+                                                 ItemTemplate="{StaticResource PeopleITrustItemTemplate}"
+                                                 ItemContainerStyle="{StaticResource EmergencyListBoxItemStyle}" />
+                                </Grid>
+
+                                <Grid Grid.Row="1" Margin="10,30,10,0" Visibility="{Binding Path=IsAnyMyCurrentAccessContacts, Converter={StaticResource BoolToVisibility}}">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="EMERGENCY CONTACTS WITH CURRENT ACCESS TO YOUR ACCOUNT"
+                                                   Grid.Row="0"
+                                                   FontSize="18"
+                                                   FontWeight="SemiBold"
+                                                   Foreground="{DynamicResource LightGrayTextForegroundColor}"
+                                                   FontFamily="{DynamicResource ProximaRegular}"/>
+
+                                    <Rectangle Grid.Row="1"
+                                                   Visibility="{Binding Path=IsExpanded, Converter={StaticResource BoolToVisibility}}"
+                                                   Fill="{DynamicResource LightGrayTextForegroundColor}"
+                                                   Height="1"
+                                                   Margin="0,0,0,4"
+                                                   HorizontalAlignment="Stretch" />
+
+                                    <ListBox Grid.Row="2"
+                                                 BorderThickness="0"
+                                                 ItemsSource="{Binding Path=MyContacts, Converter={StaticResource CurrentAccessContactsConverter}}"
+                                                 ItemTemplate="{StaticResource PeopleITrustItemTemplate}"
+                                                 ItemContainerStyle="{StaticResource EmergencyListBoxItemStyle}" />
+                                </Grid>
+
+                                <Grid Grid.Row="2" Margin="10,30,10,0" Visibility="{Binding Path=IsAnyMyEmergencyContacts, Converter={StaticResource BoolToVisibility}}">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="EMERGENCY CONTACTS"
+                                                   Grid.Row="0"
+                                                   FontSize="18"
+                                                   FontWeight="SemiBold"
+                                                   Foreground="{DynamicResource LightGrayTextForegroundColor}"
+                                                   FontFamily="{DynamicResource ProximaRegular}"/>
+
+                                    <Rectangle Grid.Row="1"
+                                                   Visibility="{Binding Path=IsExpanded, Converter={StaticResource BoolToVisibility}}"
+                                                   Fill="{DynamicResource LightGrayTextForegroundColor}"
+                                                   Height="1"
+                                                   Margin="0,0,0,4"
+                                                   HorizontalAlignment="Stretch" />
+
+                                    <ListBox Grid.Row="2"
+                                                 BorderThickness="0"
+                                                 ItemsSource="{Binding Path=MyContacts, Converter={StaticResource EmergencyContactsConverter}}"
+                                                 ItemTemplate="{StaticResource PeopleITrustItemTemplate}"
+                                                 ItemContainerStyle="{StaticResource EmergencyListBoxItemStyle}" />
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </ScrollViewer>
+                </TabItem.Content>
+            </TabItem>
+
+            <TabItem Width="160" Height="30">
+                <TabItem.Header>
+                    <TextBlock Text="{DynamicResource PeopleWhoTrustMe}"
+                               FontSize="14"
+                               FontWeight="SemiBold"
+                               FontFamily="{DynamicResource ProximaRegular}" />
+                </TabItem.Header>
+                <TabItem.Content>
+                    <ScrollViewer CanContentScroll="True" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Hidden">
+                        <Grid>
+                            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                                <Image VerticalAlignment="Center" Height="250" Width="250" Stretch="Fill" HorizontalAlignment="Center" Source="{DynamicResource trustedEmergencyContactsSplash}" />
+                                <TextBlock VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"
+                                           Foreground="{DynamicResource SettingsTextLableForeground}"
+                                           FontSize="18"
+                                           Margin="0,0,0,8"
+                                           FontFamily="Arial"
+                                           Text="{DynamicResource GetEmergencyAccess}"/>
+                                <TextBlock VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"
+                                           Foreground="{DynamicResource SettingsSecurityForeground}"
+                                           FontSize="17"
+                                           FontFamily="Arial"
+                                           Text="{DynamicResource WhenSomeoneGrants}"/>
+                                <TextBlock VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"
+                                           Foreground="{DynamicResource SettingsSecurityForeground}"
+                                           FontSize="17"
+                                           FontFamily="Arial"
+                                           Text="{DynamicResource SplashEmergencyView2}"/>
+                                <TextBlock VerticalAlignment="Center"
+                                           HorizontalAlignment="Center"
+                                           Foreground="{DynamicResource SettingsSecurityForeground}"
+                                           FontSize="17"
+                                           FontFamily="Arial"
+                                           Text="{DynamicResource YouWillSeeTheirAccountHere}"/>
+                                <Rectangle Width="110" Height="39" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </StackPanel>
+                            <Grid Background="{DynamicResource WhiteColor}">
+                                <Grid.Visibility>
+                                    <MultiBinding Converter="{StaticResource TrustedContactSplashVisibility}">
+                                        <Binding Path="IsAnyPendingTrustedContacts" />
+                                        <Binding Path="IsAnyAcceptedTrustedContacts" />
+                                    </MultiBinding>
+                                </Grid.Visibility>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid Grid.Row="0" Margin="10,10,10,0" Visibility="{Binding Path=IsAnyPendingTrustedContacts, Converter={StaticResource BoolToVisibility}}">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="{DynamicResource PendingEmergencyHeader}"
+                                               Grid.Row="0"
+                                               FontSize="18"
+                                               FontWeight="SemiBold"
+                                               Foreground="{DynamicResource LightGrayTextForegroundColor}"
+                                               FontFamily="{DynamicResource ProximaRegular}"/>
+
+                                    <Rectangle Grid.Row="1"
+                                               Visibility="{Binding Path=IsExpanded, Converter={StaticResource BoolToVisibility}}"
+                                               Fill="{DynamicResource LightGrayTextForegroundColor}"
+                                               Height="1"
+                                               Margin="0,0,0,4"
+                                               HorizontalAlignment="Stretch" />
+
+                                    <telerik:RadTreeView Grid.Row="2"
+                                        ItemContainerStyleSelector="{StaticResource RadTreeViewItemStyleSelector}"
+                                        ItemTemplateSelector="{StaticResource DataTemplateSelector}"
+                                        ItemsSource="{Binding Path=TrustedContacts, Converter={StaticResource PendingContactsConverter}}" />
+                                </Grid>
+                                <Grid Grid.Row="1" Margin="10,30,10,0" Visibility="{Binding Path=IsAnyAcceptedTrustedContacts, Converter={StaticResource BoolToVisibility}}">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="*" />
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="{DynamicResource AcceptedEmergencyInvitations}"
+                                               Grid.Row="0"
+                                               FontSize="18"
+                                               FontWeight="SemiBold"
+                                               Foreground="{DynamicResource LightGrayTextForegroundColor}"
+                                               FontFamily="{DynamicResource ProximaRegular}"/>
+
+                                    <Rectangle Grid.Row="1"
+                                               Visibility="{Binding Path=IsExpanded, Converter={StaticResource BoolToVisibility}}"
+                                               Fill="{DynamicResource LightGrayTextForegroundColor}"
+                                               Height="1"
+                                               Margin="0,0,0,4"
+                                               HorizontalAlignment="Stretch" />
+
+                                    <telerik:RadTreeView Grid.Row="2"
+                                        ItemContainerStyleSelector="{StaticResource RadTreeViewItemStyleSelector}"
+                                        ItemTemplateSelector="{StaticResource DataTemplateSelector}"
+                                        ItemsSource="{Binding Path=TrustedContacts, Converter={StaticResource NotPendingEmergencyContactConverter}}" />
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </ScrollViewer>
+                </TabItem.Content>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>

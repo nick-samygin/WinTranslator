@@ -1,0 +1,69 @@
+﻿<Page x:Class="PasswordBoss.Views.Login.SetupComplete"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d"
+      xmlns:account="clr-namespace:PasswordBoss.ViewModel.Account"
+      d:DesignHeight="400" d:DesignWidth="400" MaxHeight="400"
+      Title="SetupComplete">
+
+    <Grid Background="{DynamicResource PasswordBossBlackBackgroundColor}">
+        <Border BorderThickness="1" BorderBrush="{DynamicResource LoginGrayBorder}">
+        <Grid x:Name="setupcomplete_grid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" MaxWidth="270" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="70" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="16" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="0" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="65" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="20" />
+            </Grid.RowDefinitions>
+            <Grid x:Name="DragGrid" Grid.Row="0" Grid.Column="0" Background="{DynamicResource WhiteColor}" Grid.ColumnSpan="3"
+                  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                  MouseLeftButtonDown="DragGrid_OnMouseLeftButtonDown">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width=".4*" />
+                        <ColumnDefinition Width=".6*" />
+                    </Grid.ColumnDefinitions>
+                    <Image Source="{DynamicResource imgLoginLogoGreen}" Width="130" Height="45" Margin="20,0,0,0" />
+                    <Button x:Name="BtnClose" Grid.Column="1" BorderThickness="0,0,0,0" Canvas.ZIndex="1" Height="10"
+                            Width="10" Command="{Binding SetPinButtonCommand}" Margin="0,10,10,0"
+                            HorizontalAlignment="Right" VerticalAlignment="Top"
+                            Style="{DynamicResource NoHoverEffectButtonStyle}">
+                        <Image Source="{DynamicResource imgCloseAlert}" />
+                    </Button>
+                </Grid>
+
+                <TextBlock Grid.Row="3" Grid.Column="1" Text="{DynamicResource SetupCompleteTitle}"
+                       HorizontalAlignment="Center" VerticalAlignment="Top" TextWrapping="Wrap"
+                       FontSize="20" FontWeight="SemiBold" Foreground="{DynamicResource PasswordBossGreenColor}"
+                       FontFamily="{DynamicResource ProximaSemiBold}" />
+
+                <TextBlock Grid.Row="5" Grid.Column="1" FontSize="16" TextWrapping="Wrap" TextAlignment="Center"
+                       Width="250" HorizontalAlignment="Center" VerticalAlignment="Center" LineStackingStrategy="BlockLineHeight"
+                       LineHeight="20" Foreground="{DynamicResource WhiteColor}" FontFamily="{DynamicResource ProximaRegular}"
+                       Text="{DynamicResource SetupCompleteDescription}"
+                        />
+
+                <Button x:Name="GetStartedButton" Grid.Row="9" Grid.Column="1" HorizontalContentAlignment="Center"
+                    HorizontalAlignment="Stretch" Content="{DynamicResource GetStarted}" Foreground="{DynamicResource WhiteColor}"
+                    VerticalAlignment="Stretch" IsDefault="True"
+                    VerticalContentAlignment="Center" Height="40" Width="264"
+                    FontSize="15" FontWeight="SemiBold" Style="{DynamicResource SignInButtonStyle}"
+                    Command="{Binding SetPinButtonCommand}" />
+
+        </Grid>
+            </Border>
+    </Grid>
+</Page>

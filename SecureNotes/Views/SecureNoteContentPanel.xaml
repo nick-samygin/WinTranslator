@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="SecureNotes.Views.SecureNoteContentPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SecureNotes.Views"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:view="clr-namespace:SecureItemsCommon.View;assembly=SecureItemsCommon"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <telerik:BooleanToVisibilityConverter x:Key="BooleanToVisibility" />
+        <telerik:InvertedBooleanToVisibilityConverter x:Key="InvertedBooleanToVisibility" />
+    </UserControl.Resources>
+    <Grid  >
+        <view:SecureItemsHolderView Background="{DynamicResource MainWindowGrayBackgroundColor}" Visibility="{Binding ShowLandingScreen,Converter={StaticResource InvertedBooleanToVisibility}}"/>
+        <StackPanel x:Name="landing" Orientation="Vertical" Width="414" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="{Binding ShowLandingScreen,Converter={StaticResource BooleanToVisibility}}">
+            <Image Source="{DynamicResource secureNotes}" Stretch="Fill" />
+            <TextBlock Style="{DynamicResource LandingTitelTextBlockStyle}" Text="{DynamicResource SecureNotesAddHeadline}"/>
+            <TextBlock Style="{DynamicResource LandingSubTitelTextBlockStyle}" Text="{DynamicResource SecureNotesAddSubhead}"/>
+            <Button Style="{DynamicResource BlueSettingsButton}" HorizontalAlignment="Center" Height="40" Margin="0 24 0 0" 
+                    Content="{DynamicResource SecureNotesAddButton}" Command="{Binding AddSecureItemCommand}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

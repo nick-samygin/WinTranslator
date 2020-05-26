@@ -1,0 +1,16 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:uc="http://www.quickzip.org/UserControls">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/theme;component/Themes/Brushes.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/theme;component/UserControls/EditBox/EditBox.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/theme;component/UserControls/StatusbarItem/StatusbarItem.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/theme;component/UserControls/StatusbarBase/StatusbarBase.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/theme;component/Components/ListViewBase/VirtualWrapPanelView.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/theme;component/UserControls/PopupWindow/PopupWindow.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/theme;component/UserControls/CustomChildWindow/CustomChildWindow.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/theme;component/UserControls/PopupWindow/ConfirmationPopupWindow/ConfirmationPopupWindow.xaml" />
+		<ResourceDictionary Source="pack://application:,,,/theme;component/UserControls/PopupWindow/ErrorNotificationPopupWindow/ErrorNotificationPopupWindow.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/theme;component/UserControls/Headers/OnboardingHeader.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

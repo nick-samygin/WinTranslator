@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="PasswordBoss.UserControls.RequiredTextBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:local="clr-namespace:PasswordBoss.UserControls"
+             BorderBrush="{DynamicResource SettingsLightGrayBorderColor}"
+             mc:Ignorable="d" >
+    <UserControl.Resources>
+        <telerik:InvertedBooleanToVisibilityConverter x:Key="InvertedBooleanToVisibilityConverter"/>
+
+    </UserControl.Resources>
+        <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="auto"/>
+        </Grid.ColumnDefinitions>
+        <TextBox  Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}},Path=Text,Mode=TwoWay}" Grid.ColumnSpan="2" Style="{StaticResource AddItemTextBoxNoWidth}"  
+                  Width="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}},Path=Width,Mode=TwoWay}"
+                  BorderBrush="{Binding Path=BorderBrush, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:RequiredTextBox}}}"/>
+        <Border HorizontalAlignment="Stretch" x:Name="border" BorderBrush="{DynamicResource PasswordBossRedColor}" Visibility="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}},Path=IsValid,Mode=TwoWay,Converter={StaticResource InvertedBooleanToVisibilityConverter}}" Grid.ColumnSpan="2" VerticalAlignment="Stretch"   BorderThickness="1" CornerRadius="{DynamicResource CommonCornerRadius}">
+            <!--<Border.Style>
+                <Style TargetType="{x:Type Border}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}},Path=IsValid}" Value="True" >
+                            <Setter Property="BorderBrush" Value="{DynamicResource PasswordBossRedColor}" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>-->
+        </Border>
+        <Ellipse Width="16" Height="16" Fill="{DynamicResource PasswordBossRedColor}" Visibility="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}},Path=IsValid,Mode=TwoWay,Converter={StaticResource InvertedBooleanToVisibilityConverter}}" Grid.Column="1" VerticalAlignment="Center" Margin="0 0 6 0"/>
+        <TextBlock Text="!" FontWeight="Bold" Foreground="White"  Visibility="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}},Path=IsValid,Mode=TwoWay,Converter={StaticResource InvertedBooleanToVisibilityConverter}}" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0 -2 6 0"/>
+
+    </Grid>
+</UserControl>

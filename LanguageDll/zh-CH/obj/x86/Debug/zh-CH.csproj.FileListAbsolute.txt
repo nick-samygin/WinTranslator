@@ -1,0 +1,9 @@
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\zh-CH\bin\x86\Debug\zh-CH.dll
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\zh-CH\bin\x86\Debug\zh-CH.pdb
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\zh-CH\obj\x86\Debug\resources\zh-CH.baml
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\zh-CH\obj\x86\Debug\zh-CH_MarkupCompile.cache
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\zh-CH\obj\x86\Debug\zh-CH.g.resources
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\zh-CH\obj\x86\Debug\zh-CH.dll
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\zh-CH\obj\x86\Debug\zh-CH.pdb
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\zh-CH\obj\x86\Debug\zh-CH.csprojAssemblyReference.cache
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\zh-CH\obj\x86\Debug\zh-CH.csproj.CoreCompileInputs.cache

@@ -1,0 +1,356 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{120C3F03-9EF6-47FD-B8BB-986802FF55CC}</ProjectGuid>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PasswordBoss</RootNamespace>
+    <AssemblyName>theme</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>PBSNameKeyDev.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>..\..\PasswordBoss.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ProductionRelease|x86'">
+    <OutputPath>bin\x86\ProductionRelease\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Test\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Production|x86'">
+    <OutputPath>bin\x86\Production\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Staging|x86'">
+    <OutputPath>bin\x86\Staging\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\CommonComponents\Components\PasswordScanner.cs">
+      <Link>Helpers\PasswordScanner.cs</Link>
+    </Compile>
+    <Compile Include="..\CommonComponents\Helpers\DoubleClickEventTrigger.cs">
+      <Link>Helpers\DoubleClickEventTrigger.cs</Link>
+    </Compile>
+    <Compile Include="..\CommonComponents\Helpers\FindCommandParameters.cs">
+      <Link>Helpers\FindCommandParameters.cs</Link>
+    </Compile>
+    <Compile Include="..\CommonComponents\Helpers\PasswordHelper.cs">
+      <Link>Helpers\PasswordHelper.cs</Link>
+    </Compile>
+    <Compile Include="Behaviors\ListBoxDragDropBehavior.cs" />
+    <Compile Include="Behaviors\ParameterNameBehavior.cs" />
+    <Compile Include="Components\ListViewBase\VirutalWrapPanelView.cs" />
+    <Compile Include="Components\SelectionHelper\IChildInfo.cs" />
+    <Compile Include="Components\SelectionHelper\IVirtualListView.cs" />
+    <Compile Include="Components\SelectionHelper\SelectionAdorner.cs" />
+    <Compile Include="Components\SelectionHelper\SelectionHelper.cs" />
+    <Compile Include="Components\VirutalPanel\VirtualWrapPanel.cs" />
+    <Compile Include="Components\VirutalPanel\VirutalStackPanel.cs" />
+    <Compile Include="Helpers\DropIndicationDetails.cs" />
+    <Compile Include="HoverImage.xaml.cs">
+      <DependentUpon>HoverImage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Behaviors\TreeViewMultiSelectBehavior.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tools\Converter\AllowDragItemConverter.cs" />
+    <Compile Include="Tools\Converter\NodeLevelToMargineConverter.cs" />
+    <Compile Include="Tools\Converter\ParametersConverter.cs" />
+    <Compile Include="Tools\Converter\RadioButtonCheckedConverter.cs" />
+    <Compile Include="Tools\Converter\StringToUppercaseConverter.cs" />
+    <Compile Include="Tools\Converter\BoolToVisibilityConverter.cs" />
+    <Compile Include="Tools\Converter\FlipBoolToVisibility.cs" />
+    <Compile Include="Tools\Converter\IconConverter\IconConverterBase.cs" />
+    <Compile Include="Tools\Converter\IntAdd.cs" />
+    <Compile Include="Tools\Converter\IntSubstract.cs" />
+    <Compile Include="Tools\ThirdParty\SysImageList.cs" />
+    <Compile Include="Tools\ThirdParty\TreeViewExtensions.cs" />
+    <Compile Include="Tools\UITools.cs" />
+    <Compile Include="UserControls\AddSecureItemWindow.xaml.cs">
+      <DependentUpon>AddSecureItemWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\CustomChildWindow\CustomChildWindow.cs" />
+    <Compile Include="UserControls\CustomInformationMessageBoxWindow.xaml.cs">
+      <DependentUpon>CustomInformationMessageBoxWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\EditBox\EditBox.cs" />
+    <Compile Include="UserControls\EditBox\EditBoxAdorner.cs" />
+    <Compile Include="UserControls\FoldersComboBox.xaml.cs">
+      <DependentUpon>FoldersComboBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ImageToggleButton.xaml.cs">
+      <DependentUpon>ImageToggleButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MenuButtonControl.xaml.cs">
+      <DependentUpon>MenuButtonControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Headers\OnboardingHeader.cs" />
+    <Compile Include="UserControls\PasswordTextUC.xaml.cs">
+      <DependentUpon>PasswordTextUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\PopupWindow\ConfirmationPopupWindow\ConfirmationPopupWindow.cs" />
+    <Compile Include="UserControls\PopupWindow\ErrorNotificationPopupWindow\ErrorNotificationPopupWindow.cs" />
+    <Compile Include="UserControls\PopupWindow\PopupWindow.cs" />
+    <Compile Include="UserControls\RequiredTextBlock.xaml.cs">
+      <DependentUpon>RequiredTextBlock.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\RequiredTextBox.xaml.cs">
+      <DependentUpon>RequiredTextBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\StatusbarBase\StatusBarBase.cs" />
+    <Compile Include="UserControls\StatusbarItem\StatusbarItem.cs" />
+    <Compile Include="UserControls\TopPanelTextBox.xaml.cs">
+      <DependentUpon>TopPanelTextBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ViewByTopPanel.xaml.cs">
+      <DependentUpon>ViewByTopPanel.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Components\ContextMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\DropDownButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\Expander.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\GridView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Components\ListViewBase\VirtualWrapPanelView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Components\SecureItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HoverImage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Theme.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Brushes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Components\TreeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\AddSecureItemWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\CustomChildWindow\CustomChildWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\CustomInformationMessageBoxWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\EditBox\EditBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\FoldersComboBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ImageToggleButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\MenuButtonControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Headers\OnboardingHeader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\PasswordTextUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\PopupWindow\ConfirmationPopupWindow\ConfirmationPopupWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\PopupWindow\ErrorNotificationPopupWindow\ErrorNotificationPopupWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\PopupWindow\PopupWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\RequiredTextBlock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\RequiredTextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\StatusbarBase\StatusbarBase.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\StatusbarItem\StatusbarItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\TopPanelTextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ViewByTopPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PBSNameKeyDev.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore">
+      <HintPath>..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\Profile\Client\PresentationCore.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <HintPath>..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\Profile\Client\PresentationFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Presentation" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="Telerik.Windows.Controls">
+      <HintPath>..\..\telerik-dlls\Telerik.Windows.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.GridView, Version=2016.1.217.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\telerik-dlls\Telerik.Windows.Controls.GridView.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Input, Version=2016.1.217.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\telerik-dlls\Telerik.Windows.Controls.Input.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Navigation">
+      <HintPath>..\..\telerik-dlls\Telerik.Windows.Controls.Navigation.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Data, Version=2016.1.217.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\telerik-dlls\Telerik.Windows.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <HintPath>..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.0\Profile\Client\WindowsBase.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Components\SelectionHelper\ChangeLog.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="UserControls\PopupWindow\CancelllationPopupWindow\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\PasswordBoss\PBKnown\PBKnown.csproj">
+      <Project>{24c61c98-aa48-40c8-9ca5-e2c9c27f5ca2}</Project>
+      <Name>PBKnown</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>call "$(SolutionDir)env\setEnv.cmd" "$(SolutionDir)" "$(Configuration)"
+if %25RENABLED%25==1 ( "%25RPATH%25" -q -targetfile "&lt;AssemblyLocation&gt;\&lt;AssemblyFileName&gt;" -file "$(ProjectDir)$(OutDir)$(TargetFileName)" -snkeypair "%25CERTF%25" -snpassword "%25CERTPASS%25" -spcfile "%25CERTF%25" -pvkpassword "%25CERTPASS%25" -visualstyles 0 -antitamp 1 -control_flow_obfuscation 1 -flow_level 9 -necrobit 1 -obfuscation 0 )
+"%25TOOLSPATH%25Signtool.exe" sign /v /f "%25CERTF%25" /p %25CERTPASS%25 /n %25CERTS%25 /t %25TIMESTMP%25 "$(ProjectDir)$(OutDir)$(TargetFileName)"
+"%25TOOLSPATH%25Signtool.exe" sign /v /f "%25CERTF%25" /p %25CERTPASS%25 /n %25CERTS%25 /tr %25TIME256%25 /fd sha256 /td sha256 /as "$(ProjectDir)$(OutDir)$(TargetFileName)"
+xcopy /y "$(ProjectDir)$(OutDir)$(TargetFileName)" "%25OUTPATH%25plugins\*.*"
+if $(Configuration)==Debug ( xcopy /y "$(ProjectDir)$(OutDir)*.pdb" "%25OUTPATH%25plugins\*.*" )</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>cd "$(SolutionDir)"
+call "..\tools\setVersion$(Configuration).cmd" "$(ProjectDir)Properties\AssemblyInfo.cs"
+</PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

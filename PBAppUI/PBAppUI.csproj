@@ -1,0 +1,782 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7BD69B98-A7CF-4287-9308-1EE0DBC7E47E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PasswordBoss</RootNamespace>
+    <AssemblyName>PBAppUI</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <ExpressionBlendVersion>12.0.51020.0</ExpressionBlendVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>PBSNameKeyDev.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>..\..\PasswordBoss.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ProductionRelease|x86'">
+    <OutputPath>bin\x86\ProductionRelease\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Test\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Production|x86'">
+    <OutputPath>bin\x86\Production\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Staging|x86'">
+    <OutputPath>bin\x86\Staging\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Microsoft.Expression.Interactions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="Svg2Xaml">
+      <HintPath>..\lib\Svg2Xaml.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\System.Windows.Interactivity.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Telerik.Windows.Controls">
+      <HintPath>..\..\telerik-dlls\Telerik.Windows.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.GridView, Version=2016.1.217.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\telerik-dlls\Telerik.Windows.Controls.GridView.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Input, Version=2016.1.217.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\telerik-dlls\Telerik.Windows.Controls.Input.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Navigation, Version=2016.1.217.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\telerik-dlls\Telerik.Windows.Controls.Navigation.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Data, Version=2016.1.217.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Windows.Documents.Proofing, Version=2016.1.217.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\CommonComponents\Components\PasswordScanner.cs">
+      <Link>Helpers\PasswordScanner.cs</Link>
+    </Compile>
+    <Compile Include="..\CommonComponents\Helpers\AllowableCharactersTextBoxBehavior.cs">
+      <Link>Helpers\AllowableCharactersTextBoxBehavior.cs</Link>
+    </Compile>
+    <Compile Include="..\CommonComponents\Helpers\BooleanToOpacityConverter.cs">
+      <Link>Helpers\BooleanToOpacityConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\CommonComponents\Helpers\Common.cs">
+      <Link>Helpers\Common.cs</Link>
+    </Compile>
+    <Compile Include="..\CommonComponents\Helpers\DefaultProperties.cs">
+      <Link>Helpers\DefaultProperties.cs</Link>
+    </Compile>
+    <Compile Include="..\CommonComponents\Helpers\FindCommandParameters.cs">
+      <Link>Helpers\FindCommandParameters.cs</Link>
+    </Compile>
+    <Compile Include="..\CommonComponents\Helpers\Navigator.cs">
+      <Link>Helpers\Navigator.cs</Link>
+    </Compile>
+    <Compile Include="..\CommonComponents\Helpers\ParametersConverter.cs">
+      <Link>Helpers\ParametersConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\CommonComponents\Helpers\PasswordHelper.cs">
+      <Link>Helpers\PasswordHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\CommonComponents\Helpers\RelayCommand.cs">
+      <Link>Helpers\RelayCommand.cs</Link>
+    </Compile>
+    <Compile Include="..\CommonComponents\Helpers\SyncImagesHelper.cs">
+      <Link>Helpers\SyncImagesHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\CommonComponents\UserControls\CategoryBox.xaml.cs">
+      <Link>Views\UserControls\CategoryBox.xaml.cs</Link>
+    </Compile>
+    <Compile Include="..\CommonComponents\UserControls\CustomMessageBoxDialog.xaml.cs">
+      <Link>Views\UserControls\CustomMessageBoxDialog.xaml.cs</Link>
+    </Compile>
+    <Compile Include="..\CommonComponents\UserControls\CustomMessageBoxUserControl.xaml.cs">
+      <Link>Views\UserControls\CustomMessageBoxUserControl.xaml.cs</Link>
+    </Compile>
+    <Compile Include="..\CommonComponents\UserControls\UpdatePasswordsInfoDialog.xaml.cs">
+      <Link>Views\UserControls\UpdatePasswordsInfoDialog.xaml.cs</Link>
+    </Compile>
+    <Compile Include="..\CommonComponents\ViewModel\ViewModelBase.cs">
+      <Link>ViewModel\ViewModelBase.cs</Link>
+    </Compile>
+    <Compile Include="..\CommonComponents\ViewModel\ViewModelPasswordBox.cs">
+      <Link>ViewModel\ViewModelPasswordBox.cs</Link>
+    </Compile>
+    <Compile Include="Actions\DisplayUpdatePrompt.cs" />
+    <Compile Include="Analytics\PersonalInfoSetupAnalyticsLogger.cs" />
+    <Compile Include="AppRunner.cs" />
+    <Compile Include="BusinessLayer\BussinessLayerMessageEventArgs.cs" />
+    <Compile Include="BusinessLayer\CreateAccountLayer.cs" />
+    <Compile Include="BusinessLayer\GenerateKeysStep.cs" />
+    <Compile Include="BusinessLayer\License\DownloadLicenseActivationType.cs" />
+    <Compile Include="BusinessLayer\License\LicenseActivationBusinessLayer.cs" />
+    <Compile Include="BusinessLayer\License\LicenseActivationTypeBase.cs" />
+    <Compile Include="BusinessLayer\License\LicenseFactory.cs" />
+    <Compile Include="BusinessLayer\License\PromoLicenseActivationType.cs" />
+    <Compile Include="Helpers\IsExpandedToWidthConverter.cs" />
+    <Compile Include="Helpers\Animation\ProgressBarAnimation.cs" />
+    <Compile Include="Helpers\EqualityToVisibilityConverter.cs" />
+    <Compile Include="Helpers\MenuItemStyleSelector.cs" />
+    <Compile Include="Helpers\PasswordBoxViewModel.cs" />
+    <Compile Include="Helpers\RadioButtonCheckedConverter.cs" />
+    <Compile Include="Helpers\StringToVisibilityConverter.cs" />
+    <Compile Include="Helpers\SystemIdlePoller.cs" />
+    <Compile Include="Helpers\SystemTray.cs" />
+    <Compile Include="Helpers\ValidationProperty.cs" />
+    <Compile Include="Helpers\Validator.cs" />
+    <Compile Include="Helpers\ViewFadeHelper.cs" />
+    <Compile Include="Model\AccountSettings\AccountSettingsModel.cs" />
+    <Compile Include="Model\Account\AccountModel.cs" />
+    <Compile Include="Model\AlertButton\AlertButtonModel.cs" />
+    <Compile Include="Model\SecurityNotification\SecurityNotificationModel.cs" />
+    <Compile Include="PBApp.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\FolderService.cs" />
+    <Compile Include="SyncManager.cs" />
+    <Compile Include="ViewModel\AccountSettings\AccountSettingsViewModel.cs" />
+    <Compile Include="ViewModel\AccountSettings\TwoStepVerificationViewModel.cs" />
+    <Compile Include="ViewModel\Account\AccountCreationFlowViewModelBase.cs" />
+    <Compile Include="ViewModel\Account\ConfirmMasterPasswordViewModel.cs" />
+    <Compile Include="ViewModel\Account\CreateAccountViewModel.cs" />
+    <Compile Include="ViewModel\Account\EnterLicenseKeyViewModel.cs" />
+    <Compile Include="ViewModel\Account\ForgotMasterPasswordViewModel.cs" />
+    <Compile Include="ViewModel\Account\LoginLanguageViewModel.cs" />
+    <Compile Include="ViewModel\Account\LoginViewModel.cs" />
+    <Compile Include="ViewModel\Account\PersonalInfoSetupViewModel.cs" />
+    <Compile Include="ViewModel\Account\SetPINScreenViewModel.cs" />
+    <Compile Include="ViewModel\Account\SetupCompleteViewModel.cs" />
+    <Compile Include="ViewModel\Account\UpdateDataViewModel.cs" />
+    <Compile Include="ViewModel\Account\VerificationRequiredViewModel.cs" />
+    <Compile Include="ViewModel\AlertButtonViewModel.cs" />
+    <Compile Include="ViewModel\ApplicationUpdates\UpdateAvailableViewModel.cs" />
+    <Compile Include="ViewModel\BrowserExtentions\BrowserExtentionSetupViewModel.cs" />
+    <Compile Include="ViewModel\BrowserExtentions\FirefoxSetupProvider.cs" />
+    <Compile Include="ViewModel\BrowserExtentions\InternetExplorerSetupProvider.cs" />
+    <Compile Include="ViewModel\BrowserExtentions\OperaSetupProvider.cs" />
+    <Compile Include="ViewModel\BrowserExtentions\SetupProviderFactory.cs" />
+    <Compile Include="ViewModel\BrowserExtentions\SetupProviderBase.cs" />
+    <Compile Include="ViewModel\BrowserExtentions\ChromeSetupProvider.cs" />
+    <Compile Include="ViewModel\EnterPromoCodeControlDialogViewModel.cs" />
+    <Compile Include="ViewModel\FoldersTreeViewModel.cs" />
+    <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\MenuViewModel.cs" />
+    <Compile Include="ViewModel\Search\SearchResultCategoryModel.cs" />
+    <Compile Include="ViewModel\Search\SearchResultItemModel.cs" />
+    <Compile Include="ViewModel\Search\SearchViewModel.cs" />
+    <Compile Include="ViewModel\SecurityNotificationViewModel.cs" />
+    <Compile Include="ViewModel\SetupProgressViewModel.cs" />
+    <Compile Include="Views\AccountSettings\AccountSettings.xaml.cs">
+      <DependentUpon>AccountSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AccountSettings\AccountSettingsPopup.xaml.cs">
+      <DependentUpon>AccountSettingsPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddFolder.xaml.cs">
+      <DependentUpon>AddFolder.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ApplicationSync\PerformSyncDialog.xaml.cs">
+      <DependentUpon>PerformSyncDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ApplicationSync\SyncFailedDialog.xaml.cs">
+      <DependentUpon>SyncFailedDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ApplicationUpdates\CheckForUpdatesWindow.xaml.cs">
+      <DependentUpon>CheckForUpdatesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ApplicationUpdates\NoUpdateAvailable.xaml.cs">
+      <DependentUpon>NoUpdateAvailable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ApplicationUpdates\UpdateAvailable.xaml.cs">
+      <DependentUpon>UpdateAvailable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\AccountCreation\AccountCreationDialog.xaml.cs">
+      <DependentUpon>AccountCreationDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\AccountCreation\AccountExistingDialog.xaml.cs">
+      <DependentUpon>AccountExistingDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\AddItemChildWindow.xaml.cs">
+      <DependentUpon>AddItemChildWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\License\ActivationSuccessfullDialog.xaml.cs">
+      <DependentUpon>ActivationSuccessfullDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\License\LicenseActivationDialog.xaml.cs">
+      <DependentUpon>LicenseActivationDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FeatureNotEnabled\FeatureNotEnabledPopUp.xaml.cs">
+      <DependentUpon>FeatureNotEnabledPopUp.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Login\BrowserExtentionSetup.xaml.cs">
+      <DependentUpon>BrowserExtentionSetup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Login\EnterLicenseKey.xaml.cs">
+      <DependentUpon>EnterLicenseKey.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Login\PersonalInfoSetup.xaml.cs">
+      <DependentUpon>PersonalInfoSetup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Login\SetupCompleteView.xaml.cs">
+      <DependentUpon>SetupCompleteView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Login\ForgotMasterPassword.xaml.cs">
+      <DependentUpon>ForgotMasterPassword.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Login\ConfirmPasswordPopup.xaml.cs">
+      <DependentUpon>ConfirmPasswordPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Login\MasterPasswordPopup.xaml.cs">
+      <DependentUpon>MasterPasswordPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\AboutControlDialog.xaml.cs">
+      <DependentUpon>AboutControlDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\CloseBrowserInformationDialog.xaml.cs">
+      <DependentUpon>CloseBrowserInformationDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\CustomInformationMessageBoxWindow.xaml.cs">
+      <DependentUpon>CustomInformationMessageBoxWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\EnterPromoCodeControlDialog.xaml.cs">
+      <DependentUpon>EnterPromoCodeControlDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\ExportNotEncryptedWindow.xaml.cs">
+      <DependentUpon>ExportNotEncryptedWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\ImportFromSecureExportControl.xaml.cs">
+      <DependentUpon>ImportFromSecureExportControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\CustomLoadingSpinner.xaml.cs">
+      <DependentUpon>CustomLoadingSpinner.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\MainSearchResultPanel.xaml.cs">
+      <DependentUpon>MainSearchResultPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\MasterPasswordDialog.xaml.cs">
+      <DependentUpon>MasterPasswordDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\PasswordTextBox.xaml.cs">
+      <DependentUpon>PasswordTextBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\PhoneNumberBox.cs" />
+    <Compile Include="Views\UserControls\PinUserControl.xaml.cs">
+      <DependentUpon>PinUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\ProgressBarPopup.xaml.cs">
+      <DependentUpon>ProgressBarPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\SelectFolderControl.xaml.cs">
+      <DependentUpon>SelectFolderControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\SetupProgressPanel.cs" />
+    <Compile Include="Views\UserControls\SetupProgressUserControl.xaml.cs">
+      <DependentUpon>SetupProgressUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\TextBoxWithLabel.xaml.cs">
+      <DependentUpon>TextBoxWithLabel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\TwoStepVerificationUserControl.xaml.cs">
+      <DependentUpon>TwoStepVerificationUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\InAppAdvertising\Arc.cs" />
+    <Compile Include="Views\InAppAdvertising\LoginWindowAdvertising.xaml.cs">
+      <DependentUpon>LoginWindowAdvertising.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\InAppAdvertising\MainWindowAdvertising.xaml.cs">
+      <DependentUpon>MainWindowAdvertising.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\InAppAdvertising\PremiumExpiring.xaml.cs">
+      <DependentUpon>PremiumExpiring.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\InAppAdvertising\ProgressToAngleConverter.cs" />
+    <Compile Include="Views\LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Login\ConfirmMasterPassword.xaml.cs">
+      <DependentUpon>ConfirmMasterPassword.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Login\CreateAccount.xaml.cs">
+      <DependentUpon>CreateAccount.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Login\Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Login\LoginLanguage.xaml.cs">
+      <DependentUpon>LoginLanguage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Login\SetPINScreen.xaml.cs">
+      <DependentUpon>SetPINScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Login\SetupComplete.xaml.cs">
+      <DependentUpon>SetupComplete.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Login\UpdateData.xaml.cs">
+      <DependentUpon>UpdateData.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Login\VerificationRequired.xaml.cs">
+      <DependentUpon>VerificationRequired.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UnlockProfile.xaml.cs">
+      <DependentUpon>UnlockProfile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\AlertButtonUserControl.xaml.cs">
+      <DependentUpon>AlertButtonUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\FirefoxMasterPasswordConfirm.xaml.cs">
+      <DependentUpon>FirefoxMasterPasswordConfirm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\ImportFromBrowserControl.xaml.cs">
+      <DependentUpon>ImportFromBrowserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\MainSearchBox.xaml.cs">
+      <DependentUpon>MainSearchBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\LoadingSpinner.xaml.cs">
+      <DependentUpon>LoadingSpinner.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\LoadingWindow.xaml.cs">
+      <DependentUpon>LoadingWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\ImportFromApplicationControl.xaml.cs">
+      <DependentUpon>ImportFromApplicationControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\MenuUserControl.xaml.cs">
+      <DependentUpon>MenuUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\MenuUserControlPopup.xaml.cs">
+      <DependentUpon>MenuUserControlPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\CustomMessageBox.xaml.cs">
+      <DependentUpon>CustomMessageBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\ProgressBarPopupWindow.xaml.cs">
+      <DependentUpon>ProgressBarPopupWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\SecurityNotificationUserControl.xaml.cs">
+      <DependentUpon>SecurityNotificationUserControl.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PBSNameKeyDev.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\PasswordBoss\PBKnown\PBKnown.csproj">
+      <Project>{24c61c98-aa48-40c8-9ca5-e2c9c27f5ca2}</Project>
+      <Name>PBKnown</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\ThemeDll\ThemeDll.csproj">
+      <Project>{120C3F03-9EF6-47FD-B8BB-986802FF55CC}</Project>
+      <Name>ThemeDll</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="..\CommonComponents\UserControls\CategoryBox.xaml">
+      <Link>Views\UserControls\CategoryBox.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\CommonComponents\UserControls\CustomMessageBoxDialog.xaml">
+      <Link>Views\UserControls\CustomMessageBoxDialog.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\CommonComponents\UserControls\CustomMessageBoxUserControl.xaml">
+      <Link>Views\UserControls\CustomMessageBoxUserControl.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\CommonComponents\UserControls\UpdatePasswordsInfoDialog.xaml">
+      <Link>Views\UserControls\UpdatePasswordsInfoDialog.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Properties\DesignTimeResources.xaml" Condition="'$(DesignTime)'=='true' OR ('$(SolutionPath)'!='' AND Exists('$(SolutionPath)') AND '$(BuildingInsideVisualStudio)'!='true' AND '$(BuildingInsideExpressionBlend)'!='true')">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <ContainsDesignTimeResources>true</ContainsDesignTimeResources>
+    </Page>
+    <Page Include="resources\dictionary\styles\AddControlStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="resources\dictionary\styles\passwordbossresource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="resources\dictionary\styles\primarydashboardresource.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AccountSettings\AccountSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AccountSettings\AccountSettingsPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AddFolder.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ApplicationSync\PerformSyncDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ApplicationSync\SyncFailedDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ApplicationUpdates\CheckForUpdatesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ApplicationUpdates\NoUpdateAvailable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ApplicationUpdates\UpdateAvailable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Dialogs\AccountCreation\AccountCreationDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Dialogs\AccountCreation\AccountExistingDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UserControls\AddItemChildWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Dialogs\License\ActivationSuccessfullDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Dialogs\License\LicenseActivationDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\FeatureNotEnabled\FeatureNotEnabledPopUp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Login\BrowserExtentionSetup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Login\EnterLicenseKey.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Login\PersonalInfoSetup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Login\SetupCompleteView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Login\ForgotMasterPassword.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Login\ConfirmPasswordPopup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Login\MasterPasswordPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\AboutControlDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\CloseBrowserInformationDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\CustomInformationMessageBoxWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\EnterPromoCodeControlDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\ExportNotEncryptedWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\ImportFromSecureExportControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\CustomLoadingSpinner.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UserControls\MainSearchResultPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\MasterPasswordDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\PasswordTextBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UserControls\PinUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UserControls\ProgressBarPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\SelectFolderControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\SetupProgressUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UserControls\TextBoxWithLabel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UserControls\TwoStepVerificationUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\InAppAdvertising\LoginWindowAdvertising.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\InAppAdvertising\MainWindowAdvertising.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\InAppAdvertising\PremiumExpiring.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LoginWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Login\ConfirmMasterPassword.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Login\CreateAccount.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Login\Login.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Login\LoginLanguage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Login\SetPINScreen.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Login\SetupComplete.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Login\UpdateData.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Login\VerificationRequired.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UnlockProfile.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UserControls\AlertButtonUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\ImportFromBrowserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\FirefoxMasterPasswordConfirm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\UserControls\MainSearchBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\LoadingSpinner.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\LoadingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\ImportFromApplicationControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\MenuUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\MenuUserControlPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\CustomMessageBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\ProgressBarPopupWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\SecurityNotificationUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>call "$(SolutionDir)env\setEnv.cmd" "$(SolutionDir)" "$(Configuration)"
+if %25RENABLED%25==1 ( "%25RPATH%25" -q -targetfile "&lt;AssemblyLocation&gt;\&lt;AssemblyFileName&gt;" -file "$(ProjectDir)$(OutDir)$(TargetFileName)" -snkeypair "%25CERTF%25" -snpassword "%25CERTPASS%25" -spcfile "%25CERTF%25" -pvkpassword "%25CERTPASS%25" -visualstyles 0 -antitamp 1 -control_flow_obfuscation 1 -flow_level 9 -necrobit 1 -obfuscation 0 )
+"%25TOOLSPATH%25Signtool.exe" sign /v /f "%25CERTF%25" /p %25CERTPASS%25 /n %25CERTS%25 /t %25TIMESTMP%25 "$(ProjectDir)$(OutDir)$(TargetFileName)"
+"%25TOOLSPATH%25Signtool.exe" sign /v /f "%25CERTF%25" /p %25CERTPASS%25 /n %25CERTS%25 /tr %25TIME256%25 /fd sha256 /td sha256 /as "$(ProjectDir)$(OutDir)$(TargetFileName)"
+xcopy /y "$(ProjectDir)$(OutDir)$(TargetFileName)" "%25OUTPATH%25plugins\*.*"
+if $(Configuration)==Debug ( xcopy /y "$(ProjectDir)$(OutDir)*.pdb" "%25OUTPATH%25plugins\*.*" )
+xcopy /y "$(SolutionDir)lib\*.*" "%25OUTPATH%25*.*"</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>cd "$(SolutionDir)"
+call "..\tools\setVersion$(Configuration).cmd" "$(ProjectDir)Properties\AssemblyInfo.cs"
+</PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

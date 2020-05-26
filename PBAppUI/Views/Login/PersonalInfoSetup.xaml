@@ -1,0 +1,134 @@
+﻿<Page x:Class="PasswordBoss.Views.Login.PersonalInfoSetup"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:uc="clr-namespace:PasswordBoss.Views.UserControls"
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+      xmlns:account="clr-namespace:PasswordBoss.ViewModel.Account"
+	  xmlns:local="clr-namespace:PasswordBoss.Views.UserControls"
+	    xmlns:helpers="clr-namespace:PasswordBoss.Helpers"
+	  
+      xmlns:cc="clr-namespace:QuickZip.UserControls;assembly=theme"
+      Title="Create Account"
+      Width="750"
+	  
+	  Background="{DynamicResource AliceBlueBackgroundColor}"
+      Height="550">
+
+	<Page.Resources>
+		<ResourceDictionary>
+			<ResourceDictionary.MergedDictionaries>
+				<ResourceDictionary Source="../UserControls/TextBoxWithLabel.xaml" />
+			</ResourceDictionary.MergedDictionaries>
+			<BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+			<helpers:ParametersConverter x:Key="ParametersConverter" />
+		</ResourceDictionary>
+
+
+	</Page.Resources>
+
+
+	<Grid >
+		<Grid.RowDefinitions>
+			<RowDefinition Height="50" />
+			<RowDefinition Height="107" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="35" />
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>
+
+
+		<Grid x:Name="TitleGrid" Grid.Row="0" Grid.ColumnSpan="2" >
+			<cc:OnboardingHeader  CloseButtonVisibility ="Visible" />
+		</Grid>
+
+		<Border Grid.ColumnSpan="2" Grid.Row="1" BorderThickness="0" Background="White"/>
+
+		<Grid  Margin="0,20,0,20" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="5" />
+				<RowDefinition Height="Auto" />
+			</Grid.RowDefinitions>
+
+			<TextBlock Grid.Row="0" VerticalAlignment="Top" Text="{DynamicResource Onboardv4PersonalizeHeadline}" TextWrapping="Wrap"
+                               Foreground="{DynamicResource lightGreenColor}" FontFamily="{DynamicResource OBProximaRegular}" FontSize="29" />
+
+			<TextBlock Grid.Row="2" VerticalAlignment="Bottom" Text="{DynamicResource Onboardv4PersonalizeBody}" TextWrapping="Wrap"
+                               Foreground="{DynamicResource GrayColor}" FontFamily="{DynamicResource OBProximaRegular}" FontSize="16" FontWeight="Light" />
+		</Grid>
+
+		<Grid KeyboardNavigation.TabNavigation="Cycle" Grid.Row="2" Grid.Column="1" Margin="0,0,20,14">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="490" />
+				<ColumnDefinition Width="*" />
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="Auto" />
+				<RowDefinition Height="Auto" />
+			</Grid.RowDefinitions>
+			<StackPanel Orientation="Vertical" Grid.Column="0" Margin="0,5,0,5">
+
+				<local:TextBoxWithLabel  IsTabStop="False" LabelText="{DynamicResource CreateAccountv3ScreenEmail}" TabIndex="0" >
+					<TextBox Name="EmailTextBox" Style="{DynamicResource EmailTextBoxStyle}" IsEnabled="False" Text="{Binding Email}"/>
+				</local:TextBoxWithLabel>
+
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*" />
+						<ColumnDefinition Width="10"/>
+						<ColumnDefinition Width="*" />
+					</Grid.ColumnDefinitions>
+					<local:TextBoxWithLabel Grid.Column="0" LabelText="{DynamicResource FirstName}"  TabIndex="1">
+						<TextBox Name="tbFirstName" Style="{DynamicResource EmailTextBoxStyle}" Text="{Binding FirstName}"/>
+					</local:TextBoxWithLabel>
+					<local:TextBoxWithLabel Grid.Column="2" LabelText="{DynamicResource LastName}"  TabIndex="2">
+						<TextBox Style="{DynamicResource EmailTextBoxStyle}" Text="{Binding LastName}" />
+					</local:TextBoxWithLabel>
+
+				</Grid>
+
+				<local:TextBoxWithLabel LabelText="{DynamicResource Address}"  TabIndex="3">
+					<TextBox Style="{DynamicResource EmailTextBoxStyle}" Text="{Binding Address}" />
+				</local:TextBoxWithLabel>
+				<local:TextBoxWithLabel LabelText="{DynamicResource City}"  TabIndex="4">
+					<TextBox Style="{DynamicResource EmailTextBoxStyle}" Text="{Binding City}" />
+				</local:TextBoxWithLabel>
+
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*" />
+						<ColumnDefinition Width="10"/>
+						<ColumnDefinition Width="*" />
+					</Grid.ColumnDefinitions>
+					<local:TextBoxWithLabel Grid.Column="0" LabelText="{DynamicResource State}" TabIndex="5">
+						<ComboBox Text="{Binding State}"
+								  Name="cbState"
+								  MaxDropDownHeight="100"
+								  IsDropDownOpen="False"
+									  ItemsSource="{Binding States}" 
+									  IsEditable="True"
+									Foreground="#7E8A8E"
+								  Background="White"
+								  FontFamily="{DynamicResource OBProximaRegular}"
+								  FontSize="{DynamicResource FontSize17}"
+									  >
+							
+							<!--<Setter Property="CaretBrush" Value="{DynamicResource CheckBoxReadAcceptBorderbrush}" />-->
+
+						</ComboBox>
+					</local:TextBoxWithLabel>
+
+					<local:TextBoxWithLabel Grid.Column="2" LabelText="{DynamicResource ZipPostalCode}"  TabIndex="6">
+						<TextBox Style="{DynamicResource EmailTextBoxStyle}" Text="{Binding Zip}" />
+					</local:TextBoxWithLabel>
+				</Grid>
+			</StackPanel>
+			<Button FontSize="16"  Style="{DynamicResource ProductTourButtonStyle}" Content="{DynamicResource Continue}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Command="{Binding ContinueCommand}" Height="43" Width="216" HorizontalAlignment="Right" VerticalAlignment="Center" />
+		</Grid>
+	</Grid>
+</Page>

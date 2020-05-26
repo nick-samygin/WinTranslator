@@ -1,0 +1,14 @@
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.Common\bin\Debug\000000.dll
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.Common\bin\Debug\000000.pdb
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.Common\bin\Debug\PBKnown.dll
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.Common\bin\Debug\System.Data.SQLite.dll
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.Common\bin\Debug\VaultReader.dll
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.Common\bin\Debug\Newtonsoft.Json.dll
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.Common\bin\Debug\Microsoft.Win32.TaskScheduler.dll
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.Common\bin\Debug\PBKnown.pdb
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.Common\bin\Debug\Microsoft.Win32.TaskScheduler.xml
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.Common\obj\x86\Debug\PBDataImporters.Common.csprojAssemblyReference.cache
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.Common\obj\x86\Debug\PBDataImporters.Common.csproj.CoreCompileInputs.cache
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.Common\obj\x86\Debug\PBDataImporters.Common.csproj.CopyComplete
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.Common\obj\x86\Debug\000000.dll
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.Common\obj\x86\Debug\000000.pdb

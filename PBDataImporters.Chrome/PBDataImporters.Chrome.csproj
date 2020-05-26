@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4C2F7F37-D61C-406D-B37E-D9CE10A6EB1B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PBDataImporters.Chrome</RootNamespace>
+    <AssemblyName>100000</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ChromeImportStrategy.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\PasswordBoss\PBKnown\PBKnown.csproj">
+      <Project>{24c61c98-aa48-40c8-9ca5-e2c9c27f5ca2}</Project>
+      <Name>PBKnown</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>cd "$(SolutionDir)"
+call "..\tools\setVersion$(Configuration).cmd" "$(ProjectDir)Properties\AssemblyInfo.cs"
+</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>call "$(SolutionDir)env\setEnv.cmd" "$(SolutionDir)" "$(Configuration)"
+if %25RENABLED%25==1 ( "%25RPATH%25" -q -targetfile "&lt;AssemblyLocation&gt;\&lt;AssemblyFileName&gt;" -file "$(ProjectDir)$(OutDir)$(TargetFileName)" -snkeypair "%25CERTF%25" -snpassword "%25CERTPASS%25" -spcfile "%25CERTF%25" -pvkpassword "%25CERTPASS%25" -visualstyles 0 -antitamp 1 -control_flow_obfuscation 1 -flow_level 9 -necrobit 1 -obfuscation 0 )
+"%25TOOLSPATH%25Signtool.exe" sign /v /f "%25CERTF%25" /p %25CERTPASS%25 /n %25CERTS%25 /t %25TIMESTMP%25 "$(ProjectDir)$(OutDir)$(TargetFileName)"
+"%25TOOLSPATH%25Signtool.exe" sign /v /f "%25CERTF%25" /p %25CERTPASS%25 /n %25CERTS%25 /tr %25TIME256%25 /fd sha256 /td sha256 /as "$(ProjectDir)$(OutDir)$(TargetFileName)"
+xcopy /y "$(ProjectDir)$(OutDir)$(TargetFileName)" "%25OUTPATH%25plugins\*.*"
+if $(Configuration)==Debug ( xcopy /y "$(ProjectDir)$(OutDir)*.pdb" "%25OUTPATH%25plugins\*.*" )</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

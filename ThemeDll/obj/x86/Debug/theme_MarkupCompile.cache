@@ -1,0 +1,20 @@
+﻿theme
+
+
+library
+C#
+.cs
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\ThemeDll\obj\x86\Debug\
+PasswordBoss
+none
+false
+DEBUG;TRACE
+
+29-67260700
+
+49-1958268192
+19-1868265068
+Components\ContextMenu.xaml;Components\DropDownButton.xaml;Components\Expander.xaml;Components\GridView.xaml;Components\ListViewBase\VirtualWrapPanelView.xaml;Components\SecureItem.xaml;HoverImage.xaml;Theme.xaml;Themes\Brushes.xaml;Themes\Generic.xaml;Components\TreeView.xaml;UserControls\AddSecureItemWindow.xaml;UserControls\CustomChildWindow\CustomChildWindow.xaml;UserControls\CustomInformationMessageBoxWindow.xaml;UserControls\EditBox\EditBox.xaml;UserControls\FoldersComboBox.xaml;UserControls\ImageToggleButton.xaml;UserControls\MenuButtonControl.xaml;UserControls\Headers\OnboardingHeader.xaml;UserControls\PasswordTextUC.xaml;UserControls\PopupWindow\ConfirmationPopupWindow\ConfirmationPopupWindow.xaml;UserControls\PopupWindow\ErrorNotificationPopupWindow\ErrorNotificationPopupWindow.xaml;UserControls\PopupWindow\PopupWindow.xaml;UserControls\RequiredTextBlock.xaml;UserControls\RequiredTextBox.xaml;UserControls\StatusbarBase\StatusbarBase.xaml;UserControls\StatusbarItem\StatusbarItem.xaml;UserControls\TopPanelTextBox.xaml;UserControls\ViewByTopPanel.xaml;
+
+False
+

@@ -1,0 +1,8 @@
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\ko-KO\bin\x86\Debug\ko-KO.dll
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\ko-KO\bin\x86\Debug\ko-KO.pdb
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\ko-KO\obj\x86\Debug\resources\ko-KO.baml
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\ko-KO\obj\x86\Debug\ko-KO_MarkupCompile.cache
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\ko-KO\obj\x86\Debug\ko-KO.g.resources
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\ko-KO\obj\x86\Debug\ko-KO.dll
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\ko-KO\obj\x86\Debug\ko-KO.pdb
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\LanguageDll\ko-KO\obj\x86\Debug\ko-KO.csproj.CoreCompileInputs.cache

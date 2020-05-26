@@ -1,0 +1,317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{589728F6-898B-4DC3-B8AA-973B2A8A6359}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PasswordBoss</RootNamespace>
+    <AssemblyName>ShareCenter</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ProductionRelease|x86'">
+    <OutputPath>bin\x86\ProductionRelease\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Test\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Production|x86'">
+    <OutputPath>bin\x86\Production\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Staging|x86'">
+    <OutputPath>bin\x86\Staging\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Newtonsoft.Json.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Telerik.Windows.Controls, Version=2016.1.217.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\telerik-dlls\Telerik.Windows.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Windows.Controls.Navigation, Version=2016.1.217.40, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\telerik-dlls\Telerik.Windows.Controls.Navigation.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\CommonComponents\Helpers\Common.cs">
+      <Link>Helpers\Common.cs</Link>
+    </Compile>
+    <Compile Include="..\CommonComponents\Helpers\DefaultProperties.cs">
+      <Link>Helpers\DefaultProperties.cs</Link>
+    </Compile>
+    <Compile Include="..\CommonComponents\Helpers\FindCommandParameters.cs">
+      <Link>Helpers\FindCommandParameters.cs</Link>
+    </Compile>
+    <Compile Include="..\CommonComponents\Helpers\ParametersConverter.cs">
+      <Link>Helpers\ParametersConverter.cs</Link>
+    </Compile>
+    <Compile Include="..\CommonComponents\Helpers\RelayCommand.cs">
+      <Link>Helpers\RelayCommand.cs</Link>
+    </Compile>
+    <Compile Include="..\CommonComponents\Helpers\ShareCommon.cs">
+      <Link>Helpers\ShareCommon.cs</Link>
+    </Compile>
+    <Compile Include="..\CommonComponents\UserControls\CustomMessageBoxDialog.xaml.cs">
+      <Link>Views\UserControls\CustomMessageBoxDialog.xaml.cs</Link>
+    </Compile>
+    <Compile Include="..\CommonComponents\UserControls\CustomMessageBoxUserControl.xaml.cs">
+      <Link>Views\UserControls\CustomMessageBoxUserControl.xaml.cs</Link>
+    </Compile>
+    <Compile Include="..\CommonComponents\ViewModel\ViewModelBase.cs">
+      <Link>ViewModel\ViewModelBase.cs</Link>
+    </Compile>
+    <Compile Include="AddShareItemType.cs" />
+    <Compile Include="Converters\BoolToVisibilityInverter.cs" />
+    <Compile Include="Converters\DateFromNowConverter.cs" />
+    <Compile Include="Converters\InvertBoolToBoolConverter.cs" />
+    <Compile Include="Converters\ItemShareTypeToVisibilityConverter.cs" />
+    <Compile Include="Converters\SharedWithMeItemStateToVisibilityConverter.cs" />
+    <Compile Include="Converters\ShareItemTypeToBoolConverter.cs" />
+    <Compile Include="Converters\SplashVisibilityConverter.cs" />
+    <Compile Include="Converters\StatusToVisibilityConverter.cs" />
+    <Compile Include="Converters\StringToVisibilityConverter.cs" />
+    <Compile Include="Converters\ValidStateToBrushConverter.cs" />
+    <Compile Include="FolderCategoryType.cs" />
+    <Compile Include="Helpers\CurrentSharedWithTemplateSelector.cs" />
+    <Compile Include="Helpers\PendingSharedWithTemplateSelector.cs" />
+    <Compile Include="Helpers\RadTreeViewItemStyleSelector.cs" />
+    <Compile Include="Helpers\RadTreeViewSelectionHelper.cs" />
+    <Compile Include="Helpers\ShareCenterDataHelper.cs" />
+    <Compile Include="Helpers\SharedWithMeItemStyleSelector.cs" />
+    <Compile Include="Helpers\TreeDataTemplateSelector.cs" />
+    <Compile Include="Helpers\TwoWayListBoxSeletedItemsHelper.cs" />
+    <Compile Include="Model\ShareCenter\ShareCenterModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShareCenter.cs" />
+    <Compile Include="SharedWithMeItemState.cs" />
+    <Compile Include="ShareWithStatus.cs" />
+    <Compile Include="ViewModel\AddressSecureItemViewModel.cs" />
+    <Compile Include="ViewModel\AddShareViewModel.cs" />
+    <Compile Include="ViewModel\BankAccountItemViewModel.cs" />
+    <Compile Include="ViewModel\CompanySecureItemViewModel.cs" />
+    <Compile Include="ViewModel\CreditCardItemViewModel.cs" />
+    <Compile Include="ViewModel\EmailSecureItemViewModel.cs" />
+    <Compile Include="ViewModel\FolderCategoryViewModel.cs" />
+    <Compile Include="ViewModel\NameSecureItemViewModel.cs" />
+    <Compile Include="ViewModel\NewShareCenterViewModel.cs" />
+    <Compile Include="ViewModel\NewShareViewModel.cs" />
+    <Compile Include="ViewModel\NotificationViewModels\BaseNototificationViewModel.cs" />
+    <Compile Include="ViewModel\NotificationViewModels\CancelSharingViewModel.cs" />
+    <Compile Include="ViewModel\NotificationViewModels\ChangeShareViewModel.cs" />
+    <Compile Include="ViewModel\PhoneSecureItemViewModel.cs" />
+    <Compile Include="ViewModel\SearchViewModel.cs" />
+    <Compile Include="ViewModel\ShareBaseViewModal.cs" />
+    <Compile Include="ViewModel\ShareCenterTourViewModel.cs" />
+    <Compile Include="ViewModel\ShareCenterViewModel.cs" />
+    <Compile Include="ViewModel\SharedByMeViewModel.cs" />
+    <Compile Include="ViewModel\SharedWithMeItemShareViewModel.cs" />
+    <Compile Include="ViewModel\SharedWithMeViewModel.cs" />
+    <Compile Include="ViewModel\SharedWithViewModel.cs" />
+    <Compile Include="ViewModel\ShareFolderViewModel.cs" />
+    <Compile Include="Views\NewShareCenterContentPanel.xaml.cs">
+      <DependentUpon>NewShareCenterContentPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NewShareView.xaml.cs">
+      <DependentUpon>NewShareView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ShareCenterContentPanel.xaml.cs">
+      <DependentUpon>ShareCenterContentPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ShareCenterMenuButton.xaml.cs">
+      <DependentUpon>ShareCenterMenuButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ShareCenterMiniTour.xaml.cs">
+      <DependentUpon>ShareCenterMiniTour.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\AddShareWindow.xaml.cs">
+      <DependentUpon>AddShareWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\NotificationWindow.xaml.cs">
+      <DependentUpon>NotificationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\SearchBox.xaml.cs">
+      <DependentUpon>SearchBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\ShareNotificationView.xaml.cs">
+      <DependentUpon>ShareNotificationView.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\PasswordBoss\PBKnown\PBKnown.csproj">
+      <Project>{24c61c98-aa48-40c8-9ca5-e2c9c27f5ca2}</Project>
+      <Name>PBKnown</Name>
+      <Private>False</Private>
+    </ProjectReference>
+    <ProjectReference Include="..\PasswordVault\PasswordVault.csproj">
+      <Project>{BACFAE9D-F4A5-482D-A8D7-A187A6FC5AA7}</Project>
+      <Name>PasswordVault</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SecureItemsCommon\SecureItemsCommon.csproj">
+      <Project>{E6BA4001-8FD8-4213-AD09-CE959C22F0D2}</Project>
+      <Name>SecureItemsCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ThemeDll\ThemeDll.csproj">
+      <Project>{120c3f03-9ef6-47fd-b8bb-986802ff55cc}</Project>
+      <Name>ThemeDll</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="..\CommonComponents\UserControls\CustomMessageBoxDialog.xaml">
+      <Link>Views\UserControls\CustomMessageBoxDialog.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="..\CommonComponents\UserControls\CustomMessageBoxUserControl.xaml">
+      <Link>Views\UserControls\CustomMessageBoxUserControl.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="resources\dictionary\ShareCenterResources.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="resources\dictionary\SharedByMeResourceDictionary.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="resources\dictionary\SharedWithMeResourceDictionary.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="resources\dictionary\ShareExpanderTheme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\NewShareCenterContentPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NewShareView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ShareCenterContentPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ShareCenterMenuButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ShareCenterMiniTour.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\AddShareWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\NotificationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\SearchBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserControls\ShareNotificationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="images\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>call "$(SolutionDir)env\setEnv.cmd" "$(SolutionDir)" "$(Configuration)"
+if %25RENABLED%25==1 ( "%25RPATH%25" -q -targetfile "&lt;AssemblyLocation&gt;\&lt;AssemblyFileName&gt;" -file "$(ProjectDir)$(OutDir)$(TargetFileName)" -snkeypair "%25CERTF%25" -snpassword "%25CERTPASS%25" -spcfile "%25CERTF%25" -pvkpassword "%25CERTPASS%25" -visualstyles 0 -antitamp 1 -control_flow_obfuscation 1 -flow_level 9 -necrobit 1 -obfuscation 0 )
+"%25TOOLSPATH%25Signtool.exe" sign /v /f "%25CERTF%25" /p %25CERTPASS%25 /n %25CERTS%25 /t %25TIMESTMP%25 "$(ProjectDir)$(OutDir)$(TargetFileName)"
+"%25TOOLSPATH%25Signtool.exe" sign /v /f "%25CERTF%25" /p %25CERTPASS%25 /n %25CERTS%25 /tr %25TIME256%25 /fd sha256 /td sha256 /as "$(ProjectDir)$(OutDir)$(TargetFileName)"
+xcopy /y "$(ProjectDir)$(OutDir)$(TargetFileName)" "%25OUTPATH%25plugins\*.*"
+if $(Configuration)==Debug ( xcopy /y "$(ProjectDir)$(OutDir)*.pdb" "%25OUTPATH%25plugins\*.*" )</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>cd "$(SolutionDir)"
+call "..\tools\setVersion$(Configuration).cmd" "$(ProjectDir)Properties\AssemblyInfo.cs"
+</PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

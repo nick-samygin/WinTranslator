@@ -1,0 +1,20 @@
+﻿SecurityScore
+
+
+library
+C#
+.cs
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\SecurityScore\obj\x86\Debug\
+PasswordBoss
+none
+false
+DEBUG;TRACE
+
+9-377636456
+
+271563405307
+25618491363
+..\CommonComponents\UserControls\MasterPasswordConfirm.xaml;..\CommonComponents\UserControls\UpdatePasswordsInfoDialog.xaml;resources\dictionary\SecurityScoreResources.xaml;Views\SecurityScoreContentPanel.xaml;Views\UserControls\ClearBrowserPasswords.xaml;Views\UserControls\DisablePasswords.xaml;Views\UserControls\DuplicatePasswords.xaml;Views\UserControls\OtherPasswords.xaml;Views\UserControls\PasswordTextBoxSmall.xaml;
+
+False
+

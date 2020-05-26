@@ -1,0 +1,68 @@
+﻿<UserControl x:Class="PasswordBoss.Views.UserControls.SearchBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             xmlns:converters="clr-namespace:PasswordBoss.Converters"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:userControls="clr-namespace:PasswordBoss.Views.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="29" d:DesignWidth="300"  BorderThickness="0">
+    <UserControl.Resources>
+        <converters:StringToVisibilityConverter x:Key="StringToVisibility"/>
+        <telerik:InvertedBooleanToVisibilityConverter x:Key="InvertedBooleanToVisibility"/>
+        <telerik:BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>
+    </UserControl.Resources>
+    <Border Background="White" Height="29" CornerRadius="{DynamicResource CommonCornerRadius}" BorderThickness="1" 
+            BorderBrush="{Binding Path=BorderBrush, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type userControls:SearchBox}}}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <Image Margin="8,0" Source="{DynamicResource search_grey}" Height="16" Width="16" VerticalAlignment="Center"  />
+
+            <TextBox x:Name="txtMainSearchBoxWatermark"  Grid.Column="1" Style="{DynamicResource SearchTextboxNormalStyle}"
+                     Visibility="{Binding ShowWattermark,Converter={StaticResource BooleanToVisibility}}"
+                 BorderThickness="0" 
+                                         FontFamily="{DynamicResource ProximaRegular}" HorizontalAlignment="Stretch"
+                                         Padding="2,0,20,0"
+                                         FontSize="{DynamicResource FontSize14}" VerticalContentAlignment="Center"
+                                         Foreground="{DynamicResource LightGrayTextForegroundColor}"
+                                         FontWeight="{DynamicResource NormalWeight}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="GotFocus">
+                        <i:InvokeCommandAction Command="{Binding WatermarkGotFocusCommand}" CommandParameter="{Binding ElementName=txtMainSearchBox}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </TextBox>
+            <TextBox x:Name="txtMainSearchBox"  Grid.Column="1"  Visibility="{Binding ShowWattermark,Converter={StaticResource InvertedBooleanToVisibility}}"
+                Style="{DynamicResource SearchTextboxGotFocusStyle}"
+                 BorderThickness="0" FontFamily="{DynamicResource ProximaRegular}" HorizontalAlignment="Stretch"
+                                         Padding="2,0,20,0"
+                                         FontSize="{DynamicResource FontSize14}" VerticalContentAlignment="Center"
+                                         Foreground="{DynamicResource LightGrayTextForegroundColor}"
+                                         FontWeight="{DynamicResource NormalWeight}"
+                 Text="{Binding Search, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  >
+            </TextBox>
+            <Button  HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding ClearSearchCommand}" 
+                     Visibility="{Binding Search,Converter={StaticResource StringToVisibility}}"  Margin="6 0" Grid.Column="2" Cursor="Hand">
+                <Button.Content>
+                    <Image Height="18" Width="18" Source="{DynamicResource delete_grey}"/>
+                </Button.Content>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Ellipse HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                            <ContentPresenter HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Button.Template>
+
+            </Button>
+
+        </Grid>
+    </Border>
+</UserControl>

@@ -1,0 +1,20 @@
+﻿SecureItemsCommon
+
+
+library
+C#
+.cs
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\SecureItemsCommon\obj\x86\Debug\
+SecureItemsCommon
+none
+false
+DEBUG;TRACE
+
+3590391285
+
+18-1250242937
+27916269122
+..\CommonComponents\UserControls\CustomMessageBoxDialog.xaml;..\CommonComponents\UserControls\CustomMessageBoxUserControl.xaml;View\SecureItemsHolderView.xaml;
+
+False
+

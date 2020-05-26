@@ -1,0 +1,18 @@
+﻿<Window x:Class="PasswordBoss.MsgBox"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MsgBox" Height="150" Width="400" WindowStyle="None" ResizeMode="NoResize" AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen"  Background="Transparent">
+   
+        <Border BorderBrush="#909090" BorderThickness="3" CornerRadius="3">
+            <Grid Background="{DynamicResource DialogGrayColor}">
+            <Grid>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <TextBlock FontSize="16" Foreground="{DynamicResource SecurityAlertDeleteBox}"  TextAlignment="Center"/>
+                    <TextBlock FontSize="14" Foreground="{DynamicResource DialogGrayColor}" Margin="15" TextAlignment="Center"/>
+                    <Button Name="btnAlertOk" FontSize="16" Click="btnAlertOk_Click" Background="{DynamicResource WhiteColor}" Margin="10" Foreground="#878788" Content="{DynamicResource OK}" Width="100" Height="30" Style="{DynamicResource btnStyleNormal}"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+        </Border>   
+</Window>

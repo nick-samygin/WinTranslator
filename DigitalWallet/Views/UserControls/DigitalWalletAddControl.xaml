@@ -1,0 +1,1478 @@
+﻿<UserControl x:Class="PasswordBoss.Views.UserControls.DigitalWalletAddControl"
+             Name="DigitalWalletAddEditControl"
+             xmlns:local="clr-namespace:PasswordBoss.Views.UserControls"
+             xmlns:localPass ="clr-namespace:PasswordBoss.Helpers"
+             xmlns:vm="clr-namespace:PasswordBoss.ViewModel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"    
+             mc:Ignorable="d" 
+             d:DesignHeight="550"
+             Height="Auto" Width="330" MaxWidth="330" >
+
+    <!--  Resources  -->
+
+    <UserControl.Resources>
+        <localPass:BoolToGridRowHeightConverter x:Key="BoolToGridRowHeightConverter"/>
+        <localPass:EnumMatchToBooleanConverter x:Key="enumConverter" />
+        <BooleanToVisibilityConverter x:Key="BoolToVisiblity"/>
+        <localPass:IsNullConverter x:Key="IsNullConverter" />
+    </UserControl.Resources>
+
+
+    <!--  Elements  -->
+
+    <Grid>
+        <Border BorderThickness="0.5,0,0,0" BorderBrush="{DynamicResource AccountSettingsGrayBackgroundColor}">
+            <TabControl  x:Name="AddNewItemTabControl" Style="{DynamicResource AddControlTabControlStyle}" Width="330"
+                        SelectedIndex="{Binding SelectedIndexTabControl,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding TabSelectionChangedCommand}"
+                                            CommandParameter="{Binding ElementName=AddNewItemTabControl}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+
+                <TabControl.Resources>
+                    <Style TargetType="{x:Type TabItem}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type TabItem}">
+                                    <Grid x:Name="grid"  >
+                                        <Border Name="Border" Background="{DynamicResource TextboxBorderbrush}" BorderThickness="0 2 0 0" >
+                                            <StackPanel  Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                <ContentPresenter ContentSource="Header" VerticalAlignment="Center" 
+                                                                   HorizontalAlignment="Stretch"></ContentPresenter>
+                                            </StackPanel>
+                                        </Border>
+                                    </Grid>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource WhiteColor}" />
+                                            <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource PasswordBossGreenColor}"/>
+                                        </Trigger>
+                                        <Trigger Property="IsSelected" Value="False">
+                                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource TextboxBorderbrush}" />
+                                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource TextboxBorderbrush}" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </TabControl.Resources>
+                <TabItem x:Name="tabSettings" Height="30" Width="163" Background="{DynamicResource WhiteColor}" BorderThickness="0" BorderBrush="White">
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <Image x:Name="imgTabSet" Source="{Binding SettingTabIcon, UpdateSourceTrigger=PropertyChanged}" Height="15" Width="15" HorizontalAlignment="Right"/>
+                            <TextBlock Margin="10,0,0,0" HorizontalAlignment="Center" Style="{DynamicResource AddcontrolTextBlockStyle}"
+                                           FontFamily="{DynamicResource ProximaBold}"  Text="{DynamicResource Settings}" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <TabItem.Content>
+                            <Grid>
+                                <!--CreditCardSettingGrid-->
+                                <Grid Name="CreditCardSettingGrid" Background="{DynamicResource WhiteColor}" Height="Auto" Margin="0,0,0,0" 
+                                       Visibility="{Binding CreditCardVisibility, Converter={StaticResource BoolToVisiblity}, UpdateSourceTrigger=PropertyChanged}" >
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" MaxHeight="80" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="70" />
+                                    </Grid.RowDefinitions>
+                                    <Grid Grid.Row="0" Grid.Column="1" Width="260" Margin="0,0,0,0" 
+                                          HorizontalAlignment="Left">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="120" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="10" />
+                                            <RowDefinition Height="65" />
+                                            <RowDefinition Height="10" />
+                                        </Grid.RowDefinitions>
+
+                                        <Image Source="{Binding ItemImage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Height="65" Width="110" 
+                                               Grid.Row="1" HorizontalAlignment="Left" Margin="0,0,0,0" />
+                                        <Grid Grid.Row="1" Grid.Column="1" Height="11"  Margin="0,0,0,0" VerticalAlignment="Top" >
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="11"/>
+                                                <ColumnDefinition Width="4"/>
+                                                <ColumnDefinition Width="11"/>
+                                                <ColumnDefinition Width="4"/>
+                                                <ColumnDefinition Width="11"/>
+                                                <ColumnDefinition Width="4"/>
+                                                <ColumnDefinition Width="11"/>
+                                                <ColumnDefinition Width="4"/>
+                                                <ColumnDefinition Width="11"/>
+                                                <ColumnDefinition Width="4"/>
+                                                <ColumnDefinition Width="11"/>
+                                                <ColumnDefinition Width="4"/>
+                                                <ColumnDefinition Width="11"/>
+                                                <ColumnDefinition Width="4"/>
+                                                <ColumnDefinition Width="11"/>
+                                                <ColumnDefinition Width="4"/>
+                                                <ColumnDefinition Width="11"/>
+                                            </Grid.ColumnDefinitions>
+                                        <RadioButton Focusable="False"    Name="Color1RadioBtn" GroupName="CreditCardColor"  Grid.Column="0"  Style="{DynamicResource ColoredEllipseStyle}" Background="#ED6B73" IsChecked="{Binding Path=CreditCardColor,Converter={StaticResource enumConverter}, ConverterParameter=c_ED6B73}" IsEnabled="{Binding Enabled}" />
+                                        <RadioButton   Focusable="False"  Name="Color2RadioBtn" GroupName="CreditCardColor"  Grid.Column="2" Style="{DynamicResource ColoredEllipseStyle}" Background="#F9E0BC"  IsChecked="{Binding Path=CreditCardColor,Converter={StaticResource enumConverter}, ConverterParameter=c_F9E0BC}" IsEnabled="{Binding Enabled}"/>
+                                        <RadioButton  Focusable="False"   Name="Color3RadioBtn" GroupName="CreditCardColor" Grid.Column="4" Style="{DynamicResource ColoredEllipseStyle}" Background="#E0D438"  IsChecked="{Binding Path=CreditCardColor,Converter={StaticResource enumConverter}, ConverterParameter=c_E0D438}" IsEnabled="{Binding Enabled}"/>
+                                        <RadioButton Focusable="False"   Name="Color4RadioBtn" GroupName="CreditCardColor"  Grid.Column="6" Style="{DynamicResource ColoredEllipseStyle}" Background="#8DC63F"  IsChecked="{Binding Path=CreditCardColor,Converter={StaticResource enumConverter}, ConverterParameter=c_8DC63F}" IsEnabled="{Binding Enabled}"/>
+                                        <RadioButton  Focusable="False"  Name="Color5RadioBtn"  GroupName="CreditCardColor"  Grid.Column="8" Style="{DynamicResource ColoredEllipseStyle}" Background="#45C2F4"  IsChecked="{Binding Path=CreditCardColor,Converter={StaticResource enumConverter}, ConverterParameter=c_45C2F4}" IsEnabled="{Binding Enabled}"/>
+                                        <RadioButton  Focusable="False"   Name="Color6RadioBtn" GroupName="CreditCardColor"  Grid.Column="10"  Style="{DynamicResource ColoredEllipseStyle}" Background="#203AC4"  IsChecked="{Binding Path=CreditCardColor,Converter={StaticResource enumConverter}, ConverterParameter=c_203AC4}" IsEnabled="{Binding Enabled}"/>
+                                        <RadioButton Focusable="False"   Name="Color7RadioBtn" GroupName="CreditCardColor"  Grid.Column="12"  Style="{DynamicResource ColoredEllipseStyle}" Background="#793DA8"  IsChecked="{Binding Path=CreditCardColor,Converter={StaticResource enumConverter}, ConverterParameter=c_793DA8}" IsEnabled="{Binding Enabled}"/>
+                                        <RadioButton  Focusable="False"   Name="Color8RadioBtn" GroupName="CreditCardColor"  Grid.Column="14" Style="{DynamicResource ColoredEllipseStyle}" Background="#010101"  IsChecked="{Binding Path=CreditCardColor,Converter={StaticResource enumConverter}, ConverterParameter=c_010101}" IsEnabled="{Binding Enabled}"/>
+                                        <RadioButton Focusable="False"   Name="Color9RadioBtn" GroupName="CreditCardColor"  Grid.Column="16" Style="{DynamicResource ColoredEllipseStyle}" Background="#696F73"  IsChecked="{Binding Path=CreditCardColor,Converter={StaticResource enumConverter}, ConverterParameter=c_696F73}" IsEnabled="{Binding Enabled}"/>
+                                        </Grid>
+
+                                    <Grid Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,10,0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition />
+                                                <RowDefinition />
+                                            </Grid.RowDefinitions>
+
+                                            <StackPanel Margin="0,0,0,0" Grid.Row="0" Orientation="Horizontal"
+                                                HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                                                Visibility="{Binding DatesVisibility, Converter={StaticResource BoolToVisiblity}, UpdateSourceTrigger=PropertyChanged}">
+                                                <TextBlock Text="{DynamicResource CreatedDate}" HorizontalAlignment="Right"
+                                                   FontFamily="{DynamicResource ProximaRegular}" FontSize="9"
+                                                   Foreground="{DynamicResource WatermarkLightGrayColor}" />
+                                                <TextBlock Text="{Binding DateCreated, StringFormat=d,UpdateSourceTrigger=PropertyChanged}"
+                                                   HorizontalAlignment="Right"
+                                                   FontFamily="{DynamicResource ProximaRegular}" FontSize="9"
+                                                   Foreground="{DynamicResource WatermarkLightGrayColor}" Padding="7 0 0 0"/>
+                                            </StackPanel>
+                                            <StackPanel Grid.Row="1" Margin="0,7,0,0" VerticalAlignment="Top"
+                                                Orientation="Horizontal" HorizontalAlignment="Right"
+                                                Visibility="{Binding DatesVisibility, Converter={StaticResource BoolToVisiblity}, UpdateSourceTrigger=PropertyChanged}">
+                                                <TextBlock Text="{DynamicResource LastModifiedDate}"
+                                                   HorizontalAlignment="Right"
+                                                   FontFamily="{DynamicResource ProximaRegular}" FontSize="9"
+                                                   Foreground="{DynamicResource WatermarkLightGrayColor}" />
+                                                <TextBlock Text="{Binding DateModified, StringFormat=d, UpdateSourceTrigger=PropertyChanged}"
+                                                   HorizontalAlignment="Right"
+                                                   FontFamily="{DynamicResource ProximaRegular}" FontSize="9"
+                                                   Foreground="{DynamicResource WatermarkLightGrayColor}" Padding="7 0 0 0"/>
+                                            </StackPanel>
+
+                                            <!--<StackPanel Grid.Column="1" Margin="0,0,0,0" Grid.Row="0" Orientation="Horizontal"
+                                                HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                                                Visibility="{Binding DatesVisibility, Converter={StaticResource BoolToVisiblity}}">
+                                                <TextBlock Text="{DynamicResource CreatedDate}" HorizontalAlignment="Right"
+                                                   FontFamily="{DynamicResource ProximaRegular}" FontSize="9"
+                                                   Foreground="{DynamicResource WatermarkLightGrayColor}" />
+                                                <TextBlock Text="{Binding DateCreated, StringFormat=d}"
+                                                   HorizontalAlignment="Right"
+                                                   FontFamily="{DynamicResource ProximaRegular}" FontSize="9"
+                                                   Foreground="{DynamicResource WatermarkLightGrayColor}" Padding="7 0 0 0"/>
+                                            </StackPanel>
+                                            <StackPanel Grid.Column="1" Grid.Row="1" Margin="0,7,0,0" VerticalAlignment="Top"
+                                                Orientation="Horizontal" HorizontalAlignment="Right"
+                                                Visibility="{Binding DatesVisibility, Converter={StaticResource BoolToVisiblity}}">
+                                                <TextBlock Text="{DynamicResource LastModifiedDate }"
+                                                   HorizontalAlignment="Right"
+                                                   FontFamily="{DynamicResource ProximaRegular}" FontSize="9"
+                                                   Foreground="{DynamicResource WatermarkLightGrayColor}" />
+                                                <TextBlock Text="{Binding DateModified, StringFormat=d}"
+                                                   HorizontalAlignment="Right"
+                                                   FontFamily="{DynamicResource ProximaRegular}" FontSize="9"
+                                                   Foreground="{DynamicResource WatermarkLightGrayColor}" Padding="7 0 0 0"/>
+                                            </StackPanel>-->
+                                        </Grid>
+
+                                    </Grid>
+
+                                    <ScrollViewer x:Name="CreditCardScrollViewer" Grid.Row="1" Grid.Column="1" HorizontalScrollBarVisibility="Disabled"
+                                              VerticalScrollBarVisibility="Auto" Margin="0,0,5,0" 
+                                                  Template="{DynamicResource CustomScrollViewerTemplate}" >
+                                        <AdornerDecorator>
+                                            <Grid Margin="0,0,0,0" >
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="10"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="6"/>
+                                                <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="6"/>
+                                                <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="6"/>
+                                                <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="6"/>
+                                                <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="6"/>
+                                                <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="6"/>
+                                                <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="6"/>
+                                                <!--<RowDefinition Height="{Binding IssuingDateVisibility, Converter={StaticResource BoolToGridRowHeightConverter}, ConverterParameter=20, UpdateSourceTrigger=PropertyChanged}"/>-->
+                                                <RowDefinition Height="Auto"/>
+                                                <RowDefinition Height="{Binding IssuingDateVisibility, Converter={StaticResource BoolToGridRowHeightConverter}, ConverterParameter=6, UpdateSourceTrigger=PropertyChanged}"/>
+                                                <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="6"/>
+                                                <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="6"/>
+                                                <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="6"/>
+                                                <RowDefinition Height="Auto"/>
+                                            </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="90"/>
+                                                    <ColumnDefinition Width="5"/>
+                                                    <ColumnDefinition Width="155"/>
+                                                    <ColumnDefinition Width="25"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+
+                                                <!--first row-->
+                                                <TextBlock Grid.Row="1" Grid.Column="0" Text="{DynamicResource Country}" Style="{DynamicResource AddcontrolTextBlockStyle}" />
+                                                <ComboBox Grid.Row="1" Grid.Column="2"   VerticalAlignment="Stretch"
+                                                      HorizontalContentAlignment="Left" 
+                                                        ItemsSource="{Binding Countries, UpdateSourceTrigger=PropertyChanged}"
+                                                          Style="{DynamicResource AddControlComboboxStyle}" ItemContainerStyle="{DynamicResource LocationComboboxItemStyle}"
+                                                        SelectedItem="{Binding SelectedCountry, UpdateSourceTrigger=PropertyChanged}"
+                                                        TextSearch.TextPath="Name" IsTextSearchEnabled="True"
+                                                          IsEnabled="{Binding Enabled}">
+                                                    <ComboBox.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock Text="{Binding Value}" />
+                                                        </DataTemplate>
+                                                    </ComboBox.ItemTemplate>
+                                                </ComboBox>
+
+                                                <!--second row-->
+                                            <TextBlock Grid.Row="3" Grid.Column="0"  Text="{DynamicResource Nickname}" Style="{DynamicResource AddcontrolTextBlockStyle}"/>
+                                                <TextBox Grid.Row="3" Grid.Column="2"   Template="{DynamicResource AddControlTextboxTemplate}"  
+                                                     HorizontalAlignment="Stretch" VerticalAlignment="Center" Style="{DynamicResource AddControlTextBoxStyle}" 
+                                                         IsReadOnly="{Binding ReadonlySecureItem}"
+                                                         Text="{Binding CreditCardNickname, UpdateSourceTrigger=PropertyChanged}"/>
+                                                <!--Third row-->
+                                            <TextBlock Grid.Row="5" Grid.Column="0"  Text="{DynamicResource NameOnCard}" Style="{DynamicResource AddcontrolTextBlockStyle}"/>
+                                                <TextBox Grid.Row="5" Grid.Column="2"  Template="{DynamicResource AddControlTextboxTemplate}" Name="txtNameOnCard"
+                                                     HorizontalAlignment="Stretch" VerticalAlignment="Center" Style="{DynamicResource AddControlTextBoxStyle}"
+                                                         IsReadOnly="{Binding ReadonlySecureItem}"
+                                                          Text="{Binding NameOnCard, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                                            
+                                                <TextBlock Grid.Row="5" Grid.Column="2" IsHitTestVisible="False" Text="{DynamicResource RequiredField}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Red" FontStyle="Italic">
+                                                <TextBlock.Style>
+                                                    <Style TargetType="{x:Type TextBlock}">
+                                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                                        <Style.Triggers>
+                                                            <MultiDataTrigger>
+                                                                <MultiDataTrigger.Conditions>
+                                                                    <Condition Binding="{Binding Text, ElementName=txtNameOnCard}" Value=""/>
+                                                                    <Condition Binding="{Binding IsValidErrorMessageVisible}" Value="true" />
+                                                                </MultiDataTrigger.Conditions>
+                                                                <Setter Property="Visibility" Value="Visible"/>
+                                                            </MultiDataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </TextBlock.Style>
+                                            </TextBlock>
+
+                                            <!--Fourth row-->
+                                                <TextBlock Grid.Row="7" Grid.Column="0" Text="{DynamicResource CardNumber}" 
+                                                           Style="{DynamicResource AddcontrolTextBlockStyle}"/>
+
+                                                <TextBox Grid.Row="7" Grid.Column="2" Template="{DynamicResource AddControlTextboxTemplate}" Name="txtCreditCardNumber"
+                                                          HorizontalAlignment="Stretch" VerticalAlignment="Center" Style="{DynamicResource AddControlTextBoxStyle}"
+                                                         IsReadOnly="{Binding ReadonlySecureItem}"
+                                                        Text="{Binding CardNumber, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
+                                                <TextBlock Grid.Row="7" Grid.Column="2" IsHitTestVisible="False" Text="{DynamicResource RequiredField}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Red" FontStyle="Italic">
+                                                    <TextBlock.Style>
+                                                        <Style TargetType="{x:Type TextBlock}">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                            <Style.Triggers>
+                                                                <MultiDataTrigger>
+                                                                    <MultiDataTrigger.Conditions>
+                                                                        <Condition Binding="{Binding Text, ElementName=txtCreditCardNumber}" Value=""/>
+                                                                        <Condition Binding="{Binding IsValidErrorMessageVisible}" Value="true" />
+                                                                    </MultiDataTrigger.Conditions>
+                                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                                </MultiDataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </TextBlock.Style>
+                                                </TextBlock>
+
+                                            <Image Grid.Row="7" Grid.Column="3" Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                                   ToolTip="{DynamicResource Copy}" Height="15" Width="12"
+                                                   Style="{DynamicResource FileImageStyle}">
+                                                <Image.InputBindings>
+                                                    <MouseBinding MouseAction="LeftClick" Command="{Binding CopyCommand}" CommandParameter="CardNumber" />
+                                                </Image.InputBindings>
+                                            </Image>
+                                            <!--Password generator UI ends-->
+                                                <!--fifth row-->
+                                            <TextBlock Grid.Row="9" Grid.Column="0"  Text="{DynamicResource CardType}" Style="{DynamicResource AddcontrolTextBlockStyle}"/>
+                                                
+                                            <ComboBox Name="CardTypeCombobox" Grid.Row="9" Grid.Column="2"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                                       HorizontalContentAlignment="Left" 
+                                                       ItemsSource="{Binding CreditCards}"
+                                                       Style="{DynamicResource AddControlComboboxStyle}" ItemContainerStyle="{DynamicResource LocationComboboxItemStyle}"
+                                                       SelectedItem="{Binding SelectedCreditCard, UpdateSourceTrigger=PropertyChanged}" 
+                                                       TextSearch.TextPath="Value" IsTextSearchEnabled="True"
+                                                      IsEnabled="{Binding Enabled}">
+                                                    <ComboBox.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock Text="{Binding Value}" />
+                                                        </DataTemplate>
+                                                    </ComboBox.ItemTemplate>
+                                            </ComboBox>
+                                                
+                                            <TextBlock Text="{DynamicResource CardType}" IsHitTestVisible="False" Grid.Row="9" Grid.Column="2" >
+                                                <TextBlock.Style>
+                                                    <Style>
+                                                        <Setter Property="TextBlock.Visibility" Value="Hidden" />
+                                                        <Setter Property="TextBlock.FontSize" Value="12"/>
+                                                        <Setter Property="TextBlock.Foreground" Value="{DynamicResource WatermarkLightGrayColor}"/>
+                                                        <Setter Property="TextBlock.Margin" Value="3,3,3,3" />
+                                                        <Setter Property="TextBlock.FontFamily" Value="{DynamicResource ProximaRegular}" />
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding ElementName=CardTypeCombobox, Path=SelectedItem, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, Converter={StaticResource IsNullConverter}}" Value="True">
+                                                                <Setter Property="TextBlock.Visibility" Value="Visible"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </TextBlock.Style>
+                                            </TextBlock>
+
+                                            <!--sixth row-->
+                                            <TextBlock Grid.Row="11" Grid.Column="0"  Text="{DynamicResource Expires}" Style="{DynamicResource AddcontrolTextBlockStyle}"/>
+                                                <Grid Grid.Row="11" Grid.Column="2" Width="70" HorizontalAlignment="Left" VerticalAlignment="Stretch" >
+                                                    <ComboBox x:Name="MonthCombobox" HorizontalAlignment="Left" VerticalAlignment="Stretch" 
+                                                        Width="70" VerticalContentAlignment="Center"
+                                                          ItemsSource="{Binding ExpiresMonths}"
+                                                          Style="{DynamicResource AddControlComboboxStyle}" ItemContainerStyle="{DynamicResource LocationComboboxItemStyle}"
+                                                          SelectedItem="{Binding ExpiresMonth, UpdateSourceTrigger=PropertyChanged}"
+                                                              IsEnabled="{Binding Enabled}"/>
+                                                    <TextBlock Text="{DynamicResource CreditCardMonth}" IsHitTestVisible="False" >
+                                                        <TextBlock.Style>
+                                                            <Style>
+                                                                <Setter Property="TextBlock.Visibility" Value="Hidden" />
+                                                                <Setter Property="TextBlock.FontSize" Value="12"/>
+                                                            <Setter Property="TextBlock.Foreground" Value="{DynamicResource WatermarkLightGrayColor}"/>
+                                                                <Setter Property="TextBlock.Margin" Value="3,3,3,3" />
+                                                                <Setter Property="TextBlock.FontFamily" Value="{DynamicResource ProximaRegular}" />
+                                                                <Style.Triggers>
+                                                                    <DataTrigger Binding="{Binding ElementName=MonthCombobox, Path=SelectedItem, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, Converter={StaticResource IsNullConverter}}" Value="True">
+                                                                        <Setter Property="TextBlock.Visibility" Value="Visible"/>
+                                                                    </DataTrigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </TextBlock.Style>
+                                                    </TextBlock>
+                                                </Grid>
+                                                <Grid Grid.Row="11" Grid.Column="2" Width="70" HorizontalAlignment="Right">
+                                                    <ComboBox x:Name="YearCombobox"
+                                                    BorderThickness="1" VerticalAlignment="Stretch"                                                      
+                                                       VerticalContentAlignment="Center"
+                                                          ItemsSource="{Binding ExpiresYears}"
+                                                          Style="{DynamicResource AddControlComboboxStyle}" ItemContainerStyle="{DynamicResource LocationComboboxItemStyle}"
+                                                          SelectedItem="{Binding ExpiresYear, UpdateSourceTrigger=PropertyChanged}"
+                                                              IsEnabled="{Binding Enabled}"/>
+                                                    <TextBlock Text="{DynamicResource CreditCardYear}" IsHitTestVisible="False" >
+                                                        <TextBlock.Style>
+                                                            <Style>
+                                                                <Setter Property="TextBlock.Visibility" Value="Hidden" />
+                                                                <Setter Property="TextBlock.FontSize" Value="12"/>
+                                                            <Setter Property="TextBlock.Foreground" Value="{DynamicResource WatermarkLightGrayColor}"/>
+                                                                <Setter Property="TextBlock.Margin" Value="3,3,3,3" />
+                                                                <Setter Property="TextBlock.FontFamily" Value="{DynamicResource ProximaRegular}" />
+                                                                <Style.Triggers>
+                                                                    <DataTrigger Binding="{Binding ElementName=YearCombobox, Path=SelectedItem, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, Converter={StaticResource IsNullConverter}}" Value="True">
+                                                                        <Setter Property="TextBlock.Visibility" Value="Visible"/>
+                                                                    </DataTrigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </TextBlock.Style>
+                                                    </TextBlock>
+                                                </Grid>
+
+                                                <!--Seventh row-->
+                                                <TextBlock Grid.Row="13" Grid.Column="0"  Text="{DynamicResource IssuingBank}" Style="{DynamicResource AddcontrolTextBlockStyle}"/>
+                                                <TextBox Name="IssueBankTextBox" Grid.Row="13" Grid.Column="2"   HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                                                     Style="{DynamicResource AddControlTextBoxStyle}" Template="{DynamicResource AddControlTextboxTemplate}"
+                                                         IsReadOnly="{Binding ReadonlySecureItem}"
+                                                         Text="{Binding IssueBank, UpdateSourceTrigger=PropertyChanged}" >
+                                                </TextBox>
+                                            
+                                                <!--Eighth row -->
+                                            <TextBlock Grid.Row="15" Grid.Column="0"  Text="{DynamicResource IssueDate}" Style="{DynamicResource AddcontrolTextBlockStyle}"
+                                                           Visibility="{Binding IssuingDateVisibility, Converter={StaticResource BoolToVisiblity}, UpdateSourceTrigger=PropertyChanged}" />
+                                            <TextBox Name="IssuingDateTextBox" Grid.Row="15" Grid.Column="2"   HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                                                         Style="{DynamicResource AddControlTextBoxStyle}" Template="{DynamicResource AddControlTextboxTemplate}"
+                                                         IsReadOnly="{Binding ReadonlySecureItem}"
+                                                         Text="{Binding IssuingDate, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                                                         Visibility="{Binding IssuingDateVisibility, Converter={StaticResource BoolToVisiblity}, UpdateSourceTrigger=PropertyChanged}" />
+
+
+
+
+                                            <!--Nignth row-->
+                                            <TextBlock Grid.Row="17" Grid.Column="0"  Text="{DynamicResource CVV}"  Style="{DynamicResource AddcontrolTextBlockStyle}"/>
+                                                <TextBox Grid.Row="17" Grid.Column="2"   Width="70" Template="{DynamicResource AddControlTextboxTemplate}" 
+                                                      HorizontalAlignment="Left" VerticalAlignment="Center" Style="{DynamicResource AddControlTextBoxStyle}"
+                                                         IsReadOnly="{Binding ReadonlySecureItem}"
+                                                     Text="{Binding Cvv, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+
+                                            <!--tenth row-->
+                                            <TextBlock Grid.Row="19" Grid.Column="0"  Text="{DynamicResource PIN}"  Style="{DynamicResource AddcontrolTextBlockStyle}"/>
+                                                <TextBox Grid.Row="19" Grid.Column="2"   Width="70" Template="{DynamicResource AddControlTextboxTemplate}" 
+                                                      HorizontalAlignment="Left" VerticalAlignment="Center" Style="{DynamicResource AddControlTextBoxStyle}"
+                                                         IsReadOnly="{Binding ReadonlySecureItem}"
+                                                      Text="{Binding Pin, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+
+
+                                                <!--Eleventh row-->
+                                                <TextBlock Grid.Row="21" Grid.Column="0" Text="{DynamicResource BillingAddress}" Style="{DynamicResource AddcontrolTextBlockStyle}"/>
+                                                <ComboBox Grid.Row="21" Grid.Column="2" 
+                                                  HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  HorizontalContentAlignment="Left" 
+                                                    Style="{DynamicResource AddControlComboboxStyle}" ItemContainerStyle="{DynamicResource LocationComboboxItemStyle}"
+                                                    ItemsSource="{Binding Addresses}"
+                                                    SelectedItem="{Binding SelectedAddress, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                                    TextSearch.TextPath="Name" IsTextSearchEnabled="True"
+                                                    IsEnabled="{Binding Enabled}">
+                                                    <ComboBox.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock Text="{Binding Name}" />
+                                                        </DataTemplate>
+                                                    </ComboBox.ItemTemplate>
+                                                </ComboBox>
+
+                                            <Image Grid.Row="21" Grid.Column="3" Height="16" Width="16" HorizontalAlignment="Center"
+                                                   ToolTip="{DynamicResource BillingAddressToolTip}" VerticalAlignment="Center"
+                                                   Source="{DynamicResource imgHelpGray}" />
+
+                                            <!--Twelveth row-->
+                                            <TextBlock Grid.Row="23" Grid.Column="0" Text="{DynamicResource TextForCategory}" Style="{DynamicResource AddcontrolTextBlockStyle}"/>
+                                                <ComboBox Grid.Row="23" Grid.Column="2" 
+                                                    HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  HorizontalContentAlignment="Left" 
+                                                    ItemsSource="{Binding Categories}"
+                                                    Style="{DynamicResource AddControlComboboxStyle}" ItemContainerStyle="{DynamicResource LocationComboboxItemStyle}"
+                                                    SelectedItem="{Binding SelectedCategory, UpdateSourceTrigger=PropertyChanged}"
+                                                    TextSearch.TextPath="Name" IsTextSearchEnabled="True"   IsEnabled="{Binding Enabled}"   >
+                                                    <ComboBox.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock Text="{Binding Name}" />
+                                                        </DataTemplate>
+                                                    </ComboBox.ItemTemplate>
+                                                </ComboBox>
+
+                                                <Image  Grid.Row="23" Grid.Column="3" Margin="0,0,0,0"
+                                                   ToolTip="{DynamicResource AddNewCategory}"
+                                                   Style="{DynamicResource AddCategoryImageStyle}"
+                                                   Height="15" RenderOptions.BitmapScalingMode="HighQuality">
+                                                    <Image.InputBindings>
+                                                        <MouseBinding MouseAction="LeftClick"
+                                                                  Command="{Binding AddCategoryClickCommand}"/>
+                                                    </Image.InputBindings>
+                                                </Image>
+
+                                            </Grid>
+                                        </AdornerDecorator>
+                                    </ScrollViewer>
+
+                                    <!--<Image Margin="27,0,0,35" Name="DeleteButton" Visibility="Collapsed" Grid.Row="2" Grid.Column="1" Height="15" VerticalAlignment="Bottom" HorizontalAlignment="Left" Source="{DynamicResource imgTrash}"                                       
+                                       ToolTip="Delete logo"  
+                                       RenderOptions.BitmapScalingMode="HighQuality">
+                                        <Image.InputBindings>
+                                            <MouseBinding MouseAction="LeftClick" Command="{Binding LeftClickCommand }" CommandParameter="DeleteBox">
+                                            </MouseBinding>
+                                        </Image.InputBindings>
+                                    </Image>-->
+
+                                    <Grid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="20"/>
+                                            <RowDefinition Height="35"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="95" />
+                                            <ColumnDefinition Width="80" />
+                                            <ColumnDefinition Width="95" />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" 
+                                           IsHitTestVisible="False" Text="{DynamicResource FillRequiredFields}" 
+                                           VerticalAlignment="Center" HorizontalAlignment="Center" 
+                                           Margin="10,0,0,0" Foreground="Red" FontStyle="Italic"
+                                    Visibility="{Binding IsValidErrorMessageVisible, Converter={StaticResource BoolToVisiblity}, UpdateSourceTrigger=PropertyChanged}"/>
+                                        
+                                        
+                                        <Button Grid.Row="1" Grid.Column="0" Margin="0,0,0,0"
+                                                Visibility="{Binding DeleteButtonVisible, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center"
+                                                Command="{Binding DeleteCommand}" HorizontalAlignment="Left" FontWeight="Bold" FontSize="12" 
+                                                Style="{DynamicResource CancelButton_style}" Background="Transparent" Foreground="{DynamicResource PasswordBossGreenColor}">
+                                            <StackPanel Orientation="Horizontal">
+                                            <Image Source="{DynamicResource imgTrash}" Height="16" Width="17" />
+                                            </StackPanel>
+                                            <Button.Triggers>
+                                                <EventTrigger RoutedEvent="Button.Click">
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <DoubleAnimation
+                                                            Storyboard.TargetName="DigitalWalletAddEditControl"
+                                                            Storyboard.TargetProperty="(Grid.Width)"
+                                                            From="326" To="0" Duration="0:0:0.5" AutoReverse="False" />
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+
+                                                </EventTrigger>
+                                            </Button.Triggers>
+                                        </Button>
+
+                                    <Button x:Name="btnCancel" Grid.Row="1" Grid.Column="1" IsCancel="True"
+                                                Content="{DynamicResource Cancel}" HorizontalContentAlignment="Left"
+                                                Width="80" Height="25" HorizontalAlignment="Left" FontWeight="Bold" FontSize="12"
+                                                Background="Transparent" Foreground="{DynamicResource PasswordBossGreenColor}" Style="{DynamicResource CancelButton_style}"
+                                               Command="{Binding CancelCommand}">
+                                    </Button>
+
+                                        <Button  Grid.Column="2" Grid.Row="1" Width="95" Height="25"
+                                                 Content="{DynamicResource Save}" IsDefault="True"
+                                                HorizontalAlignment="Right" FontWeight="Bold" FontSize="12" Style="{DynamicResource roundButton}" Background="{DynamicResource PasswordBossGreenColor}" Foreground="{DynamicResource WhiteColor}"
+                                                Command="{Binding SaveCreditCardCommand}"
+                                                 IsEnabled="{Binding Enabled}">
+                                           
+                                        </Button>
+                                    <local:CustomMessageBoxUserControl 
+                                        MessageBoxDialogVisibility="{Binding SettingsChangeInvalidDialogVisibility}" 
+                                        CustomMessageBoxType="Confirmation" 
+                                        MessageBoxDialogCancelButtonText="{DynamicResource Discard}" 
+                                        MessageBoxDialogConfirmButtonText="{DynamicResource Continue}" 
+                                        MessageBoxDialogHeaderText="{DynamicResource SettingsChangedContinueText}"
+                                        
+                                        MessageBoxDialogConfirmCommand="{Binding ContinueCommand}"
+                                        MessageBoxDialogCancelCommand="{Binding CancelCommand}"
+                                        /><!--MessageBoxDialogText="{DynamicResource SettingsChangedContinueText}"-->
+                                    <local:CustomMessageBoxUserControl 
+                                        MessageBoxDialogVisibility="{Binding CreditCardSettingsChangeDialogVisibility}" 
+                                        CustomMessageBoxType="Confirmation" 
+                                        MessageBoxDialogCancelButtonText="{DynamicResource Discard}" 
+                                        MessageBoxDialogConfirmButtonText="{DynamicResource Save}" 
+                                        MessageBoxDialogHeaderText="{DynamicResource ItemChanged}"
+                                        MessageBoxDialogText="{DynamicResource SettingsChangedConfirmText}"
+                                        MessageBoxDialogConfirmCommand="{Binding SaveCreditCardCommand}"
+                                        MessageBoxDialogCancelCommand="{Binding CancelCommand}"
+                                        />
+                                </Grid>
+
+                                </Grid>
+
+                                <!--PaypalSettingGrid -->
+                                <Grid Name="PaypalSettingGrid" Background="{DynamicResource WhiteColor}" Height="Auto" Margin="0,0,0,0" 
+                                        Visibility="{Binding PaypalVisibility, Converter={StaticResource BoolToVisiblity}}" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" MaxHeight="80" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="70" />
+                                    </Grid.RowDefinitions>
+                                    <Grid Grid.Row="0" Grid.Column="1" Width="240" Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="120" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="10" />
+                                            <RowDefinition Height="65" />
+                                            <RowDefinition Height="10" />
+                                        </Grid.RowDefinitions>
+                                        <!--<Button Margin="10,0,0,0" Grid.RowSpan="4" Style="{DynamicResource btnStyleNoHover}"
+                                            RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased"  Height="65" Width="130"  
+                                                    Foreground="{DynamicResource GrayColor}" Background="Transparent" HorizontalAlignment="Left">
+                                            <Image Source="{Binding ItemImage}"  Height="65" Width="130" />
+                                        </Button>-->
+
+                                        <Image Source="{Binding ItemImage}" Height="65" Width="110" 
+                                               Grid.Row="1" HorizontalAlignment="Left" Margin="0,0,0,0" />
+
+                                        <Grid Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition />
+                                                <RowDefinition />
+                                            </Grid.RowDefinitions>
+
+                                            <StackPanel Margin="0,0,0,0" Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right"
+                                                        Visibility="{Binding DatesVisibility, Converter={StaticResource BoolToVisiblity}}"
+                                                        VerticalAlignment="Bottom">
+                                            <TextBlock Text="{DynamicResource CreatedDate}"   HorizontalAlignment="Right"  FontSize="9" Foreground="{DynamicResource WatermarkLightGrayColor}"  Padding="0,0,3,0" Style="{DynamicResource AddcontrolTextBlockStyle}"/>
+                                            <TextBlock Text="{Binding DateCreated, StringFormat=d}"  HorizontalAlignment="Right" FontSize="9" Foreground="{DynamicResource WatermarkLightGrayColor}" Style="{DynamicResource AddcontrolTextBlockStyle}" Padding="7 0 0 0"/>
+                                            </StackPanel>
+                                            <StackPanel  Grid.Row="1" Margin="0,7,0,0"  Orientation="Horizontal" HorizontalAlignment="Right"
+                                                        Visibility="{Binding DatesVisibility, Converter={StaticResource BoolToVisiblity}}"
+                                                         VerticalAlignment="Top">
+                                            <TextBlock Text="{DynamicResource LastModifiedDate}"  HorizontalAlignment="Right"  FontSize="9" Foreground="{DynamicResource WatermarkLightGrayColor}" Padding="0,0,3,0" Style="{DynamicResource AddcontrolTextBlockStyle}"/>
+                                            <TextBlock Text="{Binding DateModified, StringFormat=d}"  HorizontalAlignment="Right"  FontSize="9" Foreground="{DynamicResource WatermarkLightGrayColor}" Style="{DynamicResource AddcontrolTextBlockStyle}" Padding="7 0 0 0"/>
+                                            </StackPanel>
+
+                                        </Grid>
+
+                                    </Grid>
+                                <ScrollViewer x:Name="PaypalScrollViewer" Grid.Row="1" Grid.Column="1" HorizontalScrollBarVisibility="Disabled" 
+                                                  VerticalScrollBarVisibility="Auto" Margin="0,0,3,0"
+                                                  Template="{DynamicResource CustomScrollViewerTemplate}">
+                                        <AdornerDecorator>
+                                            <Grid Margin="0,0,0,0">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="10"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="6"/>
+                                                <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="6"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="12"/>
+                                                    <RowDefinition Height="1"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="6"/>
+                                                <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="6"/>
+                                                <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="6"/>
+
+                                            </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="65" />
+                                                    <ColumnDefinition Width="10" />
+                                                    <ColumnDefinition Width="165" />
+                                                    <ColumnDefinition Width="25" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <!--first row-->
+                                                <TextBlock Grid.Row="1" Grid.Column="0" Text="{DynamicResource Nickname}" Style="{DynamicResource AddcontrolTextBlockStyle}" />
+                                            <TextBox Name="txtPaypalNickname" Grid.Row="1" Grid.Column="2" Template="{DynamicResource AddControlTextboxTemplate}"  
+                                                     HorizontalAlignment="Stretch" VerticalAlignment="Center" Style="{DynamicResource AddControlTextBoxStyle}"
+                                                     Text="{Binding PaypalNickname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                                            <TextBlock Grid.Row="1" Grid.Column="2" IsHitTestVisible="False" Text="{DynamicResource RequiredField}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Red" FontStyle="Italic">
+                                                <TextBlock.Style>
+                                                    <Style TargetType="{x:Type TextBlock}">
+                                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                                        <Style.Triggers>
+                                                            <MultiDataTrigger>
+                                                                <MultiDataTrigger.Conditions>
+                                                                    <Condition Binding="{Binding Text, ElementName=txtPaypalNickname}" Value=""/>
+                                                                    <Condition Binding="{Binding Text, ElementName=txtPaypalUsername}" Value=""/>
+                                                                    <Condition Binding="{Binding IsValidErrorMessageVisible}" Value="true" />
+                                                                </MultiDataTrigger.Conditions>
+                                                                <Setter Property="Visibility" Value="Visible"/>
+                                                            </MultiDataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </TextBlock.Style>
+                                            </TextBlock>
+
+                                            <!--second row-->
+                                                <TextBlock Grid.Row="3" Grid.Column="0"  Text="{DynamicResource Username}" Style="{DynamicResource AddcontrolTextBlockStyle}"/>
+                                                <TextBox Name="txtPaypalUsername" Grid.Row="3" Grid.Column="2"   Template="{DynamicResource AddControlTextboxTemplate}"  
+                                                     HorizontalAlignment="Stretch" VerticalAlignment="Center" Style="{DynamicResource AddControlTextBoxStyle}"
+                                                     Text="{Binding Username, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                                                <TextBlock Grid.Row="3" Grid.Column="2" IsHitTestVisible="False" Text="{DynamicResource RequiredField}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Red" FontStyle="Italic">
+                                                    <TextBlock.Style>
+                                                        <Style TargetType="{x:Type TextBlock}">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                            <Style.Triggers>
+                                                                <MultiDataTrigger>
+                                                                    <MultiDataTrigger.Conditions>
+                                                                        <Condition Binding="{Binding Text, ElementName=txtPaypalUsername}" Value=""/>
+                                                                        <Condition Binding="{Binding Text, ElementName=txtPaypalNickname}" Value=""/>
+                                                                        <Condition Binding="{Binding IsValidErrorMessageVisible}" Value="true" />
+                                                                    </MultiDataTrigger.Conditions>
+                                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                                </MultiDataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </TextBlock.Style>
+                                                </TextBlock>
+                                                
+                                            <Image Grid.Row="3" Grid.Column="3" Margin="0,0,0,0"  ToolTip="{DynamicResource Copy}"
+                                                       Height="15" Width="12" HorizontalAlignment="Center" Style="{DynamicResource FileImageStyle}">
+                                                <Image.InputBindings>
+                                                    <MouseBinding MouseAction="LeftClick" Command="{Binding CopyCommand}" CommandParameter="Username" />
+                                                </Image.InputBindings>
+                                            </Image>
+
+                                            <!--Third row-->
+                                                <TextBlock Grid.Row="5" Grid.Column="0" Text="{DynamicResource Password}" Style="{DynamicResource AddcontrolTextBlockStyle}"/>
+                                                <Grid Grid.Row="5" Grid.Column="2" >
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="Auto"/>
+                                                        <RowDefinition Height="Auto"/>
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="Auto"/>
+                                                    </Grid.ColumnDefinitions>
+                                                    <PasswordBox x:Name="PwdBox" Grid.Row="0" Grid.Column="0"  Grid.ColumnSpan="2"   FontSize="12"  Height="20" HorizontalAlignment="Stretch" VerticalAlignment="Center"
+                                                                 Template="{DynamicResource AddControlPasswordBoxTemplate}" Style="{DynamicResource AddControlPasswordBoxStyle}"
+                                                                 localPass:PasswordHelper.Attach="True" localPass:PasswordHelper.Password="{Binding Path=Password,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                                        <i:Interaction.Triggers>
+                                                            <i:EventTrigger EventName="GotFocus">
+                                                                <i:InvokeCommandAction Command="{Binding PwdBoxGotFocusCommand}" />
+                                                            </i:EventTrigger>
+                                                        </i:Interaction.Triggers>
+                                                    </PasswordBox>
+                                                    <TextBox Grid.Row="0" Grid.Column="0" FontSize="12" Foreground="{DynamicResource AddItemTextForegroundColor}" BorderThickness="0.5"
+                                                         Background="{DynamicResource TextBoxBackground}" HorizontalAlignment="Stretch"
+                                                         VerticalAlignment="Stretch"
+                                                         VerticalContentAlignment="Center" FontFamily="{DynamicResource ProximaRegular}"
+                                                        Visibility="{Binding PasswordTextVisible, Converter={StaticResource BoolToVisiblity}}"
+                                                        Text="{Binding Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                                        <i:Interaction.Triggers>
+                                                            <i:EventTrigger EventName="GotFocus">
+                                                                <i:InvokeCommandAction Command="{Binding PwdBoxGotFocusCommand}" />
+                                                            </i:EventTrigger>
+                                                            <i:EventTrigger EventName="TextChanged">
+                                                                <i:InvokeCommandAction Command="{Binding PwdBoxTextChangedCommand}" />
+                                                            </i:EventTrigger>
+                                                        </i:Interaction.Triggers>
+                                                    </TextBox>
+                                                    <Image x:Name="imgPwdEye" Margin="0,0,5,0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"  
+                                                               Source="{Binding PasswordEyeImage, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Height="16" Width="21"  HorizontalAlignment="Right" >
+                                                        <Image.InputBindings>
+                                                            <MouseBinding MouseAction="LeftClick" Command="{Binding PasswordClickCommand}" CommandParameter="MasterPwdBox"/>
+                                                        </Image.InputBindings>
+                                                    </Image>
+                                                </Grid>
+                                            <Image Grid.Row="5" Grid.Column="3" Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                                                   ToolTip="{DynamicResource Copy}" Style="{DynamicResource FileImageStyle}"
+                                                   Height="15" Width="12" >
+                                                <Image.InputBindings>
+                                                    <MouseBinding MouseAction="LeftClick" Command="{Binding CopyCommand}" CommandParameter="Password" />
+                                                </Image.InputBindings>
+                                            </Image>
+                                            <Image Grid.Row="5" Grid.Column="4" ToolTip="{DynamicResource GeneratePassword}" 
+                                                       Style="{DynamicResource PasswordGeneratorImageStyle}" Height="10" HorizontalAlignment="Center" Width="15" />
+
+                                            <ProgressBar x:Name="PrgPwdGenerate" Grid.Row="6" Grid.Column="2"  Height="3" Width="115" Margin="0,1,0,0" Style="{DynamicResource PasswordProgressBarSetup}" Value="{Binding ProgressbarGeneraterValue, Mode=TwoWay}" HorizontalAlignment="Left" Foreground="{DynamicResource PasswordBossGreenColor}"/>
+                                            <TextBlock x:Name="tbPwdProgress" Grid.Row="6"  Grid.Column="2" Text="{Binding PasswordStrengthText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" FontStyle="Italic"  Foreground="{DynamicResource PasswordProgressGrayColor}" FontSize="9" VerticalAlignment="Center"  HorizontalAlignment="Right"/>
+                                                <!--Password generator grid-->
+
+                                            <Border BorderThickness="2" CornerRadius="5"  Grid.Row="8" Grid.Column="0" Background="{DynamicResource DigitalWalletCheckedToggleButtonColor}"
+                                                Grid.ColumnSpan="3"   >
+                                                    <!--Visibility="{Binding PasswordGeneratorGridVisibility, Converter={StaticResource BoolToVisiblity}}"-->
+
+                                                    <Border.Visibility>
+                                                        <Binding Path="(vm:AddControlViewModel.PasswordGeneratorGridVisibility)" UpdateSourceTrigger="PropertyChanged"
+                                                     Converter="{StaticResource BoolToVisiblity}" />
+                                                    </Border.Visibility>
+
+                                                    <Grid x:Name="PwdGeneratorGrid" Grid.Row="8" Grid.Column="0"   
+                                                         Background="Transparent" Grid.ColumnSpan="3" 
+                                                         VerticalAlignment="Center">
+                                                        <Grid.Visibility>
+                                                            <Binding Path="PasswordGeneratorGridVisibility" UpdateSourceTrigger="PropertyChanged"
+                                                                 Converter="{StaticResource BoolToVisiblity}" />
+                                                        </Grid.Visibility>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="3"/>
+                                                            <RowDefinition Height="*" />
+                                                            <RowDefinition Height="27"/>
+                                                            <RowDefinition Height="*"/>
+                                                            <RowDefinition Height="*"/>
+                                                            <RowDefinition Height="10"/>
+
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="10"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="*"/>
+                                                            <ColumnDefinition Width="5"/>
+                                                            <ColumnDefinition Width="5"/>
+                                                        </Grid.ColumnDefinitions>
+                                                        <TextBlock Margin="1,0,0,0" Grid.Row="1" Grid.Column="1"  Grid.ColumnSpan="2" 
+                                                                   VerticalAlignment="Center" HorizontalAlignment="Left" 
+                                                                   FontFamily="{DynamicResource ProximaRegular}" FontSize="11" FontWeight="SemiBold"  Text="{DynamicResource PasswordLength}" Foreground="{DynamicResource PasswordProgressGrayColor}"/>
+
+                                                        <Button Grid.Row="1" Grid.Column="4" Command="{Binding ClosePasswordGeneratorCommand}">
+                                                            <Button.Template>
+                                                                <ControlTemplate TargetType="Button">
+                                                                    <ContentPresenter />
+                                                                </ControlTemplate>
+                                                            </Button.Template>
+                                                        <TextBlock Text="X" HorizontalAlignment="Center" Foreground="{DynamicResource PasswordBossGreenColor}" FontWeight="Bold"  />
+                                                        </Button>
+
+                                                        <!--<local:SliderControl Margin="1,5,0,0"  Foreground="{DynamicResource BlackColor}" HorizontalAlignment="Left" VerticalAlignment="Top"   />-->
+                                                        <Slider x:Name="pwdSlider"  Grid.Row="2"  Grid.Column="1" Grid.ColumnSpan="4" Width="180"
+                                                        Height="19" Style="{DynamicResource DigitalWalletSliderStyle}" Maximum="30" Minimum="4"
+                                                       HorizontalAlignment="Left" VerticalAlignment="Center" Value="{Binding PasswordLength, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                                        <TextBlock Name="slidervalue_txtblock"  Grid.Row="2" Margin="1,-1,0,0" 
+                                                           Grid.Column="4" FontWeight="Bold" HorizontalAlignment="Center" 
+                                                           VerticalAlignment="Center" Foreground="{DynamicResource AddItemTextForegroundColor}" 
+                                                           Text="{Binding ElementName=pwdSlider, Path=Value,StringFormat={}{00:0}}" />
+                                                    <CheckBox Margin="0,5,0,0" Grid.Row="3" Grid.Column="1" Style="{DynamicResource DigitalWalletCheckBoxStyle}"  Content="{DynamicResource Letters}"
+                                                                   IsChecked="{Binding Letters, Mode=TwoWay}"></CheckBox>
+                                                    <CheckBox Margin="0,5,0,0" Grid.Row="4" Grid.Column="1" Style="{DynamicResource DigitalWalletCheckBoxStyle}"  Content="{DynamicResource Numbers}"
+                                                                  IsChecked="{Binding Numbers, Mode=TwoWay}"></CheckBox>
+                                                    <CheckBox Margin="0,5,0,0" Grid.Row="3" Grid.Column="2" Style="{DynamicResource DigitalWalletCheckBoxStyle}"  Content="{DynamicResource Symbols}"
+                                                                   IsChecked="{Binding Symbols, Mode=TwoWay}"></CheckBox>
+                                                    <CheckBox Margin="0,5,0,0" Grid.Row="4" Grid.Column="2" Style="{DynamicResource DigitalWalletCheckBoxStyle}"  Content="{DynamicResource Capitals}" 
+                                                                  IsChecked="{Binding Capitals, Mode=TwoWay}"></CheckBox>
+                                                        <Button x:Name="btnCreatePwd" Grid.Row="3" Grid.RowSpan="2" Grid.Column="3" Grid.ColumnSpan="2" 
+                                                     FontSize="11" VerticalContentAlignment="Center" Style="{DynamicResource roundButton}" 
+                                                     FontWeight="SemiBold" Command="{Binding PasswordGeneratorCreateCommand}" CommandParameter="{Binding ElementName=PwdBox}" Content="{DynamicResource Create}" 
+                                                     Background="{DynamicResource PasswordBossGreenColor}" Foreground="{DynamicResource WhiteColor}" Height="24" Width="80" HorizontalAlignment="Center"
+                                                     VerticalAlignment="Center" Padding="0,1,0,0" />
+                                                    </Grid>
+                                                </Border>
+                                                <!--Fourth row-->
+                                            <TextBlock Grid.Row="10" Grid.Column="0"  Text="{DynamicResource TextForCategory}" Style="{DynamicResource AddcontrolTextBlockStyle}"/>
+                                                <ComboBox Grid.Row="10" Grid.Column="2" 
+                                                   HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  HorizontalContentAlignment="Left"
+                                                          ItemsSource="{Binding Categories}"
+                                                          Style="{DynamicResource AddControlComboboxStyle}" ItemContainerStyle="{DynamicResource LocationComboboxItemStyle}"
+                                                        SelectedItem="{Binding SelectedCategory, UpdateSourceTrigger=PropertyChanged}"
+                                                         TextSearch.TextPath="Name" IsTextSearchEnabled="True" >
+                                                    <ComboBox.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock Text="{Binding Name}" />
+                                                        </DataTemplate>
+                                                    </ComboBox.ItemTemplate>
+                                                </ComboBox>
+                                                <Image Grid.Row="10" Grid.Column="3" Margin="0,0,0,0"
+                                                   ToolTip="{DynamicResource AddNewCategory}"
+                                                   Style="{DynamicResource AddCategoryImageStyle}" HorizontalAlignment="Center"
+                                                   Height="15" Width="15" RenderOptions.BitmapScalingMode="HighQuality">
+                                                    <Image.InputBindings>
+                                                        <MouseBinding MouseAction="LeftClick"
+                                                                  Command="{Binding AddCategoryClickCommand}"/>
+                                                    </Image.InputBindings>
+                                                </Image>
+
+                                                <!--Fifth row-->
+                                                <TextBlock Grid.Row="12" Grid.Column="0"   Text="{DynamicResource Notes}" Style="{DynamicResource AddcontrolTextBlockStyle}" />
+                                            <TextBox Grid.Row="12" Grid.Column="2" Height="46" Width="165"
+                                                     Style="{DynamicResource NotesTextBoxStyle}" Text="{Binding PaypalNotes}"/>
+
+                                            </Grid>
+                                        </AdornerDecorator>
+                                    </ScrollViewer>
+
+                                    <!--<Image Margin="27,0,0,35"  Visibility="Collapsed" Grid.Row="2" Grid.Column="1" Height="15" VerticalAlignment="Bottom" HorizontalAlignment="Left" Source="{DynamicResource imgTrash}"                                       
+                                       ToolTip="Delete logo"  
+                                       RenderOptions.BitmapScalingMode="HighQuality">
+                                        <Image.InputBindings>
+                                            <MouseBinding MouseAction="LeftClick" Command="{Binding LeftClickCommand }" CommandParameter="DeleteBox">
+                                            </MouseBinding>
+                                        </Image.InputBindings>
+                                    </Image>-->
+                                    <Grid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="20"/>
+                                            <RowDefinition Height="35"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="75" />
+                                            <ColumnDefinition Width="85" />
+                                        <ColumnDefinition Width="100" />
+                                        <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" 
+                                        IsHitTestVisible="False" Text="{DynamicResource FillOneOfRequiredFields}" 
+                                        VerticalAlignment="Center" HorizontalAlignment="Center" 
+                                        Margin="10,0,0,0" Foreground="Red" FontStyle="Italic"
+                                    Visibility="{Binding IsValidErrorMessageVisible, Converter={StaticResource BoolToVisiblity}}"/>
+
+                                        <Button Grid.Row="1" Grid.Column="0"
+                                                   Visibility="{Binding DeleteButtonVisible}" Margin="0,0,0,0" VerticalAlignment="Center"
+                                                        Command="{Binding DeleteCommand}" HorizontalAlignment="Left" FontWeight="Bold" FontSize="12" 
+                                                        Style="{DynamicResource CancelButton_style}" Background="Transparent" Foreground="{DynamicResource PasswordBossGreenColor}">
+                                            <StackPanel Orientation="Horizontal">
+                                            <Image Source="{DynamicResource imgTrash}" Height="16" Width="17" />
+                                            </StackPanel>
+                                            <Button.Triggers>
+                                                <EventTrigger RoutedEvent="Button.Click">
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <DoubleAnimation
+                                                            Storyboard.TargetName="DigitalWalletAddEditControl"
+                                                            Storyboard.TargetProperty="(Grid.Width)"
+                                                            From="326" To="0" Duration="0:0:0.5" AutoReverse="False" />
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+
+                                                </EventTrigger>
+                                            </Button.Triggers>
+                                        </Button>
+
+                                        <Button Grid.Row="1" Grid.Column="1" Content="{DynamicResource Cancel}" 
+                                                HorizontalContentAlignment="Left"
+                                                Width="80" Height="25" HorizontalAlignment="Left" FontWeight="Bold" FontSize="12"
+                                                Background="Transparent" Foreground="{DynamicResource PasswordBossGreenColor}" Style="{DynamicResource CancelButton_style}"
+                                               Command="{Binding CancelCommand}">
+                                            <Button.Triggers>
+                                                <EventTrigger RoutedEvent="Button.Click">
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <DoubleAnimation 
+                                                                Storyboard.TargetName="DigitalWalletAddEditControl"
+                                                                Storyboard.TargetProperty="(Grid.Width)" 
+                                                                From="326" To="0" Duration="0:0:0.5" AutoReverse="False"/>
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </EventTrigger>
+                                            </Button.Triggers>
+                                        </Button>
+
+                                        <Button Grid.Column="2" Grid.Row="1" Content="{DynamicResource Save}" Width="100" Height="25" 
+                                                HorizontalAlignment="Right" FontWeight="Bold" FontSize="12" 
+                                                Style="{DynamicResource roundButton}" Background="{DynamicResource PasswordBossGreenColor}" Foreground="{DynamicResource WhiteColor}" 
+                                                Command="{Binding SavePaypalCommand}" CommandParameter="{Binding ElementName=PwdBox}">
+                                            
+                                        </Button>
+
+                                    </Grid>
+
+                                </Grid>
+
+                                <!--BankAccountsettingGrid -->
+                                <Grid Name="BankAccountSettingGrid" Background="{DynamicResource WhiteColor}" Height="Auto" Margin="0,0,0,0"
+                                     Visibility="{Binding BankAccountVisibility, Converter={StaticResource BoolToVisiblity}}" >
+                                    <!--Visibility="{Binding BankAccountVisibility, Converter={StaticResource BoolToVisiblity}}"-->
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" MaxHeight="80" />
+                                        <RowDefinition Height="*" />
+                                        <RowDefinition Height="70" />
+                                    </Grid.RowDefinitions>
+                                    <Grid Grid.Row="0" Grid.Column="1" Width="240" Margin="0,0,0,0" HorizontalAlignment="Left">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="120" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="10" />
+                                            <RowDefinition Height="65" />
+                                            <RowDefinition Height="10" />
+                                        </Grid.RowDefinitions>
+
+                                        <Image Source="{Binding ItemImage, UpdateSourceTrigger=PropertyChanged}" Height="65" Width="110" 
+                                               Grid.Row="1" HorizontalAlignment="Left" Margin="0,0,0,0" />
+                                        <Grid Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition />
+                                                <RowDefinition />
+                                            </Grid.RowDefinitions>
+                                            <StackPanel Margin="0,0,0,0" Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                                                        Visibility="{Binding DatesVisibility, Converter={StaticResource BoolToVisiblity}, UpdateSourceTrigger=PropertyChanged}">
+                                            <TextBlock Text="{DynamicResource CreatedDate}"   HorizontalAlignment="Right"  FontSize="9" Foreground="{DynamicResource WatermarkLightGrayColor}"  Padding="0,0,3,0" Style="{DynamicResource AddcontrolTextBlockStyle}"/>
+                                            <TextBlock Text="{Binding DateCreated, StringFormat=d, UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Right" FontSize="9" Foreground="{DynamicResource WatermarkLightGrayColor}" Style="{DynamicResource AddcontrolTextBlockStyle}" Padding="7 0 0 0"/>
+                                            </StackPanel>
+                                            <StackPanel Grid.Row="1" Margin="0,7,0,0"  Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top"
+                                                        Visibility="{Binding DatesVisibility, Converter={StaticResource BoolToVisiblity}, UpdateSourceTrigger=PropertyChanged}">
+                                            <TextBlock Text="{DynamicResource LastModifiedDate}"  HorizontalAlignment="Right"  FontSize="9" Foreground="{DynamicResource WatermarkLightGrayColor}" Padding="0,0,3,0" Style="{DynamicResource AddcontrolTextBlockStyle}"/>
+                                            <TextBlock Text="{Binding DateModified, StringFormat=d, UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Right"  FontSize="9" Foreground="{DynamicResource WatermarkLightGrayColor}" Style="{DynamicResource AddcontrolTextBlockStyle}" Padding="7 0 0 0"/>
+                                            </StackPanel>
+                                        </Grid>
+
+                                    </Grid>
+
+                                <ScrollViewer x:Name="BankAccountScroller" Grid.Row="1" Grid.Column="1" HorizontalScrollBarVisibility="Disabled" 
+                                                  VerticalScrollBarVisibility="Auto" Margin="0,0,5,0"
+                                                  Template="{DynamicResource CustomScrollViewerTemplate}" >
+                                        <AdornerDecorator>
+                                            <Grid Margin="0,0,0,0" >
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="10"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="6"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="6"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="6"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="6"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="6"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="6"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="6"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="6"/>
+                                                    <RowDefinition Height="46"/>
+                                                    <RowDefinition Height="6"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="*"/>
+
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="65" />
+                                                <ColumnDefinition Width="10" />
+                                                <ColumnDefinition Width="165" />
+                                                <ColumnDefinition Width="25" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <!--first row-->
+                                                <!--<TextBlock Grid.Row="1" Grid.Column="0"   Text="{DynamicResource Country}" Style="{DynamicResource AddcontrolTextBlockStyle}" />
+                                                    <ComboBox Grid.Row="1" Grid.Column="2"   VerticalAlignment="Stretch"
+                                                        HorizontalContentAlignment="Left" 
+                                                        ItemsSource="{Binding Countries}"
+                                                        Validation.ErrorTemplate="{DynamicResource ComboBoxValidationErrorTemplate}"
+                                                        SelectedItem="{Binding SelectedCountry, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                                        Style="{DynamicResource AddControlComboboxStyle}" ItemContainerStyle="{DynamicResource LocationComboboxItemStyle}">
+                                                        <ComboBox.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <TextBlock Text="{Binding Value}" />
+                                                            </DataTemplate>
+                                                        </ComboBox.ItemTemplate>
+                                                    </ComboBox>-->
+
+                                                <!--second row-->
+                                                <TextBlock Grid.Row="1" Grid.Column="0" Text="{DynamicResource Nickname}" Style="{DynamicResource AddcontrolTextBlockStyle}"/>
+                                                <TextBox Grid.Row="1" Grid.Column="2"   Template="{DynamicResource AddControlTextboxTemplate}"  
+                                                     HorizontalAlignment="Stretch" VerticalAlignment="Top" Style="{DynamicResource AddControlTextBoxStyle}"
+                                                         Text="{Binding BankAccountNickname, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                                         IsReadOnly="{Binding ReadonlySecureItem}"/>
+                                                <!--Third row-->
+                                                <TextBlock Grid.Row="3" Grid.Column="0"  Text="{DynamicResource Bank}" Style="{DynamicResource AddcontrolTextBlockStyle}"/>
+                                                <TextBox Name="txtBank" Grid.Row="3" Grid.Column="2"  Template="{DynamicResource AddControlTextboxTemplate}"
+                                                     HorizontalAlignment="Stretch" VerticalAlignment="Top" Style="{DynamicResource AddControlTextBoxStyle}"
+                                                        Text="{Binding Bank, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Mode=TwoWay}" 
+                                                         IsReadOnly="{Binding ReadonlySecureItem}"/>
+
+                                            <TextBlock Grid.Row="3" Grid.Column="2" IsHitTestVisible="False" Text="{DynamicResource RequiredField}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Red" FontStyle="Italic">
+                                                <TextBlock.Style>
+                                                    <Style TargetType="{x:Type TextBlock}">
+                                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                                        <Style.Triggers>
+                                                            <MultiDataTrigger>
+                                                                <MultiDataTrigger.Conditions>
+                                                                    <Condition Binding="{Binding Text, ElementName=txtBank}" Value=""/>
+                                                                    <Condition Binding="{Binding IsValidErrorMessageVisible}" Value="true" />
+                                                                </MultiDataTrigger.Conditions>
+                                                                <Setter Property="Visibility" Value="Visible"/>
+                                                            </MultiDataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </TextBlock.Style>
+                                            </TextBlock>
+
+
+
+
+                                            <!--Fourth row-->
+                                                <TextBlock Grid.Row="5" Grid.Column="0" Width="50" TextWrapping="Wrap"  Text="{DynamicResource NameOnAccount}" 
+                                                           Style="{DynamicResource AddcontrolTextBlockStyle}" ToolTip="{DynamicResource NameOnAccount}"/>
+                                                <TextBox Name="txtNameOnAccount" Grid.Row="5" Grid.Column="2"    Template="{DynamicResource AddControlTextboxTemplate}" 
+                                                          HorizontalAlignment="Stretch" VerticalAlignment="Top" Style="{DynamicResource AddControlTextBoxStyle}"
+                                                         Text="{Binding NameOnAccount, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Mode=TwoWay}"
+                                                         IsReadOnly="{Binding ReadonlySecureItem}" />
+                                                <TextBlock Grid.Row="5" Grid.Column="2" IsHitTestVisible="False" Text="{DynamicResource RequiredField}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,0,0,0" Foreground="Red" FontStyle="Italic">
+                                                    <TextBlock.Style>
+                                                        <Style TargetType="{x:Type TextBlock}">
+                                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                                            <Style.Triggers>
+                                                                <MultiDataTrigger>
+                                                                    <MultiDataTrigger.Conditions>
+                                                                        <Condition Binding="{Binding Text, ElementName=txtNameOnAccount}" Value=""/>
+                                                                        <Condition Binding="{Binding IsValidErrorMessageVisible}" Value="true" />
+                                                                    </MultiDataTrigger.Conditions>
+                                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                                </MultiDataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </TextBlock.Style>
+                                                </TextBlock>
+                                            <!--fifth row-->
+                                                <TextBlock Grid.Row="7" Grid.Column="0"   Text="{DynamicResource BicSwift}" Style="{DynamicResource AddcontrolTextBlockStyle}"/>
+
+                                                <TextBox Grid.Row="7" Grid.Column="2"    Template="{DynamicResource AddControlTextboxTemplate}" 
+                                                          HorizontalAlignment="Stretch" VerticalAlignment="Top" Style="{DynamicResource AddControlTextBoxStyle}"
+                                                         Text="{Binding BicSwift, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                                         IsReadOnly="{Binding ReadonlySecureItem}"/>
+
+                                                <!--sixth row-->
+                                                <TextBlock Grid.Row="9" Grid.Column="0"   Text="{DynamicResource IBAN}" Style="{DynamicResource AddcontrolTextBlockStyle}"/>
+
+                                                <TextBox Grid.Row="9" Grid.Column="2"    Template="{DynamicResource AddControlTextboxTemplate}" 
+                                                          HorizontalAlignment="Stretch" VerticalAlignment="Top" Style="{DynamicResource AddControlTextBoxStyle}"
+                                                          Text="{Binding Iban, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                                         IsReadOnly="{Binding ReadonlySecureItem}"/>
+
+                                                <!--seventh row-->
+                                                <TextBlock Grid.Row="11" Grid.Column="0" Text="{DynamicResource RoutingNumber}" TextWrapping="Wrap" Style="{DynamicResource AddcontrolTextBlockStyle}"/>
+
+                                                <TextBox Grid.Row="11" Grid.Column="2"    Template="{DynamicResource AddControlTextboxTemplate}" 
+                                                          HorizontalAlignment="Stretch" VerticalAlignment="Top" Style="{DynamicResource AddControlTextBoxStyle}"
+                                                       Text="{Binding RoutingNumber, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"  
+                                                         IsReadOnly="{Binding ReadonlySecureItem}"/>
+
+
+                                                <!--Eighth row-->
+                                                <TextBlock Grid.Row="13" Grid.Column="0"   Text="{DynamicResource AccountNumber}" TextWrapping="Wrap" Style="{DynamicResource TextBlockDigitalWalletAddControl}"/>
+
+                                                <TextBox Grid.Row="13" Grid.Column="2"    Template="{DynamicResource AddControlTextboxTemplate}" 
+                                                          HorizontalAlignment="Stretch" VerticalAlignment="Top" Style="{DynamicResource AddControlTextBoxStyle}"
+                                                         Text="{Binding AccountNumber, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                                         IsReadOnly="{Binding ReadonlySecureItem}"/>
+
+
+                                                <!--Nineth row-->
+                                                <TextBlock Grid.Row="15" Grid.Column="0"  Text="{DynamicResource TextForCategory}" Style="{DynamicResource AddcontrolTextBlockStyle}"/>
+                                                <ComboBox Grid.Row="15" Grid.Column="2"  HorizontalAlignment="Stretch" VerticalAlignment="Top"
+                                                       HorizontalContentAlignment="Left"   
+                                                        ItemsSource="{Binding Categories}"
+                                                        Style="{DynamicResource AddControlComboboxStyle}" ItemContainerStyle="{DynamicResource LocationComboboxItemStyle}"
+                                                        SelectedItem="{Binding SelectedCategory, UpdateSourceTrigger=PropertyChanged}"
+                                                        TextSearch.TextPath="Name" IsTextSearchEnabled="True" IsEnabled="{Binding Enabled}">
+                                                    <ComboBox.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <TextBlock Text="{Binding Name}" />
+                                                        </DataTemplate>
+                                                    </ComboBox.ItemTemplate>
+                                                </ComboBox>
+
+
+                                                <Image  Grid.Row="15" Grid.Column="3" Margin="0,0,0,0" HorizontalAlignment="Center"
+                                                       ToolTip="{DynamicResource AddNewCategory}"
+                                                       Style="{DynamicResource AddCategoryImageStyle}"
+                                                       Height="12" Width="15" RenderOptions.BitmapScalingMode="HighQuality">
+                                                    <Image.InputBindings>
+                                                        <MouseBinding MouseAction="LeftClick"
+                                                                      Command="{Binding AddCategoryClickCommand}"/>
+                                                    </Image.InputBindings>
+                                                </Image>
+
+
+
+                                                <!--Tenth row-->
+                                                <TextBlock Grid.Row="17" Grid.Column="0" Text="{DynamicResource Notes}" TextWrapping="Wrap" Style="{DynamicResource AddcontrolTextBlockStyle}"/>
+
+
+                                            <TextBox Grid.Row="17" Grid.Column="2" Height="46" Width="165" VerticalAlignment="Top"
+                                                     Style="{DynamicResource NotesTextBoxStyle}" Text="{Binding BankAccountNotes, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"  
+                                                     IsReadOnly="{Binding ReadonlySecureItem}"/>
+
+                                            </Grid>
+                                        </AdornerDecorator>
+                                    </ScrollViewer>
+
+                                    <!--<Image Margin="27,0,0,35"  Visibility="Collapsed" Grid.Row="2" Grid.Column="1" Height="15" VerticalAlignment="Bottom" HorizontalAlignment="Left" Source="{DynamicResource imgTrash}"                                       
+                                       ToolTip="{DynamicResource DeleteLogoToolTip}" RenderOptions.BitmapScalingMode="HighQuality">
+                                        <Image.InputBindings>
+                                            <MouseBinding MouseAction="LeftClick" Command="{Binding LeftClickCommand }" CommandParameter="DeleteBox">
+                                            </MouseBinding>
+                                        </Image.InputBindings>
+                                    </Image>-->
+
+                                <Grid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="20"/>
+                                        <RowDefinition Height="35"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="75" />
+                                        <ColumnDefinition Width="85" />
+                                        <ColumnDefinition Width="100"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" 
+                                           IsHitTestVisible="False" Text="{DynamicResource FillRequiredFields}" 
+                                           VerticalAlignment="Center" HorizontalAlignment="Center" 
+                                           Margin="10,0,0,0" Foreground="Red" FontStyle="Italic"
+                                    Visibility="{Binding IsValidErrorMessageVisible, Converter={StaticResource BoolToVisiblity}, UpdateSourceTrigger=PropertyChanged}"/>
+
+
+
+                                    <Button  Grid.Row="1" Grid.Column="0" Margin="0,0,0,0"
+                                             Visibility="{Binding DeleteButtonVisible, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center"
+                                             Command="{Binding DeleteCommand}" HorizontalAlignment="Left" FontWeight="Bold" FontSize="12" 
+                                             Style="{DynamicResource CancelButton_style}" Background="Transparent" Foreground="{DynamicResource PasswordBossGreenColor}">
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image Source="{DynamicResource imgTrash}" Height="16" Width="17" />
+                                        </StackPanel>
+                                        <Button.Triggers>
+                                            <EventTrigger RoutedEvent="Button.Click">
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <DoubleAnimation
+                                                            Storyboard.TargetName="DigitalWalletAddEditControl"
+                                                            Storyboard.TargetProperty="(Grid.Width)"
+                                                            From="326" To="0" Duration="0:0:0.5" AutoReverse="False" />
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+
+                                            </EventTrigger>
+                                        </Button.Triggers>
+                                    </Button>
+
+                                    <Button Grid.Row="1" Grid.Column="1" IsCancel="True"
+                                            Content="{DynamicResource Cancel}" HorizontalContentAlignment="Left"  
+                                              Width="80" Height="25" HorizontalAlignment="Left" FontWeight="Bold" FontSize="12"
+                                                Background="Transparent" Foreground="{DynamicResource PasswordBossGreenColor}" Style="{DynamicResource CancelButton_style}"
+                                                Command="{Binding CancelCommand}">
+                                        </Button>
+
+                                    <Button Grid.Column="2" Grid.Row="1" Content="{DynamicResource Save}" IsDefault="True"
+                                                Width="100" Height="25" HorizontalAlignment="Right" 
+                                                FontWeight="Bold" FontSize="12" Style="{DynamicResource roundButton}" 
+                                                Background="{DynamicResource PasswordBossGreenColor}" Foreground="{DynamicResource WhiteColor}" Command="{Binding SaveBankAccountCommand}" 
+                                            IsEnabled="{Binding Enabled}">
+                                            
+                                        </Button>
+
+                                    <local:CustomMessageBoxUserControl 
+                                        MessageBoxDialogVisibility="{Binding BankAccountSettingsChangeDialogVisibility, UpdateSourceTrigger=PropertyChanged}" 
+                                        CustomMessageBoxType="Confirmation" 
+                                        MessageBoxDialogCancelButtonText="{DynamicResource Discard}" 
+                                        MessageBoxDialogConfirmButtonText="{DynamicResource Save}" 
+                                        MessageBoxDialogHeaderText="{DynamicResource ItemChanged}"
+                                        MessageBoxDialogText="{DynamicResource SettingsChangedConfirmText}"
+                                        MessageBoxDialogConfirmCommand="{Binding SaveBankAccountCommand}"
+                                        MessageBoxDialogCancelCommand="{Binding CancelCommand}"
+                                        />
+                                </Grid>
+
+                                </Grid>
+
+                            </Grid>
+                    </TabItem.Content>
+                </TabItem>
+
+                <!--Secure share tab-->
+                <TabItem x:Name="tabSecureShare"  Height="30" Width="163" IsEnabled="{Binding IsShareEnabled, UpdateSourceTrigger=PropertyChanged}">
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal">
+                            <Image x:Name="imgTabShare" Source="{Binding SecureShareTabIcon, UpdateSourceTrigger=PropertyChanged}"
+                                    Height="15" Width="15"/>
+                            <TextBlock Margin="10,1,0,0" Text="{DynamicResource SecureShare}" FontFamily="{DynamicResource ProximaBold}" Style="{DynamicResource TextBlockDigitalWalletAddControl}"/>
+                        </StackPanel>
+                    </TabItem.Header>
+                    <Grid  Margin="0,0,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <!--first row grid content-->
+                        <Grid Grid.Row="0" Grid.Column="0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="20"/>
+                                <ColumnDefinition Width="170"/>
+                                <ColumnDefinition Width="30"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="10"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="10"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="6"/>
+                                <RowDefinition Height="46"/>
+                                <RowDefinition Height="6"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="8"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="10"/>
+                                <RowDefinition/>
+                                <RowDefinition Height="13"/>
+                            </Grid.RowDefinitions>
+                            <!-- Visibility="{Binding IsPaypalItem, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, Converter={StaticResource BoolToVisiblity}}"  -->
+                            <TextBlock  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Top"
+                                       TextTrimming="CharacterEllipsis" ToolTip="{Binding ShareLabel, UpdateSourceTrigger=PropertyChanged}"
+                                           Style="{DynamicResource AddcontrolTextBlockStyle}" Text="{Binding ShareLabel, UpdateSourceTrigger=PropertyChanged}" />
+                            <!--<StackPanel Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2">
+                                <Image Source="{Binding ItemImage}"  Height="65" Width="130"/>
+                                <TextBlock HorizontalAlignment="Center" Foreground="#007EE6" FontWeight="Bold" Style="{DynamicResource AddcontrolTextBlockStyle}"/>
+                            </StackPanel>-->
+
+                            <Image Grid.Row="1" Grid.Column="3" Source="{Binding ItemImage, UpdateSourceTrigger=PropertyChanged}"  Height="65" Width="130" HorizontalAlignment="Right"/>
+                            <!--first row-->
+                            <TextBlock  Grid.Row="3" Grid.Column="1" Text="{DynamicResource RecipientEmails}"  Style="{DynamicResource AddcontrolTextBlockStyle}"  Width="55" />
+                            <TextBox Grid.Row="3" Grid.Column="3"  Template="{DynamicResource AddControlTextboxTemplate}"  Height="25" 
+                                                     HorizontalAlignment="Stretch" VerticalAlignment="Center" Style="{DynamicResource AddControlTextBoxStyle}" Text="{Binding RecipientEmail, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
+                            <!--second row-->
+                            <TextBlock Grid.Row="5" Grid.Column="1" Text="{DynamicResource Message}"  Style="{DynamicResource AddcontrolTextBlockStyle}"/>
+                            <TextBox Grid.Row="5" Grid.Column="3" Style="{DynamicResource NotesTextBoxStyle}"
+                                         Height="46" Width="170"  Text="{Binding Message, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" />
+                            <!--third row-->
+                            <TextBlock Grid.Row="7" Grid.Column="1" Text="{DynamicResource ShareDuration}" Style="{DynamicResource AddcontrolTextBlockStyle}" Width="50"/>
+                            <ComboBox Grid.Row="7" Grid.Column="3" Height="25"
+                                      Style="{DynamicResource AddControlComboboxStyle}"
+                                      HorizontalContentAlignment="Left" ItemsSource="{Binding ShareDurations, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                      ItemContainerStyle="{DynamicResource LocationComboboxItemStyle}" SelectedIndex="{Binding ExpirationPeriodIndex, UpdateSourceTrigger=PropertyChanged}">
+                                <!--<ComboBoxItem>
+                                    <TextBlock Text="{DynamicResource UntilCancel}" Foreground="{DynamicResource ShareComboboxForegroundColor}" />
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <TextBlock Text="{DynamicResource _OneDay}" Foreground="{DynamicResource ShareComboboxForegroundColor}" />
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <TextBlock Text="{DynamicResource _1Week}" Foreground="{DynamicResource ShareComboboxForegroundColor}" />
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <TextBlock Text="{DynamicResource _1Month}" Foreground="{DynamicResource ShareComboboxForegroundColor}" />
+                                </ComboBoxItem>
+                                <ComboBoxItem>
+                                    <TextBlock Text="{DynamicResource _1Year}" Foreground="{DynamicResource ShareComboboxForegroundColor}" />
+                                </ComboBoxItem>-->
+                            </ComboBox>
+                            <!--fourth row-->
+                            <Grid Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="3" Visibility="{Binding IsPaypalItem, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, Converter={StaticResource BoolToVisiblity}}">
+                                <StackPanel  Orientation="Horizontal">
+                                    <TextBlock Text="{DynamicResource PasswordVisibleToRecipient}" Style="{DynamicResource AddcontrolTextBlockStyle}"/>
+                                    <Image Margin="6,0,0,0" Source="{DynamicResource imgHelpGray}" Height="16" Width="16"
+                                               ToolTip="{DynamicResource DigitalWalletShareToolTip}"/>
+                                </StackPanel>
+                                <local:ToggleSwitch Margin="0,0,-2,0" Grid.Row="9" Grid.Column="3" HorizontalAlignment="Right" VerticalContentAlignment="Center"/>
+                            </Grid>
+                            <!--last row to save and cancel-->
+                            <Button x:Name="btnSecuerShareCancel" Grid.Row="11" Grid.Column="2" IsCancel="True"
+                                    Grid.ColumnSpan="2" Content="{DynamicResource Cancel}" Width="90" Height="25" VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"  Style="{DynamicResource CancelButton_style}"
+                                    Command="{Binding CancelCommand}">
+                                <Button.Triggers>
+                                    <EventTrigger RoutedEvent="Button.Click">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation 
+                                                                Storyboard.TargetName="DigitalWalletAddEditControl"
+                                                                Storyboard.TargetProperty="(Grid.Width)" 
+                                                                From="340" To="0" Duration="0:0:0.5" AutoReverse="False"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                </Button.Triggers>
+                            </Button>
+                            <Button Margin="0,0,0,0" Grid.Row="11" Grid.Column="3"  Content="{DynamicResource Save}" Width="100" Height="25" IsDefault="True"
+                                    VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Right" FontSize="12"
+                                    Style="{DynamicResource roundButton}" Background="{DynamicResource PasswordBossGreenColor}" Foreground="{DynamicResource WhiteColor}"
+                                    Padding="0,0,0,0"  Command="{Binding SaveShareCommand}">
+                                <!--<Button.Triggers>
+                                    <EventTrigger RoutedEvent="Button.Click">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation
+                                                            Storyboard.TargetName="DigitalWalletAddEditControl"
+                                                            Storyboard.TargetProperty="(Grid.Width)"
+                                                            From="326" To="0" Duration="0:0:0.5" AutoReverse="False" />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+
+                                    </EventTrigger>
+                                </Button.Triggers>-->
+                            </Button>
+
+                        </Grid>
+                        <!--second row content-->
+
+                        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" >
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="16"/>
+                                    <ColumnDefinition Width="120"/>
+                                    <ColumnDefinition Width="24"/>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition Width="45"/>
+                                    <ColumnDefinition Width="20"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="28"/>
+                                    <RowDefinition Height="28"/>
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Border Margin="-2,0,-2,0" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="7" HorizontalAlignment="Stretch"
+                                    Background="{DynamicResource TextBoxBackground}" BorderThickness="0,1,0,1" BorderBrush="{DynamicResource AccountSettingsGrayBackgroundColor}"/>
+                                <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="6" Text="{DynamicResource ManageSharingDetails}" VerticalAlignment="Center"
+                                       Foreground="{DynamicResource TextForegroundcolor}" Padding="0,0,0,0" Margin="0,0,0,0" Style="{DynamicResource SecureShareSemiboldStyle}"/>
+                                <TextBlock Grid.Row="1" Grid.Column="1" Text="{DynamicResource Recipient}" VerticalAlignment="Center" Padding="0,0,0,0"
+                                       FontSize="13" Foreground="{DynamicResource LightGrayTextForegroundColor}"
+                                       Margin="0,0,0,0" HorizontalAlignment="Left" Style="{DynamicResource SecureShareRegularFontStyle}" />
+                                <TextBlock Grid.Row="1" Grid.Column="3" Text="{DynamicResource Status}" VerticalAlignment="Center" Padding="0,0,0,0"
+                                       FontSize="13" Foreground="{DynamicResource LightGrayTextForegroundColor}" 
+                                       HorizontalAlignment="Center" Margin="0,0,0,0"  Style="{DynamicResource SecureShareRegularFontStyle}"/>
+                                <TextBlock Grid.Row="1" Grid.Column="5"  Text="{DynamicResource Visible}" VerticalAlignment="Center" Padding="0,0,0,0"
+                                       FontSize="13" Foreground="{DynamicResource LightGrayTextForegroundColor}" Style="{DynamicResource SecureShareRegularFontStyle}"
+                                       HorizontalAlignment="Center" Margin="0,0,0,0" />
+                                <!--<ScrollViewer Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="7" Template="{DynamicResource CustomScrollViewerTemplate}"
+                                              VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" >-->
+                                    <ListView Name="SecureshareList" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="7" Margin="-2,0,-1,0" BorderThickness="0" Background="Transparent"
+                                              HorizontalAlignment="Stretch"  ItemContainerStyle="{DynamicResource SecureShareListViewStyle}" 
+                                               ItemsSource="{Binding Path=SecuerShareData,UpdateSourceTrigger=PropertyChanged}" 
+                                              Template="{DynamicResource SecurityScoreListViewTemplate}" MaxHeight="300"
+                                                      ItemTemplate="{DynamicResource SecureShareDataTemplate}">
+                                    </ListView>
+                                <!--</ScrollViewer>-->
+
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </TabItem>
+            </TabControl>
+        </Border>
+        
+        <local:CustomMessageBoxUserControl 
+            MessageBoxDialogVisibility="{Binding MessageBoxVisibility}" 
+            CustomMessageBoxType="Confirmation" 
+            MessageBoxDialogCancelButtonText="{DynamicResource Cancel}" 
+            MessageBoxDialogConfirmButtonText="{DynamicResource Delete}" 
+            MessageBoxDialogHeaderText="{DynamicResource DeleteSecureItemHeader}"
+            MessageBoxDialogText="{DynamicResource DeleteSecureItemBody}"
+            MessageBoxDialogConfirmCommand="{Binding MessageBoxConfirmCommand}"
+            MessageBoxDialogCancelCommand="{Binding MessageBoxCancelCommand}"
+            />
+
+        <local:CustomMessageBoxUserControl 
+            MessageBoxDialogVisibility="{Binding InvalidShareDialogVisibility}" 
+            CustomMessageBoxType="Info" 
+            MessageBoxDialogOkButtonText="{DynamicResource OK}"
+            MessageBoxDialogHeaderText="{DynamicResource MessageBoxErrorTitle}"
+            MessageBoxDialogText="{DynamicResource SharingWithYourselfMessage}"
+            MessageBoxDialogOkCommand="{Binding InvalidShareDialogOkCommand}"
+            />
+
+        <!-- share action confirmation boxes -->
+        <local:CustomMessageBoxUserControl 
+            MessageBoxDialogVisibility="{Binding CancelMessageBoxVisibility}" 
+            CustomMessageBoxType="Confirmation" 
+            MessageBoxDialogCancelButtonText="{DynamicResource Cancel}" 
+            MessageBoxDialogConfirmButtonText="{DynamicResource Continue}" 
+            MessageBoxDialogHeaderText="{DynamicResource SharingConfirmationHeader}"
+            MessageBoxDialogText="{DynamicResource ShareItemCancel }"
+            MessageBoxDialogConfirmCommand="{Binding CancelShareCommand}"
+            MessageBoxDialogCancelCommand="{Binding CancelShareActionCommand}" />
+
+        <local:CustomMessageBoxUserControl 
+            MessageBoxDialogVisibility="{Binding ResendMessageBoxVisibility}" 
+            CustomMessageBoxType="Confirmation" 
+            MessageBoxDialogCancelButtonText="{DynamicResource Cancel}" 
+            MessageBoxDialogConfirmButtonText="{DynamicResource Continue}" 
+            MessageBoxDialogHeaderText="{DynamicResource SharingConfirmationHeader}"
+            MessageBoxDialogText="{DynamicResource ShareResend }"
+            MessageBoxDialogConfirmCommand="{Binding ResendShareCommand}"
+            MessageBoxDialogCancelCommand="{Binding CancelShareActionCommand}" />
+
+        <local:CustomMessageBoxUserControl 
+            MessageBoxDialogVisibility="{Binding UnshareMessageBoxVisibility}" 
+            CustomMessageBoxType="Confirmation" 
+            MessageBoxDialogCancelButtonText="{DynamicResource Cancel}" 
+            MessageBoxDialogConfirmButtonText="{DynamicResource Continue}" 
+            MessageBoxDialogHeaderText="{DynamicResource SharingConfirmationHeader}"
+            MessageBoxDialogText="{DynamicResource ShareRevoke }"
+            MessageBoxDialogConfirmCommand="{Binding RevokeShareCommand}"
+            MessageBoxDialogCancelCommand="{Binding CancelShareActionCommand}" />
+    </Grid>
+</UserControl>

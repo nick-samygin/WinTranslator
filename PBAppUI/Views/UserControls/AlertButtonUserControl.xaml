@@ -1,0 +1,160 @@
+﻿<UserControl x:Class="PasswordBoss.Views.UserControls.AlertButtonUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             mc:Ignorable="d"
+             d:DesignHeight="30" d:DesignWidth="40">
+
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+    </UserControl.Resources>
+    <Grid x:Name="alertGrid" HorizontalAlignment="Stretch"
+          VerticalAlignment="Stretch" Margin="0,0,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Button Name="btnAlert" Grid.Row="0" Grid.Column="1" Background="{Binding AlertButtonBackColor}" Focusable="False"
+                HorizontalContentAlignment="Center" VerticalAlignment="Center" FontFamily="{DynamicResource ProximaRegular}"
+                HorizontalAlignment="Left" Margin="0,0,0,0" Style="{DynamicResource btnStyleNoHover}"
+                Command="{Binding AlertNotificationCommand}" CommandParameter="{Binding ElementName=alertPopup}"
+                Height="40" Width="45">
+            <Button.ToolTip>
+                <TextBlock FontFamily="{DynamicResource ProximaRegular}" Text="{DynamicResource Notifications}"></TextBlock>
+            </Button.ToolTip>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" Source="{DynamicResource alert_grey}" Height="20" Width="22"
+                       HorizontalAlignment="Left" VerticalAlignment="Center"
+                       RenderOptions.BitmapScalingMode="HighQuality" RenderOptions.EdgeMode="Aliased" />
+                <TextBlock Name="tbAlertCount" Text="{Binding AlertCountString}" Grid.Column="1" Panel.ZIndex="1" Height="18" FontFamily="{DynamicResource ProximaRegular}"
+                           Width="18" Padding="0,4,0,0" FontWeight="Bold" TextAlignment="Center" Visibility="{Binding AlertCountVisibility}"
+                           FontSize="10" Foreground="#F5E9E5" HorizontalAlignment="Left" Margin="-8,-10,0,0">
+                    <TextBlock.Background>
+                        <VisualBrush>
+                            <VisualBrush.Visual>
+                                <Ellipse Height="17" Width="17"
+                                         Fill="{DynamicResource AlertButtonRedColor}"  />
+                            </VisualBrush.Visual>
+                        </VisualBrush>
+                    </TextBlock.Background>
+                </TextBlock>
+            </Grid>
+        </Button>
+
+        <!--AlertGrid popup-->
+        <Popup x:Name="alertPopup" Grid.Row="1" Grid.Column="1" IsOpen="False" StaysOpen="False"
+               Placement="Bottom" Width="320">
+            <Grid Background="{DynamicResource WhiteColor}">
+                <Border x:Name="brdNotify" BorderThickness="1"
+                        BorderBrush="{DynamicResource AlertPopUpBorderBrushcolor}" Background="{DynamicResource WhiteColor}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="2" />
+                            <RowDefinition Height="30" />
+							<RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0" />
+                            <ColumnDefinition Width="2" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="0" Grid.RowSpan="2" Visibility="{Binding HasAlertItems, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, Converter={StaticResource BoolToVisibility}}">
+                            <Grid Background="{DynamicResource WhiteColor}" Margin="0,-1,0,0">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0" />
+                                    <ColumnDefinition Width="3" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="2" Grid.Row="0" MaxHeight="225">
+                                    <ListView Name="AlertList" ScrollViewer.CanContentScroll="False"
+                                              BorderThickness="0" Background="Transparent"
+                                              Template="{DynamicResource SecurityScoreListViewTemplate}"
+                                              ItemContainerStyle="{DynamicResource SecureShareListViewStyle}"
+                                              ItemsSource="{Binding Path=Alert,UpdateSourceTrigger=PropertyChanged}"
+                                              ItemTemplate="{DynamicResource AlertListDataTemplate}" Margin="0,0,0,-1"
+                                              />
+                                </Grid>
+                            </Grid>
+                        </Grid>
+
+                        <Grid Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" Grid.RowSpan="2" Height="80" Background="{DynamicResource AlertsAndNotificationsBackgroundColor}" Visibility="{Binding HasAlertItemsNegated, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay, Converter={StaticResource BoolToVisibility}}">
+                            <TextBlock Text="{DynamicResource NoNotificationsMessage}" FontSize="14" FontFamily="{DynamicResource ProximaRegular}" VerticalAlignment="Center" TextAlignment="Center"
+                                       TextWrapping="Wrap" MaxWidth="250" />
+                        </Grid>
+                        <Border Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Background="{DynamicResource PasswordBossGreenColor}">
+                            <ToggleButton Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" Focusable="False"
+                                      VerticalAlignment="Stretch" FontFamily="{DynamicResource ProximaRegular}"
+                                      BorderThickness="0" Background="{DynamicResource PasswordBossGreenColor}" BorderBrush="{DynamicResource PasswordBossGreenColor}"
+                                      Style="{DynamicResource ToggleButtonStyleForadditemdropdown}">
+                                <Grid>
+                                    <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal"
+                                            HorizontalAlignment="Center" VerticalAlignment="Center"
+                                            Visibility="{Binding Path=ShowHistoryVisibility,Converter={StaticResource  BoolToVisibility}}">
+                                        <TextBlock Text="{DynamicResource NotificationHistory}" Foreground="{DynamicResource WhiteColor}" FontFamily="{DynamicResource ProximaRegular}"
+                                               FontSize="13" FontWeight="SemiBold" />
+                                        <Image Source="{DynamicResource imgRightArrow}" Height="10" Width="10"
+                                           Margin="10,0,0,0" />
+                                    </StackPanel>
+                                    <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Horizontal"
+                                            HorizontalAlignment="Center" VerticalAlignment="Center"
+                                            Visibility="{Binding Path=HideHistoryVisibility,Converter={StaticResource  BoolToVisibility}}">
+                                        <TextBlock Text="{DynamicResource HideNotificationHistory}" Foreground="{DynamicResource WhiteColor}" FontFamily="{DynamicResource ProximaRegular}"
+                                               FontSize="13" FontWeight="SemiBold" />
+                                        <Image Source="{DynamicResource imgRightArrow}" Height="10" Width="10"
+                                           Margin="10,0,0,0" />
+                                    </StackPanel>
+                                </Grid>
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Checked">
+                                        <i:InvokeCommandAction Command="{Binding ViewAlertHistoryCheckedCommand}" />
+                                    </i:EventTrigger>
+                                    <i:EventTrigger EventName="Unchecked">
+                                        <i:InvokeCommandAction Command="{Binding ViewAlertHistoryUncheckedCommand}" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </ToggleButton>
+                        </Border>
+                        <Grid Grid.Column="0" Grid.ColumnSpan="4" Grid.Row="4">
+                            <Grid Background="{DynamicResource WhiteColor}" Margin="0,0,0,0" Visibility="{Binding Path=HideHistoryVisibility,Converter={StaticResource  BoolToVisibility}}">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="0" />
+                                    <ColumnDefinition Width="3" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="2" Grid.Row="0" MaxHeight="225">
+                                    <ListView Name="AlertHistoryList" ScrollViewer.CanContentScroll="False"
+                                              BorderThickness="0" Background="Transparent"
+                                              Template="{DynamicResource SecurityScoreListViewTemplate}"
+                                              ItemContainerStyle="{DynamicResource SecureShareListViewStyle}"
+                                              ItemsSource="{Binding Path=AlertHistory,UpdateSourceTrigger=PropertyChanged}"
+                                              ItemTemplate="{DynamicResource AlertListDataTemplate}" Margin="0,0,0,-1"
+                                              />
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Popup>
+    </Grid>
+</UserControl>

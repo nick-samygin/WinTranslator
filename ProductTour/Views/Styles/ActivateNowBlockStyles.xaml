@@ -1,0 +1,30 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:ProductTour.Views.Styles" >
+
+    <Style x:Key="tbBase" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="12pt" />
+        <Setter Property="FontWeight" Value="Thin" />
+        <Setter Property="Text" Value=" "/>
+        <Setter Property="FontFamily" Value="{DynamicResource OBProximaRegular}" />
+    </Style>
+    
+    <Style x:Key="headerTextBlock" TargetType="TextBlock" BasedOn="{StaticResource tbBase}"> 
+        <Setter Property="Text" Value="{DynamicResource Onboardv4Screen3CTA}" />
+        <Setter Property="Foreground" Value="#333f46" />
+        <Setter Property="FontSize" Value="15pt" />
+    </Style>
+
+    <Style x:Key="tbSubhead1" TargetType="TextBlock" BasedOn="{StaticResource tbBase}">
+        <Setter Property="FontSize" Value="12pt" />
+        <Setter Property="Foreground" Value="#768387"></Setter>
+        <Setter Property="Text" Value="{DynamicResource Onboardv4Screen1Subhead1}" />
+    </Style>
+
+    <Style x:Key="tbSubhead2" TargetType="TextBlock" BasedOn="{StaticResource tbBase}">
+        <Setter Property="Foreground" Value="#48b900"></Setter>
+        <Setter Property="Text" Value="{DynamicResource Onboardv4Screen1Subhead2}" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+    </Style>
+</ResourceDictionary>

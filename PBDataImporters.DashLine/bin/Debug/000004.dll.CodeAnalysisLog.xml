@@ -1,0 +1,523 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="c:\program files (x86)\microsoft visual studio\2017\enterprise\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
+<FxCopReport Version="15.0">
+ <Targets>
+  <Target Name="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\PBDataImporters.DashLine\bin\Debug\000004.dll">
+   <Modules>
+    <Module Name="000004.dll">
+     <Namespaces>
+      <Namespace Name="PasswordBoss">
+       <Types>
+        <Type Name="PBSubType+DigitalWallet+CreditCard" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#CardNumber" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Accessors>
+            <Accessor Name="#get_CardNumber()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+             <Messages>
+              <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+               <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="pbSubTypeData.cs" Line="198">Возможно, у 'PBSubType.DigitalWallet.CreditCard.CardNumber.get()' нет предшествующих открытых или защищенных вызывающих.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+            <Accessor Name="#set_CardNumber(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+             <Messages>
+              <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+               <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="pbSubTypeData.cs" Line="198">Возможно, у 'PBSubType.DigitalWallet.CreditCard.CardNumber.set(string)' нет предшествующих открытых или защищенных вызывающих.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+          <Member Name="#CreditCardNickname" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Accessors>
+            <Accessor Name="#get_CreditCardNickname()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+             <Messages>
+              <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+               <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="pbSubTypeData.cs" Line="195">Возможно, у 'PBSubType.DigitalWallet.CreditCard.CreditCardNickname.get()' нет предшествующих открытых или защищенных вызывающих.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+            <Accessor Name="#set_CreditCardNickname(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+             <Messages>
+              <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+               <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="pbSubTypeData.cs" Line="195">Возможно, у 'PBSubType.DigitalWallet.CreditCard.CreditCardNickname.set(string)' нет предшествующих открытых или защищенных вызывающих.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+          <Member Name="#CreditCardType" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Accessors>
+            <Accessor Name="#set_CreditCardType(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+             <Messages>
+              <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+               <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="pbSubTypeData.cs" Line="200">Возможно, у 'PBSubType.DigitalWallet.CreditCard.CreditCardType.set(string)' нет предшествующих открытых или защищенных вызывающих.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+          <Member Name="#Cvv" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Accessors>
+            <Accessor Name="#get_Cvv()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+             <Messages>
+              <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+               <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="pbSubTypeData.cs" Line="204">Возможно, у 'PBSubType.DigitalWallet.CreditCard.Cvv.get()' нет предшествующих открытых или защищенных вызывающих.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+            <Accessor Name="#set_Cvv(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+             <Messages>
+              <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+               <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="pbSubTypeData.cs" Line="204">Возможно, у 'PBSubType.DigitalWallet.CreditCard.Cvv.set(string)' нет предшествующих открытых или защищенных вызывающих.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+          <Member Name="#ExpiresMonth" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Accessors>
+            <Accessor Name="#set_ExpiresMonth(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+             <Messages>
+              <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+               <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="pbSubTypeData.cs" Line="201">Возможно, у 'PBSubType.DigitalWallet.CreditCard.ExpiresMonth.set(string)' нет предшествующих открытых или защищенных вызывающих.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+          <Member Name="#ExpiresYear" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Accessors>
+            <Accessor Name="#set_ExpiresYear(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+             <Messages>
+              <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+               <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="pbSubTypeData.cs" Line="202">Возможно, у 'PBSubType.DigitalWallet.CreditCard.ExpiresYear.set(string)' нет предшествующих открытых или защищенных вызывающих.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+          <Member Name="#GetSecureItem()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="pbSubTypeData.cs" Line="242">Возможно, у 'PBSubType.DigitalWallet.CreditCard.GetSecureItem()' нет предшествующих открытых или защищенных вызывающих.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#IssueBank" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Accessors>
+            <Accessor Name="#get_IssueBank()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+             <Messages>
+              <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+               <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="pbSubTypeData.cs" Line="203">Возможно, у 'PBSubType.DigitalWallet.CreditCard.IssueBank.get()' нет предшествующих открытых или защищенных вызывающих.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+            <Accessor Name="#set_IssueBank(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+             <Messages>
+              <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+               <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="pbSubTypeData.cs" Line="203">Возможно, у 'PBSubType.DigitalWallet.CreditCard.IssueBank.set(string)' нет предшествующих открытых или защищенных вызывающих.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+          <Member Name="#NameOnCard" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Accessors>
+            <Accessor Name="#get_NameOnCard()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+             <Messages>
+              <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+               <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="pbSubTypeData.cs" Line="197">Возможно, у 'PBSubType.DigitalWallet.CreditCard.NameOnCard.get()' нет предшествующих открытых или защищенных вызывающих.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+            <Accessor Name="#set_NameOnCard(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+             <Messages>
+              <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+               <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="pbSubTypeData.cs" Line="197">Возможно, у 'PBSubType.DigitalWallet.CreditCard.NameOnCard.set(string)' нет предшествующих открытых или защищенных вызывающих.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+          <Member Name="#Pin" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Accessors>
+            <Accessor Name="#get_Pin()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+             <Messages>
+              <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+               <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="pbSubTypeData.cs" Line="205">Возможно, у 'PBSubType.DigitalWallet.CreditCard.Pin.get()' нет предшествующих открытых или защищенных вызывающих.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+            <Accessor Name="#set_Pin(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+             <Messages>
+              <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+               <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="pbSubTypeData.cs" Line="205">Возможно, у 'PBSubType.DigitalWallet.CreditCard.Pin.set(string)' нет предшествующих открытых или защищенных вызывающих.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+          <Member Name="#SelectedAddress" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Accessors>
+            <Accessor Name="#get_SelectedAddress()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+             <Messages>
+              <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+               <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="pbSubTypeData.cs" Line="206">Возможно, у 'PBSubType.DigitalWallet.CreditCard.SelectedAddress.get()' нет предшествующих открытых или защищенных вызывающих.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+            <Accessor Name="#set_SelectedAddress(PasswordBoss.DTO.SecureItem)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+             <Messages>
+              <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+               <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="pbSubTypeData.cs" Line="206">Возможно, у 'PBSubType.DigitalWallet.CreditCard.SelectedAddress.set(SecureItem)' нет предшествующих открытых или защищенных вызывающих.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+          <Member Name="#SelectedCategory" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Accessors>
+            <Accessor Name="#get_SelectedCategory()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+             <Messages>
+              <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+               <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="pbSubTypeData.cs" Line="208">Возможно, у 'PBSubType.DigitalWallet.CreditCard.SelectedCategory.get()' нет предшествующих открытых или защищенных вызывающих.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+            <Accessor Name="#set_SelectedCategory(PasswordBoss.DTO.Folder)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+             <Messages>
+              <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+               <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="pbSubTypeData.cs" Line="208">Возможно, у 'PBSubType.DigitalWallet.CreditCard.SelectedCategory.set(Folder)' нет предшествующих открытых или защищенных вызывающих.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+          <Member Name="#SelectedCountry" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Accessors>
+            <Accessor Name="#get_SelectedCountry()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+             <Messages>
+              <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+               <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="pbSubTypeData.cs" Line="196">Возможно, у 'PBSubType.DigitalWallet.CreditCard.SelectedCountry.get()' нет предшествующих открытых или защищенных вызывающих.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+            <Accessor Name="#set_SelectedCountry(System.Nullable`1&lt;System.Collections.Generic.KeyValuePair`2&lt;System.String,System.String&gt;&gt;)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+             <Messages>
+              <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+               <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="pbSubTypeData.cs" Line="196">Возможно, у 'PBSubType.DigitalWallet.CreditCard.SelectedCountry.set(KeyValuePair&lt;string, string&gt;?)' нет предшествующих открытых или защищенных вызывающих.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+          <Member Name="#SelectedCreditCard" Kind="Property" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Accessors>
+            <Accessor Name="#get_SelectedCreditCard()" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+             <Messages>
+              <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+               <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="pbSubTypeData.cs" Line="199">Возможно, у 'PBSubType.DigitalWallet.CreditCard.SelectedCreditCard.get()' нет предшествующих открытых или защищенных вызывающих.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+            <Accessor Name="#set_SelectedCreditCard(System.Nullable`1&lt;System.Collections.Generic.KeyValuePair`2&lt;System.String,System.String&gt;&gt;)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+             <Messages>
+              <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+               <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="pbSubTypeData.cs" Line="199">Возможно, у 'PBSubType.DigitalWallet.CreditCard.SelectedCreditCard.set(KeyValuePair&lt;string, string&gt;?)' нет предшествующих открытых или защищенных вызывающих.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+      <Namespace Name="PasswordBoss.Helpers">
+       <Types>
+        <Type Name="Common" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#ElementFocusedChanged(System.Object,System.String,System.String)" Kind="Method" Static="False" Accessibility="Assembly" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="Common.cs" Line="246">Параметр "this" ("Me" в Visual Basic) никогда не используется в 'Common.ElementFocusedChanged(object, string, string)'. Пометьте член как static (или Shared в среде Visual Basic) либо используйте "this" или "Me" в теле метода или хотя бы в одном методе доступа к свойству.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ElementTextChanged(System.Object,System.String,System.String)" Kind="Method" Static="False" Accessibility="Assembly" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="DoNotCastUnnecessarily" Category="Microsoft.Performance" CheckId="CA1800" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+             <Issue Name="Parameter" Certainty="95" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="Common.cs" Line="196">Параметр 'element' приведен к типу 'PasswordBox' несколько раз в методе 'Common.ElementTextChanged(object, string, string)'. Сохраните в кэш-памяти результат оператора "as" или оператора прямого приведения, чтобы устранить избыточную команду isint.</Issue>
+             <Issue Name="Parameter" Certainty="95" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="Common.cs" Line="185">Параметр 'element' приведен к типу 'TextBox' несколько раз в методе 'Common.ElementTextChanged(object, string, string)'. Сохраните в кэш-памяти результат оператора "as" или оператора прямого приведения, чтобы устранить избыточную команду isint.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetImageForPath(System.String,System.Boolean)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="Common.cs" Line="139">Параметр "this" ("Me" в Visual Basic) никогда не используется в 'Common.GetImageForPath(string, bool)'. Пометьте член как static (или Shared в среде Visual Basic) либо используйте "this" или "Me" в теле метода или хотя бы в одном методе доступа к свойству.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#imgLock" Kind="Field" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning">Вероятно, поле 'Common.imgLock' нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#IsEmailValid(System.String)" Kind="Method" Static="False" Accessibility="Assembly" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="CriticalError" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="Common.cs" Line="61">Измените 'Common.IsEmailValid(string)' так, чтобы перехватывались более специфические, чем 'Exception', исключения, либо обеспечьте повторное порождение исключения.</Issue>
+            </Message>
+            <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="Common.cs" Line="44">Параметр "this" ("Me" в Visual Basic) никогда не используется в 'Common.IsEmailValid(string)'. Пометьте член как static (или Shared в среде Visual Basic) либо используйте "this" или "Me" в теле метода или хотя бы в одном методе доступа к свойству.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#IsImageForSiteExisting(System.String)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="Common.cs" Line="95">Параметр "this" ("Me" в Visual Basic) никогда не используется в 'Common.IsImageForSiteExisting(string)'. Пометьте член как static (или Shared в среде Visual Basic) либо используйте "this" или "Me" в теле метода или хотя бы в одном методе доступа к свойству.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#IsUrlValid(System.String,System.UriKind)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="Common.cs" Line="76">Параметр "this" ("Me" в Visual Basic) никогда не используется в 'Common.IsUrlValid(string, UriKind)'. Пометьте член как static (или Shared в среде Visual Basic) либо используйте "this" или "Me" в теле метода или хотя бы в одном методе доступа к свойству.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ReturnElement(System.Object)" Kind="Method" Static="False" Accessibility="Assembly" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="Common.cs" Line="30">Параметр "this" ("Me" в Visual Basic) никогда не используется в 'Common.ReturnElement(object)'. Пометьте член как static (или Shared в среде Visual Basic) либо используйте "this" или "Me" в теле метода или хотя бы в одном методе доступа к свойству.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ReturnImageIcon(System.String)" Kind="Method" Static="False" Accessibility="Assembly" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="Common.cs" Line="267">Параметр "this" ("Me" в Visual Basic) никогда не используется в 'Common.ReturnImageIcon(string)'. Пометьте член как static (или Shared в среде Visual Basic) либо используйте "this" или "Me" в теле метода или хотя бы в одном методе доступа к свойству.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#TimeDiffFromNow(System.DateTime,System.String&amp;)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="Common.cs" Line="313">Параметр "this" ("Me" в Visual Basic) никогда не используется в 'Common.TimeDiffFromNow(DateTime, out string)'. Пометьте член как static (или Shared в среде Visual Basic) либо используйте "this" или "Me" в теле метода или хотя бы в одном методе доступа к свойству.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#TimeDiffToDate(System.DateTime,System.String&amp;)" Kind="Method" Static="False" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+             <Issue Certainty="95" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="Common.cs" Line="272">Параметр "this" ("Me" в Visual Basic) никогда не используется в 'Common.TimeDiffToDate(DateTime, out string)'. Пометьте член как static (или Shared в среде Visual Basic) либо используйте "this" или "Me" в теле метода или хотя бы в одном методе доступа к свойству.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="DefaultProperties" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#AlertBackgroundcolor()" Kind="Method" Static="True" Accessibility="Assembly" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="DefaultProperties.cs" Line="308">Возможно, у 'DefaultProperties.AlertBackgroundcolor()' нет предшествующих открытых или защищенных вызывающих.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#AlertBorderStrokecolor(System.String)" Kind="Method" Static="True" Accessibility="Assembly" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="DefaultProperties.cs" Line="317">Возможно, у 'DefaultProperties.AlertBorderStrokecolor(string)' нет предшествующих открытых или защищенных вызывающих.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#CurrentImageDirectory" Kind="Property" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Accessors>
+            <Accessor Name="#get_CurrentImageDirectory()" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="False">
+             <Messages>
+              <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+               <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="DefaultProperties.cs" Line="178">Возможно, у 'DefaultProperties.CurrentImageDirectory.get()' нет предшествующих открытых или защищенных вызывающих.</Issue>
+              </Message>
+             </Messages>
+            </Accessor>
+           </Accessors>
+          </Member>
+          <Member Name="#DefaultTextForegroundColor()" Kind="Method" Static="True" Accessibility="Assembly" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="DefaultProperties.cs" Line="345">Возможно, у 'DefaultProperties.DefaultTextForegroundColor()' нет предшествующих открытых или защищенных вызывающих.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#GetPIEventTypeBySecureItemType(System.String)" Kind="Method" Static="True" Accessibility="Public" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="DefaultProperties.cs" Line="412">Возможно, у 'DefaultProperties.GetPIEventTypeBySecureItemType(string)' нет предшествующих открытых или защищенных вызывающих.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ReturnEllipsesColor(System.Int32)" Kind="Method" Static="True" Accessibility="Assembly" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="DefaultProperties.cs" Line="326">Возможно, у 'DefaultProperties.ReturnEllipsesColor(int)' нет предшествующих открытых или защищенных вызывающих.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ReturnFontFamily(System.String)" Kind="Method" Static="True" Accessibility="Assembly" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="DefaultProperties.cs" Line="397">Возможно, у 'DefaultProperties.ReturnFontFamily(string)' нет предшествующих открытых или защищенных вызывающих.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ReturnFontWeight(System.String)" Kind="Method" Static="True" Accessibility="Assembly" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="DefaultProperties.cs" Line="407">Возможно, у 'DefaultProperties.ReturnFontWeight(string)' нет предшествующих открытых или защищенных вызывающих.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ReturnImage(System.String)" Kind="Method" Static="True" Accessibility="Assembly" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="DefaultProperties.cs" Line="387">Возможно, у 'DefaultProperties.ReturnImage(string)' нет предшествующих открытых или защищенных вызывающих.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ReturnString(System.String)" Kind="Method" Static="True" Accessibility="Assembly" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="DefaultProperties.cs" Line="378">Возможно, у 'DefaultProperties.ReturnString(string)' нет предшествующих открытых или защищенных вызывающих.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#ReturnTextForegroundColor(System.String)" Kind="Method" Static="True" Accessibility="Assembly" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="DefaultProperties.cs" Line="350">Возможно, у 'DefaultProperties.ReturnTextForegroundColor(string)' нет предшествующих открытых или защищенных вызывающих.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#SearchBoxGridBackgroundColor(System.Int32)" Kind="Method" Static="True" Accessibility="Assembly" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="DefaultProperties.cs" Line="359">Возможно, у 'DefaultProperties.SearchBoxGridBackgroundColor(int)' нет предшествующих открытых или защищенных вызывающих.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+          <Member Name="#TransparentColor()" Kind="Method" Static="True" Accessibility="Assembly" ExternallyVisible="False">
+           <Messages>
+            <Message TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+             <Issue Certainty="75" Level="Warning" Path="C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\CommonComponents\Helpers" File="DefaultProperties.cs" Line="299">Возможно, у 'DefaultProperties.TransparentColor()' нет предшествующих открытых или защищенных вызывающих.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="FindCommandParameters" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Messages>
+          <Message TypeName="AvoidUninstantiatedInternalClasses" Category="Microsoft.Performance" CheckId="CA1812" Status="Active" Created="2020-05-26 13:22:41Z" FixCategory="NonBreaking">
+           <Issue Certainty="75" Level="Warning">'FindCommandParameters' является внутренним классом, экземпляр которого никогда явно не создается. Если это так, удалите код из сборки. Если этот класс должен содержать только статические методы, попробуйте добавить частный конструктор, чтобы компилятор не создавал заданный по умолчанию конструктор.</Issue>
+          </Message>
+         </Messages>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+ </Targets>
+ <Rules>
+  <Rule TypeName="AvoidUncalledPrivateCode" Category="Microsoft.Performance" CheckId="CA1811">
+   <Name>Избегайте невызываемого частного кода</Name>
+   <Description>Имеется невызываемый код, не видимый извне и не являющийся известной точкой входа во время выполнения. Если это нарушение выведено ошибочно, отправьте отчет об ошибке в группу анализа кода Visual Studio.</Description>
+   <Resolution Name="Default">Возможно, у {0} нет предшествующих открытых или защищенных вызывающих.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182264.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="performancerules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="AvoidUninstantiatedInternalClasses" Category="Microsoft.Performance" CheckId="CA1812">
+   <Name>Избегайте неиспользуемых внутренних классов</Name>
+   <Description>Обнаружен внутренний класс, экземпляр которого, вероятно, никогда не создавался. Это правило пытается определить создание с помощью позднего связывания и создает ложное срабатывание, если экземпляры типа создаются только таким образом (например, посредством Activator.CreateInstance или путем передачи типа в качестве аргумента в конструктор TypeConverter).</Description>
+   <Resolution Name="Default">{0} является внутренним классом, экземпляр которого никогда явно не создается. Если это так, удалите код из сборки. Если этот класс должен содержать только статические методы, попробуйте добавить частный конструктор, чтобы компилятор не создавал заданный по умолчанию конструктор.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182265.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="performancerules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="AvoidUnusedPrivateFields" Category="Microsoft.Performance" CheckId="CA1823">
+   <Name>Избегайте неиспользуемых частных полей</Name>
+   <Description>В сборке обнаружены частные поля, к которым не осуществляется доступ. Если это сообщение об этом нарушении выводится по ошибке, отправьте отчет о нем в группу анализа кода Visual Studio.</Description>
+   <Resolution Name="Default">Вероятно, поле {0} нигде не используется, или ему только присваивается значение. Используйте это поле или удалите его.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms245042.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="performancerules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="DoNotCastUnnecessarily" Category="Microsoft.Performance" CheckId="CA1800">
+   <Name>Не делайте лишних приведений</Name>
+   <Description>Не допускайте двойных приведений, где только возможно, так как это приводит к издержкам.</Description>
+   <Resolution Name="Parameter">Параметр {0} приведен к типу {1} несколько раз в методе {2}. Сохраните в кэш-памяти результат оператора "as" или оператора прямого приведения, чтобы устранить избыточную команду {3}.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182271.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Warning</MessageLevel>
+   <File Name="performancerules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="DoNotCatchGeneralExceptionTypes" Category="Microsoft.Design" CheckId="CA1031">
+   <Name>Не перехватывайте типы общих исключений</Name>
+   <Description>Не следует перехватывать исключения типа Exception или SystemException. Перехватывание исключений общего назначения может скрыть от пользователя библиотеки ошибки времени выполнения и осложнить процесс отладки. Перехватывать следует только те исключения, которые вы можете правильно обработать.</Description>
+   <Resolution Name="Default">Измените {0} так, чтобы перехватывались более специфические, чем {1}, исключения, либо обеспечьте повторное порождение исключения.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms182137.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">CriticalError</MessageLevel>
+   <File Name="designrules.dll" Version="15.0.0.0" />
+  </Rule>
+  <Rule TypeName="MarkMembersAsStatic" Category="Microsoft.Performance" CheckId="CA1822">
+   <Name>Пометьте члены как статические</Name>
+   <Description>Методы, которые не обращаются к данным экземпляров и не вызывают методы экземпляров, могут быть определены как статические (Shared в Visual Basic). После этого компилятор создаст невиртуальные места для вызова этих членов, что предотвратит во время выполнения проверку для каждого вызова, что текущий указатель на объект не имеет значения NULL. Это может привести к ощутимому росту производительности для требовательных к производительности кодов. В некоторых случаях ошибка доступа к текущему экземпляру объекта указывает на проблемы с правильностью кода.</Description>
+   <Resolution Name="Default">Параметр "this" ("Me" в Visual Basic) никогда не используется в {0}. Пометьте член как static (или Shared в среде Visual Basic) либо используйте "this" или "Me" в теле метода или хотя бы в одном методе доступа к свойству.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/ms245046.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Warning</MessageLevel>
+   <File Name="performancerules.dll" Version="15.0.0.0" />
+  </Rule>
+ </Rules>
+ <Localized>
+  <String Key="Category">Категория</String>
+  <String Key="Certainty">Достоверность</String>
+  <String Key="CollapseAll">Свернуть все</String>
+  <String Key="CheckId">ИД проверки</String>
+  <String Key="Error">Ошибка</String>
+  <String Key="Errors">ошибки</String>
+  <String Key="ExpandAll">Развернуть все</String>
+  <String Key="Help">Справка</String>
+  <String Key="Line">Строка</String>
+  <String Key="Messages">сообщения</String>
+  <String Key="LocationNotStoredInPdb">[расположение не сохранено в PDB]</String>
+  <String Key="Project">Проект</String>
+  <String Key="Resolution">Разрешение</String>
+  <String Key="Rule">Правило</String>
+  <String Key="RuleFile">Файл правил</String>
+  <String Key="RuleDescription">Описание правила</String>
+  <String Key="Source">Источник</String>
+  <String Key="Status">Состояние</String>
+  <String Key="Target">Цель</String>
+  <String Key="Warning">Предупреждение</String>
+  <String Key="Warnings">предупреждения</String>
+  <String Key="ReportTitle">Отчет по анализу кода</String>
+ </Localized>
+</FxCopReport>

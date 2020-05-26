@@ -1,0 +1,87 @@
+﻿<Window x:Class="PasswordBoss.Views.ApplicationUpdates.UpdateAvailable"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:cc="clr-namespace:QuickZip.UserControls;assembly=theme"
+             mc:Ignorable="d" 
+             ResizeMode="NoResize"
+             Title="Password Boss" Background="Transparent"
+             AllowsTransparency="True" WindowStyle="None"
+             ShowInTaskbar="False" Topmost="True"
+             Width="719" Height="326" WindowStartupLocation="CenterScreen"
+             Name="winUpdateAvailable"
+             d:DesignHeight="350" d:DesignWidth="800">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+    </Window.Resources>
+    <Grid>
+        <cc:ConfirmationPopupWindow LogoWithTextVisibility="Visible"
+                                LogoVisibility="Collapsed"
+                                ConfirmAction="{DynamicResource UpdateAvailableUpdateNow}"
+                                Command="{Binding UpdateNowCommand}" 
+                                CommandParameter="{Binding ElementName=winUpdateAvailable}"
+                                AdditionalAction="{DynamicResource UpdateAvailableUpdateTonight}"
+                                AdditionalActionVisibility="Visible"
+                                AdditionalCommand="{Binding UpdateLaterCommand}"
+                                AdditionalCommandParameter="{Binding ElementName=winUpdateAvailable}">
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="40" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Border Visibility="{Binding ShowIcon, Converter={StaticResource BoolToVisibility}}" Grid.Column="1" Grid.Row="1" BorderBrush="#CD071E" BorderThickness="3" CornerRadius="66" Width="70" Height="70">
+                    <Image Source="{DynamicResource imgExclamation}" Height="50" Width="50"></Image>
+                </Border>
+                <TextBlock Grid.Column="2" Grid.Row="0" Margin="0,20,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="22" FontWeight="SemiBold" FontFamily="{DynamicResource ProximaRegular}" Text="{Binding HeaderText}">
+                    <LineBreak></LineBreak>
+                </TextBlock>
+                <TextBlock LineHeight="10" Margin="0,20,0,0" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" TextWrapping="Wrap" FontFamily="{DynamicResource ProximaRegular}" FontSize="16">
+                <Run FontWeight="Bold" Text="{Binding BoldBodyText}" />
+                <Run Text="{Binding RegularBodyText}" />
+                </TextBlock>
+            </Grid>
+        </cc:ConfirmationPopupWindow>
+        <cc:ConfirmationPopupWindow LogoWithTextVisibility="Visible"
+                                LogoVisibility="Collapsed"
+                                ConfirmAction="{DynamicResource UpdateAvailableUpdateNow}"
+                                Command="{Binding UpdateNowCommand}" 
+                                CommandParameter="{Binding ElementName=winUpdateAvailable}"
+                                AdditionalAction="{DynamicResource UpdateAvailableUpdateTonight}"
+                                AdditionalActionVisibility="Visible"
+                                AdditionalCommand="{Binding UpdateLaterCommand}"
+                                AdditionalCommandParameter="{Binding ElementName=winUpdateAvailable}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="40" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="50" />
+                </Grid.RowDefinitions>
+                <Border Margin="0,0,30,0" Visibility="{Binding ShowIcon, Converter={StaticResource BoolToVisibility}}" Grid.Column="1" Grid.Row="1" BorderBrush="#CD071E" BorderThickness="3" CornerRadius="66" Width="70" Height="70">
+                    <Image Source="{DynamicResource imgExclamation}" Height="50" Width="50"></Image>
+                </Border>
+                <TextBlock Grid.Column="2" Grid.Row="0" Margin="0,20,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="22" FontWeight="SemiBold" FontFamily="{DynamicResource ProximaRegular}" Text="{Binding HeaderText}" >
+                    <LineBreak></LineBreak>
+                </TextBlock> 
+                <TextBlock LineHeight="10" Margin="0,20,0,0" Grid.Column="2" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Stretch" TextWrapping="Wrap" FontFamily="{DynamicResource ProximaRegular}" FontSize="16">
+                <Run FontWeight="Bold" Text="{Binding BoldBodyText}" />
+                <Run Text="{Binding RegularBodyText}" />
+                </TextBlock>
+            </Grid>
+        </cc:ConfirmationPopupWindow>
+    </Grid>
+</Window>

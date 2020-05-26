@@ -1,0 +1,929 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EC4B1AC3-9039-434F-8FA1-3A5149336A84}</ProjectGuid>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PasswordBoss</RootNamespace>
+    <AssemblyName>image</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>PBSNameKeyDev.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'ProductionRelease|x86'">
+    <OutputPath>bin\x86\ProductionRelease\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Test\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Production|x86'">
+    <OutputPath>bin\x86\Production\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Staging|x86'">
+    <OutputPath>bin\x86\Staging\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="ImageResource.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Add.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\add_HOVER.png" />
+    <Resource Include="images\arrow.png" />
+    <Resource Include="images\arrow_right.png" />
+    <Resource Include="images\arrow1.png" />
+    <Resource Include="images\arrow2.png" />
+    <Resource Include="images\arrow3.png" />
+    <Resource Include="images\arrow4.png" />
+    <Resource Include="images\arrow5.png" />
+    <Resource Include="images\arrow6.png" />
+    <Resource Include="images\arrw_hover.png" />
+    <Resource Include="images\backup.png" />
+    <Resource Include="images\backupnow.png" />
+    <Resource Include="images\blackshare.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\check_box.png" />
+    <Resource Include="images\check_box_sqr.png" />
+    <Resource Include="images\close.png" />
+    <Resource Include="images\close_alert.png" />
+    <Resource Include="images\close1.png" />
+    <Resource Include="images\Closed.png" />
+    <Resource Include="images\closed_hover.png" />
+    <Resource Include="images\closed_pop.png" />
+    <Resource Include="images\completed_hover.png" />
+    <Resource Include="images\digwal.png" />
+    <Resource Include="images\down-arrow.png" />
+    <Resource Include="images\down_arrow.png" />
+    <Resource Include="images\downarrow.png" />
+    <Resource Include="images\edit_normal.png" />
+    <Resource Include="images\expanderclose.png" />
+    <Resource Include="images\expanderopen.png" />
+    <Resource Include="images\eye.png" />
+    <Resource Include="images\eye_close.png" />
+    <Resource Include="images\favicon.ico" />
+    <Resource Include="images\file.png" />
+    <Resource Include="images\file_hover.png" />
+    <Resource Include="images\fillfav.png" />
+    <Resource Include="images\gear.png" />
+    <Resource Include="images\gear_hover.png" />
+    <Resource Include="images\generator.png" />
+    <Resource Include="images\grid.png" />
+    <Resource Include="images\help.png" />
+    <Resource Include="images\help_HOVER.png" />
+    <Resource Include="images\Icon-PasswordGenerator.png" />
+    <Resource Include="images\Icon-PasswordGenerator_HOVER.png" />
+    <Resource Include="images\Icon-SecureBrowser.png" />
+    <Resource Include="images\Icon-SecureBrowser_HOVER.png" />
+    <Resource Include="images\Icon-Setting.png" />
+    <Resource Include="images\icon.ico" />
+    <Resource Include="images\icon.png" />
+    <Resource Include="images\icon_hover.png" />
+    <Resource Include="images\info.png" />
+    <Resource Include="images\LanguageDownArrow.png" />
+    <Resource Include="images\list.png" />
+    <Resource Include="images\login_bg.png" />
+    <Resource Include="images\LoginBackground.png" />
+    <Resource Include="images\LoginLogoGreen.png" />
+    <Resource Include="images\LoginLogoWhite.png" />
+    <Resource Include="images\logintick.png" />
+    <Resource Include="images\loginuntick.png" />
+    <Resource Include="images\logo.png" />
+    <Resource Include="images\logo2.png" />
+    <Resource Include="images\logo3.png" />
+    <Resource Include="images\max.png" />
+    <Resource Include="images\max1.png" />
+    <Resource Include="images\maximise.png" />
+    <Resource Include="images\maximise_HOVER.png" />
+    <Resource Include="images\min.png" />
+    <Resource Include="images\min1.png" />
+    <Resource Include="images\minimise.png" />
+    <Resource Include="images\minimise_HOVER.png" />
+    <Resource Include="images\next.png" />
+    <Resource Include="images\nosync.png" />
+    <Resource Include="images\Notification.png" />
+    <Resource Include="images\passwordboss_logo.png" />
+    <Resource Include="images\pinfo.png" />
+    <Resource Include="images\plus.png" />
+    <Resource Include="images\prev.png" />
+    <Resource Include="images\search.png" />
+    <Resource Include="images\setting.png" />
+    <Resource Include="images\setting_02.png" />
+    <Resource Include="images\setting_hover.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\setting1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="images\share.png" />
+    <Resource Include="images\share_HOVER.png" />
+    <Resource Include="images\share2.png" />
+    <Resource Include="images\share2_hover.png" />
+    <Resource Include="images\shareflag.png" />
+    <Resource Include="images\star.png" />
+    <Resource Include="images\star_HOVER.png" />
+    <Resource Include="images\star2.png" />
+    <Resource Include="images\star2_hover.png" />
+    <Resource Include="images\synctick.png" />
+    <Resource Include="images\tabcopy.png" />
+    <Resource Include="images\tabcopy2.png" />
+    <Resource Include="images\tabeye.png" />
+    <Resource Include="images\tabinfo.png" />
+    <Resource Include="images\tabopen.png" />
+    <Resource Include="images\tabpen.png" />
+    <Resource Include="images\tabsett2.png" />
+    <Resource Include="images\tabsett3.png" />
+    <Resource Include="images\tabsetting.png" />
+    <Resource Include="images\tabshare.png" />
+    <Resource Include="images\tabshare2.png" />
+    <Resource Include="images\tick.png" />
+    <Resource Include="images\trash.png" />
+    <Resource Include="images\untick.png" />
+    <Resource Include="images\view_grid.png" />
+    <Resource Include="images\view_grid_HOVER.png" />
+    <Resource Include="images\view_list.png" />
+    <Resource Include="images\view_list_HOVER.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\home.png" />
+    <Resource Include="images\pre.png" />
+    <Resource Include="images\print.png" />
+    <Resource Include="images\refresh.png" />
+    <Resource Include="images\star_y.png" />
+    <Resource Include="images\x_close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\browser_star.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Collaps-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\accountsetting.png" />
+    <Resource Include="images\accountsettinggreen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\arrow_01.png" />
+    <Resource Include="images\arrow_02.png" />
+    <Resource Include="images\securityalert_g.png" />
+    <Resource Include="images\securityalert_r.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\login_hide_eye.png" />
+    <Resource Include="images\login_show_eye.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PBSNameKeyDev.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\in.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\company_ic.png" />
+    <Resource Include="images\drivers_license_ic.png" />
+    <Resource Include="images\email_ic.png" />
+    <Resource Include="images\member_id_ic.png" />
+    <Resource Include="images\name_ic.png" />
+    <Resource Include="images\passport_ic.png" />
+    <Resource Include="images\phone_ic.png" />
+    <Resource Include="images\social_ic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\address_ic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\banking_account_popup_ic.png" />
+    <Resource Include="images\credit_card_ic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\paypal_03.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Paypal_green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\eye_03.png" />
+    <Resource Include="images\eye_03_closed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\new_tab_ic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Import_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\crome_ic.png" />
+    <Resource Include="images\Explore_ic.png" />
+    <Resource Include="images\mozilla_ic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\add_password_ic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\crome_ic_small.png" />
+    <Resource Include="images\explore_ic_small.png" />
+    <Resource Include="images\mozilla_ic_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\tik.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\WizardLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\close_02.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\BrowserExtensionBakground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\chrome_logo.png" />
+    <Resource Include="images\explorer_logo.png" />
+    <Resource Include="images\mozilla_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Alert_.png" />
+    <Resource Include="images\popup_bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\PersonalInfoBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\dropbox_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\facebook_icon.png" />
+    <Resource Include="images\Message_icon.png" />
+    <Resource Include="images\twitter_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\tick2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Premiumphoto.png" />
+    <Resource Include="images\PremiumTick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\WizardClose.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\passwordboss_logo_green_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\illustration-data.png" />
+    <Resource Include="images\illustration-forget.png" />
+    <Resource Include="images\illustration-premium.png" />
+    <Resource Include="images\illustration-safe.png" />
+    <Resource Include="images\illustration-share.png" />
+    <Resource Include="images\illustration-simple.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\alert_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\msync.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\walleticon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\key_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\iconBackupYourAccount.png" />
+    <Resource Include="images\iconSecureSharing.png" />
+    <Resource Include="images\iconSyncAcrossDevices.png" />
+    <Resource Include="images\iconTechSupport.png" />
+    <Resource Include="images\iconTheftProtection.png" />
+    <Resource Include="images\iconTwoStepAuthentication.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\pBossLogoBig.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\forward.png" />
+    <Resource Include="images\qmark.png" />
+    <Resource Include="images\red_arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\search2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\info_lg_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\stop_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\warning_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\pre_black.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\130x65_Icons_address_c.png" />
+    <Resource Include="images\130x65_Icons_bank_c.png" />
+    <Resource Include="images\130x65_Icons_company_c.png" />
+    <Resource Include="images\130x65_Icons_driverslicense_c.png" />
+    <Resource Include="images\130x65_Icons_email_c.png" />
+    <Resource Include="images\130x65_Icons_member_c.png" />
+    <Resource Include="images\130x65_Icons_names_c.png" />
+    <Resource Include="images\130x65_Icons_passport_c.png" />
+    <Resource Include="images\130x65_Icons_paypal_c.png" />
+    <Resource Include="images\130x65_Icons_phone_c.png" />
+    <Resource Include="images\130x65_Icons_securenotes_c.png" />
+    <Resource Include="images\130x65_Icons_socialsecurity_c.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\TwoStepVerificationInitialScreen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\LanguageUpArrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\InstallExtension\CH.png" />
+    <Resource Include="images\InstallExtension\FF.png" />
+    <Resource Include="images\InstallExtension\IE.png" />
+    <Resource Include="images\InstallExtension\OWL.png" />
+    <Resource Include="images\InstallExtension\plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Lock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Copy.png" />
+    <Resource Include="images\Cut.png" />
+    <Resource Include="images\Paste.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\About.png" />
+    <Resource Include="images\Help-3.png" />
+    <Resource Include="images\Wizard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\pencilSmall.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\trashSmall.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\135x65_Icons_key_c.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\addCategoryIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Icon-PasswordGenerator2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\arrow_hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\addCategoryIconHover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Icon-PasswordGenerator2Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\135x65_Icons_owl_g.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\backupnow_green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\BrowserExtensions\x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\BrowserExtensions\Person_green2.png" />
+    <Resource Include="images\BrowserExtensions\Person_white2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\help_login.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\PBossHeader.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\PBossHeaderSmall.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\LogoSmall.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\tik_g.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\go_mobile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\lock-green.png" />
+    <Resource Include="images\lock-grey.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\calendar.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\login_spinner.GIF" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\clear_date.png" />
+    <Resource Include="images\clear_date_hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\secure_notes_ic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\passwordboss_logo_white_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\amazon_ic.png" />
+    <Resource Include="images\facebook_logo.png" />
+    <Resource Include="images\google_ic.png" />
+    <Resource Include="images\hulu_logo.png" />
+    <Resource Include="images\linked_in_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\address_ic_hover.png" />
+    <Resource Include="images\banking_account_popup_ic_hover.png" />
+    <Resource Include="images\company_ic_hover.png" />
+    <Resource Include="images\credit_card_ic_hover.png" />
+    <Resource Include="images\Drivers_license_ic_hover.png" />
+    <Resource Include="images\email_ic_hover.png" />
+    <Resource Include="images\member_id_ic_hover.png" />
+    <Resource Include="images\name_ic_hover.png" />
+    <Resource Include="images\Passport_ic_hover.png" />
+    <Resource Include="images\phone_ic_hover.png" />
+    <Resource Include="images\social_ic_hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\exclamation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\arrow_green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Icon-DigitalWallet.png" />
+    <Resource Include="images\Icon-DigitalWallet_HOVER.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Icon-PasswordVault.png" />
+    <Resource Include="images\Icon-PasswordVault_HOVER.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Icon-PersonalInfo.png" />
+    <Resource Include="images\Icon-PersonalInfo_HOVER.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Icon-ShareCenter.png" />
+    <Resource Include="images\Icon-ShareCenter_HOVER.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\130x65_Icons_credit_card_c.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\information_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\pc_mag.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\NewUserOnBoardingProc_3a_slide1.png" />
+    <Resource Include="images\NewUserOnBoardingProc_3a_slide2.png" />
+    <Resource Include="images\NewUserOnBoardingProc_3a_slide3.png" />
+    <Resource Include="images\NewUserOnBoardingProc_3a_slide4.png" />
+    <Resource Include="images\NewUserOnBoardingProc_3a_slide5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\orangestars.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\arrowP2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\greencheck.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\redx.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\PB-Icon-64x64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\close_02_hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\BrowserExtensions\chrome-42x42.png" />
+    <Resource Include="images\BrowserExtensions\firefox-42x42.png" />
+    <Resource Include="images\BrowserExtensions\ie-42x42.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\BrowserExtensions\browser-button-chrome-example.png" />
+    <Resource Include="images\BrowserExtensions\browser-button-firefox-example.png" />
+    <Resource Include="images\BrowserExtensions\browser-button-ie-example.png" />
+    <Resource Include="images\up_darkblue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\down_darkblue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\free-support-blue-50x50.png" />
+    <Resource Include="images\free-updates-blue-49x50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\lock-blue-43x50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\startup-scan-owl-behind.png" />
+    <Resource Include="images\startup-scan.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\startup-scan-progress-bar.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\warning-orange-22x22.png" />
+    <Resource Include="images\warning-red-22x23.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\shield-orange-16x18.png" />
+    <Resource Include="images\shield-orange-44x50.png" />
+    <Resource Include="images\shield-red-16x18.png" />
+    <Resource Include="images\shield-red-44x50.png" />
+    <Resource Include="images\shield-yellow-16x18.png" />
+    <Resource Include="images\shield-yellow-44x50.png" />
+    <Resource Include="images\warning-red-41x44.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\digital-wallet-grey-20x20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\emergency-grey-20x20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\gear-grey-20x20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\identity-grey-24x20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\lock-grey-17x20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\people-grey-24x20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\secure-browser-grey-22x20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\secure-note-grey-17x20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\warning_icon_red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\arrow-white-18x18.png" />
+    <Resource Include="images\digital-wallet-green-20x20.png" />
+    <Resource Include="images\emergency-green-20x20.png" />
+    <Resource Include="images\gear-green-20x20.png" />
+    <Resource Include="images\identity-green-24x20.png" />
+    <Resource Include="images\lock-green-17x20.png" />
+    <Resource Include="images\pb-logo-grey-114x32.png" />
+    <Resource Include="images\people-green-24x20.png" />
+    <Resource Include="images\person-green-16x20.png" />
+    <Resource Include="images\secure-browser-green-22x20.png" />
+    <Resource Include="images\secure-note-green-17x20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\person-blue-48x50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\tile_view_green16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\tile_view_grey16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\trash-20x20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\star_green_21x20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\search_grey16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\plus_thin_white14x14.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\person_green_16x20.png" />
+    <Resource Include="images\person_grey_16x20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\open_site_green_20x20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\menu_collapse_white_18x19.png" />
+    <Resource Include="images\menu_expand_white18x19.png" />
+    <Resource Include="images\menu_green.png" />
+    <Resource Include="images\menu_grey.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\list_view_green20x16.png" />
+    <Resource Include="images\list_view_grey20x16.png" />
+    <Resource Include="images\lock_ic_old.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\expand_all_grey14x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\delete_grey18x18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\collapse_all_grey14x16.png" />
+    <Resource Include="images\collapse_menu_grey_25x20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\bell_grey_22x20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\alert_grey_22x20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\backup-disabled-93x70.png" />
+    <Resource Include="images\backup-enabled-93x70.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\android-blue-25x30.png" />
+    <Resource Include="images\apple-blue-30x30.png" />
+    <Resource Include="images\windows-blue-30x30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\plus_thin_blue14x14.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\AddItemIcons\address-white.png" />
+    <Resource Include="images\AddItemIcons\alarm-white.png" />
+    <Resource Include="images\AddItemIcons\app-white.png" />
+    <Resource Include="images\AddItemIcons\bank-white.png" />
+    <Resource Include="images\AddItemIcons\company-white.png" />
+    <Resource Include="images\AddItemIcons\credit-card-white.png" />
+    <Resource Include="images\AddItemIcons\database-white.png" />
+    <Resource Include="images\AddItemIcons\digital-wallet-green-50x50.png" />
+    <Resource Include="images\AddItemIcons\drivers-license-white.png" />
+    <Resource Include="images\AddItemIcons\email-account-white.png" />
+    <Resource Include="images\AddItemIcons\email-white.png" />
+    <Resource Include="images\AddItemIcons\emergency-green-50x50.png" />
+    <Resource Include="images\AddItemIcons\estate-white.png" />
+    <Resource Include="images\AddItemIcons\folder-green.png" />
+    <Resource Include="images\AddItemIcons\frequent-flyer-white.png" />
+    <Resource Include="images\AddItemIcons\health-insurance-white.png" />
+    <Resource Include="images\AddItemIcons\hotel-white.png" />
+    <Resource Include="images\AddItemIcons\identity-green-50x50.png" />
+    <Resource Include="images\AddItemIcons\instant-messenger-white.png" />
+    <Resource Include="images\AddItemIcons\insurance-white.png" />
+    <Resource Include="images\AddItemIcons\lock-green-50x50.png" />
+    <Resource Include="images\AddItemIcons\member-id-white.png" />
+    <Resource Include="images\AddItemIcons\note-white.png" />
+    <Resource Include="images\AddItemIcons\passport-white.png" />
+    <Resource Include="images\AddItemIcons\person-white.png" />
+    <Resource Include="images\AddItemIcons\personal-info-green-50x50.png" />
+    <Resource Include="images\AddItemIcons\prescription-white.png" />
+    <Resource Include="images\AddItemIcons\secure-note-green-43x50.png" />
+    <Resource Include="images\AddItemIcons\secure-note-white-v2.png" />
+    <Resource Include="images\AddItemIcons\server-white.png" />
+    <Resource Include="images\AddItemIcons\share-green-50x50.png" />
+    <Resource Include="images\AddItemIcons\social-security-white.png" />
+    <Resource Include="images\AddItemIcons\software-white.png" />
+    <Resource Include="images\AddItemIcons\ssh-white.png" />
+    <Resource Include="images\AddItemIcons\telephone-white.png" />
+    <Resource Include="images\AddItemIcons\website-white.png" />
+    <Resource Include="images\AddItemIcons\wifi-white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\plus_thin_red20x20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\note-green-17x20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\note-grey.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\color-picker-16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\note-grey-15x18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\MenuIcons\gear-green-16x16.png" />
+    <Resource Include="images\MenuIcons\gear-grey-16x16.png" />
+    <Resource Include="images\MenuIcons\open-site-green-16x16.png" />
+    <Resource Include="images\MenuIcons\open-site-grey-16x16.png" />
+    <Resource Include="images\MenuIcons\password-star-green-26x16.png" />
+    <Resource Include="images\MenuIcons\pencil-green-16x16.png" />
+    <Resource Include="images\MenuIcons\pencil-grey-16x16.png" />
+    <Resource Include="images\MenuIcons\people-green-20x16.png" />
+    <Resource Include="images\MenuIcons\people-grey-19x16.png" />
+    <Resource Include="images\MenuIcons\person-green-12x16.png" />
+    <Resource Include="images\MenuIcons\person-grey-12x16.png" />
+    <Resource Include="images\MenuIcons\trash-green-13x16.png" />
+    <Resource Include="images\MenuIcons\trash-grey-13x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\MenuIcons\password-star-grey-26x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\history-grey-19x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\open-site-white-41x41.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\menu_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\open-site-green-41x41.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\copy-grey-13x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\folder-grey.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\CreditCards\amex-white-130x65.png" />
+    <Resource Include="images\CreditCards\creditcard-other-white-130x65.png" />
+    <Resource Include="images\CreditCards\discover-white-130x65.png" />
+    <Resource Include="images\CreditCards\jcb-white-130x65.png" />
+    <Resource Include="images\CreditCards\mastercard-white-130x65.png" />
+    <Resource Include="images\CreditCards\visa-white-130x65.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\InstallExtension\OP.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\opera-screenshot.png" />
+    <Resource Include="images\opera-small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\digital-wallet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\personal-info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\secure-notes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\question-mark-grey-20x20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\BrowserExtensions\logout-grey-16x18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\BrowserExtensions\password-generator-grey-33x20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\BrowserExtensions\help-green-20x20.png" />
+    <Resource Include="images\BrowserExtensions\logout-green-18x20.png" />
+    <Resource Include="images\BrowserExtensions\password-generator-green-33x20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\BrowserExtensions\make-new-password-white-16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\BrowserExtensions\disable-green-20x20.png" />
+    <Resource Include="images\BrowserExtensions\disable-grey-20x20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\BrowserExtensions\address-green-25x35.png" />
+    <Resource Include="images\BrowserExtensions\company-green-41x35.png" />
+    <Resource Include="images\BrowserExtensions\email-green-47x35.png" />
+    <Resource Include="images\BrowserExtensions\person-green-28x35.png" />
+    <Resource Include="images\BrowserExtensions\telephone-green-35x35.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\shared-by-me250x250.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\shared-with-me-250x250.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\shared-icon-30x30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\checkmark-white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\checkmark-green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Icon_GrantERaccess.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\Icon_GetERaccess.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\resend-orange-16x16.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+      call "$(SolutionDir)env\setEnv.cmd" "$(SolutionDir)" "$(Configuration)"
+if %25RENABLED%25==1 ( "%25RPATH%25" -q -targetfile "&lt;AssemblyLocation&gt;\&lt;AssemblyFileName&gt;" -file "$(ProjectDir)$(OutDir)$(TargetFileName)" -snkeypair "%25CERTF%25" -snpassword "%25CERTPASS%25" -spcfile "%25CERTF%25" -pvkpassword "%25CERTPASS%25" -visualstyles 0 -antitamp 1 -control_flow_obfuscation 1 -flow_level 9 -necrobit 1 -obfuscation 0 )
+"%25TOOLSPATH%25Signtool.exe" sign /v /f "%25CERTF%25" /p %25CERTPASS%25 /n %25CERTS%25 /t %25TIMESTMP%25 "$(ProjectDir)$(OutDir)$(TargetFileName)"
+"%25TOOLSPATH%25Signtool.exe" sign /v /f "%25CERTF%25" /p %25CERTPASS%25 /n %25CERTS%25 /tr %25TIME256%25 /fd sha256 /td sha256 /as "$(ProjectDir)$(OutDir)$(TargetFileName)"
+xcopy /y "$(ProjectDir)$(OutDir)$(TargetFileName)" "%25OUTPATH%25plugins\*.*"
+      if $(Configuration)==Debug ( xcopy /y "$(ProjectDir)$(OutDir)*.pdb" "%25OUTPATH%25plugins\*.*" )
+    </PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+      cd "$(SolutionDir)"
+call "..\tools\setVersion$(Configuration).cmd" "$(ProjectDir)Properties\AssemblyInfo.cs"
+</PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

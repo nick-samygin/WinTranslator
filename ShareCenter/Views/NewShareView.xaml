@@ -1,0 +1,82 @@
+﻿<userControls:CustomChildWindow x:Class="PasswordBoss.Views.NewShareView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:userControls="clr-namespace:PasswordBoss.UserControls;assembly=theme"
+             xmlns:converters="clr-namespace:PasswordBoss.Converters"
+             OkButtonCommand="{Binding Path=ShareCommand}"
+             IsWindowMayClose="{Binding Path=MayClose}"
+             CancelCommand="{Binding Path=BackCommand}"
+             MinWidth="400">
+    <userControls:CustomChildWindow.Resources>
+        <converters:BoolToVisibilityInverter x:Key="BoolToVisibilityInverter" />
+    </userControls:CustomChildWindow.Resources>
+
+    <userControls:CustomChildWindow.TitelContent>
+        <StackPanel>
+            <TextBlock  Margin="0 23 0 15" FontFamily="{DynamicResource OBProximaRegular}" Text="{DynamicResource ShareNewSharedItemHeadline}" TextWrapping="Wrap" Foreground="{DynamicResource SettingsTextLableForeground}" FontSize="30"/>
+        </StackPanel>
+    </userControls:CustomChildWindow.TitelContent>
+    <Grid Width="530">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+            
+        <StackPanel Grid.Row="0" Orientation="Vertical" Margin="0,25,0,0">
+            <TextBlock FontFamily="{DynamicResource OBProximaRegular}" FontWeight="SemiBold" FontSize="16"
+                       Text="{DynamicResource NameForTheNewShare}" />
+
+            <userControls:RequiredTextBox MinWidth="300" Text="{Binding Path=ShareName, Mode=TwoWay}" Height="30" BorderBrush="{DynamicResource TextboxBorderbrush}" IsValid="{Binding Path=IsShareNameValid, Mode=TwoWay}"/>
+
+            <TextBlock FontFamily="{DynamicResource OBProximaRegular}" Foreground="{DynamicResource LightGrayTextForegroundColor}" FontSize="12" Margin="0,3,0,0"
+                       Text="{DynamicResource AddShareHint}"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Vertical" Margin="0,25,0,0">
+            <TextBlock FontFamily="{DynamicResource OBProximaRegular}" FontWeight="SemiBold" FontSize="16"
+                       Text="{DynamicResource RecipientEmailAddresses}" />
+
+            <userControls:RequiredTextBox MinWidth="300" Text="{Binding Path=Email, Mode=TwoWay}" Height="30" BorderBrush="{DynamicResource TextboxBorderbrush}" IsValid="{Binding Path=IsEmailValid, Mode=TwoWay}"/>
+
+            <TextBlock FontFamily="{DynamicResource OBProximaRegular}" Foreground="Red" FontSize="12" Margin="0,3,0,0"
+                       Text="{DynamicResource ValidEmailRequest}"
+                       Visibility="{Binding Path=IsEmailValid, Converter={StaticResource BoolToVisibilityInverter}}"/>
+        </StackPanel>
+
+        <Expander Grid.Row="2" Style="{DynamicResource ShareExpanderStyle}" Margin="0,25,0,25">
+            <Expander.Header>
+                <TextBlock Text="{DynamicResource AdvancedSettings}" Margin="5,0,0,0" FontFamily="{DynamicResource OBProximaRegular}" Foreground="{DynamicResource LightGrayTextForegroundColor}" FontSize="12" FontWeight="SemiBold"/>
+            </Expander.Header>
+            <Expander.Content>
+                <Grid Margin="0,5,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="0" Orientation="Vertical" Margin="0,7,0,0">
+                        <TextBlock FontFamily="{DynamicResource OBProximaRegular}" FontWeight="SemiBold" FontSize="16"
+                                   Foreground="{DynamicResource BlackColor}" Text="{DynamicResource MessageToRecipient}" />
+
+                        <TextBox MinWidth="300" Text="{Binding Path=Message}" BorderBrush="{DynamicResource TextboxBorderbrush}" Height="110" Margin="0,5,0,0" />
+                    </StackPanel>
+                    
+                    <StackPanel Grid.Row="1" Orientation="Vertical" Margin="0,15,0,0">
+                        <TextBlock FontFamily="{DynamicResource OBProximaRegular}" FontWeight="SemiBold" FontSize="16"
+                                   Foreground="{DynamicResource BlackColor}"
+                                   Text="{DynamicResource HowLong}" />
+                        <ComboBox HorizontalAlignment="Left" Style="{DynamicResource SettingsComboboxStyle}" Width="200" Height="32" Margin="0,5,0,0" />
+                    </StackPanel>
+
+                    <CheckBox Grid.Row="2" Margin="0,15,0,0">
+                        <CheckBox.Content>
+                            <TextBlock FontFamily="{DynamicResource OBProximaRegular}" FontSize="16" Foreground="{DynamicResource BlackColor}" Text="{DynamicResource PasswordVisibleToRecipientStatement}" />
+                        </CheckBox.Content>
+                    </CheckBox>
+                </Grid>
+            </Expander.Content>
+        </Expander>
+    </Grid>
+</userControls:CustomChildWindow>

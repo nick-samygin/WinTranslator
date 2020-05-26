@@ -1,0 +1,77 @@
+﻿<Window x:Class="PasswordBoss.Views.UserControls.CustomMessageBoxDialog"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+            ResizeMode="NoResize"
+            Title="Password Boss" Background="Transparent"
+             AllowsTransparency="True" WindowStyle="None"
+            WindowStartupLocation="CenterOwner" ShowInTaskbar="False"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+    </Window.Resources>
+    <Grid>
+        <Grid.Background>
+            <SolidColorBrush Color="#000000" Opacity="0.5"/>
+        </Grid.Background>
+        <!--Delete device grid-->
+        <Grid x:Name="MessageBoxGrid" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="300"
+              Background="{DynamicResource WhiteColor}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch">
+                <Grid.RowDefinitions>
+                    <RowDefinition MinHeight="30" />
+                    <RowDefinition />
+                    <RowDefinition MinHeight="10" />
+                    <RowDefinition />
+                    <RowDefinition MinHeight="2" />
+                    <RowDefinition />
+                    <RowDefinition MinHeight="15" />
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" FontSize="18" Margin="20,0,20,0"
+                           Text="{Binding MessageBoxDialogHeaderText}" MaxWidth="300"
+                           Foreground="{DynamicResource TextForegroundcolor}" TextWrapping="Wrap"
+                           HorizontalAlignment="Center" FontFamily="{DynamicResource ProximaRegular}"
+                           FontWeight="SemiBold" />
+                <TextBlock Grid.Row="3" Grid.Column="1" Margin="20,0,20,0" FontSize="14" MaxWidth="300"
+                           Text="{Binding MessageBoxDialogText}"
+                           HorizontalAlignment="Center" Foreground="{DynamicResource LightGrayTextForegroundColor}" TextAlignment="Center" TextWrapping="Wrap"
+                           FontFamily="{DynamicResource ProximaLight}" />
+            </Grid>
+
+            <Button x:Name="cancelpopup" Grid.Row="1" Grid.Column="0" Background="{DynamicResource LightGrayTextForegroundColor}" Height="55" MinWidth="150"
+                    Foreground="{DynamicResource WhiteColor}"
+                    FontWeight="SemiBold" FontSize="16" BorderThickness="0" HorizontalAlignment="Stretch"
+                    Style="{DynamicResource btnStyleNoHover}"
+                    FontFamily="{DynamicResource ProximaSemiBold}"
+                    Content="{Binding Path=MessageBoxDialogCancelButtonText}"
+                    Visibility="{Binding CancelButtonVisible, Converter={StaticResource BoolToVisibility}}"
+                    Command="{Binding MessageBoxDialogCancelCommand}" IsCancel="True" />
+            <Button Grid.Row="1" Grid.Column="1" Background="{DynamicResource PasswordBossGreenColor}" Height="55" MinWidth="150" Foreground="{DynamicResource WhiteColor}"
+                    FontWeight="SemiBold" FontSize="16" BorderThickness="0" HorizontalAlignment="Stretch"
+                    Style="{DynamicResource btnStyleNoHover}"
+                    FontFamily="{DynamicResource ProximaSemiBold}"
+                    Content="{Binding MessageBoxDialogConfirmButtonText}"
+                    Visibility="{Binding ConfirmButtonVisible, Converter={StaticResource BoolToVisibility}}"
+                    Command="{Binding MessageBoxDialogConfirmCommand}" IsDefault="True" />
+
+            <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Background="{DynamicResource PasswordBossGreenColor}"
+                    Height="55" Foreground="{DynamicResource WhiteColor}"
+                    FontWeight="SemiBold" FontSize="16" BorderThickness="0"
+                    Style="{DynamicResource btnStyleNoHover}"
+                    FontFamily="{DynamicResource ProximaSemiBold}"
+                    Content="{Binding MessageBoxDialogOkButtonText}"
+                    Visibility="{Binding OkButtonVisible, Converter={StaticResource BoolToVisibility}}"
+                    Command="{Binding MessageBoxDialogOkCommand}" IsDefault="True" />
+        </Grid>
+    </Grid>
+</Window>

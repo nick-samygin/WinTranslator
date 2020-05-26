@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="PasswordBoss.Views.UserControls.SearchBoxWithMagnifier"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:helpers="clr-namespace:PasswordBoss.Helpers"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid UseLayoutRounding="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <TextBox Grid.Row="0" x:Name="txtSearchBoxWatermarked" Style="{DynamicResource TextBoxRoundedBorders}" Grid.Column="0" Padding="32,1,25,0"
+                 Height="30" Text="{DynamicResource SearchTheWeb}" TextAlignment="Left" Foreground="{DynamicResource GrayColor}" GotFocus="txtSearchBoxWatermarked_GotFocus" HorizontalContentAlignment="Left"  HorizontalAlignment="Stretch" Margin="0,0,10,0" />
+        <TextBox Grid.Row="0" x:Name="txtSearchBox" Visibility="Collapsed" Style="{DynamicResource TextBoxRoundedBorders}" Grid.Column="0" Padding="32,1,25,0"
+                 Height="30" TextAlignment="Left" KeyDown="txtSearchBox_KeyDown" Text="{Binding SecureSearchQuery, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Left"  LostFocus="txtSearchBox_LostFocus" HorizontalAlignment="Stretch" Margin="0,0,10,0" />
+        <Image Grid.Row="0" Margin="10,0,0,0"
+                       Source="{DynamicResource imgLockGray}" Grid.Column="0" Height="14" Width="14"
+                       HorizontalAlignment="Left" RenderOptions.BitmapScalingMode="HighQuality" />
+        <Button Grid.Row="0" Margin="0,0,0,0" Style="{DynamicResource ButtonRoundedBorders}"
+                         Height="30" Width="30" BorderThickness="0" 
+                        HorizontalAlignment="Right" VerticalAlignment="Center" Background="{DynamicResource PasswordBossGreenColor}">
+            <Button.InputBindings>
+                <MouseBinding MouseAction="LeftClick" Command="{Binding SecureSearchCommand}" />
+            </Button.InputBindings>
+        </Button>
+
+    </Grid>
+</UserControl>

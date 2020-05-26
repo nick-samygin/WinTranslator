@@ -1,0 +1,9 @@
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\ImageDll\bin\x86\Debug\image.dll
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\ImageDll\bin\x86\Debug\image.pdb
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\ImageDll\obj\x86\Debug\ImageResource.baml
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\ImageDll\obj\x86\Debug\image_MarkupCompile.cache
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\ImageDll\obj\x86\Debug\image.g.resources
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\ImageDll\obj\x86\Debug\image.dll
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\ImageDll\obj\x86\Debug\image.pdb
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\ImageDll\obj\x86\Debug\ImageDll.csprojAssemblyReference.cache
+C:\Users\LoRD320\Documents\Visual Studio 2015\Projects\desktop-windows\MainUI\ImageDll\obj\x86\Debug\ImageDll.csproj.CoreCompileInputs.cache

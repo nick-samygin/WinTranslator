@@ -1,0 +1,64 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:ProductTour.Views.Styles" >
+	<ResourceDictionary.MergedDictionaries>
+		<ResourceDictionary Source="../Styles/ActivateNowBlockStyles.xaml" />
+		<ResourceDictionary Source="../Styles/ViewBoxStyle.xaml" />
+	</ResourceDictionary.MergedDictionaries>
+	<Style TargetType="{x:Type local:ActivateNowBlock}" >
+		<Style.Setters>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="{x:Type local:ActivateNowBlock}">
+						<Grid Margin="{TemplateBinding Margin}" Width="730" HorizontalAlignment="Stretch">
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="410" />
+								<ColumnDefinition Width="10" />
+								<ColumnDefinition Width="308" />
+							</Grid.ColumnDefinitions>
+							<Grid Grid.Column="0" Margin="0,8,0,0" VerticalAlignment="Top">
+								<Grid.RowDefinitions>
+									<RowDefinition Height="20" />
+									<RowDefinition Height="5" />
+									<RowDefinition Height="15" />
+								</Grid.RowDefinitions>
+								<Grid.Resources>
+									<Style TargetType="TextBlock">
+										<Setter Property="LineHeight" Value="1" />
+										<Setter Property="LineStackingStrategy" Value="BlockLineHeight" />
+										<Setter Property="Text" Value=" " />
+										<Setter Property="VerticalAlignment" Value="Bottom"/>
+									</Style>
+								</Grid.Resources>
+
+								<Viewbox Grid.Row="0" HorizontalAlignment="Left">
+									<TextBlock Style="{DynamicResource headerTextBlock}" />
+								</Viewbox>
+								<Viewbox Grid.Row="2" HorizontalAlignment="Left">
+									<StackPanel Orientation="Horizontal"  >
+										<TextBlock Style="{DynamicResource tbSubhead1}" />
+										<TextBlock Text=" " />
+										<TextBlock Style="{DynamicResource tbSubhead2}" />
+									</StackPanel>
+								</Viewbox>
+							</Grid>
+							<Button Grid.Column="2"
+									Height="56"
+									HorizontalAlignment="Stretch"
+                                    Margin="0,-5,0,0"
+                                    Style="{DynamicResource ProductTourButtonGreenStyle}" 
+                                    Command="{Binding CloseWizardCommand}"
+									Foreground="White"
+                                    CommandParameter="AccountCreation" >
+								<Viewbox StretchDirection="DownOnly">
+									<ContentPresenter></ContentPresenter>
+								</Viewbox>
+							</Button>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style.Setters>
+	</Style>
+</ResourceDictionary>
